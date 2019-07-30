@@ -73,7 +73,7 @@
 }
 
 .card__container--closed .card__caption {
-	font-size: 1em;
+	font-size: 10em;
 	max-width: none;
 	padding: 30px 10px;
 	-webkit-transform: translateY(-100%);
@@ -82,7 +82,8 @@
 }
 
 .card__title {
-	font-size: 2.1em;
+  /*titulo do card*/
+	font-size: 1.1em;
 	line-height: 1;
 	margin: 5px 0 0 0;
 	text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
@@ -95,6 +96,7 @@
 }
 
 .card__subtitle {
+  /*subtitulo do card*/
 	font-size: .95em;
 	line-height: 1;
 	text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;

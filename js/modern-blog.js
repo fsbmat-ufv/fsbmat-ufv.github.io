@@ -53,9 +53,10 @@ var demo = (function (window) {
             height: window.innerHeight,
             cell_size: 90,
             variance: 1,
-            stroke_width: 0.6,
-            x_colors: 'random',
-            y_colors: 'random'
+            stroke_width: 1,
+            color_function : function(x, y) {
+                    return '#5cb0bf';
+                }
         }).svg(); // Render as SVG.
 
         _mapPolygons(pattern);

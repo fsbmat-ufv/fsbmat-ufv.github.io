@@ -44,6 +44,7 @@ var demo = (function (window) {
 
     /**
      * Initialise demo.
+     * Se quiser modificar a imagem de fundo do tema
      */
     var init = function () {
 
@@ -51,8 +52,8 @@ var demo = (function (window) {
         var pattern = Trianglify({
             width: window.innerWidth,
             height: window.innerHeight,
-            cell_size: 90,
-            variance: 1,
+            cell_size: 10,
+            variance: 10,
             stroke_width: 1,
             color_function : function(x, y) {
                     return '#5cb0bf';

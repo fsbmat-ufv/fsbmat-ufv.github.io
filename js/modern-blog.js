@@ -52,8 +52,8 @@ var demo = (function (window) {
         var pattern = Trianglify({
             width: window.innerWidth,
             height: window.innerHeight,
-            cell_size: 10,
-            variance: 10,
+            cell_size: 40,
+            variance: 0.33,
             stroke_width: 1,
             color_function : function(x, y) {
                     return '#5cb0bf';

@@ -6,6 +6,46 @@ avatar: "img/authors/wferr.png"
 image: "img/e.jpg"
 date:   2015-04-24 12:12:12
 ---
+
+<h2>Aptidões e competências de desenvolvimento</h2>
+  
+  <section class="content content--related">
+  <div class="media-item">
+  <!-- <div class="box"> -->
+  <i class="fa fa-code fa-1x"></i>
+  <h3>Programmig</h3>
+  C, Java, Android, Arduino, Ahk, Python
+<!-- </div> -->
+  </div>
+  
+  
+  <div class="media-item">
+  <!-- <div class="box"> -->
+  <i class="fa fa-database fa-1x"></i>
+  <h3>DataBase</h3>
+  MySQL, MsSQL, ORACLE
+<!-- </div> -->
+  </div>
+  
+  <div class="media-item">
+  <!-- <div class="box"> -->
+  <i class="fa fa-code-fork fa-1x"></i>
+  <h3>Framework</h3>
+  Bootstrap
+<!-- </div> -->
+  </div>
+  
+  <div class="media-item">
+  <!-- <div class="box"> -->
+  <i class="fa fa-terminal fa-1x"></i>
+  <h3>Web</h3>
+  HTML5, JavaScript, CSS, Jsp&amp;Servlet, Php
+</div>
+  </section>
+  <Hr>
+  </div>
+
+
 <h1 class="pageTitle">Iniciação à Estatística</h1>
 
 <DIV align="center"><CENTER>

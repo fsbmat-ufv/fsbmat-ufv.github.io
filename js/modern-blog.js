@@ -53,8 +53,8 @@ var demo = (function (window) {
             width: window.innerWidth,
             height: window.innerHeight,
             cell_size: 90,
-            variance: 1,
-            stroke_width: 1,
+                variance: 1,
+                stroke_width: 0.6,
             color_function : function(x, y) {
                     return '#5cb0bf';
                 }

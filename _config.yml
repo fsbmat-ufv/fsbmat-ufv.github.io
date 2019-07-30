@@ -1,0 +1,7 @@
+# Site settings
+title: Sejin's Portfolio
+description: Sejin's Portfolio
+keywords: 
+author: Sejin
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://sejin.cf/#" # the base hostname & protocol for your site

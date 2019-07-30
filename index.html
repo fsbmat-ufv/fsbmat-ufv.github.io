@@ -1,0 +1,201 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}" />
+    <meta name="keywords" content="{{ site.keywords }}" />
+    <meta name="author" content="{{ site.author }}" />
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"
+        type="text/css"> -->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="css/modern-blog2.css" />
+    <link rel="stylesheet" type="text/css" href="css/card.css" />
+    <link rel="stylesheet" type="text/css" href="css/pattern.css" />
+
+    <!--[if IE]>
+    <script type="text/javascript" src="js/vendors/html5.min.js"></script>
+    <![endif]-->
+    <script>
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+            var root = document.getElementsByTagName('html')[0];
+            root.setAttribute('class', 'ff');
+        }
+    </script>
+</head>
+
+<body class="demo-1">
+    <div
+        style="position: absolute;
+        left: 50%;
+        margin-left: -100px;; width:0;height:0;border:none;border-bottom:0;border-top: 0;border-left: 0;border-right: 0">
+        <div class="card" data-id="/whois">
+            <div style="border: none" class="card__container card__container--closed"> <svg class="card__image"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500"
+                    preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                        <clipPath id="/whois">
+                            <circle class="clip" cx="960" cy="250" r="992"></circle>
+                            <!-- <polygon class="clip" points="0,1200 0,0 1920,0 1920,1200"></polygon> -->
+                        </clipPath>
+                    </defs>
+                    <image clip-path="url(#/whois)" width="1920" height="500" xlink:href="img/a.jpg">
+                    </image>
+                </svg>
+                <div class="card__content"> <i class="card__btn-close fa fa-times"></i>
+                    <div class="card__caption">
+                        <h2 class="card__title">About Me</h2>
+                        <p class="card__subtitle">-</p>
+                    </div>
+                    <div class="card__copy">
+                        <div class="meta"> <img class="meta__avatar" src="img/authors/jin.png" /> <span
+                                class="meta__author">sejin</span> <span class="meta__date">1011-10-01</span>
+                        </div>
+
+                        <div style="text-align:center;">
+                            <h2 style="padding-bottom:50px">활동</h2>
+                            2014.03 동양미래대학교 입학 및 MARS 전공동아리 가입
+                            <br>
+                            2017.12 교내 튜터링 프로그램 튜티 이수
+                            <br>
+                            2018.07 IOT 창의공학 경진대회 우수상
+                            <br>
+                            2017.08 캠퍼스 CEO IT 융합실무 은상
+                            <br>
+                            2018.11 졸업작품 코엑스[한국전자전] 전시 및 교내 졸업작품 우수상
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <hr>
+                            <h2>개발 기술 및 역량</h2>
+
+                            <section class="content content--related">
+                                <div class="media-item">
+                                    <!-- <div class="box"> -->
+                                    <i class="fa fa-code fa-1x"></i>
+                                    <h3>Programmig</h3>
+                                    C, Java, Android, Arduino, Ahk, Python
+                                    <!-- </div> -->
+                                </div>
+
+
+                                <div class="media-item">
+                                    <!-- <div class="box"> -->
+                                    <i class="fa fa-database fa-1x"></i>
+                                    <h3>DataBase</h3>
+                                    MySQL, MsSQL, ORACLE
+                                    <!-- </div> -->
+                                </div>
+
+                                <div class="media-item">
+                                    <!-- <div class="box"> -->
+                                    <i class="fa fa-code-fork fa-1x"></i>
+                                    <h3>Framework</h3>
+                                    Bootstrap
+                                    <!-- </div> -->
+                                </div>
+
+                                <div class="media-item">
+                                    <!-- <div class="box"> -->
+                                    <i class="fa fa-terminal fa-1x"></i>
+                                    <h3>Web</h3>
+                                    HTML5, JavaScript, CSS, Jsp&amp;Servlet, Php
+                                </div>
+                            </section>
+                            <Hr>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+
+        <header class="codrops-header">
+
+            <h1>Portfolio<span>Project List</span></h1><br>
+
+            <nav class="links">
+
+                <a href="https://sejin.cf/#/whois"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i><br>about
+                    me</a>
+
+                <!-- <a href="#"><i class="fa fa-instagram fa-3x"></i></a>
+            <a href="#"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="#"><i class="fa fa-tumblr-square fa-3x"></i></a> -->
+
+            </nav>
+
+        </header>
+
+        <div class="content">
+            <!-- trianglify pattern container -->
+
+            <div class="pattern pattern--hidden"></div>
+            <!-- cards -->
+
+            <div class="wrapper">
+
+                {% for post in site.posts %}
+                <div class="card" data-id="{{ post.id }}">
+                    <div class="card__container card__container--closed">
+                        <svg class="card__image" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500"
+                            preserveAspectRatio="xMidYMid slice">
+                            <defs>
+                                <clipPath id="{{ post.id }}-clip-path">
+                                    <circle class="clip" cx="960" cy="250" r="992"></circle>
+                                    <!-- <polygon class="clip" points="0,1200 0,0 1920,0 1920,1200"></polygon> -->
+                                </clipPath>
+                            </defs>
+                            <image clip-path="url(#{{ post.id }}-clip-path)" width="1920" height="500"
+                                xlink:href="{{ post.image }}"></image>
+                        </svg>
+                        <div class="card__content">
+                            <i class="card__btn-close fa fa-times"></i>
+                            <div class="card__caption">
+                                <h2 class="card__title">{{ post.title }}</h2>
+                                <p class="card__subtitle">{{ post.subtitle }}</p>
+                            </div>
+                            <div class="card__copy">
+                                <div class="meta">
+                                    <img class="meta__avatar" src="{{ post.avatar }}" />
+                                    <span class="meta__author">{{ post.author }}</span>
+                                    <span class="meta__date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                                </div>
+                                {{ post.content }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- /cards -->
+            </div>
+        </div>
+        <!-- /container -->
+    </div>
+
+
+    <!-- JS -->
+
+    <script src="js/vendors/trianglify.min.js"></script>
+    <script src="js/vendors/TweenMax.min.js"></script>
+    <script src="js/vendors/ScrollToPlugin.min.js"></script>
+    <script src="js/vendors/cash.min.js"></script>
+    <script src="js/Card-circle.js"></script>
+    <script src="js/modern-blog2.js"></script>
+</body>
+
+</html>

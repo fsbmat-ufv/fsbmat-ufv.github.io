@@ -1,0 +1,45 @@
+---
+title:  "Kakao map을 이용한 중간위치찾기 어플"
+subtitle: "Android"
+author: "sejin"
+avatar: "img/authors/jin.png"
+image: "img/splash.png"
+date:   1011-10-01 01:10:02
+---
+
+## ScreenShot
+
+![ex](../img/splash.png){: width="450"}
+![ex](../img/marker.png){: width="450"}
+![ex](../img/dialog.png){: width="450"}
+![ex](../img/webview.png){: width="450"}
+
+
+- - -
+### 개발인원/기간 : 1명 / 12일 
+
+### 개발내역
+
+친구들과 항상 만날때 어디에서 만날까라는 주제로 많이 싸우곤한다.
+이 어플은 친구들의 위치와 나의 위치만 알려주면 합리적인 위치의 맛집과 카페를 추천해준다.
+
+지도는 카카오맵을 사용했으나 개발이 어느정도 된 이후 구글맵을 사용할걸하며 후회했다.
+
+그 외 장소검색에는 Google의 Autocomplete place를 사용했다.
+네이버는 이러한 기능을 지원하지않았고 다음은 webView형태로 제공되어 google의 api를 사용하였다. 
+
+각 지역 정보에 대한 정보는 rest api의 형태로 Retrofit2를 이용하였다. 장소에 대한 내용이 url형식으로만 제공되었다.<a href="https://github.com/cadinz/Yanawha" target="_blank">EXAM</a> 이러한 URL만 제공되어 처음엔 URL을 파싱하여 사진등을 가지고올까 생각했으나 저작권문제로 webView를 통해 보여주기로 결정하였다.
+
+
+<a href="https://github.com/cadinz/Yanawha" target="_blank">github</a>
+<a href="https://play.google.com/store/apps/details?id=com.yanawha.osejin.yanawha" target="_blank">Play Store</a>
+
+
+
+- - -
+
+### ETC
+
+사용한 툴 : android Studio, Visual Studio Code, Postman
+라이브러리 : kakao map, google place, 기타 UI라이브러리
+<br>

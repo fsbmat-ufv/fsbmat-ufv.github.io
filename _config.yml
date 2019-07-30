@@ -1,7 +1,7 @@
 # Site settings
-title: Sejin's Portfolio
-description: Sejin's Portfolio
-keywords: 
-author: Sejin
+title: Fernando Bastos
+description: Fernando Bastos Portfolio
+keywords: professor, estatística, R, matemática
+author: IMG_FSB
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://sejin.cf/#" # the base hostname & protocol for your site
+url: "https://fsbmat-ufv.github.io/#" # the base hostname & protocol for your site

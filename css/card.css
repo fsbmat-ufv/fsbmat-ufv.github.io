@@ -82,11 +82,11 @@
 }
 
 .card__title {
-	font-size: 1.1em;
+	font-size: 2.1em;
 	line-height: 1;
 	margin: 5px 0 0 0;
 	text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
-	color: #3b393d;
+  	color: #3b393d;
 }
 
 .card__container--closed .card__title {

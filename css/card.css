@@ -1,9 +1,10 @@
 /* CARD */
 
 .card {
+  /* muda o tamanho dos retangulos da pagina principal */
 	position: relative;
 	float: left;
-	width: 99%;
+	width: 29%;
 	height: 0;
 	margin: 2%;
 	padding-bottom: 20%;
@@ -97,11 +98,12 @@
 	line-height: 1;
 	text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
 	margin: 5px 0 0;
-	color: #777778;
+  	color: #777778;
 }
 
 .card__container--closed .card__subtitle {
-	color: #f5f5f5;
+  	/*color: #f5f5f5;*/
+  	color: #c7c7c7;
 }
 
 .card__copy {

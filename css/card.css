@@ -90,7 +90,8 @@
 }
 
 .card__container--closed .card__title {
-	color: #fff;
+	/*color: #fff;*/
+	color:#757575;
 }
 
 .card__subtitle {
@@ -98,7 +99,8 @@
 	line-height: 1;
 	text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;
 	margin: 5px 0 0;
-  	color: #777778;
+  	/*color: #777778;*/
+  	color:#7d7d7d;
 }
 
 .card__container--closed .card__subtitle {

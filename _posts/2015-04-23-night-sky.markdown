@@ -5,11 +5,8 @@ author: "Wferr"
 avatar: "img/authors/wferr.png"
 image: "img/d.jpg"
 date:   2015-04-23 12:12:12
-output:
-  pagedown::html_resume:
-    self_contained: false
-    css:
-    - resume
-    - https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css
 ---
 
+```r
+icon::fa("rocket") # equivalent to icon::fa_rocket()
+```

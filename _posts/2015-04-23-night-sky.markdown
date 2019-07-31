@@ -13,6 +13,3 @@ date:   2015-04-23 12:12:12
 fernando: 
 ![](img/icons/user.png =10x10)
 
-![](img/icons/user.png =50x)
-
-<img src="img/icons/user.png" alt="user" width="50"/>

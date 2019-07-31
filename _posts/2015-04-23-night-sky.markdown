@@ -27,16 +27,16 @@ fig3:
 
 fig 4
 
-<img src="img/icons/user.svg"/> - fig 4
+<img src="img/icons/aluno.svg"/> - fig 4
 
 fig 5
 
-![Alt text](img/icons/user.svg) fig6
+![Alt text](img/icons/aluno.svg) fig6
 
 fig6
 
-<img src="img/icons/user.svg"> fig6
+<img src="img/icons/aluno.svg"> fig6
 
 fig 7
 
-{% include figure.html file="img/icons/user.svg" alt="cat pic" caption="My cat" %}
+{% include figure.html file="img/icons/aluno.svg" alt="cat pic" caption="My cat" %}

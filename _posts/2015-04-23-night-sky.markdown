@@ -51,4 +51,9 @@ img1_path <- "img/icons/aluno.svg"
 img1 <- readPNG(img1_path, native = TRUE, info = TRUE)
 attr(img1, "info")
 
+__________________________________
 
+
+![Caption for the picture.](img/icons/aluno.svg)
+
+![Caption for the picture2.](img/icons/UFV.jpg)

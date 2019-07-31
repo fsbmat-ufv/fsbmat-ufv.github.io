@@ -9,10 +9,10 @@ date:   2015-04-23 12:12:12
 
 1 - *Nome do projeto*
 
-<img src="img/icons/user.png" alt="user" width="30"/> - Nome do aluno
+<img src="img/icons/user.png" alt="user1  " width="30"/> - Nome do aluno
 <img src="img/icons/chap.png" alt="chap" width="30"/>
-<img src="img/icons/chap.png" alt="user" width="30"/> - Tipo de projeto
-<img src="img/icons/UFV.png" alt="UFV" width="30"/> - Universidade Federal de Viçosa
+<img src="img/icons/chap.png" alt="user2" width="30"/> - Tipo de projeto
+<img src="img/icons/UFV.jpg" alt="UFV" width="30"/> - Universidade Federal de Viçosa
 
 
 fernando: ![](img/icons/user.png =100x100) - fernando:

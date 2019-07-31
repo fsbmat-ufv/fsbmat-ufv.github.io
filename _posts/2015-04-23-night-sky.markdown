@@ -5,6 +5,9 @@ author: "Wferr"
 avatar: "img/authors/wferr.png"
 image: "img/d.jpg"
 date:   2015-04-23 12:12:12
+output:
+  html_document:
+    pandoc_args: '.data/mentorings/ic-kowalski-2019.yaml'
 ---
 
 imports:

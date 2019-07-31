@@ -106,10 +106,10 @@ a:focus {
 }
 
 .codrops-header h1 span {
-	font-size: 5.45em;
+	font-size: .65em;
 	display: block;
-	padding: .5em 0 1em;
-	color: #999;
+	padding: .5em 0 0.5em;
+  	color: #999;
 }
 /* Top Navigation Style */
 

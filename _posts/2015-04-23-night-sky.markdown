@@ -40,3 +40,12 @@ fig6
 fig 7
 
 {% include figure.html file="img/icons/aluno.svg" alt="cat pic" caption="My cat" %}
+
+
+________________________________
+
+img1_path <- "img/icons/aluno.svg"
+img1 <- readPNG(img1_path, native = TRUE, info = TRUE)
+attr(img1, "info")
+
+

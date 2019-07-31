@@ -7,9 +7,7 @@ image: "img/d.jpg"
 date:   2015-04-23 12:12:12
 ---
 
-
-
-
+1 - Título do projeto
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - Nome do aluno
 
@@ -17,4 +15,18 @@ date:   2015-04-23 12:12:12
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
 
+<img src="img//icons//cal.jpg" width="30" height="30" /> - Data de inicio e fim
 
+__________________________________
+
+2 - Título do projeto 2
+
+<img src="img//icons//aluno.svg" width="30" height="30" /> - Nome do aluno
+
+<img src="img//icons//chap.png" width="30" height="30" /> - Tipo de projeto
+
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
+
+<img src="img//icons//cal.jpg" width="30" height="30" /> - Data de inicio e fim
+
+__________________________________

@@ -1,4 +1,4 @@
 +++
 title = "Academical mentoring"
-id = "mentoring"
+url  = "data/mentorings/"
 +++

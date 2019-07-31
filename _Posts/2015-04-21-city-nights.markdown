@@ -1,9 +1,10 @@
 ---
 title:  "Welcome"
 #subtitle: "A Beautiful shot during the night."
-author: "Fernando Bastos"
+author: "Wferr"
+avatar: "img/authors/IMG_FSB.png"
 image: "img/family.jpg"
-date:   2019-01-01 12:12:12
+date:   2019-07-29 12:12:12
 ---
 
 ### Who am I?

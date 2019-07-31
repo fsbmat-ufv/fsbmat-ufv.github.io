@@ -11,5 +11,5 @@ date:   2015-04-23 12:12:12
 
 
 fernando: 
-![alt text](img/icons/user.png =2x2)
+![](img/icons/user.png =2x2)
 

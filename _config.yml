@@ -5,3 +5,9 @@ keywords: professor, estatística, R, matemática
 author: IMG_FSB
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://fsbmat-ufv.github.io/#" # the base hostname & protocol for your site
+
+navigation:
+ - title: Inicio
+   url: /index.html
+ - title: Cronograma
+   url: /cronograma

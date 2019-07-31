@@ -11,5 +11,5 @@ date:   2015-04-23 12:12:12
 
 
 Inline-style: 
-![alt text](img/icons/user.png "Logo Title Text 1")
+![alt text](img/icons/user.png =100x20)
 

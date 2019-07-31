@@ -113,18 +113,7 @@
   	color: #c7c7c7;
 }
 
-.card__copy {
-	font-size: 5.25em;
-	max-width: 900px;
-	margin: 0 auto;
-	padding: 25px 30px 100px;
-	color: #3d0a70;
-}
 
-.card__copy p:first-of-type {
-	font-size: 1.5em;
-	padding: 0 0 1em 0;
-}
 
 .card__btn-close {
 	font-size: 18px;

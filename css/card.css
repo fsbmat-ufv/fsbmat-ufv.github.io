@@ -114,6 +114,7 @@
 }
 
 .card__copy {
+  /*Mudança no texto do cabeçario do card*/
 	font-size: 1.25em;
 	max-width: 1000px;
 	margin: 0 auto;
@@ -122,12 +123,13 @@
 }
 
 .card__copy p:first-of-type {
+  /*Mudança no texto do card*/
 	font-size: 1em;
-	padding: 0 0 1em 0;
+	padding: 0 0 0 0;
 }
 
 .card__btn-close {
-	font-size: 18px;
+	font-size: 5em;
 	position: absolute;
 	top: 0;
 	right: 0;

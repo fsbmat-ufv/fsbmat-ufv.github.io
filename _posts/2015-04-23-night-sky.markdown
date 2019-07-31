@@ -10,6 +10,12 @@ date:   2015-04-23 12:12:12
 1 - *Nome do projeto*
 
 
-fernando: 
-![](img/icons/user.png =10x10)
+fernando: ![](img/icons/user.png =10x10)
 
+fig2:
+
+![](img/icons/user.png =50x) - fig2
+
+fig3:
+
+<img src="img/icons/user.png" alt="user" width="50"/> - fig 3

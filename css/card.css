@@ -143,7 +143,7 @@
 }
 
 .meta {
-  /*Mudança no tamanho da data*/
+  /*Mudança no tamanho da data e no nome do autor*/
 	font-size: .85em;
 	display: -webkit-flex;
 	display: flex;
@@ -177,7 +177,7 @@
 		padding-bottom: 32.2%;
 	}
 	.card__image {
-		max-height: 360px;
+		max-height: 1200px;
 	}
 	.card__content {
 		margin-bottom: 0;

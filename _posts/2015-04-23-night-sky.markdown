@@ -19,3 +19,7 @@ fig2:
 fig3:
 
 <img src="img/icons/user.png" alt="user" width="30"/> - fig 3
+
+fig 4
+
+<img src="img/icons/user.svg"/> - fig 4

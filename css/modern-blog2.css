@@ -99,14 +99,14 @@ a:focus {
 }
 
 .codrops-header h1 {
-	font-size: 5.25em;
+	font-size: 2.25em;
 	font-weight: 400;
 	line-height: 1.2;
 	margin: .5em 0 0;
 }
 
 .codrops-header h1 span {
-	font-size: .45em;
+	font-size: 5.45em;
 	display: block;
 	padding: .5em 0 1em;
 	color: #999;

@@ -1,5 +1,0 @@
-+++
-title = "Courses"
-id = "course"
-+++
-

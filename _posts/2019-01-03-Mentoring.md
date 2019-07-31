@@ -3,7 +3,6 @@ title:  "Academical Mentoring"
 #subtitle: "Only lights from space"
 author: "Fernando Bastos"
 image: "img/mentoring/mentoring.jpg"
-date:   2019-31-07 12:12:12
 ---
 
 Projetos e orientações concluidas e em andamento

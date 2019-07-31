@@ -23,3 +23,8 @@ fig3:
 fig 4
 
 <img src="img/icons/user.svg"/> - fig 4
+
+fig 5
+
+![Alt text](img/icons/user.svg)
+<img src="img/icons/user.svg">

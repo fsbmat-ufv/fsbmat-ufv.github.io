@@ -9,6 +9,8 @@ date:   2015-04-23 12:12:12
 
 
 
-![Caption for the picture.](img/icons/aluno.svg)
+![Caption for the picture.](img/icons/aluno.svg){ width=20% }
 
-![Caption for the picture2.](img/icons/UFV.jpg)
+![Caption for the picture2.](img/icons/UFV.jpg){ width=30% }
+
+

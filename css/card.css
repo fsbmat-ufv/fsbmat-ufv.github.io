@@ -129,7 +129,7 @@
 }
 
 .card__btn-close {
-	font-size: 5em;
+	font-size: 18px;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -142,7 +142,7 @@
 }
 
 .meta {
-	font-size: .85em;
+	font-size: 5em;
 	display: -webkit-flex;
 	display: flex;
 	padding: 0 0 35px 0;

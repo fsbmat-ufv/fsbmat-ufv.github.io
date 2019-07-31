@@ -10,7 +10,7 @@ date:   2015-04-23 12:12:12
 1 - *Nome do projeto*
 
 
-fernando: ![](img/icons/user.png =30x30) - fernando:
+fernando: ![](img/icons/user.png =50x50) - fernando:
 
 fig2:
 
@@ -18,4 +18,4 @@ fig2:
 
 fig3:
 
-<img src="img/icons/user.png" alt="user" width="50"/> - fig 3
+<img src="img/icons/user.png" alt="user" width="30"/> - fig 3

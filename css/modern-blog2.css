@@ -27,7 +27,8 @@ body {
 	font-family: Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
 	line-height: 1.5;
 	color: #3b393d;
-	background: #ab2222;
+	/*Fundo da página principal*/
+	background: #f0f0f0;
 	/* background: rgb(43, 43, 43); */
 
 	background-size: cover;
@@ -54,7 +55,7 @@ body.body--hidden .content--related {
 
 a {
 	text-decoration: none;
-	color: #de6551;
+	color: #cc6c3f;
 	outline: none;
 }
 
@@ -98,7 +99,7 @@ a:focus {
 }
 
 .codrops-header h1 {
-	font-size: 2.25em;
+	font-size: 5.25em;
 	font-weight: 400;
 	line-height: 1.2;
 	margin: .5em 0 0;

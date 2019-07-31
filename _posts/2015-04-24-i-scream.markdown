@@ -5,6 +5,7 @@ author: "Wferr"
 avatar: "img/authors/wferr.png"
 image: "img/e.jpg"
 date:   2015-04-24 12:12:12
+[GitHub](http://github.com)
 ---
 <h1 class="pageTitle">Iniciação à Estatística</h1>
 

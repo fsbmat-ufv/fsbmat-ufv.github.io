@@ -20,7 +20,7 @@
 	width: 100%;
 	height: 100%;
 	-webkit-transform: translate3d(0, 0, 0);
-	/* Mudar a cor de fundo */
+	/* Mudar a cor de fundo do topo das páginas de conteúdo */
 	background: rgb(161, 194, 167);
 	border-style:none; 
 	-webkit-overflow-scrolling: touch;
@@ -49,13 +49,14 @@
 }
 
 .card__content {
+  /* Mudar a cor de fundo do card das páginas de conteúdo */
 	position: relative;
 	width: 100%;
 	height: auto;
 	margin: 0 auto;
 	padding: 30px 40px 22px;
 	color: #888;
-	background: #fff;
+	background: #f7f7f0;
 }
 
 .card__container--closed .card__content {

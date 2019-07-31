@@ -9,8 +9,8 @@ date:   2015-04-23 12:12:12
 
 
 
-![Caption for the picture.](img/icons/aluno.svg){ width=20% }
+![](img/icons/aluno.svg){width=20%} - Nome do aluno
 
-![Caption for the picture2.](img/icons/UFV.jpg){ width=30% }
+![](img/icons/UFV.jpg){width=30%} - Universidade Federal de Viçosa
 
 

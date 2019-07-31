@@ -26,5 +26,8 @@ fig 4
 
 fig 5
 
-![Alt text](img/icons/user.svg)
-<img src="img/icons/user.svg">
+![Alt text](img/icons/user.svg) fig6
+
+fig6
+
+<img src="img/icons/user.svg"> fig6

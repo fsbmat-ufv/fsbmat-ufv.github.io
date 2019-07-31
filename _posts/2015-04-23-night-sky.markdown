@@ -31,3 +31,7 @@ fig 5
 fig6
 
 <img src="img/icons/user.svg"> fig6
+
+fig 7
+
+{% include figure.html file="img/icons/user.svg" alt="cat pic" caption="My cat" %}

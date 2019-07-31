@@ -4,7 +4,7 @@ subtitle: "Only lights from space"
 author: "Wferr"
 avatar: "img/authors/wferr.png"
 image: "img/d.jpg"
-date: "`r Sys.Date()`"
+date:   2015-04-23 12:12:12
 output:
   pagedown::html_resume:
     self_contained: false
@@ -13,4 +13,3 @@ output:
     - https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css
 ---
 
-<i class="ai ai-google-scholar-square"></i>

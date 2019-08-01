@@ -82,8 +82,8 @@ layout: compress
                             preserveAspectRatio="xMidYMid slice">
                             <defs>
                                 <clipPath id="{{ post.id }}-clip-path">
-                                    <circle class="clip" cx="960" cy="250" r="992"></circle>
-                                    <!-- <polygon class="clip" points="0,1200 0,0 1920,0 1920,1200"></polygon> -->
+                                   <!--  <circle class="clip" cx="960" cy="250" r="992"></circle>-->
+                                    <polygon class="clip" points="0,1200 0,0 1920,0 1920,1200"></polygon> 
                                 </clipPath>
                             </defs>
                             <image clip-path="url(#{{ post.id }}-clip-path)" width="1920" height="500"

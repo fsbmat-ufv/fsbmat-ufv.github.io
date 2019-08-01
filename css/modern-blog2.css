@@ -54,11 +54,12 @@ body.body--hidden .content--related {
 }
 
 a {
+  /*Icones and home+back+academicons*/
 	text-decoration: none;
-	color: #cc6c3f;
+	color: #a5d1b1;
 	outline: none;
-	border: 2px solid orange;
-  border-radius: 12px;
+	/*border: 2px solid red;
+  border-radius: 12px;*/
 }
 
 a:hover,

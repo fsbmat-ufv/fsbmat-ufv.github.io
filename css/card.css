@@ -183,9 +183,9 @@
 		width: 46%;
 		padding-bottom: 32.2%;
 	}
-	.card__image {
+	/*.card__image {
 		max-height: 360px;
-	}
+	}*/
 	.card__content {
 		margin-bottom: 0;
 		padding-right: 20px;

@@ -31,7 +31,7 @@
 	transform: scale(1);
 	-webkit-transform-origin: center bottom;
 	transform-origin: center bottom;
-/* 	fill: transparent;*/
+/* 	fill: transparent;*/ /*Se retirar este comentario o fundo da pagina principal renderiza a imagem do card apos o fechamento do mesmo*/
 }
 
 .polygon--hidden {

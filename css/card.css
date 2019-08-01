@@ -21,16 +21,16 @@
 	height: 100%;
 	-webkit-transform: translate3d(0, 0, 0);
 	/* Mudar a cor de fundo do topo das páginas de conteúdo */
-	background: rgb(161, 194, 167);
-	border-style:none; 
+/*	background: rgb(161, 194, 167);
+	border-style:none; */
 	-webkit-overflow-scrolling: touch;
 }
 
 .card__container--closed {
 	position: absolute;
 	overflow: hidden;
-	background: white;
-	border-style:none; 
+/*	background: white;
+	border-style:none; */
 }
 
 .card__image {

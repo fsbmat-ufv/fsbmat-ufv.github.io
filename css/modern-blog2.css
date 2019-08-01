@@ -198,15 +198,15 @@ a:focus {
 	
 }
 
-.media-item {
+/*.media-item {
 	display: inline-block;
-	padding: 10em;
+	padding: 1em;
 	vertical-align: top;
 	-webkit-transition: color .3s;
 	transition: color .3s;
-}
+}*/
 
-/*.media-item {
+.media-item {
 		position: relative;
 		color: inherit;
 		background: #fff;
@@ -224,7 +224,7 @@ a:focus {
 		flex-direction: column;
 		-webkit-justify-content: center;
 		justify-content: center;
-}*/
+}
 
 .media-item__img {
 	max-width: 100%;

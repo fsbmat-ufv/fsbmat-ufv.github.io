@@ -1,12 +1,11 @@
-/*
-@font-face {
+/*@font-face {
 	font-family: 'codropsicons';
 	font-weight: normal;
 	font-style: normal;
 	src: url('../fonts/codropsicons/codropsicons.eot');
 	src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 }
-
+*/
 *,
 *:after,
 *:before {
@@ -23,7 +22,7 @@
 .clearfix:after {
 	clear: both;
 }
-*/
+
 body {
 	font-family: Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
 	line-height: 1.5;

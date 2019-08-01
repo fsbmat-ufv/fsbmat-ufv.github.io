@@ -49,12 +49,6 @@
 	cursor: pointer;
 }
 
-/* Fix IE */
-
-.card__container--fix-image .card__image {
-	position: fixed;
-}
-
 .card__content {
   /* Mudar a cor de fundo do card das páginas de conteúdo */
 	position: relative;

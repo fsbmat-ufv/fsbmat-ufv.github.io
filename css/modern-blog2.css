@@ -44,7 +44,7 @@ body.body--hidden {
 
 body.body--hidden .codrops-header,
 body.body--hidden .content--related {
-	opacity: 100;
+	opacity: 0;
 }
 
 .codrops-header,
@@ -87,13 +87,13 @@ a:focus {
 	color: #4f4c4c;
 }
 
-/*.hidden {
+.hidden {
 	position: absolute;
 	overflow: hidden;
 	width: 0;
 	height: 0;
 	pointer-events: none;
-}*/
+}
 /* Header */
 
 .codrops-header {
@@ -199,6 +199,14 @@ a:focus {
 }
 
 .media-item {
+	display: inline-block;
+	padding: 1em;
+	vertical-align: top;
+	-webkit-transition: color .3s;
+	transition: color .3s;
+}
+
+/*.media-item {
 		position: relative;
 		color: inherit;
 		background: #fff;
@@ -216,7 +224,7 @@ a:focus {
 		flex-direction: column;
 		-webkit-justify-content: center;
 		justify-content: center;
-}
+}*/
 
 .media-item__img {
 	max-width: 100%;

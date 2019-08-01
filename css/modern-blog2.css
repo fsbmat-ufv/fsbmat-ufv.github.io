@@ -44,7 +44,7 @@ body.body--hidden {
 
 body.body--hidden .codrops-header,
 body.body--hidden .content--related {
-	opacity: 0;
+	opacity: 100;
 }
 
 .codrops-header,
@@ -245,7 +245,7 @@ a:focus {
 	margin: 0 auto;
 }
 
-@media screen and (min-width: 900px){
+/*@media screen and (min-width: 900px){
 	.content--related {
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -262,7 +262,7 @@ a:focus {
 		width: 50%;
 		border: none;
 }
-}
+}*/
 
 
 @media screen and (max-width: 50em) {

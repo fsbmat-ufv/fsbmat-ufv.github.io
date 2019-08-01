@@ -19,8 +19,8 @@
 	overflow-y: auto;
 	width: 100%;
 	height: 100%;
-	/*-webkit-transform: translate3d(0, 0, 0);*/
-	/* Colocar retangulo sobre a imagem do card */
+	-webkit-transform: translate3d(0, 0, 0);
+	/* Colocar retangulo sobre a imagem do topo do card */
 /*	background: rgb(161, 194, 167);
 	border-style:none; */
 	-webkit-overflow-scrolling: touch;
@@ -29,6 +29,7 @@
 .card__container--closed {
 	position: absolute;
 	overflow: hidden;
+	/* Colocar retangulo sobre a imagem do topo do card */
 /*	background: white;
 	border-style:none; */
 }
@@ -46,6 +47,12 @@
 
 .card__container--closed .card__image {
 	cursor: pointer;
+}
+
+/* Fix IE */
+
+.card__container--fix-image .card__image {
+	position: fixed;
 }
 
 .card__content {

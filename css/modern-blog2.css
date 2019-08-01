@@ -1,11 +1,11 @@
-/*@font-face {
+@font-face {
 	font-family: 'codropsicons';
 	font-weight: normal;
 	font-style: normal;
 	src: url('../fonts/codropsicons/codropsicons.eot');
 	src: url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'), url('../fonts/codropsicons/codropsicons.woff') format('woff'), url('../fonts/codropsicons/codropsicons.ttf') format('truetype'), url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 }
-*/
+
 *,
 *:after,
 *:before {
@@ -44,7 +44,7 @@ body.body--hidden {
 
 body.body--hidden .codrops-header,
 body.body--hidden .content--related {
-	opacity: 100;
+	opacity: 0;
 }
 
 .codrops-header,

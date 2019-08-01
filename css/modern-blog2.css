@@ -200,7 +200,7 @@ a:focus {
 
 .media-item {
 	display: inline-block;
-	padding: 1em;
+	padding: 10em;
 	vertical-align: top;
 	-webkit-transition: color .3s;
 	transition: color .3s;

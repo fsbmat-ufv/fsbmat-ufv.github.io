@@ -30,7 +30,7 @@ Turma 2 - Terça 18h30min-20h10min e Quinta 20h30min-22h10min
 
 __________________________________
 
-2 - Estatística Experimental
+2 - [Estatística Experimental](maf261.github.io)
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - Prof. Fernando Bastos
 

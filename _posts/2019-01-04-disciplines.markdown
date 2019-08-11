@@ -6,7 +6,16 @@ image: "img/teaching/Disciplinas.jpg"
 date:   2019-07-31 12:12:12
 ---
 
-Projetos e orientações concluidas e em andamento
+Disciplinas ministradas
+
+______________________________________
+<p style="text-align: center;">
+*2019 - I*
+</p>
+______________________________________
+
+ 1 - [Iniciação à Estatística](maf105.github.io)
+
 
 1 - Título do projeto
 

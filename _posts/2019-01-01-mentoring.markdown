@@ -38,7 +38,7 @@ Modelos de Seleção Amostral Heckman Generalizado e Birnbaum-Saunders
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Doutorado 
 
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Minas Gerais  
+<img src="img//icons//ufmg.jpg" width="30" height="30" /> - Universidade Federal de Minas Gerais  
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2015 a maio de 2018
 

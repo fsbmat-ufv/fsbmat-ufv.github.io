@@ -26,25 +26,6 @@ Determinantes do Rendimento Dos Alunos no Enem a partir de um Modelo de Regress�
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 
-______________________________________
-<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
-2015 á 2018
-</textarea>
-______________________________________
-
-Modelos de Seleção Amostral Heckman Generalizado e Birnbaum-Saunders
-
-<img src="img//icons//aluno.svg" width="30" height="30" /> - Fernando de Souza Bastos
-
-<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Doutorado 
-
-<img src="img//icons//ufmg.jpg" width="30" height="30" /> - Universidade Federal de Minas Gerais  
-
-<img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2015 a maio de 2018
-
-<img src="img//icons//site.png" width="30" height="30" /> - [Link do trabalho](http://www.est.ufmg.br/portal/arquivos/doutorado/teses/Tese_Fernando_de_Souza_Bastos.pdf)
-
-<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
 ______________________________________
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
@@ -123,76 +104,3 @@ Viajando com a Matemática
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
 ______________________________________
-<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
-2008 - 2010
-</textarea>
-______________________________________
-
-Análise Conjunta de Fatores Baseada em Escolhas: Estimação e Inferências
-
-<img src="img//icons//aluno.svg" width="30" height="30" /> - Fernando de Souza Bastos
-
-<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Mestrado 
-
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
-
-<img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2008 á Março de 2010
-
-<img src="img//icons//site.png" width="30" height="30" /> - [Link do trabalho](https://www.locus.ufv.br/handle/123456789/4033)
-
-<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
-
-______________________________________
-<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
-2007
-</textarea>
-______________________________________
-
-Dinâmica da Transmissão de Dengue em uma Rede Discreta
-
-<img src="img//icons//aluno.svg" width="30" height="30" /> - Fernando de Souza Bastos
-
-<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Ciêntífica 
-
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
-
-<img src="img//icons//cal.jpg" width="30" height="30" /> - janeiro á dezembro de 2007
-
-<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
-
-
-______________________________________
-<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
-2006 - 2007
-</textarea>
-______________________________________
-
-Propagação de Doenças
-
-<img src="img//icons//aluno.svg" width="30" height="30" /> - Fernando de Souza Bastos
-
-<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Ciêntífica 
-
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
-
-<img src="img//icons//cal.jpg" width="30" height="30" /> - 2006 - 2007
-
-<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
-
-______________________________________
-<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
-2005 - 2006
-</textarea>
-______________________________________
-
-Tópicos de Geometria Riemmaniana e Relatividade Geral
-
-<img src="img//icons//aluno.svg" width="30" height="30" /> - Fernando de Souza Bastos
-
-<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Ciêntífica 
-
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
-
-<img src="img//icons//cal.jpg" width="30" height="30" /> - 2005-2006
-
-<img src="img//icons//finish.png" width="30" height="30" /> - Concluído

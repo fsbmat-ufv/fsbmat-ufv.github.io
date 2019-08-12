@@ -158,12 +158,7 @@ Dinâmica da Transmissão de Dengue em uma Rede Discreta
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - janeiro á dezembro de 2007
 
-<img src="img//icons//github.png" width="30" height="30" /> - Github
-
-<img src="img//icons//site.png" width="30" height="30" /> - [Link do trabalho](https://ojs.unesp.br/index.php/revista_proex/article/view/769)
-
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
-
 
 
 ______________________________________

@@ -7,7 +7,7 @@ date:   2019-07-31 12:12:12
 ---
 
 ______________________________________
-<textarea style="text-align: center;width:96%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
+<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2019 - II
 </textarea>
 ______________________________________
@@ -48,11 +48,9 @@ ______________________________________
 <img src="img//icons//cursos.jpg" width="30" height="30" /> - As sextas e sabádos em horários alternados com a disciplina de Geometria II.
 
 ______________________________________
-
-
-<p style="text-align: center;">
+<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2019 - I
-</p>
+</textarea>
 ______________________________________
 
 [Iniciação à Estatística]

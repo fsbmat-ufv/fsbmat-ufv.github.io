@@ -16,7 +16,7 @@ ______________________________________
 
 Determinantes do Rendimento Dos Alunos no Enem a partir de um Modelo de Regressão Logística
 
-<img src="img//icons//aluno.svg" width="30" height="30" /> - Eveline Júnia Brant Mariz
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [Eveline Júnia Brant Mariz](http://lattes.cnpq.br/5503852026159586)
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Mestrado 
 

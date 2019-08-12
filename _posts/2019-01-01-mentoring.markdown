@@ -90,7 +90,7 @@ ______________________________________
 
 Matemática em Ação: Educação Continuada para Professores e Melhoria na Formação de Alunos
 
-<img src="img//icons//aluno.svg" width="30" height="30" /> - [Thaís de Araújo Gonçalves](http://lattes.cnpq.br/3942100040436949) e Rafaela G. Moreira
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [Thaís de Araújo Gonçalves](http://lattes.cnpq.br/3942100040436949) e [Rafaela Guimarães Moreira](http://lattes.cnpq.br/5328292136363120)
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Extensão 
 
@@ -108,7 +108,7 @@ ______________________________________
 
 Viajando com a Matemática
 
-<img src="img//icons//aluno.svg" width="30" height="30" /> - [Thaís de Araújo Gonçalves](http://lattes.cnpq.br/3942100040436949) e Rafaela G. Moreira
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [Thaís de Araújo Gonçalves](http://lattes.cnpq.br/3942100040436949) e [Rafaela Guimarães Moreira](http://lattes.cnpq.br/5328292136363120)
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Extensão 
 

@@ -12,7 +12,7 @@ ______________________________________
 </p>
 ______________________________________
 
-[Matemática Computacional](maf172.github.io)
+[Matemática Computacional]
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - Prof. Fernando Bastos
 
@@ -24,7 +24,7 @@ ______________________________________
 
 ______________________________________
 
-[Álgebra Linear A](maf335.github.io)
+[Álgebra Linear A]
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - Prof. Fernando Bastos
 
@@ -36,7 +36,7 @@ ______________________________________
 
 ______________________________________
 
-[Recursos Computacionais no Ensino de Matemática](maf172.github.io)
+[Recursos Computacionais no Ensino de Matemática]
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - Prof. Fernando Bastos
 
@@ -70,7 +70,7 @@ Turma 2 - Terça 18h30min-20h10min e Quinta 20h30min-22h10min
 
 __________________________________
 
-[Estatística Experimental](maf261.github.io)
+[Estatística Experimental]
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - Prof. Fernando Bastos
 
@@ -87,4 +87,7 @@ Turma 1: Terça 15h00min-16h40min e Quinta 13h00-14h40min
 
 
 [Iniciação à Estatística]: http://maf105.github.io
-
+[Estatística Experimental]: http://maf261.github.io
+[Matemática Computacional]: http://maf172.github.io
+[Álgebra Linear A]: http://maf335.github.io
+[Recursos Computacionais no Ensino de Matemática]: http://maf172.github.io

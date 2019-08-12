@@ -6,9 +6,6 @@ image: "img/teaching/Disciplinas.jpg"
 date:   2019-07-31 12:12:12
 ---
 
-Disciplinas ministradas
-
-
 ______________________________________
 <p style="text-align: center;">
 2019 - 2
@@ -23,9 +20,7 @@ ______________________________________
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
 
-<img src="img//icons//cursos.jpg" width="30" height="30" /> - 
-
-Turma 1: Terça 10h00min-11h40min e Quinta 10h00-11h40min
+<img src="img//icons//cursos.jpg" width="30" height="30" /> - Turma 1: Terça 10h00min-11h40min e Quinta 10h00-11h40min
 
 ______________________________________
 
@@ -37,9 +32,7 @@ ______________________________________
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
 
-<img src="img//icons//cursos.jpg" width="30" height="30" /> - 
-
-Turma 1: Terça 13h00min-14h40min e Quinta 15h00-16h40min
+<img src="img//icons//cursos.jpg" width="30" height="30" /> - Turma 1: Terça 13h00min-14h40min e Quinta 15h00-16h40min
 
 ______________________________________
 
@@ -53,12 +46,13 @@ ______________________________________
 
 <img src="img//icons//cursos.jpg" width="30" height="30" /> - As sextas e sabádos em horários alternados com a disciplina de Geometria II.
 ______________________________________
+
 <p style="text-align: center;">
 2019 - I
 </p>
 ______________________________________
 
-[Iniciação à Estatística](maf105.github.io)
+[Iniciação à Estatística]
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - Prof. Fernando Bastos
 
@@ -89,4 +83,8 @@ __________________________________
 Turma 1: Terça 15h00min-16h40min e Quinta 13h00-14h40min
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
+
+
+
+[Iniciação à Estatística]: http://maf105.github.io
 

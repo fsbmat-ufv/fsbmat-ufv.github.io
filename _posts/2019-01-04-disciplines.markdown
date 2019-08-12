@@ -3,7 +3,6 @@ title:  "Courses"
 subtitle: "Disciplines Offered"
 author: "Fernando Bastos"
 image: "img/teaching/Disciplinas.jpg"
-date:   2019-07-31 12:12:12
 ---
 
 ______________________________________

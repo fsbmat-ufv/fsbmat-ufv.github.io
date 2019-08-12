@@ -12,6 +12,8 @@ ______________________________________
 </p>
 ______________________________________
 
+**_2019 - II_**
+
 [Matemática Computacional]
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - Prof. Fernando Bastos

@@ -59,13 +59,13 @@ ______________________________________
 
 Viajando com a Matemática
 
-<img src="img//icons//aluno.svg" width="30" height="30" /> - Thaís de Araújo Gonçalves e Rafaela G. Moreira
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [Thaís de Araújo Gonçalves](http://lattes.cnpq.br/3942100040436949) e Rafaela G. Moreira
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Extensão 
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
 
-<img src="img//icons//cal.jpg" width="30" height="30" /> - 2011
+<img src="img//icons//cal.jpg" width="30" height="30" /> - janeiro á dezembro de 2011
 
 <img src="img//icons//github.png" width="30" height="30" /> - Github
 

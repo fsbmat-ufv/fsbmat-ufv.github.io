@@ -7,12 +7,10 @@ date:   2019-07-31 12:12:12
 ---
 
 ______________________________________
-<p style="text-align: center;">
-\fbox{**_2019 - II_**}
-</p>
+<textarea style="text-align: center;width:96%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
+2019 - II
+</textarea>
 ______________________________________
-
-{\centering **_2019 - II_**}
 
 [Matemática Computacional]
 

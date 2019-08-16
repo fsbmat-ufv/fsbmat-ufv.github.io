@@ -3,7 +3,7 @@ title: "Função de Verossimilhança"
 author: "Fernando de Souza Bastos"
 date: "`r format(Sys.time(), '%B %e, %Y')`"
 output:
-  html_document:
+    html_document:
     fig_caption: yes
     force_captions: yes
     highlight: pygments

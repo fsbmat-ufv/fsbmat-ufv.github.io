@@ -303,6 +303,23 @@ L(\mu)=&-10\log{(2\sqrt{2\pi})}-\dfrac{1}{8}{\displaystyle \sum_{i=1}^{10}(x_{i}
 \end{align}
 $$
 
+Notemos que ao substituir os valores observados do vetor $X,$ obtemos uma função de $\mu.$ Vamos fazer isso e encontrar o gráfico de $l(\mu)$ para $\mu$ variando de 0 a 20; 
+
+```{r,fig.align='center'}
+x <- c(13,12,15,17,16,11,18,16,13,15)
+sx2 <- sum(x^2) 
+sx <- sum(x)
+mu.vals <- seq(10, 20, l = 100)
+lmu <- -5 * log(8 * pi) - (sx2 - 2 * mu.vals * sx + 10 * (mu.vals^2))/8
+v=max(lmu)
+plot(mu.vals, lmu, type = "l", xlab = expression(mu), ylab = expression(l(mu)))
+abline(v=14.6,col="red")
+```
+
+
+
+
+Até este ponto, utilizei como referência os trabalhos de @Batista e @casella.
 
 
 

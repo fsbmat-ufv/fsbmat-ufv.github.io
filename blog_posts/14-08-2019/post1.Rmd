@@ -281,29 +281,6 @@ Ou seja, para encontrar os estimadores de máxima verossimilhança são necessá
 
 
 
-## Exemplo: Distribuição Normal
-<p style="text-align: justify;">
-Suponha que observamos o vetor $(13,12,15,17,16,11,18,16,13,15)$ de valores de uma variável $X\sim N(\mu,4).$ e digamos que há duas hipóteses competindo:
-
-- Hipótese $A:$ a média de $X$ é $\mu=13;$
-- Hipótese $B:$ a média de $X$ é $\mu=15;$
-
-Precisamos responder qual o modelo (distribuição estatística) mais provável para se observar o vetor de valores acima? Sabemos que:
-
-1- $X_{1},\cdots,X_{n},$ com $n=10,$ é uma amostra aleatória de $X\sim N(\mu,4);$
-
-2- A densidade para cada observação é dada por $f(x_{i};\mu,\sigma^{2})=\dfrac{1}{2\sqrt{2\pi}}
-\exp\Big\{-\dfrac{(x_{i}-\mu)^{2}}{8} \Big\};$
-
-3- A verossimilhança é dada por $L(\mu)={\displaystyle \prod_{i=1}^{10}f(\mu;x_{i})};$
-
-4- E a função log-verossimilhança é dada por:
-$$
-\begin{align}
-L(\mu)=&-10\log{(2\sqrt{2\pi})}-\dfrac{1}{8}{\displaystyle \sum_{i=1}^{10}(x_{i}-\mu)^{2}}\\
-=& -5\log{(8\pi)}-\dfrac{1}{8}\Big(\sum_{i=1}^{10}x_{i}^{2}-2\mu\sum_{i=1}^{10}x_{i}+10\mu^{2}\Big)
-\end{align}
-$$
 
 Notemos que ao substituir os valores observados do vetor $X,$ obtemos uma função de $\mu.$ Vamos fazer isso e encontrar o gráfico de $l(\mu)$ para $\mu$ variando de 0 a 20; 
 
@@ -333,7 +310,7 @@ $$
 $$
 
 Observamos então que $x=\dfrac{{\displaystyle \sum_{i=1}^{10}x_{i}}}{10}=14,6$ é o ponto de máximo de $L(\mu).$
-</p>
+
 
 Até este ponto, utilizei como referência os trabalhos de @Batista e @casella.
 

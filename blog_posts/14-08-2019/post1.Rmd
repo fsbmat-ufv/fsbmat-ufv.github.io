@@ -316,15 +316,13 @@ plot(mu.vals, lmu, type = "l", xlab = expression(mu), ylab = expression(l(mu)))
 abline(v=14.6,col="red")
 ```
 
-Para obter o ponto de máximo calculamos a derivada de $l(\mu)$ em função de $\mu$ e encontramos:
+
+Para provar que este é ponto de máximo, derivamos novamente e observamos que a segunda derivada no ponto $\hat{\mu}$ é sempre negativa.
 $$
-\dfrac{\partial l(\mu)}{\partial\mu}={\displaystyle \dfrac{1}{4}\sum_{i=1}^{10}(x_{i}-\mu)}
-$$
-Ao igualar a derivada acima a zero e resolver a equação, obtemos:
-$$
-\hat{\mu}=\dfrac{{\displaystyle \sum_{i=1}^{10}x_{i}}}{n}
+\dfrac{\partial^{2}l(\mu)}{\partial\mu^{2}}=-\dfrac{n}{\sigma^{2}}<0, \forall x\in \mathbb{R}.
 $$
 
+Observamos então que $x=\dfrac{{\displaystyle \sum_{i=1}^{10}x_{i}}}{10}=14,6$ é o ponto de máximo de $L(\mu).$
 
 Até este ponto, utilizei como referência os trabalhos de @Batista e @casella.
 

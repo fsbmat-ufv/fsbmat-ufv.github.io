@@ -556,24 +556,6 @@ Dia&amp;N. de Mensagens&amp;Verossimilhança&amp;Verossimilhança\\
 \end{array}\right|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=\dfrac{\partial^{2}}{\partial\theta_{1}^{2}}f(\theta_{1},\theta_{2})\dfrac{\partial^{2}}{\partial\theta_{2}^{2}}f(\theta_{1},\theta_{2})-\Big(\dfrac{\partial^{2}}{\partial\theta_{1}\partial\theta_{2}}f(\theta_{1},\theta_{2})\Big)^{2}|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}&gt;0
 \]</span></p>
 <p>Ou seja, para encontrar os estimadores de máxima verossimilhança são necessários todos esses cálculos. Lógico que para três ou mais parâmetros tais condições devem ser generalizadas. Além disso, tais condições satisfeitas garantem somente que os EMV são máximos locais e interiores, ainda é necessário garantir que são únicos e que não existe máximo na infinidade ou nos limites do espaço paramétrico.</p>
-<div id="exemplo-distribuicao-normal" class="section level2">
-<h2>Exemplo: Distribuição Normal</h2>
-<p style="text-align: justify;">
-<p>Suponha que observamos o vetor <span class="math inline">\((13,12,15,17,16,11,18,16,13,15)\)</span> de valores de uma variável <span class="math inline">\(X\sim N(\mu,4).\)</span> e digamos que há duas hipóteses competindo:</p>
-<ul>
-<li>Hipótese <span class="math inline">\(A:\)</span> a média de <span class="math inline">\(X\)</span> é <span class="math inline">\(\mu=13;\)</span></li>
-<li>Hipótese <span class="math inline">\(B:\)</span> a média de <span class="math inline">\(X\)</span> é <span class="math inline">\(\mu=15;\)</span></li>
-</ul>
-<p>Precisamos responder qual o modelo (distribuição estatística) mais provável para se observar o vetor de valores acima? Sabemos que:</p>
-<p>1- <span class="math inline">\(X_{1},\cdots,X_{n},\)</span> com <span class="math inline">\(n=10,\)</span> é uma amostra aleatória de <span class="math inline">\(X\sim N(\mu,4);\)</span></p>
-<p>2- A densidade para cada observação é dada por <span class="math inline">\(f(x_{i};\mu,\sigma^{2})=\dfrac{1}{2\sqrt{2\pi}} \exp\Big\{-\dfrac{(x_{i}-\mu)^{2}}{8} \Big\};\)</span></p>
-<p>3- A verossimilhança é dada por <span class="math inline">\(L(\mu)={\displaystyle \prod_{i=1}^{10}f(\mu;x_{i})};\)</span></p>
-<p>4- E a função log-verossimilhança é dada por: <span class="math display">\[
-\begin{align}
-L(\mu)=&amp;-10\log{(2\sqrt{2\pi})}-\dfrac{1}{8}{\displaystyle \sum_{i=1}^{10}(x_{i}-\mu)^{2}}\\
-=&amp; -5\log{(8\pi)}-\dfrac{1}{8}\Big(\sum_{i=1}^{10}x_{i}^{2}-2\mu\sum_{i=1}^{10}x_{i}+10\mu^{2}\Big)
-\end{align}
-\]</span></p>
 <p>Notemos que ao substituir os valores observados do vetor <span class="math inline">\(X,\)</span> obtemos uma função de <span class="math inline">\(\mu.\)</span> Vamos fazer isso e encontrar o gráfico de <span class="math inline">\(l(\mu)\)</span> para <span class="math inline">\(\mu\)</span> variando de 0 a 20;</p>
 <pre class="r"><code>x &lt;- c(13,12,15,17,16,11,18,16,13,15)
 sx2 &lt;- sum(x^2) 
@@ -595,13 +577,86 @@ abline(v=14.6,col=&quot;red&quot;)</code></pre>
 Observamos então que <span class="math inline">\(x=\dfrac{{\displaystyle \sum_{i=1}^{10}x_{i}}}{10}=14,6\)</span> é o ponto de máximo de <span class="math inline">\(L(\mu).\)</span>
 </p>
 <p>Até este ponto, utilizei como referência os trabalhos de <span class="citation">Batista (2019)</span> e <span class="citation">Casella and Berger (2010)</span>.</p>
+</div>
+<div id="estudos-teoricos-relacionados-a-estimacao-de-parametros" class="section level1">
+<h1>Estudos Teóricos relacionados a Estimação de Parâmetros</h1>
+<div id="distribuicao-normal" class="section level2">
+<h2>Distribuição Normal</h2>
+<div id="modelo" class="section level3">
+<h3>Modelo</h3>
+<ul>
+<li>Função de Distribuição Acumulada</li>
+</ul>
+<p><span class="math display">\[
+F(x;\mu,\sigma^{2})=\int_{-\infty}^{x}\dfrac{1}{\sqrt{2\pi}\sigma}
+\exp\Big\{-\dfrac{(t-\mu)^{2}}{2\sigma^{2}} \Big\}dt
+\]</span></p>
+<ul>
+<li>Função Densidade</li>
+</ul>
+<p><span class="math display">\[
+f(x;\mu,\sigma^{2})=\dfrac{1}{\sqrt{2\pi}\sigma}
+\exp\Big\{-\dfrac{(x-\mu)^{2}}{2\sigma^{2}} \Big\}dx
+\]</span></p>
+<ul>
+<li>Log-Verossimilhança</li>
+</ul>
+<p>Sejam <span class="math inline">\(X_{1},\cdots,X_{n}\)</span> variáveis aleatórias independentes e identicamente distribuidas com distribuição normal de média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^{2}\)</span> desconhecidas. Segue que, para <span class="math inline">\(\theta=(\mu,\sigma^{2}),\)</span> temos</p>
+<p><span class="math display">\[
+L(\theta|X)=\dfrac{1}{(2\pi\sigma^{2})^{n/2}}\exp{\Big\{\Big(-\frac{1}{2}\Big){\displaystyle \sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}}\Big\}},
+\]</span></p>
+<p>e, portanto,</p>
+<p><span class="math display">\[
+\mathcal{L}(\theta|X)=-\frac{n}{2}\log{(2\pi)}-\frac{n}{2}\log{\sigma^{2}}-\frac{1}{2}{\displaystyle \sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}},
+\]</span></p>
+<ul>
+<li>Derivadas parciais com respeito aos parâmetros (Vetor Escore)</li>
+</ul>
+<p><span class="math display">\[\begin{align}
+\dfrac{\partial}{\partial\mu}\mathcal{L}(\theta|X)&amp;=\frac{1}{\sigma^{2}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)};&amp;&amp;\dfrac{\partial}{\partial\sigma^{2}}\mathcal{L}(\theta|X)=-\frac{n}{2\sigma^{2}}+\frac{1}{2\sigma^{4}}{\displaystyle\sum_{i=1}^{n}(x_{i}-\theta)^{2}};
+\end{align}\]</span></p>
+<ul>
+<li>Jacobiano</li>
+</ul>
+<p><span class="math display">\[
+\left|\begin{array}{rrr}
+-\frac{n}{\sigma^{2}}&amp;-\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}\\
+-\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}&amp;\frac{n}{2\sigma^{4}}-\frac{1}{\sigma^{6}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)^{2}}
+\end{array}\right|
+\]</span> Segue que,</p>
+<p><span class="math display">\[
+\dfrac{\partial}{\partial\theta_{1}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow \hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{n}x_{i}}{n}}
+\]</span> <span class="math display">\[
+\dfrac{\partial}{\partial\theta_{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow \hat{\sigma}^{2}=\dfrac{(n-1)}{n}S^{2},\quad \textrm{em que}\quad S^{2}=\dfrac{{\displaystyle \sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2}}}{n-1}
+\]</span></p>
+<p>Observando o jacobiano acima vemos que a condição ii) é mantida e, além disso, <span class="math display">\[
+\left|\begin{array}{rrr}
+-\frac{n}{\sigma^{2}}&amp;-\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}\\
+-\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}&amp;\frac{n}{2\sigma^{4}}-\frac{1}{\sigma^{6}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)^{2}}
+\end{array}\right|_{\mu=\hat{\mu},\sigma^{2}=\hat{\sigma}^{2}}=\dfrac{1}{\sigma^{6}}\Big[-\frac{n}{2}+\frac{n}{\sigma^{2}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)^{2}-\frac{1}{\sigma^{2}}\Big(\sum_{i=1}^{n}(x_{i}-\mu)\Big)^{2}}\Big]_{\mu=\hat{\mu},\sigma^{2}=\hat{\sigma}^{2}}
+\]</span></p>
+<p><span class="math display">\[
+=\dfrac{1}{\hat{\sigma}^{6}}\Big[\dfrac{-n^{2}}{2}+\dfrac{n^{2}}{\hat{\sigma}^{2}}\hat{\sigma}^{2}-\dfrac{1}{\hat{\sigma}^{2}}\Big(\sum_{i=1}^{n}(x_{i}-\hat{\mu})\Big)^{2}\Big]=\dfrac{1}{\hat{\sigma}^{6}}\dfrac{n^{2}}{2}&gt;0
+\]</span></p>
+<p>Logo, os pontos <span class="math inline">\(\hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{n}x_{i}}{n}}\)</span> e <span class="math inline">\(\hat{\sigma}^{2}=\dfrac{(n-1)}{n}S^{2}\)</span> são pontos de máximo e são os estimadores de máxima verossimilhança do modelo normal.</p>
+</div>
+</div>
+</div>
+<div id="mensagem-final" class="section level1">
+<h1>Mensagem Final</h1>
+<p>De acordo com Mario Sergio Cortella há três caminhos para o sucesso:</p>
+<p>1- Ensinar o que se sabe - Generosidade Mental</p>
+<p>2- Praticar o que se ensina - Coerência Ética</p>
+<p>3- Perguntar o que se ignora - Humildade Intelectual</p>
+</div>
+<div id="referencias" class="section level1 unnumbered">
+<h1>Referências</h1>
 <div id="refs" class="references">
 <div id="ref-Batista">
 <p>Batista, João Luis F. 2019. “Verossimilhança E Máxima Verossimilhança.” ESALQ/USP. <a href="http://cmq.esalq.usp.br/BIE5781/lib/exe/fetch.php?media=leituras:verossim.pdf">http://cmq.esalq.usp.br/BIE5781/lib/exe/fetch.php?media=leituras:verossim.pdf</a>.</p>
 </div>
 <div id="ref-casella">
 <p>Casella, G, and RL Berger. 2010. “Inferência Estatı'stica, Cengage Learning, Tradução Da 2a Edição.” <em>São Paulo-SP</em>.</p>
-</div>
 </div>
 </div>
 </div>

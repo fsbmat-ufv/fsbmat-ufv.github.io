@@ -1,6 +1,7 @@
 ---
 title: "Função de Verossimilhança"
 author: "Fernando de Souza Bastos"
+#date: "`r format(Sys.time(), '%B %e, %Y')`"
 date: "16 de agosto de 2019"
 output:
     html_document:
@@ -362,7 +363,7 @@ $$
 Sejam $X_{1},\cdots,X_{n}$ variáveis aleatórias independentes e identicamente distribuidas com distribuição normal de média $\mu$ e variância $\sigma^{2}$ desconhecidas. Segue que, para $\theta=(\mu,\sigma^{2}),$ temos
 
 $$
-L(\theta|X)=\dfrac{1}{(2\pi\sigma^{2})^{n/2}}\exp{\Big\{\Big(-\frac{1}{2}\Big){\displaystyle \sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}\Big\}}},
+L(\theta|X)=\dfrac{1}{(2\pi\sigma^{2})^{n/2}}\exp{\Big\{\Big(-\frac{1}{2}\Big){\displaystyle \sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}}\Big\}},
 $$
 
 e, portanto,

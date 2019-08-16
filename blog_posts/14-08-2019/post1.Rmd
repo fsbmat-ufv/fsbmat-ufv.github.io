@@ -190,5 +190,96 @@ L(A|X)&=L(A|X=x_{1})L(A|X=x_{2})\dots L(A|X=x_{n})\\
 &={\displaystyle \prod_{i=1}^{n}L(A|X=x_{i})}
 \end{align}
 
+## Exemplo
+
+Suponha que tenhamos contabilizado durante 10 dias as mensagens recebidas. Os resultados são apresentados na Tabela 1 abaixo. 
+$$
+\begin{array}{cccc}
+\hline
+Dia&N. de Mensagens&Verossimilhança&Verossimilhança\\
+(i)&(X=x_{i})&\mu=15&\mu=25\\
+\hline
+1 &20&0.04181031  &0.05191747\\
+2 &23&0.01327967  &0.07634203\\
+3 &25&0.004979876 &0.07952295\\
+4 &22&0.02036216  &0.07023467\\
+5 &27&0.001596114 &0.07080035\\
+6 &25&0.004979876 &0.07952295\\
+7 &23&0.01327967  &0.07634203\\
+8 &28&0.0008550612&0.0632146 \\
+9 &29&0.000442273 &0.05449534\\
+10&21&0.0298645   &0.06180651\\
+\hline
+&{\displaystyle \prod_{i=1}^{10}}&6.711593e-23&2.025927e-12\\
+\hline
+\end{array}
+$$
+
+<!--|Dia             |N. de Mensagens |Verossimilhança       |Verossimilhança|
+|----------------|----------------|----------------------|---------------|
+|$(i)$           |$(X=x_{i})$     |$\mu=15$              |$\mu=25$       |
+|                |                |                      |               |
+|1 |20|0,04181031  |0,05191747|
+|2 |23|0,01327967  |0,07634203|
+|3 |25|0,004979876 |0,07952295|
+|4 |22|0,02036216  |0,07023467|
+|5 |27|0,001596114 |0,07080035|
+|6 |25|0,004979876 |0,07952295|
+|7 |23|0,01327967  |0,07634203|
+|8 |28|0,0008550612|0,0632146 |
+|9 |29|0,000442273 |0,05449534|
+|10|21|0,0298645   |0,06180651|
+|  |${\displaystyle \prod_{i=1}^{10}L(\theta|X=x_{i})}$|6,711593e-23|2,025927e-12|
+|                |                |                      |               |
+-->
+
+Observamos na Tabela acima que a verossimilhança apresenta um valor próximo de zero, isso porque a verossimilhança da amostra é o produto da verossimilhança das observações. Além disso, observamos que a hipótese $B$ permanece como a hipótese mais verossímil.
+
+## Log-Verossimilhança
+
+Na maioria dos casos, especialmente quando vamos diferenciar a função de verossimilhança, é mais fácil trabalhar com o logaritmo natural da função de verossimilhança do que trabalhar diretamente com $L(\theta|X).$ Assim, vamos utilizar 
+$$
+\mathcal{L}(\theta|X=x)=log{(L(\theta|X))}
+$$
+
+É fácil observar que o valor numérico da verossimilhança é geralmente (não necessariamente) menor do que um. Logo, o logaritmo desse valor é negativo. Por isso, as vezes, trabalhamos com a função log-verossimilhança negativa, ou seja, com
+$$
+\mathcal{L}(\theta|X=x)=-log{(L(\theta|X))},
+$$
+nesse caso, se o valor da verossimilhança de uma amostra com muitas observações é um número positivo
+muito pequeno, próximo de zero, o valor da log-verossimilhança negativa será um número positivo
+numa escala mais fácil de trabalhar. 
+
+Por outro lado, o fato da transformação incluir uma mudança de sinal implica que o comportamento da função de log-verossimilhança negativa é oposto ao comportamento da função de verossimilhança. Isso significa que a hipótese com maior verossimilhança negativa terá menor log-verossimilhança.
+
+# Estimadores de Máxima Verossimilhança
+
+O método da Máxima Verossimilhança consiste em estimar os parâmetros de um modelo utilizando as estimativas que tornam máximo o valor da função de verossimilhança. Isso é equivalente a encontrar o valor para o parâmetro que torna máxima a função de log-verossimilhança ou miníma a função log-verossimilhança negativa. Assim, considere a definição seguinte:
+
+_Definição:_ Para cada ponto amostral $x,$ seja $\hat{\theta}(x)$ um valor de parâmetro no qual $L(\theta|x)$ atinge seu máximo como uma função de $\theta,$ com $x$ mantido fixo. Um _estimador de máxima verossimilhança_ (EMV) do parâmetro $\theta$ com base em uma amostra $x$ é $\hat{\theta}(x).$
+
+Para utilizar cálculos bivariados a fim de verificar que uma função $f(\theta_{1},\theta_{2})$ possui um máximo local em $(\hat{\theta}_{1},\hat{\theta}_{2}),$ deve ser mostrado que as seguintes três condições se mantêm.
+
+i) As derivadas parciais de primeira ordem são 0,
+$$
+\dfrac{\partial}{\partial\theta_{1}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\quad \textrm{e}\quad \dfrac{\partial}{\partial\theta_{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0
+$$
+ii) Pelo menos uma derivada de segunda ordem é negativa,
+$$
+\dfrac{\partial^{2}}{\partial\theta_{1}^{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}<0\quad \textrm{ou}\quad \dfrac{\partial^{2}}{\partial\theta_{2}^{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}<0
+$$
+iii) O jacobiano das derivadas parciais de segunda ordem é positivo,
+
+$$
+\left|\begin{array}{rrr}
+\dfrac{\partial^{2}}{\partial\theta_{1}^{2}}f(\theta_{1},\theta_{2}) & \dfrac{\partial^{2}}{\partial\theta_{1}\partial\theta_{2}}f(\theta_{1},\theta_{2}) \\
+\dfrac{\partial^{2}}{\partial\theta_{2}\partial\theta_{1}}f(\theta_{1},\theta_{2}) & \dfrac{\partial^{2}}{\partial\theta_{2}^{2}}f(\theta_{1},\theta_{2})
+\end{array}\right|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=\dfrac{\partial^{2}}{\partial\theta_{1}^{2}}f(\theta_{1},\theta_{2})\dfrac{\partial^{2}}{\partial\theta_{2}^{2}}f(\theta_{1},\theta_{2})-\Big(\dfrac{\partial^{2}}{\partial\theta_{1}\partial\theta_{2}}f(\theta_{1},\theta_{2})\Big)^{2}|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}>0
+$$
+
+Ou seja, para encontrar os estimadores de máxima verossimilhança são necessários todos esses cálculos. Lógico que para três ou mais parâmetros tais condições devem ser generalizadas. Além disso, tais condições satisfeitas garantem somente que os EMV são máximos locais e interiores, ainda é necessário garantir que são únicos e que não existe máximo na infinidade ou nos limites do espaço paramétrico. 
+
+
+
 
 

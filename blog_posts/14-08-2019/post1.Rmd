@@ -317,7 +317,7 @@ abline(v=14.6,col="red")
 ```
 
 
-Observamos então que $x=\dfrac{{\displaystyle \sum_{i=1}^{10}x_{i}}}{10}=14,6$ é o ponto de máximo de $L(\mu).$
+
 
 Até este ponto, utilizei como referência os trabalhos de @Batista e @casella.
 

@@ -281,24 +281,6 @@ Ou seja, para encontrar os estimadores de máxima verossimilhança são necessá
 
 
 
-
-Notemos que ao substituir os valores observados do vetor $X,$ obtemos uma função de $\mu.$ Vamos fazer isso e encontrar o gráfico de $l(\mu)$ para $\mu$ variando de 0 a 20; 
-
-```{r,fig.align='center'}
-x <- c(13,12,15,17,16,11,18,16,13,15)
-sx2 <- sum(x^2) 
-sx <- sum(x)
-mu.vals <- seq(10, 20, l = 100)
-lmu <- -5 * log(8 * pi) - (sx2 - 2 * mu.vals * sx + 10 * (mu.vals^2))/8
-v=max(lmu)
-plot(mu.vals, lmu, type = "l", xlab = expression(mu), ylab = expression(l(mu)))
-abline(v=14.6,col="red")
-```
-
-Para obter o ponto de máximo calculamos a derivada de $l(\mu)$ em função de $\mu$ e encontramos:
-$$
-\dfrac{\partial l(\mu)}{\partial\mu}={\displaystyle \dfrac{1}{4}\sum_{i=1}^{10}(x_{i}-\mu)}
-$$
 Ao igualar a derivada acima a zero e resolver a equação, obtemos:
 $$
 \hat{\mu}=\dfrac{{\displaystyle \sum_{i=1}^{10}x_{i}}}{n}

@@ -4,7 +4,7 @@ author: "Fernando de Souza Bastos"
 #date: "`r format(Sys.time(), '%B %e, %Y')`"
 date: "16 de agosto de 2019"
 output:
-    html_document:
+  html_document:
     fig_caption: yes
     force_captions: yes
     highlight: pygments
@@ -122,7 +122,7 @@ $$
 \dfrac{p_{B}(20)}{p_{A}(20)}=\dfrac{0.05191747}{0.04181031}=1.241738.
 $$
 <p style="text-align: justify;">
-Ou seja, pode se dizer que a observação $X = 20$ é evidência que a hipótese $B$ é aproximadamente 1.25 vezes mais verossímil que a hipótese $A.$
+Ou seja, pode se dizer que a observação $X = 20$ é evidência que a hipótese $B$ é aproximadamente 1.24 vezes mais verossímil que a hipótese $A.$
 </p>
 
 ## Discussão sobre exemplo anterior
@@ -227,7 +227,7 @@ Dia&N. de Mensagens&Verossimilhança&Verossimilhança\\
 9 &29&0.000442273 &0.05449534\\
 10&21&0.0298645   &0.06180651\\
 \hline
-&{\displaystyle \prod_{i=1}^{10}}&6.711593e-23&2.025927e-12\\
+&{\displaystyle \prod_{i=1}^{10}}&6.711593\times 10^{-23}&2.025927\times 10^{-12}\\
 \hline
 \end{array}
 $$
@@ -327,32 +327,33 @@ Precisamos responder qual o modelo (distribuição estatística) mais provável 
 2- A densidade para cada observação é dada por $f(x_{i};\mu,\sigma^{2})=\dfrac{1}{2\sqrt{2\pi}}
 \exp\Big\{-\dfrac{(x_{i}-\mu)^{2}}{8} \Big\};$
 
-3- A verossimilhança é dada por $L(\mu)={\displaystyle \prod_{i=1}^{10}f(\mu;x_{i})};$
+3- A verossimilhança é dada por $L(\mu|X)={\displaystyle \prod_{i=1}^{10}f(\mu;x_{i})};$
 
 4- E a função log-verossimilhança é dada por:
 $$
 \begin{align}
-L(\mu)=&-10\log{(2\sqrt{2\pi})}-\dfrac{1}{8}{\displaystyle \sum_{i=1}^{10}(x_{i}-\mu)^{2}}\\
+L(\mu|X)=&-10\log{(2\sqrt{2\pi})}-\dfrac{1}{8}{\displaystyle \sum_{i=1}^{10}(x_{i}-\mu)^{2}}\\
 =& -5\log{(8\pi)}-\dfrac{1}{8}\Big(\sum_{i=1}^{10}x_{i}^{2}-2\mu\sum_{i=1}^{10}x_{i}+10\mu^{2}\Big)
 \end{align}
 $$
 <p style="text-align: justify;">
-Notemos que ao substituir os valores observados do vetor $X,$ obtemos uma função de $\mu.$ Vamos fazer isso e encontrar o gráfico de $l(\mu)$ para $\mu$ variando de 0 a 20; 
+Notemos que ao substituir os valores observados do vetor $X,$ obtemos uma função de $\mu.$ Vamos fazer isso e encontrar o gráfico de $L(\mu|X)$ para $\mu$ variando de 0 a 20; 
 </p>
 ```{r,fig.align='center'}
 x <- c(13,12,15,17,16,11,18,16,13,15)
 sx2 <- sum(x^2) 
 sx <- sum(x)
 mu.vals <- seq(10, 20, l = 100)
+expr = expression(L*(mu ~ "|" ~ X==x))
 lmu <- -5 * log(8 * pi) - (sx2 - 2 * mu.vals * sx + 10 * (mu.vals^2))/8
 v=max(lmu)
-plot(mu.vals, lmu, type = "l", xlab = expression(mu), ylab = expression(l(mu)))
+plot(mu.vals, lmu, type = "l", xlab = expression(mu), ylab = expr)
 abline(v=14.6,col="red")
 ```
 
-Para obter o ponto de máximo calculamos a derivada de $L(\mu)$ em função de $\mu$ e encontramos:
+Para obter o ponto de máximo calculamos a derivada de $L(\mu|X)$ em função de $\mu$ e encontramos:
 $$
-\dfrac{\partial L(\mu)}{\partial\mu}={\displaystyle \dfrac{1}{4}\sum_{i=1}^{10}(x_{i}-\mu)}
+\dfrac{\partial L(\mu|X)}{\partial\mu}={\displaystyle \dfrac{1}{4}\sum_{i=1}^{10}(x_{i}-\mu)}
 $$
 Ao igualar a derivada acima a zero e resolver a equação, obtemos:
 $$
@@ -365,7 +366,7 @@ $$
 $$
 
 
-Observamos então que $x={\displaystyle \dfrac{\sum_{i=1}^{10}x_{i}}{10}}=14,6$ é o ponto de máximo de $L(\mu).$
+Observamos então que $x={\displaystyle \dfrac{\sum_{i=1}^{10}x_{i}}{10}}=14,6$ é o ponto de máximo de $L(\mu|X).$
 
 
 Até este ponto, utilizei como referência os trabalhos de @Batista e @casella.

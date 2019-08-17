@@ -10,7 +10,7 @@ date:   2019-01-01 12:12:12
 ***
 
 <center><font size="6" color="#76asaf">
-<a href="/blog_posts/07-09-2016/post1">
+<a href="/blog_posts/14-08-2019/post1">
 <b>Estudo sobre Função de Verossimilhança</b>
 </a></font></center>
 

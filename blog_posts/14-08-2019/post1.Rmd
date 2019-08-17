@@ -448,7 +448,7 @@ $$
 \dfrac{\partial}{\partial\theta_{1}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow \hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{n}x_{i}}{n}}
 $$
 $$
-\dfrac{\partial}{\partial\theta_{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow \hat{\sigma}^{2}=\dfrac{(n-1)}{n}S^{2},\quad \textrm{em que}\quad S^{2}=\dfrac{{\displaystyle \sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2}}}{n-1}
+\dfrac{\partial}{\partial\theta_{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow \hat{\sigma}^{2}=\dfrac{(n-1)}{n}S^{2},\quad \textrm{em que}\quad S^{2}={\displaystyle \dfrac{\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2}}{n-1}}
 $$
       
 Observando o jacobiano acima vemos que a condição ii) é mantida e, além disso,

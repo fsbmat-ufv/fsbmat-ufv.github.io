@@ -526,7 +526,12 @@ summary {
 </ul></li>
 <li><a href="#estudos-teoricos-relacionados-a-estimacao-de-parametros"><span class="toc-section-number">3</span> Estudos Teóricos relacionados a Estimação de Parâmetros</a><ul>
 <li><a href="#distribuicao-normal"><span class="toc-section-number">3.1</span> Distribuição Normal</a><ul>
-<li><a href="#modelo"><span class="toc-section-number">3.1.1</span> Modelo</a></li>
+<li><a href="#funcao-de-distribuicao-acumulada"><span class="toc-section-number">3.1.1</span> Função de Distribuição Acumulada</a></li>
+<li><a href="#funcao-densidade"><span class="toc-section-number">3.1.2</span> Função Densidade</a></li>
+<li><a href="#log-verossimilhanca-1"><span class="toc-section-number">3.1.3</span> Log-Verossimilhança</a></li>
+<li><a href="#derivadas-parciais-com-respeito-aos-parametros-vetor-escore"><span class="toc-section-number">3.1.4</span> Derivadas parciais com respeito aos parâmetros (Vetor Escore)</a></li>
+<li><a href="#jacobiano"><span class="toc-section-number">3.1.5</span> Jacobiano</a></li>
+<li><a href="#estimadores-de-maxima-verossimilhanca-1"><span class="toc-section-number">3.1.6</span> Estimadores de Máxima Verossimilhança</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#mensagem-final"><span class="toc-section-number">4</span> Mensagem Final</a></li>
@@ -831,27 +836,24 @@ Notemos que ao substituir os valores observados do vetor <span class="math inlin
 <h1><span class="header-section-number">3</span> Estudos Teóricos relacionados a Estimação de Parâmetros</h1>
 <div id="distribuicao-normal" class="section level2">
 <h2><span class="header-section-number">3.1</span> Distribuição Normal</h2>
-<div id="modelo" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Modelo</h3>
-<ul>
-<li>Função de Distribuição Acumulada</li>
-</ul>
+<div id="funcao-de-distribuicao-acumulada" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Função de Distribuição Acumulada</h3>
 <p><span class="math display">\[
   F(x;\mu,\sigma^{2})=\int_{-\infty}^{x}\dfrac{1}{\sqrt{2\pi}\sigma}
   \exp\Big\{-\dfrac{(t-\mu)^{2}}{2\sigma^{2}} \Big\}dt
 \]</span></p>
-<ul>
-<li>Função Densidade</li>
-</ul>
+</div>
+<div id="funcao-densidade" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Função Densidade</h3>
 <p><span class="math display">\[
     f(x;\mu,\sigma^{2})=\dfrac{1}{\sqrt{2\pi}\sigma}
     \exp\Big\{-\dfrac{(x-\mu)^{2}}{2\sigma^{2}} \Big\}dx
 \]</span></p>
-<ul>
-<li>Log-Verossimilhança
+</div>
+<div id="log-verossimilhanca-1" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Log-Verossimilhança</h3>
 <p style="text-align: justify;">
-Sejam <span class="math inline">\(X_{1},\cdots,X_{n}\)</span> variáveis aleatórias independentes e identicamente distribuidas com distribuição normal de média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^{2}\)</span> desconhecidas. Segue que, para <span class="math inline">\(\theta=(\mu,\sigma^{2}),\)</span> temos</li>
-</ul>
+Sejam <span class="math inline">\(X_{1},\cdots,X_{n}\)</span> variáveis aleatórias independentes e identicamente distribuidas com distribuição normal de média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^{2}\)</span> desconhecidas. Segue que, para <span class="math inline">\(\theta=(\mu,\sigma^{2}),\)</span> temos
 </p>
 <p><span class="math display">\[
 L(\theta|X)=\dfrac{1}{(2\pi\sigma^{2})^{n/2}}\exp{\Big\{\Big(-\frac{1}{2}\Big){\displaystyle \sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}}\Big\}},
@@ -860,21 +862,25 @@ L(\theta|X)=\dfrac{1}{(2\pi\sigma^{2})^{n/2}}\exp{\Big\{\Big(-\frac{1}{2}\Big){\
 <p><span class="math display">\[
 \mathcal{L}(\theta|X)=-\frac{n}{2}\log{(2\pi)}-\frac{n}{2}\log{\sigma^{2}}-\frac{1}{2}{\displaystyle \sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}},
 \]</span></p>
-<ul>
-<li>Derivadas parciais com respeito aos parâmetros (Vetor Escore)</li>
-</ul>
+</div>
+<div id="derivadas-parciais-com-respeito-aos-parametros-vetor-escore" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> Derivadas parciais com respeito aos parâmetros (Vetor Escore)</h3>
 <p><span class="math display">\[\begin{align}
 \dfrac{\partial}{\partial\mu}\mathcal{L}(\theta|X)&amp;=\frac{1}{\sigma^{2}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)};&amp;&amp;\dfrac{\partial}{\partial\sigma^{2}}\mathcal{L}(\theta|X)=-\frac{n}{2\sigma^{2}}+\frac{1}{2\sigma^{4}}{\displaystyle\sum_{i=1}^{n}(x_{i}-\theta)^{2}};
 \end{align}\]</span></p>
-<ul>
-<li>Jacobiano</li>
-</ul>
+</div>
+<div id="jacobiano" class="section level3">
+<h3><span class="header-section-number">3.1.5</span> Jacobiano</h3>
 <p><span class="math display">\[
 \left|\begin{array}{rrr}
 -\frac{n}{\sigma^{2}}&amp;-\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}\\
 -\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}&amp;\frac{n}{2\sigma^{4}}-\frac{1}{\sigma^{6}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)^{2}}
 \end{array}\right|
-\]</span> Segue que,</p>
+\]</span></p>
+</div>
+<div id="estimadores-de-maxima-verossimilhanca-1" class="section level3">
+<h3><span class="header-section-number">3.1.6</span> Estimadores de Máxima Verossimilhança</h3>
+<p>Segue que,</p>
 <p><span class="math display">\[
 \dfrac{\partial}{\partial\theta_{1}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow \hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{n}x_{i}}{n}}
 \]</span> <span class="math display">\[

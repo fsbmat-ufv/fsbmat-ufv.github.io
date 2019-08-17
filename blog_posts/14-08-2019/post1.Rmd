@@ -375,24 +375,21 @@ Até este ponto, utilizei como referência os trabalhos de @Batista e @casella.
 
 ## Distribuição Normal
 
-### Modelo
-
-
-- Função de Distribuição Acumulada 
+### Função de Distribuição Acumulada 
 
 $$
   F(x;\mu,\sigma^{2})=\int_{-\infty}^{x}\dfrac{1}{\sqrt{2\pi}\sigma}
   \exp\Big\{-\dfrac{(t-\mu)^{2}}{2\sigma^{2}} \Big\}dt
 $$
     
-- Função Densidade 
+### Função Densidade 
   
 $$
     f(x;\mu,\sigma^{2})=\dfrac{1}{\sqrt{2\pi}\sigma}
     \exp\Big\{-\dfrac{(x-\mu)^{2}}{2\sigma^{2}} \Big\}dx
 $$
       
-- Log-Verossimilhança
+### Log-Verossimilhança
 <p style="text-align: justify;">    
 Sejam $X_{1},\cdots,X_{n}$ variáveis aleatórias independentes e identicamente distribuidas com distribuição normal de média $\mu$ e variância $\sigma^{2}$ desconhecidas. Segue que, para $\theta=(\mu,\sigma^{2}),$ temos
 </p>
@@ -407,13 +404,13 @@ $$
 \mathcal{L}(\theta|X)=-\frac{n}{2}\log{(2\pi)}-\frac{n}{2}\log{\sigma^{2}}-\frac{1}{2}{\displaystyle \sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}},
 $$
       
-- Derivadas parciais com respeito aos parâmetros (Vetor Escore)
+### Derivadas parciais com respeito aos parâmetros (Vetor Escore)
     
 \begin{align}
 \dfrac{\partial}{\partial\mu}\mathcal{L}(\theta|X)&=\frac{1}{\sigma^{2}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)};&&\dfrac{\partial}{\partial\sigma^{2}}\mathcal{L}(\theta|X)=-\frac{n}{2\sigma^{2}}+\frac{1}{2\sigma^{4}}{\displaystyle\sum_{i=1}^{n}(x_{i}-\theta)^{2}};
 \end{align}
     
-- Jacobiano
+### Jacobiano
     
     
 $$
@@ -422,6 +419,9 @@ $$
 -\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}&\frac{n}{2\sigma^{4}}-\frac{1}{\sigma^{6}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)^{2}}
 \end{array}\right|
 $$
+
+### Estimadores de Máxima Verossimilhança
+
 Segue que, 
     
 $$

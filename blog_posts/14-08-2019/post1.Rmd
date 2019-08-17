@@ -392,7 +392,88 @@ Observamos então que $x={\displaystyle \dfrac{\sum_{i=1}^{10}x_{i}}{10}}=14,6$ 
 
 Até este ponto, utilizei como referência os trabalhos de @Batista e @casella.
 
-# Estudos Teóricos relacionados a Estimação de Parâmetros    
+# Estudos Teóricos relacionados a Estimação de Parâmetros  
+
+## Distribuição Normal
+
+### Modelo
+
+
+- Função de Distribuição Acumulada 
+
+$$
+  F(x;\mu,\sigma^{2})=\int_{-\infty}^{x}\dfrac{1}{\sqrt{2\pi}\sigma}
+  \exp\Big\{-\dfrac{(t-\mu)^{2}}{2\sigma^{2}} \Big\}dt
+$$
+    
+- Função Densidade 
+  
+$$
+    f(x;\mu,\sigma^{2})=\dfrac{1}{\sqrt{2\pi}\sigma}
+    \exp\Big\{-\dfrac{(x-\mu)^{2}}{2\sigma^{2}} \Big\}dx
+$$
+      
+- Log-Verossimilhança
+    
+Sejam $X_{1},\cdots,X_{n}$ variáveis aleatórias independentes e identicamente distribuidas com distribuição normal de média $\mu$ e variância $\sigma^{2}$ desconhecidas. Segue que, para $\theta=(\mu,\sigma^{2}),$ temos
+    
+$$
+L(\theta|X)=\dfrac{1}{(2\pi\sigma^{2})^{n/2}}\exp{\Big\{\Big(-\frac{1}{2}\Big){\displaystyle \sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}}\Big\}},
+$$
+      
+e, portanto,
+    
+$$
+\mathcal{L}(\theta|X)=-\frac{n}{2}\log{(2\pi)}-\frac{n}{2}\log{\sigma^{2}}-\frac{1}{2}{\displaystyle \sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}},
+$$
+      
+- Derivadas parciais com respeito aos parâmetros (Vetor Escore)
+    
+\begin{align}
+\dfrac{\partial}{\partial\mu}\mathcal{L}(\theta|X)&=\frac{1}{\sigma^{2}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)};&&\dfrac{\partial}{\partial\sigma^{2}}\mathcal{L}(\theta|X)=-\frac{n}{2\sigma^{2}}+\frac{1}{2\sigma^{4}}{\displaystyle\sum_{i=1}^{n}(x_{i}-\theta)^{2}};
+\end{align}
+    
+- Jacobiano
+    
+    
+$$
+\left|\begin{array}{rrr}
+-\frac{n}{\sigma^{2}}&-\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}\\
+-\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}&\frac{n}{2\sigma^{4}}-\frac{1}{\sigma^{6}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)^{2}}
+\end{array}\right|
+$$
+Segue que, 
+    
+$$
+\dfrac{\partial}{\partial\theta_{1}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow \hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{n}x_{i}}{n}}
+$$
+$$
+\dfrac{\partial}{\partial\theta_{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow \hat{\sigma}^{2}=\dfrac{(n-1)}{n}S^{2},\quad \textrm{em que}\quad S^{2}=\dfrac{{\displaystyle \sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2}}}{n-1}
+$$
+      
+Observando o jacobiano acima vemos que a condição ii) é mantida e, além disso,
+$$
+\left|\begin{array}{rrr}
+-\frac{n}{\sigma^{2}}&-\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}\\
+-\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}&\frac{n}{2\sigma^{4}}-\frac{1}{\sigma^{6}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)^{2}}
+\end{array}\right|_{\mu=\hat{\mu},\sigma^{2}=\hat{\sigma}^{2}}=\dfrac{1}{\sigma^{6}}\Big[-\frac{n}{2}+\frac{n}{\sigma^{2}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)^{2}-\frac{1}{\sigma^{2}}\Big(\sum_{i=1}^{n}(x_{i}-\mu)\Big)^{2}}\Big]_{\mu=\hat{\mu},\sigma^{2}=\hat{\sigma}^{2}}
+$$
+  
+$$
+=\dfrac{1}{\hat{\sigma}^{6}}\Big[\dfrac{-n^{2}}{2}+\dfrac{n^{2}}{\hat{\sigma}^{2}}\hat{\sigma}^{2}-\dfrac{1}{\hat{\sigma}^{2}}\Big(\sum_{i=1}^{n}(x_{i}-\hat{\mu})\Big)^{2}\Big]=\dfrac{1}{\hat{\sigma}^{6}}\dfrac{n^{2}}{2}>0
+$$
+    
+Logo, os pontos $\hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{n}x_{i}}{n}}$ e $\hat{\sigma}^{2}=\dfrac{(n-1)}{n}S^{2}$ são pontos de máximo e são os estimadores de máxima verossimilhança do modelo normal.
+    
+# Mensagem Final 
+    
+De acordo com Mario Sergio Cortella há três caminhos para o sucesso:
+      
+1- Ensinar o que se sabe - Generosidade Mental
+    
+2- Praticar o que se ensina - Coerência Ética
+    
+3- Perguntar o que se ignora - Humildade Intelectual
     
 # Referências 
 

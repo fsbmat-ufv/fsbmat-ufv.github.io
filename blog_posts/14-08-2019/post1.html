@@ -521,20 +521,22 @@ summary {
 <li><a href="#exemplo-1"><span class="toc-section-number">1.4</span> Exemplo</a></li>
 <li><a href="#log-verossimilhanca"><span class="toc-section-number">1.5</span> Log-Verossimilhança</a></li>
 </ul></li>
-<li><a href="#estimadores-de-maxima-verossimilhanca"><span class="toc-section-number">2</span> Estimadores de Máxima Verossimilhança</a><ul>
-<li><a href="#exemplo-distribuicao-normal"><span class="toc-section-number">2.1</span> Exemplo: Distribuição Normal</a></li>
+<li><a href="#estimadores-de-maxima-verossimilhanca"><span class="toc-section-number">2</span> Estimadores de Máxima Verossimilhança</a></li>
+<li><a href="#avaliacoes-assintoticas"><span class="toc-section-number">3</span> Avaliações Assintóticas</a><ul>
+<li><a href="#exemplo-distribuicao-normal"><span class="toc-section-number">3.1</span> Exemplo: Distribuição Normal</a></li>
 </ul></li>
-<li><a href="#estudos-teoricos-relacionados-a-estimacao-de-parametros"><span class="toc-section-number">3</span> Estudos Teóricos relacionados a Estimação de Parâmetros</a><ul>
-<li><a href="#distribuicao-normal"><span class="toc-section-number">3.1</span> Distribuição Normal</a><ul>
-<li><a href="#funcao-de-distribuicao-acumulada"><span class="toc-section-number">3.1.1</span> Função de Distribuição Acumulada</a></li>
-<li><a href="#funcao-densidade"><span class="toc-section-number">3.1.2</span> Função Densidade</a></li>
-<li><a href="#log-verossimilhanca-1"><span class="toc-section-number">3.1.3</span> Log-Verossimilhança</a></li>
-<li><a href="#derivadas-parciais-com-respeito-aos-parametros-vetor-escore"><span class="toc-section-number">3.1.4</span> Derivadas parciais com respeito aos parâmetros (Vetor Escore)</a></li>
-<li><a href="#jacobiano"><span class="toc-section-number">3.1.5</span> Jacobiano</a></li>
-<li><a href="#estimadores-de-maxima-verossimilhanca-1"><span class="toc-section-number">3.1.6</span> Estimadores de Máxima Verossimilhança</a></li>
+<li><a href="#estudos-teoricos-relacionados-a-estimacao-de-parametros"><span class="toc-section-number">4</span> Estudos Teóricos relacionados a Estimação de Parâmetros</a><ul>
+<li><a href="#distribuicao-normal"><span class="toc-section-number">4.1</span> Distribuição Normal</a><ul>
+<li><a href="#funcao-de-distribuicao-acumulada"><span class="toc-section-number">4.1.1</span> Função de Distribuição Acumulada</a></li>
+<li><a href="#funcao-densidade"><span class="toc-section-number">4.1.2</span> Função Densidade</a></li>
+<li><a href="#log-verossimilhanca-1"><span class="toc-section-number">4.1.3</span> Log-Verossimilhança</a></li>
+<li><a href="#derivadas-parciais-com-respeito-aos-parametros-vetor-escore"><span class="toc-section-number">4.1.4</span> Derivadas parciais com respeito aos parâmetros (Vetor Escore)</a></li>
+<li><a href="#jacobiano"><span class="toc-section-number">4.1.5</span> Jacobiano</a></li>
+<li><a href="#estimadores-de-maxima-verossimilhanca-1"><span class="toc-section-number">4.1.6</span> Estimadores de Máxima Verossimilhança</a></li>
 </ul></li>
+<li><a href="#consistencia"><span class="toc-section-number">4.2</span> Consistência</a></li>
 </ul></li>
-<li><a href="#mensagem-final"><span class="toc-section-number">4</span> Mensagem Final</a></li>
+<li><a href="#mensagem-final"><span class="toc-section-number">5</span> Mensagem Final</a></li>
 <li><a href="#referencias">Referências</a></li>
 </ul>
 </div>
@@ -787,8 +789,26 @@ Para utilizar cálculos bivariados a fim de verificar que uma função <span cla
 <p style="text-align: justify;">
 Ou seja, para encontrar os estimadores de máxima verossimilhança são necessários todos esses cálculos. Lógico que para três ou mais parâmetros tais condições devem ser generalizadas. Além disso, tais condições satisfeitas garantem somente que os EMV são máximos locais e interiores, ainda é necessário garantir que são únicos e que não existe máximo na infinidade ou nos limites do espaço paramétrico.
 </p>
+</div>
+<div id="avaliacoes-assintoticas" class="section level1">
+<h1><span class="header-section-number">3</span> Avaliações Assintóticas</h1>
+<p>A medida que o tamanho amostral aumenta desejamos que a sequência de estimadores <span class="math inline">\(w_{1},\cdots,w_{n}\)</span> seja uma sequência consistente, eficiente e que possua normalidade assintótica. Essas são qualidades necessárias para um bom estimador. Ser consistente significa que para <span class="math inline">\(n\rightarrow \infty\)</span> temos <span class="math inline">\(w_{n}\approx \theta,\)</span> na verdade, temos:</p>
+<p><em>Definição 1:</em> Uma sequência de estimadores <span class="math inline">\(W_{1}=W_{1}(X_{1}),\cdots,W_{n}=W_{n}(X_{1},\cdots,X_{n})\)</span> é uma sequência <em>consistente</em> de estimadores do parâmetro <span class="math inline">\(\theta\)</span> se, e somente se, para cada <span class="math inline">\(\epsilon&gt;0\)</span> e cada <span class="math inline">\(\theta\in \Theta\)</span>, <span class="math display">\[
+{\displaystyle \lim_{n\rightarrow \infty}P_{\theta}(|W_{n}-\theta|&lt;\epsilon)}=1
+\]</span></p>
+<p><em>Teorema:</em> Se <span class="math inline">\(W_{n}\)</span> é uma sequência de estimadores de um parâmetro <span class="math inline">\(\theta\)</span> que satisfaz,</p>
+<p>1 - <span class="math display">\[
+{\displaystyle \lim_{n\rightarrow \infty}V_{\theta}(W_{n})}=0,
+\]</span></p>
+<p>2 - <span class="math display">\[
+{\displaystyle \lim_{n\rightarrow \infty}\textrm{Viés}_{\theta}(W_{n})}=0,
+\]</span></p>
+<p>para cada <span class="math inline">\(\theta\in \Theta,\)</span> então <span class="math inline">\(W_{n}\)</span> é uma sequência consistente de estimadores de <span class="math inline">\(\theta.\)</span></p>
+<p><em>Definição 2:</em> Uma sequência de estimadores <span class="math inline">\(W_{n}\)</span> é assintoticamente eficiente para um parâmetro <span class="math inline">\(\tau(\theta)\)</span> se <span class="math inline">\(\sqrt{n}(W_{n}-\tau(\theta))\rightarrow N(0,v(\theta))\)</span> em distribuição e <span class="math display">\[
+v(\theta)=\dfrac{[\tau'(\theta)]^{2}}{E_{\theta}\Big((\frac{\partial}{\partial\theta}\log{f(X|\theta)})^{2}\Big)},
+\]</span> isto é, a variância assintótica de <span class="math inline">\(W_{n}\)</span> atinge o Limite inferior de Cramér-Rao.</p>
 <div id="exemplo-distribuicao-normal" class="section level2">
-<h2><span class="header-section-number">2.1</span> Exemplo: Distribuição Normal</h2>
+<h2><span class="header-section-number">3.1</span> Exemplo: Distribuição Normal</h2>
 <p style="text-align: justify;">
 <p>Suponha que observamos o vetor <span class="math inline">\((13,12,15,17,16,11,18,16,13,15)\)</span> de valores de uma variável <span class="math inline">\(X\sim N(\mu,4).\)</span> e digamos que há duas hipóteses competindo:</p>
 <ul>
@@ -833,25 +853,25 @@ Notemos que ao substituir os valores observados do vetor <span class="math inlin
 </div>
 </div>
 <div id="estudos-teoricos-relacionados-a-estimacao-de-parametros" class="section level1">
-<h1><span class="header-section-number">3</span> Estudos Teóricos relacionados a Estimação de Parâmetros</h1>
+<h1><span class="header-section-number">4</span> Estudos Teóricos relacionados a Estimação de Parâmetros</h1>
 <div id="distribuicao-normal" class="section level2">
-<h2><span class="header-section-number">3.1</span> Distribuição Normal</h2>
+<h2><span class="header-section-number">4.1</span> Distribuição Normal</h2>
 <div id="funcao-de-distribuicao-acumulada" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Função de Distribuição Acumulada</h3>
+<h3><span class="header-section-number">4.1.1</span> Função de Distribuição Acumulada</h3>
 <p><span class="math display">\[
   F(x;\mu,\sigma^{2})=\int_{-\infty}^{x}\dfrac{1}{\sqrt{2\pi}\sigma}
   \exp\Big\{-\dfrac{(t-\mu)^{2}}{2\sigma^{2}} \Big\}dt
 \]</span></p>
 </div>
 <div id="funcao-densidade" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Função Densidade</h3>
+<h3><span class="header-section-number">4.1.2</span> Função Densidade</h3>
 <p><span class="math display">\[
     f(x;\mu,\sigma^{2})=\dfrac{1}{\sqrt{2\pi}\sigma}
     \exp\Big\{-\dfrac{(x-\mu)^{2}}{2\sigma^{2}} \Big\}dx
 \]</span></p>
 </div>
 <div id="log-verossimilhanca-1" class="section level3">
-<h3><span class="header-section-number">3.1.3</span> Log-Verossimilhança</h3>
+<h3><span class="header-section-number">4.1.3</span> Log-Verossimilhança</h3>
 <p style="text-align: justify;">
 Sejam <span class="math inline">\(X_{1},\cdots,X_{n}\)</span> variáveis aleatórias independentes e identicamente distribuidas com distribuição normal de média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^{2}\)</span> desconhecidas. Segue que, para <span class="math inline">\(\theta=(\mu,\sigma^{2}),\)</span> temos
 </p>
@@ -864,13 +884,13 @@ L(\theta|X)=\dfrac{1}{(2\pi\sigma^{2})^{n/2}}\exp{\Big\{\Big(-\frac{1}{2}\Big){\
 \]</span></p>
 </div>
 <div id="derivadas-parciais-com-respeito-aos-parametros-vetor-escore" class="section level3">
-<h3><span class="header-section-number">3.1.4</span> Derivadas parciais com respeito aos parâmetros (Vetor Escore)</h3>
+<h3><span class="header-section-number">4.1.4</span> Derivadas parciais com respeito aos parâmetros (Vetor Escore)</h3>
 <p><span class="math display">\[\begin{align}
 \dfrac{\partial}{\partial\mu}\mathcal{L}(\theta|X)&amp;=\frac{1}{\sigma^{2}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)};&amp;&amp;\dfrac{\partial}{\partial\sigma^{2}}\mathcal{L}(\theta|X)=-\frac{n}{2\sigma^{2}}+\frac{1}{2\sigma^{4}}{\displaystyle\sum_{i=1}^{n}(x_{i}-\theta)^{2}};
 \end{align}\]</span></p>
 </div>
 <div id="jacobiano" class="section level3">
-<h3><span class="header-section-number">3.1.5</span> Jacobiano</h3>
+<h3><span class="header-section-number">4.1.5</span> Jacobiano</h3>
 <p><span class="math display">\[
 \left|\begin{array}{rrr}
 -\frac{n}{\sigma^{2}}&amp;-\frac{1}{\sigma^{4}}{\displaystyle \sum_{i=1}^{n}(x_{i}-\mu)}\\
@@ -879,7 +899,7 @@ L(\theta|X)=\dfrac{1}{(2\pi\sigma^{2})^{n/2}}\exp{\Big\{\Big(-\frac{1}{2}\Big){\
 \]</span></p>
 </div>
 <div id="estimadores-de-maxima-verossimilhanca-1" class="section level3">
-<h3><span class="header-section-number">3.1.6</span> Estimadores de Máxima Verossimilhança</h3>
+<h3><span class="header-section-number">4.1.6</span> Estimadores de Máxima Verossimilhança</h3>
 <p>Segue que,</p>
 <p><span class="math display">\[
 \dfrac{\partial}{\partial\theta_{1}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow \hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{n}x_{i}}{n}}
@@ -898,9 +918,12 @@ L(\theta|X)=\dfrac{1}{(2\pi\sigma^{2})^{n/2}}\exp{\Big\{\Big(-\frac{1}{2}\Big){\
 <p>Logo, os pontos <span class="math inline">\(\hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{n}x_{i}}{n}}\)</span> e <span class="math inline">\(\hat{\sigma}^{2}=\dfrac{(n-1)}{n}S^{2}\)</span> são pontos de máximo e são os estimadores de máxima verossimilhança do modelo normal.</p>
 </div>
 </div>
+<div id="consistencia" class="section level2">
+<h2><span class="header-section-number">4.2</span> Consistência</h2>
+</div>
 </div>
 <div id="mensagem-final" class="section level1">
-<h1><span class="header-section-number">4</span> Mensagem Final</h1>
+<h1><span class="header-section-number">5</span> Mensagem Final</h1>
 <p>De acordo com Mario Sergio Cortella há três caminhos para o sucesso:</p>
 <p>1- Ensinar o que se sabe - Generosidade Mental</p>
 <p>2- Praticar o que se ensina - Coerência Ética</p>

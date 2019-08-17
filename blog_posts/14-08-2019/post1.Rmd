@@ -311,6 +311,36 @@ $$
 Ou seja, para encontrar os estimadores de máxima verossimilhança são necessários todos esses cálculos. Lógico que para três ou mais parâmetros tais condições devem ser generalizadas. Além disso, tais condições satisfeitas garantem somente que os EMV são máximos locais e interiores, ainda é necessário garantir que são únicos e que não existe máximo na infinidade ou nos limites do espaço paramétrico. 
 </p>
 
+# Avaliações Assintóticas
+
+A medida que o tamanho amostral aumenta desejamos que a sequência de estimadores $w_{1},\cdots,w_{n}$ seja uma sequência consistente, eficiente e que possua normalidade assintótica. Essas são qualidades necessárias para um bom estimador. Ser consistente significa que para $n\rightarrow \infty$ temos $w_{n}\approx \theta,$ na verdade, temos:
+
+_Definição 1:_ Uma sequência de estimadores $W_{1}=W_{1}(X_{1}),\cdots,W_{n}=W_{n}(X_{1},\cdots,X_{n})$ é uma sequência _consistente_ de estimadores do parâmetro $\theta$ se, e somente se, para cada $\epsilon>0$ e cada $\theta\in \Theta$,
+$$
+{\displaystyle \lim_{n\rightarrow \infty}P_{\theta}(|W_{n}-\theta|<\epsilon)}=1
+$$
+
+_Teorema:_ Se $W_{n}$ é uma sequência de estimadores de um parâmetro $\theta$ que satisfaz,
+
+1 - 
+$$
+{\displaystyle \lim_{n\rightarrow \infty}V_{\theta}(W_{n})}=0,
+$$
+
+2 - 
+$$
+{\displaystyle \lim_{n\rightarrow \infty}\textrm{Viés}_{\theta}(W_{n})}=0,
+$$
+
+para cada $\theta\in \Theta,$ então $W_{n}$ é uma sequência consistente de estimadores de $\theta.$
+
+_Definição 2:_ Uma sequência de estimadores $W_{n}$ é assintoticamente eficiente para um parâmetro $\tau(\theta)$ se $\sqrt{n}(W_{n}-\tau(\theta))\rightarrow N(0,v(\theta))$ em distribuição e
+$$
+v(\theta)=\dfrac{[\tau'(\theta)]^{2}}{E_{\theta}\Big((\frac{\partial}{\partial\theta}\log{f(X|\theta)})^{2}\Big)},
+$$
+isto é, a variância assintótica de $W_{n}$ atinge o Limite inferior de Cramér-Rao.
+
+
 ## Exemplo: Distribuição Normal
 
 <p style="text-align: justify;">
@@ -444,6 +474,10 @@ $$
 $$
     
 Logo, os pontos $\hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{n}x_{i}}{n}}$ e $\hat{\sigma}^{2}=\dfrac{(n-1)}{n}S^{2}$ são pontos de máximo e são os estimadores de máxima verossimilhança do modelo normal.
+
+## Consistência
+
+
     
 # Mensagem Final 
     

@@ -385,7 +385,14 @@ Para provar que este é ponto de máximo, derivamos novamente e observamos que a
 $$
 \dfrac{\partial^{2}l(\mu)}{\partial\mu^{2}}=-\dfrac{n}{\sigma^{2}}<0, \forall x\in \mathbb{R}.
 $$
-    
+
+
+Observamos então que $x={\displaystyle \dfrac{\sum_{i=1}^{10}x_{i}}{10}}=14,6$ é o ponto de máximo de $L(\mu).$
+
+
+Até este ponto, utilizei como referência os trabalhos de @Batista e @casella.
+
+# Estudos Teóricos relacionados a Estimação de Parâmetros    
     
 # Referências 
 

@@ -371,6 +371,12 @@ plot(mu.vals, lmu, type = "l", xlab = expression(mu), ylab = expression(l(mu)))
 abline(v=14.6,col="red")
 ```
 
+
+Para obter o ponto de máximo calculamos a derivada de $l(\mu)$ em função de $\mu$ e encontramos:
+$$
+\dfrac{\partial l(\mu)}{\partial\mu}={\displaystyle \dfrac{1}{4}\sum_{i=1}^{10}(x_{i}-\mu)}
+$$
+
     
     
 # Referências 

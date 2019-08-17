@@ -378,7 +378,7 @@ $$
 $$
 Ao igualar a derivada acima a zero e resolver a equação, obtemos:
 $$
-\hat{\mu}=\dfrac{{\displaystyle \sum_{i=1}^{10}x_{i}}}{n}
+\hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{10}x_{i}}{n}}
 $$
     
     

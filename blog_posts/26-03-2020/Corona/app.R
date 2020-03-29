@@ -9,8 +9,12 @@ library("tidyr")
 library("hrbrthemes")
 library("ggrepel")
 library("shinythemes")
+library("rio")
+library(miceadds)
 #setwd("~/GitHub/fsbmat-ufv.github.io/blog_posts/26-03-2020/Shiny/Corona")
-data <- read_csv(url("https://rawcdn.githack.com/fsbmat-ufv/fsbmat-ufv.github.io/fcba93f491ed21eba0628471649eb9a5bda033f2/blog_posts/26-03-2020/Corona/covid19.csv"))
+#data <- read_csv(url("https://rawcdn.githack.com/fsbmat-ufv/fsbmat-ufv.github.io/fcba93f491ed21eba0628471649eb9a5bda033f2/blog_posts/26-03-2020/Corona/covid19.csv"))
+#export(data, "covid19.rdata")
+data <- miceadds::load.Rdata2(filename="covid19.Rdata")
 
 
 data$deaths[is.na(data$deaths)] <- 0
@@ -25,28 +29,28 @@ names(data) <- c("date", "state", "confirmed", "deaths", "Pop")
 
 aggSetor <-data%>%filter(date==last(data$date))%>%group_by(state) %>% summarise(quantidade = sum(deaths), 
                                                                                 confirmedM = mean(confirmed))
-aggSetor$escala <- scale(aggSetor$confirmedM) #necessario para criar valores negativos para deixar as disparidades mais evidentes
+aggSetor$escala <- scale(aggSetor$confirmedM) 
 
-tabPanelSobre <- source("sobre.r")$value
+#tabPanelSobre <- source("sobre.r")$value
 
-ui <- fluidPage(theme=shinytheme("united"),
+ui <- fluidPage(#theme=shinytheme("united"),
                 headerPanel(
                   HTML(
                     '<div id="stats_header">
-			Coronavirus no Brasil
+			Coronavirus in Brazil
 			<a href="https://maf105.github.io/" target="_blank"><img align="right" alt="fsbmat Logo" src="./img/fsbmat.png" /></a>
 			</div>'
                   ),
-                  "Coronavirus no Brasil"
+                  "Coronavirus in Brazil"
                 ),
   # App title ----
-  #titlePanel("Coronavirus no Brasil"),
+  titlePanel("Coronavirus in Brazil"),
   sidebarLayout(
     
     # Sidebar panel for inputs ----
     sidebarPanel(
-      uiOutput("codePanel"),
-      tags$p("Autor: Fernando de Souza Bastos - Professor da Universidade Federal de Vicosa - MG")
+      uiOutput("codePanel")#,
+      #tags$p("Autor: Fernando de Souza Bastos - Professor da Universidade Federal de Vicosa - MG")
     ),
     
     # Main panel for displaying outputs ----
@@ -91,8 +95,8 @@ ui <- fluidPage(theme=shinytheme("united"),
   
   fluidRow(
     column(width = 4, class = "well",
-           h4("Numero de Mortes por Covid19 no Brasil"),
-           plotOutput("plot1", height = 300,
+           h4("Number of Deaths by Covid19 in Brazil"),
+           plotOutput("plot1", height = 200,
                       dblclick = "plot1_dblclick",
                       brush = brushOpts(
                         id = "plot1_brush",
@@ -101,8 +105,8 @@ ui <- fluidPage(theme=shinytheme("united"),
            )
     ),
     column(width = 4, class = "well",
-           h4("Numero de Confirmados com Covid19 no Brasil"),
-           plotOutput("plot2", height = 300,
+           h4("Number of Confirmed with Covid19 in Brazil"),
+           plotOutput("plot2", height = 200,
                       dblclick = "plot2_dblclick",
                       brush = brushOpts(
                         id = "plot2_brush",
@@ -111,8 +115,8 @@ ui <- fluidPage(theme=shinytheme("united"),
            )
     ),
     column(width = 4, class = "well",
-           h4("Treemap das mortes e numero de confirmados por Estado"),
-           plotOutput("plot3", height = 300,
+           h4("Treemap of deaths and number of confirmed by State"),
+           plotOutput("plot3", height = 200,
                       dblclick = "plot3_dblclick",
                       brush = brushOpts(
                         id = "plot3_brush",
@@ -121,8 +125,8 @@ ui <- fluidPage(theme=shinytheme("united"),
            )
     )
     
-  ),
-  tabPanelSobre()
+  )#,
+  #tabPanelSobre()
 )
 
 server <- function(input, output) {
@@ -169,7 +173,7 @@ server <- function(input, output) {
   
   # output$caption and output$mpgPlot functions
   formulaText <- reactive({
-    paste("Resultados Referentes ao Estado de", input$codeInput)
+    paste("Results Regarding the State of", input$codeInput)
   })
   
   # Return the formula text for printing as a caption ----
@@ -193,8 +197,8 @@ server <- function(input, output) {
                            expand = c(0, 0)) +
         geom_text(aes(label=deaths), position=position_dodge(width=0.9), vjust=-0.25) +
         labs(x = xlab,
-             y = "Numero de Mortes",
-             title = "Numero de Mortes por COVID-19",
+             y = "Numbers of Deaths",
+             title = "Number of deaths by COVID-19",
              caption = legenda) +
         theme_minimal() +
         theme(axis.text.x =  element_text(angle = 90))
@@ -214,8 +218,8 @@ server <- function(input, output) {
                          expand = c(0, 0)) +
       geom_text(aes(label=confirmed), position=position_dodge(width=0.9), vjust=-0.25) +
       labs(x = xlab,
-           y = "Numero de Confirmados",
-           title = "Numero de Casos Confirmados com Covid19",
+           y = "Numbers of Confirmed",
+           title = "Number of Cases Confirmed with Covid19",
            caption = legenda) +
       theme_minimal() +
       theme(axis.text.x =  element_text(angle = 90))
@@ -227,12 +231,12 @@ server <- function(input, output) {
     xlab <- "Data"
     legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
     
-    #Grafico com o numero de casos diarios confirmados
+    #Graph with the number of confirmed daily cases
     ggplot(dataset2(), aes(x=date, y=confirmed_day))+
       geom_line( color="steelblue")+ 
       geom_point() + 
       geom_text_repel(aes(label=confirmed_day), size = 3)+
-      xlab("Data") + ylab("Numero de casos diarios confirmados")+
+      xlab("Data") + ylab("Number of confirmed daily cases")+
       theme_ipsum() +
       theme(axis.text.x=element_text(angle=60, hjust=1))+
       scale_x_date(date_breaks = "2 day", date_labels = "%d %b")
@@ -259,7 +263,7 @@ server <- function(input, output) {
                          expand = c(0, 0)) +
       geom_text(aes(label=deaths), position=position_dodge(width=0.9), vjust=-0.25) +
       labs(x = xlab,
-           y = "Numero de Mortes",
+           y = "Number of Deaths",
            title = " ",
            caption = legenda) +
       theme_minimal() +
@@ -281,7 +285,7 @@ server <- function(input, output) {
                          expand = c(0, 0)) +
       geom_text(aes(label=confirmed), position=position_dodge(width=0.5), vjust=-0.25) +
       labs(x = xlab,
-           y = "Numero de Confirmados",
+           y = "Number of Confirmed",
            title = " ",
            caption = legenda) +
       theme_minimal() +
@@ -291,7 +295,7 @@ server <- function(input, output) {
   output$plot3 <- renderPlot({
     treemap(aggSetor, index = "state", vSize = "quantidade", vColor = "escala",
             type = "value", palette = "-RdGy", lowerbound.cex.labels = 0.3,
-            title  =  "Cor relacionada as mortes - Tamanho relacionado aos confirmados")
+            title  =  "Color related to deaths - Size related to confirmed")
   })
   
   

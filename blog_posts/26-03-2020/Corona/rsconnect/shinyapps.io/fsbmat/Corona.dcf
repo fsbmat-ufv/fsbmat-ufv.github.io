@@ -1,13 +1,13 @@
 name: Corona
-title: Corona
+title:
 username:
 account: fsbmat
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2014370
-bundleId: 2938320
+bundleId: 2939319
 url: https://fsbmat.shinyapps.io/Corona/
-when: 1585454935.52879
+when: 1585486244.03274
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: .RData|covid19.csv

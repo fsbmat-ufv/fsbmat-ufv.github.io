@@ -10,7 +10,7 @@ library("hrbrthemes")
 library("ggrepel")
 library("shinythemes")
 #setwd("~/GitHub/fsbmat-ufv.github.io/blog_posts/26-03-2020/Shiny/Corona")
-data <- read_csv("covid19.csv")
+data <- read_csv(url("https://rawcdn.githack.com/fsbmat-ufv/fsbmat-ufv.github.io/fcba93f491ed21eba0628471649eb9a5bda033f2/blog_posts/26-03-2020/Corona/covid19.csv"))
 
 
 data$deaths[is.na(data$deaths)] <- 0
@@ -22,12 +22,6 @@ data <- data %>%
   dplyr::group_by(state,date, confirmed,deaths) %>% 
   select(date, state, confirmed, deaths, estimated_population_2019)
 names(data) <- c("date", "state", "confirmed", "deaths", "Pop")
-
-
-ndeaths <- aggregate(data$deaths, by=list(data$date), sum)
-names(ndeaths) <- c("date","deaths")
-nconfirmed <- aggregate(data$confirmed, by=list(data$date), sum)
-names(nconfirmed) <- c("date","confirmed")
 
 aggSetor <-data%>%filter(date==last(data$date))%>%group_by(state) %>% summarise(quantidade = sum(deaths), 
                                                                                 confirmedM = mean(confirmed))
@@ -109,9 +103,9 @@ ui <- fluidPage(theme=shinytheme("united"),
     column(width = 4, class = "well",
            h4("Numero de Confirmados com Covid19 no Brasil"),
            plotOutput("plot2", height = 300,
-                      dblclick = "plot1_dblclick",
+                      dblclick = "plot2_dblclick",
                       brush = brushOpts(
-                        id = "plot1_brush",
+                        id = "plot2_brush",
                         resetOnNew = TRUE
                       )
            )
@@ -119,9 +113,9 @@ ui <- fluidPage(theme=shinytheme("united"),
     column(width = 4, class = "well",
            h4("Treemap das mortes e numero de confirmados por Estado"),
            plotOutput("plot3", height = 300,
-                      dblclick = "plot1_dblclick",
+                      dblclick = "plot3_dblclick",
                       brush = brushOpts(
-                        id = "plot1_brush",
+                        id = "plot3_brush",
                         resetOnNew = TRUE
                       )
            )
@@ -161,6 +155,16 @@ server <- function(input, output) {
     df$confirmed_day <- df$confirmed-df$teste2
     df <- df %>% select(1:5,8:9)
     return(df)
+  })
+  
+  dataset3 <- reactive({
+    ndeaths <- data %>% group_by(date) %>% summarise(deaths = sum(deaths))
+    return(ndeaths)
+  })
+  
+  dataset4 <- reactive({
+    nconfirmed <- data %>% group_by(date) %>% summarise(confirmed = sum(confirmed))
+    return(nconfirmed)
   })
   
   # output$caption and output$mpgPlot functions
@@ -247,11 +251,11 @@ server <- function(input, output) {
     xlab <- "Data"
     legenda <- "fonte: https://brasil.io/dataset/covid19"
     
-    ggplot2::ggplot(ndeaths, aes(x = date, y = deaths)) +
+    ggplot2::ggplot(dataset3(), aes(x = date, y = deaths)) +
       geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
       scale_x_date(date_breaks = "1 day",
                    date_labels = "%d/%m") +
-      scale_y_continuous(limits = c(0, max(ndeaths$deaths+20, na.rm = TRUE) + 3),
+      scale_y_continuous(limits = c(0, max(dataset3()$deaths+20, na.rm = TRUE) + 3),
                          expand = c(0, 0)) +
       geom_text(aes(label=deaths), position=position_dodge(width=0.9), vjust=-0.25) +
       labs(x = xlab,
@@ -269,11 +273,11 @@ server <- function(input, output) {
   output$plot2 <- renderPlot({
     xlab <- "Data"
     legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
-    ggplot2::ggplot(nconfirmed, aes(x = date, y = confirmed)) +
+    ggplot2::ggplot(dataset4(), aes(x = date, y = confirmed)) +
       geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
       scale_x_date(date_breaks = "1 day",
                    date_labels = "%d/%m") +
-      scale_y_continuous(limits = c(0, max(nconfirmed$confirmed+300, na.rm = TRUE) + 3),
+      scale_y_continuous(limits = c(0, max(dataset4()$confirmed+300, na.rm = TRUE) + 3),
                          expand = c(0, 0)) +
       geom_text(aes(label=confirmed), position=position_dodge(width=0.5), vjust=-0.25) +
       labs(x = xlab,

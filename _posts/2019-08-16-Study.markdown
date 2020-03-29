@@ -28,4 +28,6 @@ date:   2019-01-01 12:12:12
 
 ***
 
+Última atualização: 29/03/2020
+
 [[Clique aqui!]](https://fsbmat.shinyapps.io/CoronaBR/#section-page-1){target="_blank"}

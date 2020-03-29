@@ -1,9 +1,24 @@
-library("shiny")
+---
+title: "Covid19 in Brazil"
+author: "Prof. Fernando de Souza Bastos"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: column
+    social: menu
+    source_code: embed
+    vertical_layout: scroll
+runtime: shiny
+---
+
+```{r global, include=FALSE}
 library("readr")
 library("dplyr")
 library("tidyverse")
 library("treemap")
+library("flexdashboard")
+library("DT")
 library("ggplot2")
+options(DT.options = list(scrollY="100vh"))
 library("dplyr")
 library("tidyr")
 library("hrbrthemes")
@@ -14,8 +29,10 @@ library("rio")
 #setwd("~/GitHub/fsbmat-ufv.github.io/blog_posts/26-03-2020/Shiny/Corona")
 #data <- read_csv(url("https://rawcdn.githack.com/fsbmat-ufv/fsbmat-ufv.github.io/fcba93f491ed21eba0628471649eb9a5bda033f2/blog_posts/26-03-2020/Corona/covid19.csv"))
 #export(data, "covid19.rdata")
-load(url("https://rawcdn.githack.com/fsbmat-ufv/fsbmat-ufv.github.io/a16ef0fe0a27374cdbb7f88106c080ca0cd2ded3/blog_posts/26-03-2020/Corona/covid19.RData"))
-#load("covid19.Rdata")
+#load(url("https://rawcdn.githack.com/fsbmat-ufv/fsbmat-ufv.github.io/a16ef0fe0a27374cdbb7f88106c080ca0cd2ded3/blog_posts/26-03-2020/Corona/covid19.RData"))
+data <- read.csv("covid19.csv")
+export(data, "covid19.rdata")
+load("covid19.rdata")
 data <- x
 rm(x)
 
@@ -30,125 +47,34 @@ data <- data %>%
   select(date, state, confirmed, deaths, estimated_population_2019)
 names(data) <- c("date", "state", "confirmed", "deaths", "Pop")
 
-aggSetor <-data%>%filter(date==last(data$date))%>%group_by(state) %>% summarise(quantidade = sum(deaths), 
-                                                                                confirmedM = mean(confirmed))
+aggSetor <-data%>%filter(date==(last(data$date)-1))%>%group_by(state) %>% 
+  summarise(quantidade = sum(deaths), confirmedM = mean(confirmed))
 aggSetor$escala <- scale(aggSetor$confirmedM) 
 
-#tabPanelSobre <- source("sobre.r")$value
+```
 
-ui <- fluidPage(#theme=shinytheme("united"),
-  headerPanel(
-    HTML(
+
+Sidebar {.sidebar}
+=====================================
+
+This Fleshdashboard was created to facilitate the visualization of data about Covid19 in the States of Brazil.
+
+```{r}
+selectInput("codeInput",label ="Escolha um Estado",
+                      choices = unique(data$state))
+
+dataset<-reactive({ 
+        subset(data, state == input$codeInput)
+    
+    
+  })
+  
+  HTML(
       '<div id="stats_header">
 			Coronavirus in Brazil
 			<a href="https://maf105.github.io/" target="_blank"><img align="right" alt="fsbmat Logo" src="./img/fsbmat.png" /></a>
 			</div>'
-    ),
-    "Coronavirus in Brazil"
-  ),
-  # App title ----
-  titlePanel("Coronavirus in Brazil"),
-  sidebarLayout(
-    
-    # Sidebar panel for inputs ----
-    sidebarPanel(
-      uiOutput("codePanel")#,
-      #tags$p("Autor: Fernando de Souza Bastos - Professor da Universidade Federal de Vicosa - MG")
-    ),
-    
-    # Main panel for displaying outputs ----
-    mainPanel(
-      
-      # Output: Formatted text for caption ----
-      h3(textOutput("caption")),
-      
-      # Output: 1 ----
-      plotOutput("deathsPlot", height = 300,
-                 dblclick = "deathsPlot_dblclick",
-                 brush = brushOpts(
-                   id = "deathsPlot_brush",
-                   resetOnNew = TRUE
-                 )
-      ),
-      
-      plotOutput("confirmedPlot", height = 300,
-                 dblclick = "confirmedPlot_dblclick",
-                 brush = brushOpts(
-                   id = "confirmedPlot_brush",
-                   resetOnNew = TRUE
-                 )
-      ),
-      
-      plotOutput("dayPlot", height = 300,
-                 dblclick = "dayPlot_dblclick",
-                 brush = brushOpts(
-                   id = "dayPlot_brush",
-                   resetOnNew = TRUE
-                 )
-      ),
-      
-      DT::dataTableOutput("text")
-      
     )
-    
-    
-    
-    
-  ),
-  
-  fluidRow(
-    column(width = 4, class = "well",
-           h4("Number of Deaths by Covid19 in Brazil"),
-           plotOutput("plot1", height = 200,
-                      dblclick = "plot1_dblclick",
-                      brush = brushOpts(
-                        id = "plot1_brush",
-                        resetOnNew = TRUE
-                      )
-           )
-    ),
-    column(width = 4, class = "well",
-           h4("Number of Confirmed with Covid19 in Brazil"),
-           plotOutput("plot2", height = 200,
-                      dblclick = "plot2_dblclick",
-                      brush = brushOpts(
-                        id = "plot2_brush",
-                        resetOnNew = TRUE
-                      )
-           )
-    ),
-    column(width = 4, class = "well",
-           h4("Treemap of deaths and number of confirmed by State"),
-           plotOutput("plot3", height = 200,
-                      dblclick = "plot3_dblclick",
-                      brush = brushOpts(
-                        id = "plot3_brush",
-                        resetOnNew = TRUE
-                      )
-           )
-    )
-    
-  )#,
-  #tabPanelSobre()
-)
-
-server <- function(input, output) {
-  
-  
-  filt <- selectInput("codeInput",label ="Escolha um Estado",
-                      choices = as.list(unique(data$state)))
-  
-  output$codePanel <- renderUI({ filt
-    
-  })
-  
-  dataset<-reactive({ 
-    
-    subset(data, state == input$codeInput)  
-    
-  })
-  
-  
   
   dataset2<-reactive({
     df <- dataset()
@@ -173,22 +99,49 @@ server <- function(input, output) {
     nconfirmed <- data %>% group_by(date) %>% summarise(confirmed = sum(confirmed))
     return(nconfirmed)
   })
+
+```
+
+Page 1
+=====================================  
+
+
+### Dataframe of Covid19 in Brasil 
+    
+```{r}
+
   
-  # output$caption and output$mpgPlot functions
-  formulaText <- reactive({
-    paste("Results Regarding the State of", input$codeInput)
+  # # output$caption and output$mpgPlot functions
+  # formulaText <- reactive({
+  #   paste("Results Regarding the State of", input$codeInput)
+  # })
+  # 
+  # # Return the formula text for printing as a caption ----
+  # renderText({
+  #   formulaText()
+  # })
+  
+  DT::renderDataTable({
+
+    DT::datatable(dataset(), options = list(list(scrollY="300px"
+                                                 , scrollX="300px"
+                                                 , pageLength = 100
+                                                 ))
+                               ,  filter = 'top')
+
   })
+
   
-  # Return the formula text for printing as a caption ----
-  output$caption <- renderText({
-    formulaText()
-  })
   
-  output$text<-renderDataTable(dataset())
-  
-  # # Generate a plot of the requested variable against mpg ----
-  # # and only exclude outliers if requested
-  output$deathsPlot <- renderPlot({
+```
+
+Page 2
+===================================== 
+
+### Numbers of Deaths in State 
+    
+```{r}
+renderPlot({
     xlab <- "Data"
     legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
     
@@ -207,9 +160,15 @@ server <- function(input, output) {
       theme(axis.text.x =  element_text(angle = 90))
     
   })
-  
-  
-  output$confirmedPlot <- renderPlot({
+```
+
+Page 3
+===================================== 
+
+### Number of Confirmed Cases
+
+```{r}
+renderPlot({
     xlab <- "Data"
     legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
     
@@ -228,9 +187,17 @@ server <- function(input, output) {
       theme(axis.text.x =  element_text(angle = 90))
     
   })
-  
-  
-  output$dayPlot <- renderPlot({
+```
+
+
+
+Page 4
+===================================== 
+
+### Number of Confirmed Daily Cases
+
+```{r}
+renderPlot({
     xlab <- "Data"
     legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
     
@@ -248,13 +215,19 @@ server <- function(input, output) {
     
     
   })
-  
-  
-  # -------------------------------------------------------------------
-  # Single zoomable plot (on left)
-  #ranges <- reactiveValues(x = date, y = confirmed)
-  
-  output$plot1 <- renderPlot({
+```
+
+
+Brasil
+===================================== 
+
+Column
+-------------------------------------
+
+### Number of Deaths by Covid19 in Brazil
+
+```{r}
+renderPlot({
     xlab <- "Data"
     legenda <- "fonte: https://brasil.io/dataset/covid19"
     
@@ -272,12 +245,14 @@ server <- function(input, output) {
       theme_minimal() +
       theme(axis.text.x =  element_text(angle = 90))
   })
-  
-  # -------------------------------------------------------------------
-  # Linked plots (middle and right)
-  #ranges2 <- reactiveValues(x = NULL, y = NULL)
-  
-  output$plot2 <- renderPlot({
+
+
+```
+
+### Number of Confirmed with Covid19 in Brazil
+
+```{r}
+renderPlot({
     xlab <- "Data"
     legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
     ggplot2::ggplot(dataset4(), aes(x = date, y = confirmed)) +
@@ -294,15 +269,16 @@ server <- function(input, output) {
       theme_minimal() +
       theme(axis.text.x =  element_text(angle = 90))
   })
-  
-  output$plot3 <- renderPlot({
+
+```
+
+### Treemap of deaths and number of confirmed by State (Last day)
+
+```{r}
+renderPlot({
     treemap(aggSetor, index = "state", vSize = "quantidade", vColor = "escala",
             type = "value", palette = "-RdGy", lowerbound.cex.labels = 0.3,
             title  =  "Color related to deaths - Size related to confirmed")
   })
-  
-  
-  
-}
+```
 
-shinyApp(ui = ui, server = server)

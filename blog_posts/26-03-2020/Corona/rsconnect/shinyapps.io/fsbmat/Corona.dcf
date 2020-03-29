@@ -5,9 +5,9 @@ account: fsbmat
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2014370
-bundleId: 2939319
+bundleId: 2939474
 url: https://fsbmat.shinyapps.io/Corona/
-when: 1585486244.03274
+when: 1585490446.70457
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: .RData|covid19.csv

@@ -1,0 +1,118 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+rm(list=ls())
+cat("\014")
+setwd("~/GitHub/fsbmat-ufv.github.io/blog_posts/26-03-2020")
+library(readr)
+data <- read_csv("covid19.csv")
+#data <- read_csv("CoronaVirus.csv")
+#View(data)
+# Library
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(hrbrthemes)
+library("ggrepel")
+
+data$deaths[is.na(data$deaths)] <- 0
+data$date <- as.Date(data$date)
+data <- data[order(data$date) , ]
+
+data <- data %>%
+  dplyr::filter(place_type == "state") %>%
+  dplyr::group_by(state,date, confirmed,deaths) %>% 
+  select(date, state, confirmed, deaths, estimated_population_2019)
+names(data) <- c("date", "state", "confirmed", "deaths", "Pop")
+
+
+ndeaths <- aggregate(data$deaths, by=list(data$date), sum)
+names(ndeaths) <- c("date","deaths")
+ggplot(ndeaths, aes(x=date, y=deaths))+
+  geom_line( color="steelblue")+ 
+  geom_point() + 
+  geom_text_repel(aes(label=deaths), size = 3)+
+  xlab("Data") + ylab("Número acumulado de mortes")+
+  theme_ipsum() +
+  theme(axis.text.x=element_text(angle=60, hjust=1))+scale_x_date(date_breaks = "2 day", date_labels = "%d %b")
+
+
+xlab <- "Data"
+ylab <- "Casos confirmados"
+legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
+
+ggplot2::ggplot(ndeaths, aes(x = date, y = deaths)) +
+  geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
+  scale_x_date(date_breaks = "1 day",
+               date_labels = "%d/%m") +
+  scale_y_continuous(limits = c(0, max(ndeaths$deaths+20, na.rm = TRUE) + 3),
+                     expand = c(0, 0)) +
+  geom_text(aes(label=deaths), position=position_dodge(width=0.9), vjust=-0.25) +
+  labs(x = xlab,
+       y = "Numero de Mortes",
+       title = "Numero de Mortes por COVID-19",
+       caption = legenda) +
+  theme_minimal() +
+  theme(axis.text.x =  element_text(angle = 90))
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+library("rlang")
+library("dplyr")
+library("tidyverse")
+library("treemap")
+#Treemap do numero de casos confirmados
+aggSetor <-data%>%filter(date==last(data$date))%>%group_by(state) %>% summarise(quantidade = sum(confirmed), 
+                                                                             deathsM = mean(deaths))
+aggSetor$escala <- scale(aggSetor$deathsM) #necessário para criar valores negativos para deixar as disparidades mais evidentes
+x <- treemap(aggSetor, index = "state", vSize = "quantidade", vColor = "escala",
+             type = "value", palette = "-RdGy", lowerbound.cex.labels = 0.3,
+             title  =  "Treemap do número de casos confirmados e mortes por Estado")
+
+```
+
+### Chart C
+
+##Teste de Texto
+
+```{r}
+#Treemap do numero de mortes
+aggSetor <-data%>%filter(date==last(data$date))%>%group_by(state) %>% summarise(quantidade = sum(deaths), 
+                                                                                confirmedM = mean(confirmed))
+aggSetor$escala <- scale(aggSetor$confirmedM) #necessário para criar valores negativos para deixar as disparidades mais evidentes
+x <- treemap(aggSetor, index = "state", vSize = "quantidade", vColor = "escala",
+             type = "value", palette = "-RdGy", lowerbound.cex.labels = 0.3,
+             title  =  "Treemap das mortes e número de confirmados por Estado")
+
+library("htmlTable")
+data %>% 
+  filter(date==last(data$date))%>% 
+  group_by(Estado=state)%>% 
+  summarise(Mortes = sum(deaths))%>%
+  arrange(desc(Mortes))  %>% 
+  htmlTable(caption="Numero de mortes por Estado")
+
+
+```
+

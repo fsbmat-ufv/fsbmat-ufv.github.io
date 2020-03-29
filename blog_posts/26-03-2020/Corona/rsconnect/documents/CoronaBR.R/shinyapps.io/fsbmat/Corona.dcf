@@ -1,0 +1,12 @@
+name: Corona
+title: Corona
+username:
+account: fsbmat
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2014370
+bundleId: 2938112
+url: https://fsbmat.shinyapps.io/Corona/
+when: 1585450259.54917
+asMultiple: FALSE
+asStatic: FALSE

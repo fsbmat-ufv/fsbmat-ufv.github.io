@@ -34,6 +34,41 @@ ggplot(ndeaths, aes(x=date, y=deaths))+
   theme_ipsum() +
   theme(axis.text.x=element_text(angle=60, hjust=1))+scale_x_date(date_breaks = "2 day", date_labels = "%d %b")
 
+
+dfSP <- data %>%
+  dplyr::filter(state == "SP") %>%
+  dplyr::group_by(state) %>%
+  dplyr::summarise(total = sum(deaths)) %>%
+  tidyr::pivot_wider(names_from = state,
+                     values_from = total)
+
+dfSP <- data %>%
+  dplyr::filter(state == "MG")
+
+dfSP[dfSP$confirmed,dfSP$date==last(dfSP$date)]
+
+df <- dfSP %>%
+  filter(date==(last(dfSP$date)-40)) %>%
+  select(confirmed,deaths)
+recovered <- df$confirmed-df$deaths
+
+ifelse(length(recovered)==0, "Não há recuperados", recovered)
+
+
+
+# set colors
+death_color <- rgb(220, 40, 40, maxColorValue = 255, alpha = 230)
+recovered_color <- rgb(10, 120, 10, maxColorValue = 255, alpha = 230)
+
+flexdashboard::valueBox(
+  value = format(dfSP$SP, big.mark = ".", decimal.mark = ","),
+  caption = paste("Confirmados no BRASIL • ",
+                  as.character.POSIXt(max(data$date), 
+                                      format = "%d/%m/%Y")),
+  color = death_color
+)
+
+
 xlab <- "Data"
 ylab <- "Casos confirmados"
 legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
@@ -68,7 +103,7 @@ x <- treemap(aggSetor, index = "state", vSize = "quantidade", vColor = "escala",
 
 library("htmlTable")
 data %>% 
-  filter(date==last(data$date))%>% 
+  filter(date==last(data$date)-1)%>% 
   group_by(Estado=state)%>% 
   summarise(Mortes = sum(deaths))%>%
   arrange(desc(Mortes))  %>% 
@@ -95,6 +130,78 @@ SP$confirmed_day <- SP$confirmed-SP$teste2
 SP <- SP %>% select(1:5,8:9)
 SPdeaths <- aggregate(SP$deaths, by=list(SP$date), sum)
 names(SPdeaths) <- c("date","deaths")
+
+#########################
+#########################
+library(plotly)
+confirmed_color <- rgb(20, 120, 190, maxColorValue = 255)
+death_color <- rgb(220, 40, 40, maxColorValue = 255, alpha = 230)
+
+death1 <- data %>% filter(state=="SP", deaths>0) 
+date1deaths <- min(death1$date)
+confirmed1 <- data %>% filter(state=="SP", confirmed>0) 
+date1confirmed <- min(confirmed1$date)
+plotly::plot_ly(data %>% 
+                  dplyr::filter(state=="SP")) %>%
+  plotly::add_trace(x = ~date,
+                    y = ~deaths,
+                    type = "scatter",
+                    mode = "lines+markers",
+                    name = "deaths",
+                    line = list(color = death_color),
+                    marker = list(color = death_color)) %>%
+  plotly::add_trace(x = ~date,
+                    y = ~confirmed,
+                    type = "scatter",
+                    mode = "lines+markers",
+                    name = "confirmed",
+                    opacity = 0.85,
+                    line = list(color = confirmed_color),
+                    marker = list(color = confirmed_color)) %>%
+    plotly::add_annotations(x = as.Date(date1confirmed),
+                          y = 1,
+                          text = paste("Primeiro caso"),
+                          xref = "x",
+                          yref = "y",
+                          arrowhead = 5,
+                          arrowhead = 5,
+                          arrowsize = 1,
+                          showarrow = TRUE,
+                          ax = 0,
+                          ay = -90) %>%
+  plotly::add_annotations(x = as.Date(date1deaths),
+                          y = 3,
+                          text = paste("Primeira morte"),
+                          xref = "x",
+                          yref = "y",
+                          arrowhead = 5,
+                          arrowhead = 3,
+                          arrowsize = 1,
+                          showarrow = TRUE,
+                          ax = 0,
+                          ay = -90) %>%
+  plotly::layout(title = "",
+                 yaxis = list(title = "Frequência acumulada de casos"),
+                 xaxis = list(title = ""),
+                 legend = list(x = 0.1, y = 0.9),
+                 hovermode = "compare")
+
+
+
+
+
+dta %>% 
+  group_by(id) %>%
+  filter(date == min(date))
+
+answer<-sapply(data %>% filter(state=="SP"),  function(x){ min(data$date[x>0])})
+#convert from serial number back to a date
+answer<-as.Date(answer, "1970-01-01")
+answer
+
+#############################
+############################
+
 
 
 #Grafico com o numero acumulado de mortes

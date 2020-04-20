@@ -1,83 +1,225 @@
 ---
-title: "Covid19 in Brazil"
-author: "Prof. Fernando de Souza Bastos"
+title: "Coronavirus in Brazil"
+#author: | 
+#  | Prof. Fernando de Souza Bastos
+#  | Universidade Federal de Viçosa
 output: 
   flexdashboard::flex_dashboard:
-    orientation: column
-    social: menu
+#    logo: fsbmat.png
+    theme: cosmo
+    orientation: rows
+    vertical_layout: fill
     source_code: embed
-    vertical_layout: scroll
+    navbar:
+      - { title: "Portuguese Version", href: "https://fsbmat.shinyapps.io/CoronaBR", align: right }
 runtime: shiny
 ---
 
-```{r global, include=FALSE}
-library("readr")
-library("dplyr")
-library("tidyverse")
-library("treemap")
-library("flexdashboard")
-library("DT")
-library("ggplot2")
-options(DT.options = list(scrollY="100vh"))
-library("dplyr")
-library("tidyr")
+
+```{r setup, include=FALSE}
+Sys.time()
+library(flexdashboard)
+library(tidyverse)
+library(ggrepel)
 library("hrbrthemes")
-library("ggrepel")
-library("shinythemes")
-library("rio")
-#library(miceadds)
-#setwd("~/GitHub/fsbmat-ufv.github.io/blog_posts/26-03-2020/Shiny/Corona")
-#data <- read_csv(url("https://rawcdn.githack.com/fsbmat-ufv/fsbmat-ufv.github.io/fcba93f491ed21eba0628471649eb9a5bda033f2/blog_posts/26-03-2020/Corona/covid19.csv"))
-#export(data, "covid19.rdata")
-#load(url("https://rawcdn.githack.com/fsbmat-ufv/fsbmat-ufv.github.io/a16ef0fe0a27374cdbb7f88106c080ca0cd2ded3/blog_posts/26-03-2020/Corona/covid19.RData"))
-data <- read.csv("covid19.csv")
-export(data, "covid19.rdata")
-load("covid19.rdata")
-data <- x
-rm(x)
+library("treemap")
+library(lubridate)
+#install.packages("remotes")
+#remotes::install_github("d3treeR/d3treeR")
+library(d3treeR)
+library(data.table)
+# Apenas a primeira vez
+# count_acessos <- 0
+# saveRDS(count_acessos, file = "./count_acessos.rds")
 
+# Definindo tempo zero com 18h/horário de São Paulo:
+#t0 <- as_datetime(as.Date("2020-03-31") + dhours(21), tz = "America/Sao_Paulo")
+#saveRDS(t0, file = "./time0.rds")
+t0 <- readRDS(file = "./time0.rds")
 
+# Pegando hora atual de acordo com horário de São Paulo:
+t1 <- as_datetime(Sys.time(), tz = "America/Sao_Paulo")
+
+if (duration(int_length(interval(t0, t1))) >= duration(43200)) {
+ # Baixando os dados de 12 em 12 horas de acordo com acessos a aplicação:
+  download.file(url = "https://brasil.io/dataset/covid19/caso?format=csv", destfile = "./covid19.csv")
+  t0 <- t1
+  saveRDS(t1, file = "./time0.rds")
+}
+
+#download.file(url = "https://brasil.io/dataset/covid19/caso?format=csv", destfile = "./covid19.csv")
+
+# json_file <- "https://brasil.io/api/dataset/covid19/caso/data?format=json"
+# #json_data <- jsonlite::fromJSON(file = json_file)
+# 
+# json_data <- fromJSON(paste(readLines(json_file, n = -2L, encoding = "UTF-8"), collapse=""))
+# str(json_data)
+# data <- data.frame(json_data$results)
+
+data <- fread("covid19.csv", encoding = "UTF-8")
 data$deaths[is.na(data$deaths)] <- 0
 data$date <- as.Date(data$date)
 data <- data[order(data$date) , ]
+data$deaths_100k_inhabitants <- ((data$deaths)/(data$estimated_population_2019))*100000
 
 data <- data %>%
   dplyr::filter(place_type == "state") %>%
   dplyr::group_by(state,date, confirmed,deaths) %>% 
-  select(date, state, confirmed, deaths, estimated_population_2019)
-names(data) <- c("date", "state", "confirmed", "deaths", "Pop")
+  select(date, state, confirmed, deaths, estimated_population_2019,confirmed_per_100k_inhabitants)
+names(data) <- c("date", "state", "confirmed", "deaths", "Pop", "confirmed_per_100k_inhabitants")
 
 aggSetor <-data%>%filter(date==(last(data$date)-1))%>%group_by(state) %>% 
   summarise(quantidade = sum(deaths), confirmedM = mean(confirmed))
-aggSetor$escala <- scale(aggSetor$confirmedM) 
+aggSetor$escala <- scale(aggSetor$confirmedM)
 
 ```
 
 
-Sidebar {.sidebar}
-=====================================
 
+
+Charts by State
+===
+
+Commands2 {.sidebar}
+---
 This Fleshdashboard was created to facilitate the visualization of data about Covid19 in the States of Brazil.
 
-```{r}
-selectInput("codeInput",label ="Escolha um Estado",
-                      choices = unique(data$state))
 
-dataset<-reactive({ 
-        subset(data, state == input$codeInput)
+**Author:** Prof. Fernando de Souza Bastos
+
+Universidade Federal de Viçosa
+
+**Last update:** Automatic update from 12h to 12h. (Thanks Rumenick Pereira!)
+
+```{r}
+inputPanel(selectInput("codeInput2",label ="Choose of State",
+                      choices = sort(unique(data$state), decreasing = FALSE), selectize = F),
+	renderText({paste0("You chose: ",input$codeInput2)}),
+	renderText({paste0("Population: ", unique(df()$Pop), " habitants")}))
+
+HTML('<div align="center">
+			<a href="https://fsbmat-ufv.github.io/" target="_blank"><img align="right" alt="fsbmat Logo" src="./img/fsbmat.png" /></a>
+			</div>')
+
+```
+
+
+
+
+
+
+Box {data-width=400 data-heigth=300 .tabset}
+-------------------------
+
+### Accumulated Cases
+```{r}
+df<-reactive({data %>% filter(state==input$codeInput2)})
+#df <- filter(dataset(), deaths>0)
+#teste1 <- as.Date(min(df$date))
+
+# teste1 <- reactive({
+#   df <- filter(dataset(), deaths>0)
+#   return(min(as.character(df$date)))
+# })
+
+#renderText({teste1()})
+
+
+confirmed_color <- rgb(20, 120, 190, maxColorValue = 255)
+death_color <- rgb(220, 40, 40, maxColorValue = 255, alpha = 230)
+plotly::renderPlotly({
+plotly::plot_ly(df(), type = "scatter", mode = 'lines') %>%
+  plotly::add_trace(x = ~date,
+                    y = ~deaths,
+                    type = "scatter",
+                    mode = "lines+markers",
+                    name = "deaths",
+                    line = list(color = death_color),
+                    marker = list(color = death_color)) %>%
+  plotly::add_trace(x = ~date,
+                    y = ~confirmed,
+                    type = "scatter",
+                    mode = "lines+markers",
+                    name = "confirmed",
+                    opacity = 1,
+                    line = list(color = confirmed_color),
+                    marker = list(color = confirmed_color)) %>%
+  plotly::layout(title = "",
+                 yaxis = list(title = "Accumulated frequency of cases"),
+                 xaxis = list(title = ""),
+                 legend = list(x = 0.1, y = 0.9),
+                 hovermode = "compare")
+})
+```
+
+
+### Deaths by State
+```{r}
+
+    xlab <- "Date"
+    legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
     
+plotly::renderPlotly({
+plotly::ggplotly(ggplot2::ggplot(df(), aes(x = date, y = deaths)) +
+      geom_bar(stat = "identity", alpha = .7, color = "red", fill = "orangered") +
+      scale_x_date(date_breaks = "1 day",
+                   date_labels = "%d/%m") +
+      scale_y_continuous(limits = c(0, max(df()$deaths+20, na.rm = TRUE) + 3),
+                         expand = c(0, 0)) +
+      geom_text(aes(label=deaths), position=position_dodge(width=1.5), vjust=0, size=4) +
+      labs(x = xlab,
+           y = "Numbers of Deaths",
+           title = paste("Number of deaths by COVID-19 in State", input$codeInput2),
+           caption = legenda) +
+      theme_minimal() +
+      theme(axis.text.x =  element_text(angle = 90), plot.title = element_text(color = "black", size = 16, face = "bold")))
     
   })
+```
+
+### Number of Confirmed
+
+```{r}
+
+    xlab <- "Date"
+    legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
+    
+plotly::renderPlotly({
+plotly::ggplotly(ggplot2::ggplot(df(), aes(x = date, y = confirmed)) +
+      geom_bar(stat = "identity", alpha = .7, colour="yellow", fill = "lightgoldenrodyellow") +
+      scale_x_date(date_breaks = "1 day",
+                   date_labels = "%d/%m") +
+      scale_y_continuous(limits = c(0, max(df()$confirmed+100, na.rm = TRUE) + 3),
+                         expand = c(0, 0)) +
+      geom_text(aes(label=confirmed), position=position_dodge(width=0.9), size=4) +
+      labs(x = xlab,
+           y = "Numbers of Confirmed",
+           title = paste("Number of Cases Confirmed with Covid19 in State", input$codeInput2),
+           caption = legenda) +
+      theme_minimal() +
+      theme(axis.text.x =  element_text(angle = 90), plot.title = element_text(color = "black", size = 12, face = "bold")))
+    
+  })
+```
+
+
+### Number of Daily Cases per State
+
+```{r}
+
+dataset<-reactive({data %>% filter(state==input$codeInput)})
+
   
-  HTML(
-      '<div id="stats_header">
-			Coronavirus in Brazil
-			<a href="https://maf105.github.io/" target="_blank"><img align="right" alt="fsbmat Logo" src="./img/fsbmat.png" /></a>
-			</div>'
-    )
+dataset3 <- reactive({ndeaths <- data %>% group_by(date) %>% summarise(deaths = sum(deaths))  
+return(ndeaths)
+  })
   
-  dataset2<-reactive({
-    df <- dataset()
+dataset4 <- reactive({nconfirmed <- data %>% group_by(date) %>% summarise(confirmed = sum(confirmed))
+    return(nconfirmed)
+  })
+
+dataset2<-reactive({
+    df <- df()
     teste1 <- dplyr::lag(df$deaths)
     teste1[is.na(teste1)] <- 0
     teste2 <- dplyr::lag(df$confirmed)
@@ -86,199 +228,505 @@ dataset<-reactive({
     df$teste2 <- teste2
     df$deaths_day <- df$deaths-df$teste1
     df$confirmed_day <- df$confirmed-df$teste2
-    df <- df %>% select(1:5,8:9)
+    df <- df %>% select(date,state,confirmed,deaths,Pop,confirmed_per_100k_inhabitants,confirmed_day,deaths_day)
     return(df)
   })
-  
-  dataset3 <- reactive({
-    ndeaths <- data %>% group_by(date) %>% summarise(deaths = sum(deaths))
-    return(ndeaths)
-  })
-  
-  dataset4 <- reactive({
-    nconfirmed <- data %>% group_by(date) %>% summarise(confirmed = sum(confirmed))
-    return(nconfirmed)
-  })
-
-```
-
-Page 1
-=====================================  
 
 
-### Dataframe of Covid19 in Brasil 
+
+xlab <- "Date"
+legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
     
-```{r}
-
-  
-  # # output$caption and output$mpgPlot functions
-  # formulaText <- reactive({
-  #   paste("Results Regarding the State of", input$codeInput)
-  # })
-  # 
-  # # Return the formula text for printing as a caption ----
-  # renderText({
-  #   formulaText()
-  # })
-  
-  DT::renderDataTable({
-
-    DT::datatable(dataset(), options = list(list(scrollY="300px"
-                                                 , scrollX="300px"
-                                                 , pageLength = 100
-                                                 ))
-                               ,  filter = 'top')
-
-  })
-
-  
-  
-```
-
-Page 2
-===================================== 
-
-### Numbers of Deaths in State 
-    
-```{r}
-renderPlot({
-    xlab <- "Data"
-    legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
-    
-    ggplot2::ggplot(dataset(), aes(x = date, y = deaths)) +
-      geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
-      scale_x_date(date_breaks = "1 day",
-                   date_labels = "%d/%m") +
-      scale_y_continuous(limits = c(0, max(dataset()$deaths+20, na.rm = TRUE) + 3),
-                         expand = c(0, 0)) +
-      geom_text(aes(label=deaths), position=position_dodge(width=0.9), vjust=-0.25) +
-      labs(x = xlab,
-           y = "Numbers of Deaths",
-           title = "Number of deaths by COVID-19",
-           caption = legenda) +
-      theme_minimal() +
-      theme(axis.text.x =  element_text(angle = 90))
-    
-  })
-```
-
-Page 3
-===================================== 
-
-### Number of Confirmed Cases
-
-```{r}
-renderPlot({
-    xlab <- "Data"
-    legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
-    
-    ggplot2::ggplot(dataset(), aes(x = date, y = confirmed)) +
-      geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
-      scale_x_date(date_breaks = "1 day",
-                   date_labels = "%d/%m") +
-      scale_y_continuous(limits = c(0, max(dataset()$confirmed+100, na.rm = TRUE) + 3),
-                         expand = c(0, 0)) +
-      geom_text(aes(label=confirmed), position=position_dodge(width=0.9), vjust=-0.25) +
-      labs(x = xlab,
-           y = "Numbers of Confirmed",
-           title = "Number of Cases Confirmed with Covid19",
-           caption = legenda) +
-      theme_minimal() +
-      theme(axis.text.x =  element_text(angle = 90))
-    
-  })
-```
-
-
-
-Page 4
-===================================== 
-
-### Number of Confirmed Daily Cases
-
-```{r}
-renderPlot({
-    xlab <- "Data"
-    legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
-    
-    #Graph with the number of confirmed daily cases
-    ggplot(dataset2(), aes(x=date, y=confirmed_day))+
+plotly::renderPlotly({
+plotly::ggplotly(ggplot2::ggplot(dataset2(), aes(x=date, y=confirmed_day))+
       geom_line( color="steelblue")+ 
       geom_point() + 
       geom_text_repel(aes(label=confirmed_day), size = 3)+
-      xlab("Data") + ylab("Number of confirmed daily cases")+
+      labs(x = xlab,
+           y = paste("Number of confirmed daily cases in State", input$codeInput2),
+           title = paste("Number of confirmed daily cases in State", input$codeInput2),
+           caption = legenda) +
       theme_ipsum() +
       theme(axis.text.x=element_text(angle=60, hjust=1))+
-      scale_x_date(date_breaks = "2 day", date_labels = "%d %b")
-    
-    
-    
+      scale_x_date(date_breaks = "2 day", date_labels = "%d %b"))
     
   })
 ```
 
 
-Brasil
+
+
+## Row
+
+### Day `r (as.Date(dplyr::last(data$date)))` {.value-box}
+
+```{r}
+
+Deaths <- reactive({
+   teste <- df() %>%
+   filter(date==(last(df()$date))) %>%
+   select(deaths)
+   return(teste$deaths)
+})
+
+recovered <- reactive({
+   teste <- df() %>%
+   filter(date==(last(df()$date)-14)) %>%
+   select(confirmed,deaths)
+   return(teste$confirmed-Deaths())
+})
+
+Confirmed <- reactive({
+   teste <- df() %>%
+   filter(date==(last(df()$date))) %>%
+   select(confirmed)
+   return(teste$confirmed)
+})
+
+renderValueBox({valueBox(ifelse(length(Confirmed())==0, "There are no confirmed", paste0(Confirmed()," Confirmed")),color = "gold")})
+```
+
+
+### Day `r (as.Date(dplyr::last(data$date)))` {.value-box}
+
+```{r}
+renderValueBox({valueBox(ifelse(length(Deaths())==0, "There are no dead", paste0(Deaths()," Deaths")),color = "orangered")})
+```
+
+### "Gross" estimated number by the difference between those confirmed on day `r (as.Date(dplyr::last(data$date)-14))` and the cumulative number of dead on day `r (as.Date(dplyr::last(data$date)))` {.value-box}
+
+```{r}
+renderValueBox({valueBox(ifelse(length(recovered())==0||recovered()<0, "No recovered", paste0(recovered()," Recovered")),
+icon = icon("arrow-up"),color = "lightgreen")})
+```
+
+Dataframe 
+===
+Commands1 {.sidebar}
+---
+
+This Fleshdashboard was created to facilitate the visualization of data about Covid19 in the States of Brazil.
+
+**Author:** Prof. Fernando de Souza Bastos
+
+Universidade Federal de Viçosa
+
+**Last update:** Automatic update from 12h to 12h. (Thanks Rumenick Pereira!)
+
+```{r}
+inputPanel(selectInput("codeInput",label ="Choose of State",
+                      choices = sort(unique(data$state), decreasing = FALSE), selectize = F),
+	renderText({paste0("You chose: ",input$codeInput)}),
+	renderText({paste0("Population: ", unique(dataset()$Pop), " habitants")}))
+
+HTML('<div align="center">
+			<a href="https://fsbmat-ufv.github.io/" target="_blank"><img align="right" alt="fsbmat Logo" src="./img/fsbmat.png" /></a>
+			</div>')
+
+```
+
+
+Box01
+------------------------
+
+### Raw data
+```{r}
+
+
+DT::renderDataTable({
+
+    DT::datatable(dataset()[c(1,3,4,6)], options = list(scrollY="300px"
+                                                 , scrollX="300px"
+                                                 , paging = FALSE,
+                                                 searching = FALSE
+                                                 ), 
+                  colnames=c("date", "confirmed", "deaths", "confirmed_per_100k_inhabitants (%)"))
+
+  })
+```
+
+
+
+Brazil (General Table)
 ===================================== 
 
-Column
+Box2 { .tabset}
 -------------------------------------
 
+
+
+```{r}
 ### Number of Deaths by Covid19 in Brazil
-
-```{r}
-renderPlot({
-    xlab <- "Data"
-    legenda <- "fonte: https://brasil.io/dataset/covid19"
-    
-    ggplot2::ggplot(dataset3(), aes(x = date, y = deaths)) +
-      geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
-      scale_x_date(date_breaks = "1 day",
-                   date_labels = "%d/%m") +
-      scale_y_continuous(limits = c(0, max(dataset3()$deaths+20, na.rm = TRUE) + 3),
-                         expand = c(0, 0)) +
-      geom_text(aes(label=deaths), position=position_dodge(width=0.9), vjust=-0.25) +
-      labs(x = xlab,
-           y = "Number of Deaths",
-           title = " ",
-           caption = legenda) +
-      theme_minimal() +
-      theme(axis.text.x =  element_text(angle = 90))
-  })
+#     xlab <- "Date"
+#     legenda <- "fonte: https://brasil.io/dataset/covid19"
+#     
+# plotly::renderPlotly({
+# plotly::ggplotly(ggplot2::ggplot(dataset3(), aes(x = date, y = deaths)) +
+#       geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
+#       scale_x_date(date_breaks = "1 day",
+#                    date_labels = "%d/%m") +
+#       scale_y_continuous(limits = c(0, max(dataset3()$deaths+20, na.rm = TRUE) + 3),
+#                          expand = c(0, 0)) +
+#       geom_text(aes(label=deaths), position=position_dodge(width=0.9), vjust=-0.25) +
+#       labs(x = xlab,
+#            y = "Number of Deaths",
+#            title = "Number of Deaths in Brazil",
+#            caption = legenda) +
+#       theme_minimal() +
+#       theme(axis.text.x =  element_text(angle = 90), plot.title = element_text(color = "black", size = 16, face = "bold")))
+#   })
 
 
 ```
 
-### Number of Confirmed with Covid19 in Brazil
+### Number of Confirmed and Deaths with Covid19 in Brazil
 
 ```{r}
-renderPlot({
-    xlab <- "Data"
+
+    xlab <- "Date"
     legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
-    ggplot2::ggplot(dataset4(), aes(x = date, y = confirmed)) +
-      geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
-      scale_x_date(date_breaks = "1 day",
-                   date_labels = "%d/%m") +
-      scale_y_continuous(limits = c(0, max(dataset4()$confirmed+300, na.rm = TRUE) + 3),
-                         expand = c(0, 0)) +
-      geom_text(aes(label=confirmed), position=position_dodge(width=0.5), vjust=-0.25) +
-      labs(x = xlab,
-           y = "Number of Confirmed",
-           title = " ",
-           caption = legenda) +
-      theme_minimal() +
-      theme(axis.text.x =  element_text(angle = 90))
-  })
+# plotly::renderPlotly({
+# plotly::ggplotly(ggplot2::ggplot(dataset4(), aes(x = date, y = confirmed)) +
+#       geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
+#       scale_x_date(date_breaks = "1 day",
+#                    date_labels = "%d/%m") +
+#       scale_y_continuous(limits = c(0, max(dataset4()$confirmed+300, na.rm = TRUE) + 3),
+#                          expand = c(0, 0)) +
+#       geom_text(aes(label=confirmed), position=position_dodge(width=0.5), vjust=-0.25) +
+#       labs(x = xlab,
+#            y = "Number of Confirmed",
+#            title = " ",
+#            caption = legenda) +
+#       theme_minimal() +
+#       theme(axis.text.x =  element_text(angle = 90)))
+#   })
+
+tb <- reactive({merge(dataset3(),dataset4(), by="date")})
+
+plotly::renderPlotly({
+plotly::ggplotly(plotly::plot_ly(tb(), 
+                x = ~ date, 
+                y = ~ confirmed, 
+                type = "bar", 
+                name = "Confirmed",
+                marker = list(color = confirmed_color)) %>%
+  plotly::add_trace(y = ~ deaths, 
+                    name = "Deaths",
+                    marker = list(color = death_color)) %>%
+  plotly::layout(barmode = 'overlay',
+                 yaxis = list(title = "Numbers of Cases"),
+                 xaxis = list(title = ""),
+                 legend = list(x = 0.1, y = 0.9),
+                 hovermode = "compare"))})
 
 ```
 
-### Treemap of deaths and number of confirmed by State (Last day)
+### Treemap of deaths and number of confirmed by State (Day `r (dplyr::last(data$date)-1)`)
+
+```{r}
+# renderPlot({
+#     treemap(aggSetor, index = "state", vSize = "quantidade", vColor = "escala",
+#             type = "value", palette = "-RdGy", lowerbound.cex.labels = 0.3,
+#             title  =  "Color related to deaths - Size related to confirmed")
+#   })
+
+
+# renderPlot({d3treeR::d3tree2( treemap::treemap(aggSetor, index = "state", vSize = "quantidade", vColor = "escala",
+#             type = "value", palette = "-RdGy", lowerbound.cex.labels = 0.3,
+#             title  =  "Color related to deaths - Size related to confirmed", fontsize.title = 14) ,  rootname = "General", width = "200%", height ="300px")
+# })
+
+names(aggSetor) <- c("state", "deaths", "confirmed", "escala")
+library(treemapify)
+renderPlot({ggplot(aggSetor, aes(area = confirmed, fill = deaths, label = state)) +
+  geom_treemap()+scale_fill_gradient2(low = "#F8766D",
+                                      high = "red",
+                                      space = "Lab")+
+  #scale_fill_gradient(low = "yellow", high = "red", na.value = NA)+
+geom_treemap_text(place = "centre",grow = T, reflow = T, alpha = .8, colour = "black") +
+  theme(legend.position = "bottom") +
+  labs(
+    title = "Color related to deaths - Area related to confirmed",
+    caption = "The area of each box is proportional to the number of confirmed",
+    fill = "Deaths" )
+
+})
+
+
+```
+
+## Row
+
+### Day `r (as.Date(dplyr::last(data$date)))` {.value-box}
+
+```{r}
+
+Ndeaths <- reactive({ndeaths <- data %>% group_by(date) %>% summarise(deaths = sum(deaths)) %>% filter(date==(last(data$date)))
+return(ndeaths)
+  })
+  
+Nconfirmed <- reactive({nconfirmed <- data %>% group_by(date) %>% summarise(confirmed = sum(confirmed))%>% filter(date==(last(data$date)-14))
+    return(nconfirmed)
+  })
+
+
+Recovered <- reactive({
+     return(Nconfirmed()$confirmed-Ndeaths()$deaths)
+})
+
+Ndeaths2 <- reactive({ndeaths <- data %>% group_by(date) %>% summarise(deaths = sum(deaths)) %>% filter(date==(last(data$date)))
+return(ndeaths)
+  })
+
+Nconfirmed2 <- reactive({nconfirmed <- data %>% group_by(date) %>% summarise(confirmed = sum(confirmed))%>% filter(date==(last(data$date)))
+    return(nconfirmed)
+  })
+
+renderValueBox({valueBox(ifelse(length(Nconfirmed2()$confirmed)==0, "There are no confirmed", paste0(Nconfirmed2()$confirmed," Confirmed")),color = "gold")})
+```
+
+
+### Day `r (as.Date(dplyr::last(data$date)))` {.value-box}
+
+```{r}
+renderValueBox({valueBox(ifelse(length(Ndeaths2()$deaths)==0, "There are no dead", paste0(Ndeaths2()$deaths," Deaths")),color = "orangered")})
+```
+
+### "Gross" estimated number by the difference between those confirmed on day `r (as.Date(dplyr::last(data$date)-14))` and the cumulative number of dead on day `r (as.Date(dplyr::last(data$date)))` {.value-box}
+
+```{r}
+renderValueBox({valueBox(ifelse(length(Recovered())==0, "No recovered", paste0(Recovered()," Recovered")),icon = icon("arrow-up"),color = "lightgreen")})
+```
+
+Simulation
+===
+
+Commands3 {.sidebar}
+---
+This Fleshdashboard was created to facilitate the visualization of data about Covid19 in the States of Brazil.
+
+
+**Author:** Prof. Fernando de Souza Bastos
+
+Universidade Federal de Viçosa
+
+
+```{r}
+sliderInput("range1", "How many people will an infected person contaminate?",
+                  min = 1, max = 100,
+                  value = 5, step = 1,
+                  animate = animationOptions(interval = 100, loop = TRUE))
+	
+# br() element to introduce extra vertical spacing ----
+br()
+	
+numericInput(inputId = "Population",
+                   label = "Population of cities:",
+                   value = 10000 )
+
+HTML('<div align="center">
+			<a href="https://fsbmat-ufv.github.io/" target="_blank"><img align="right" alt="fsbmat Logo" src="./img/fsbmat.png" /></a>
+			</div>')
+```
+
+
+QuadroAgrupado3 {data-width=400 data-heigth=300 .tabset}
+-------------------------
+
+### Preview 1
 
 ```{r}
 renderPlot({
-    treemap(aggSetor, index = "state", vSize = "quantidade", vColor = "escala",
-            type = "value", palette = "-RdGy", lowerbound.cex.labels = 0.3,
-            title  =  "Color related to deaths - Size related to confirmed")
-  })
+require(deSolve)
+t=150
+N <- input$Population
+deaths <- 0.003*N
+tinfec <- 14
+gamma <- 1/tinfec
+R0 <- input$range1 #numero medio de pessoas infectadas a partir de um infectado
+beta <- (gamma*R0)/N
+mu=deaths/N
+
+init <- c(S=N-1,I=1,R=0, D=0)
+parameters <- c(bet=beta,gamm=gamma, mmu=mu)
+time <- seq(0,t,by=1)
+eqn <- function(time,state,parameters){
+    with(as.list(c(state,parameters)),{
+      dS <- -(bet*S*I)
+      dI <- (bet*S*I)-gamm*I-mmu*I
+      dR <- gamm*I
+      dD <- mmu*I
+  return(list(c(dS, dI, dR, dD)))})
+}
+out<-ode(y=init,times=time,eqn,parms=parameters)
+out.df<-as.data.frame(out)
+
+require(ggplot2)
+mytheme <- theme_bw() +
+  theme(text=element_text(colour="black")) +
+  theme(panel.grid = element_line(colour = "white")) +
+  theme(panel.background = element_rect(fill = "#B2B2B2"))
+  theme_set(mytheme)
+  title <- bquote("SIR Model with mortality")
+  subtit <- bquote(list(beta==.(parameters[1]),~gamma==.(parameters[2]),~mu==.(parameters[3])))
+
+ggplot(out.df,aes(x=time))+
+    ggtitle(bquote(atop(bold(.(subtit)))))+
+    geom_line(aes(y=S,colour="Susceptible"))+
+    geom_line(aes(y=I,colour="Infected"))+
+    geom_line(aes(y=R,colour="Recovered"))+
+    geom_line(aes(y=D,colour="Deaths"))+
+    ylab(label="Population")+
+    xlab(label="Time (days)")+
+    theme(legend.justification=c(1,0), legend.position=c(1,0.5))+
+    theme(legend.title=element_text(size=12,face="bold"),
+          legend.background = element_rect(fill='#FFFFFF',
+                                           size=0.5,linetype="solid"),
+          legend.text=element_text(size=10),
+          legend.key=element_rect(colour="#FFFFFF",
+                                  fill='#C2C2C2',
+                                  size=0.25,
+                                  linetype="solid"))+
+    scale_colour_manual("Compartments",
+                        breaks=c("Susceptible","Infected","Recovered", "Deaths"),
+                        values=c("blue","red","darkgreen", "black"))
+})
+
 ```
 
+
+
+### Preview 2
+
+```{r}
+plotly::renderPlotly({
+require(deSolve)
+t=150
+N <- input$Population
+deaths <- 0.003*N
+tinfec <- 14
+gamma <- 1/tinfec
+R0 <- input$range1 #numero medio de pessoas infectadas a partir de um infectado
+beta <- (gamma*R0)/N
+mu=deaths/N
+
+init <- c(S=N-1,I=1,R=0, D=0)
+parameters <- c(bet=beta,gamm=gamma, mmu=mu)
+time <- seq(0,t,by=1)
+eqn <- function(time,state,parameters){
+    with(as.list(c(state,parameters)),{
+      dS <- -(bet*S*I)
+      dI <- (bet*S*I)-gamm*I-mmu*I
+      dR <- gamm*I
+      dD <- mmu*I
+  return(list(c(dS, dI, dR, dD)))})
+}
+out<-ode(y=init,times=time,eqn,parms=parameters)
+out.df<-as.data.frame(out)
+out.df$Day <- out.df$time
+out.df$Infected <- ceiling(out.df$I)
+out.df$Recovered <- ceiling(out.df$R)
+out.df$Susceptible <- ceiling(out.df$S)
+out.df$Deaths <- ceiling(out.df$D)
+library(dplyr)
+out.df <- out.df %>% select(Day, Susceptible, Infected, Recovered, Deaths)
+  
+confirmed_color <- rgb(234, 240, 67, maxColorValue = 255)
+infected_color <- rgb(220, 40, 40, maxColorValue = 255, alpha = 230)
+recovered_color <- rgb(25, 209, 86, maxColorValue = 255, alpha = 230)
+death_color <- rgb(71, 71, 69, maxColorValue = 255, alpha = 230)
+
+plotly::ggplotly(
+  plotly::plot_ly(out.df,
+                  x = ~ Day, 
+                  y = ~ Susceptible, 
+                  type = "bar", 
+                  name = "Susceptible",
+                  marker = list(color = confirmed_color),
+                            opacity = 1) %>%
+          plotly::add_trace(y = ~ Infected,
+                            name = "Infected",
+                            marker = list(color = infected_color),
+                            opacity = 0.7) %>%
+          plotly::add_trace(y = ~ Recovered,
+                            name = "Recovered",
+                            marker = list(color = recovered_color),
+                            opacity = 0.5) %>%
+    plotly::add_trace(y = ~ Deaths,
+                            name = "Deaths",
+                            marker = list(color = death_color),
+                            opacity = 0.8) %>%
+          plotly::layout(barmode = 'overlay',
+                         yaxis = list(title = "Population"),
+                         xaxis = list(title = ""),
+                         legend = list(x = 0.2, y = 1),
+                         hovermode = "compare"))
+})
+```
+
+
+
+### Dataframe of Simulation
+
+```{r}
+d <- reactive({
+require(deSolve)
+t=150
+N <- input$Population
+deaths <- 0.003*N
+tinfec <- 14
+gamma <- 1/tinfec
+R0 <- input$range1 #numero medio de pessoas infectadas a partir de um infectado
+beta <- (gamma*R0)/N
+mu=deaths/N
+
+init <- c(S=N-1,I=1,R=0, D=0)
+parameters <- c(bet=beta,gamm=gamma, mmu=mu)
+time <- seq(0,t,by=1)
+eqn <- function(time,state,parameters){
+    with(as.list(c(state,parameters)),{
+      dS <- -(bet*S*I)
+      dI <- (bet*S*I)-gamm*I-mmu*I
+      dR <- gamm*I
+      dD <- mmu*I
+  return(list(c(dS, dI, dR, dD)))})
+}
+out<-ode(y=init,times=time,eqn,parms=parameters)
+out.df<-as.data.frame(out)
+
+out.df$Day <- out.df$time
+out.df$Infected <- ceiling(out.df$I)
+out.df$Recovered <- ceiling(out.df$R)
+out.df$Susceptible <- ceiling(out.df$S)
+out.df$Deaths <- ceiling(out.df$D)
+out.df <- out.df %>% select(Day, Susceptible, Infected, Recovered, Deaths)
+out.df
+  })
+
+renderTable({
+    d()
+  },digits=0)
+```
+
+### About Simulation
+
+<p style="text-align: justify;">
+An epidemic model is a simplified way of describing the transmission of communicable diseases through individuals. It can be said that an infectious disease becomes endemic when, on average, each infected person is infecting one or more people. We consider here the Susceptible - Infected - Removed (SIR) model from Kermack and McKendrick to show the distribution of the COVID19 virus in the population. You can choose the number of people an infected person infects and the size of the population. The media has reported that in isolation, an infected person contaminates a maximum of five others. Study the flattening of the curve according to population size and contamination rate.
+</p>
+
+
+About
+===
+
+Este aplicativo Shiny foi produzido a partir dos dados do site <a href="https://brasil.io/dataset/covid19/caso" target="_blank">Brasil.io</a>
+
+
+<p>Prof. Fernando de Souza Bastos<br/>
+		Doctor of Statistics | useR<br/>
+		Universidade Federal de Viçosa<br/>
+		Campus UFV - Florestal<br/>
+		<a href="https://github.com/fsbmat" target="_blank">Github.io</a> | 
+		<a href="http://fsbmat-ufv.github.io" target="_blank">Personal Page</a> | 
+		<a href="https://twitter.com/fsbmat" target="_blank">Twitter</a> | 
+		<a href="http://www.linkedin.com/in/fsbmat" target="_blank">Linkedin</a> <br/>
+		</p>

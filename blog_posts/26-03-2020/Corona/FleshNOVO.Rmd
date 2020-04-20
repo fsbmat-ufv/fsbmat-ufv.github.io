@@ -1,0 +1,425 @@
+---
+title: "Coronavirus in Brazil"
+#author: | 
+#  | Prof. Fernando de Souza Bastos
+#  | Universidade Federal de Viçosa
+output: 
+  flexdashboard::flex_dashboard:
+#    logo: fsbmat.png
+    theme: cosmo
+    orientation: rows
+    vertical_layout: fill
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(ggrepel)
+library("hrbrthemes")
+library("treemap")
+#library(plotly)
+#library(rjson)
+#library(purrr)
+#library(jsonlite)
+
+download.file(url = "https://brasil.io/dataset/covid19/caso?format=csv", destfile = "./covid19.csv")
+
+# json_file <- "https://brasil.io/api/dataset/covid19/caso/data?format=json"
+# #json_data <- jsonlite::fromJSON(file = json_file)
+# 
+# json_data <- fromJSON(paste(readLines(json_file, n = -2L, encoding = "UTF-8"), collapse=""))
+# str(json_data)
+# data <- data.frame(json_data$results)
+
+data <- read.csv("covid19.csv", encoding = "UTF-8")
+data$deaths[is.na(data$deaths)] <- 0
+data$date <- as.Date(data$date)
+data <- data[order(data$date) , ]
+data$deaths_100k_inhabitants <- ((data$deaths)/(data$estimated_population_2019))*100000
+
+data <- data %>%
+  dplyr::filter(place_type == "state") %>%
+  dplyr::group_by(state,date, confirmed,deaths) %>% 
+  select(date, state, confirmed, deaths, estimated_population_2019,confirmed_per_100k_inhabitants)
+names(data) <- c("date", "state", "confirmed", "deaths", "Pop", "per_100k_inhabitants")
+
+aggSetor <-data%>%filter(date==(last(data$date)-1))%>%group_by(state) %>% 
+  summarise(quantidade = sum(deaths), confirmedM = mean(confirmed))
+aggSetor$escala <- scale(aggSetor$confirmedM)
+
+```
+
+
+Dataframe 
+===
+Comandos1 {.sidebar}
+---
+
+This Fleshdashboard was created to facilitate the visualization of data about Covid19 in the States of Brazil.
+
+Author: Prof. Fernando de Souza Bastos
+
+Universidade Federal de Viçosa
+
+Last update: 2020-03-30
+
+```{r}
+inputPanel(selectInput("codeInput",label ="Choose of State",
+                      choices = sort(unique(data$state), decreasing = FALSE)),
+	renderText({paste0("You chose: ",input$codeInput)}),
+	renderText({paste0("Population: ", unique(dataset()$Pop), " habitants")}))
+
+HTML('<div align="center">
+			<a href="https://fsbmat-ufv.github.io/" target="_blank"><img align="right" alt="fsbmat Logo" src="./img/fsbmat.png" /></a>
+			</div>')
+
+```
+
+
+Quadro01
+------------------------
+
+### Raw data
+```{r}
+
+
+dataset<-reactive({data %>% filter(state==input$codeInput)})
+
+  
+dataset3 <- reactive({ndeaths <- data %>% group_by(date) %>% summarise(deaths = sum(deaths))  
+return(ndeaths)
+  })
+  
+dataset4 <- reactive({nconfirmed <- data %>% group_by(date) %>% summarise(confirmed = sum(confirmed))
+    return(nconfirmed)
+  })
+
+DT::renderDataTable({
+
+    DT::datatable(dataset()[c(1,3,4,6)], options = list(scrollY="300px"
+                                                 , scrollX="300px"
+                                                 , paging = FALSE,
+                                                 searching = FALSE
+                                                 ))
+
+  })
+```
+
+
+Charts by State
+===
+
+Comandos2 {.sidebar}
+---
+This Fleshdashboard was created to facilitate the visualization of data about Covid19 in the States of Brazil.
+
+Author: Prof. Fernando de Souza Bastos
+
+Universidade Federal de Viçosa
+
+```{r}
+inputPanel(selectInput("codeInput2",label ="Choose of State",
+                      choices = sort(unique(data$state), decreasing = FALSE)),
+	renderText({paste0("You chose: ",input$codeInput2)}),
+	renderText({paste0("Population: ", unique(df()$Pop), " habitants")}))
+
+HTML('<div align="center">
+			<a href="https://fsbmat-ufv.github.io/" target="_blank"><img align="right" alt="fsbmat Logo" src="./img/fsbmat.png" /></a>
+			</div>')
+
+```
+
+
+
+
+
+
+QuadroAgrupado {data-width=400 data-heigth=300 .tabset}
+-------------------------
+
+### Accumulated Cases
+```{r}
+df<-reactive({data %>% filter(state==input$codeInput2)})
+#df <- filter(dataset(), deaths>0)
+#teste1 <- as.Date(min(df$date))
+
+# teste1 <- reactive({
+#   df <- filter(dataset(), deaths>0)
+#   return(min(as.character(df$date)))
+# })
+
+#renderText({teste1()})
+
+
+confirmed_color <- rgb(20, 120, 190, maxColorValue = 255)
+death_color <- rgb(220, 40, 40, maxColorValue = 255, alpha = 230)
+plotly::renderPlotly({
+plotly::plot_ly(df(), type = "scatter", mode = 'lines') %>%
+  plotly::add_trace(x = ~date,
+                    y = ~deaths,
+                    type = "scatter",
+                    mode = "lines+markers",
+                    name = "deaths",
+                    line = list(color = death_color),
+                    marker = list(color = death_color)) %>%
+  plotly::add_trace(x = ~date,
+                    y = ~confirmed,
+                    type = "scatter",
+                    mode = "lines+markers",
+                    name = "confirmed",
+                    opacity = 1,
+                    line = list(color = confirmed_color),
+                    marker = list(color = confirmed_color)) %>%
+  plotly::layout(title = "",
+                 yaxis = list(title = "Accumulated frequency of cases"),
+                 xaxis = list(title = ""),
+                 legend = list(x = 0.1, y = 0.9),
+                 hovermode = "compare")
+})
+```
+
+
+### Deaths by State
+```{r}
+
+    xlab <- "Date"
+    legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
+    
+plotly::renderPlotly({
+plotly::ggplotly(ggplot2::ggplot(df(), aes(x = date, y = deaths)) +
+      geom_bar(stat = "identity", alpha = .7, color = "red", fill = "orangered") +
+      scale_x_date(date_breaks = "1 day",
+                   date_labels = "%d/%m") +
+      scale_y_continuous(limits = c(0, max(df()$deaths+20, na.rm = TRUE) + 3),
+                         expand = c(0, 0)) +
+      geom_text(aes(label=deaths), position=position_dodge(width=1.5), vjust=0, size=4) +
+      labs(x = xlab,
+           y = "Numbers of Deaths",
+           title = paste("Number of deaths by COVID-19 in State", input$codeInput2),
+           caption = legenda) +
+      theme_minimal() +
+      theme(axis.text.x =  element_text(angle = 90), plot.title = element_text(color = "black", size = 16, face = "bold")))
+    
+  })
+```
+
+### Number of Confirmed
+
+```{r}
+
+    xlab <- "Date"
+    legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
+    
+plotly::renderPlotly({
+plotly::ggplotly(ggplot2::ggplot(df(), aes(x = date, y = confirmed)) +
+      geom_bar(stat = "identity", alpha = .7, colour="yellow", fill = "lightgoldenrodyellow") +
+      scale_x_date(date_breaks = "1 day",
+                   date_labels = "%d/%m") +
+      scale_y_continuous(limits = c(0, max(df()$confirmed+100, na.rm = TRUE) + 3),
+                         expand = c(0, 0)) +
+      geom_text(aes(label=confirmed), position=position_dodge(width=0.9), size=4) +
+      labs(x = xlab,
+           y = "Numbers of Confirmed",
+           title = paste("Number of Cases Confirmed with Covid19 in State", input$codeInput2),
+           caption = legenda) +
+      theme_minimal() +
+      theme(axis.text.x =  element_text(angle = 90), plot.title = element_text(color = "black", size = 12, face = "bold")))
+    
+  })
+```
+
+
+### Number of Daily Cases per State
+
+```{r}
+
+dataset2<-reactive({
+    df <- df()
+    teste1 <- dplyr::lag(df$deaths)
+    teste1[is.na(teste1)] <- 0
+    teste2 <- dplyr::lag(df$confirmed)
+    teste2[is.na(teste2)] <- 0
+    df$teste1 <- teste1
+    df$teste2 <- teste2
+    df$deaths_day <- df$deaths-df$teste1
+    df$confirmed_day <- df$confirmed-df$teste2
+    df <- df %>% select(date,state,confirmed,deaths,Pop,per_100k_inhabitants,confirmed_day,deaths_day)
+    return(df)
+  })
+
+
+
+xlab <- "Date"
+legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
+    
+plotly::renderPlotly({
+plotly::ggplotly(ggplot2::ggplot(dataset2(), aes(x=date, y=confirmed_day))+
+      geom_line( color="steelblue")+ 
+      geom_point() + 
+      geom_text_repel(aes(label=confirmed_day), size = 3)+
+      labs(x = xlab,
+           y = paste("Number of confirmed daily cases in State", input$codeInput2),
+           title = paste("Number of confirmed daily cases in State", input$codeInput2),
+           caption = legenda) +
+      theme_ipsum() +
+      theme(axis.text.x=element_text(angle=60, hjust=1))+
+      scale_x_date(date_breaks = "2 day", date_labels = "%d %b"))
+    
+  })
+```
+
+
+
+
+## Row
+
+### Day `r (as.Date(dplyr::last(data$date)-1))` {.value-box}
+
+```{r}
+
+recovered <- reactive({
+   teste <- df() %>%
+   filter(date==(last(df()$date)-20)) %>%
+   select(confirmed,deaths)
+   return(teste$confirmed-teste$deaths)
+})
+
+Deaths <- reactive({
+   teste <- df() %>%
+   filter(date==(last(df()$date))) %>%
+   select(deaths)
+   return(teste$deaths)
+})
+
+Confirmed <- reactive({
+   teste <- df() %>%
+   filter(date==(last(df()$date))) %>%
+   select(confirmed)
+   return(teste$confirmed)
+})
+
+renderValueBox({valueBox(ifelse(length(Confirmed())==0, "There are no confirmed", paste0(Confirmed()," Confirmed")),color = "gold")})
+```
+
+
+### Day `r (as.Date(dplyr::last(data$date)-1))` {.value-box}
+
+```{r}
+renderValueBox({valueBox(ifelse(length(Deaths())==0, "There are no dead", paste0(Deaths()," Deaths")),color = "orangered")})
+```
+
+### Estimated number by the difference of those confirmed and dead 20 days ago {.value-box}
+
+```{r}
+renderValueBox({valueBox(ifelse(length(recovered())==0, "No recovered", paste0(recovered()," Recovered")),icon = icon("arrow-up"),color = "lightgreen")})
+```
+
+
+
+Brazil (General Table)
+===================================== 
+
+QuadroAgrupado2 { .tabset}
+-------------------------------------
+
+### Number of Deaths by Covid19 in Brazil
+
+```{r}
+renderPlot({
+    xlab <- "Date"
+    legenda <- "fonte: https://brasil.io/dataset/covid19"
+    
+    ggplot2::ggplot(dataset3(), aes(x = date, y = deaths)) +
+      geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
+      scale_x_date(date_breaks = "1 day",
+                   date_labels = "%d/%m") +
+      scale_y_continuous(limits = c(0, max(dataset3()$deaths+20, na.rm = TRUE) + 3),
+                         expand = c(0, 0)) +
+      geom_text(aes(label=deaths), position=position_dodge(width=0.9), vjust=-0.25) +
+      labs(x = xlab,
+           y = "Number of Deaths",
+           title = "Number of Deaths in Brazil",
+           caption = legenda) +
+      theme_minimal() +
+      theme(axis.text.x =  element_text(angle = 90), plot.title = element_text(color = "black", size = 16, face = "bold"))
+  })
+
+
+```
+
+### Number of Confirmed with Covid19 in Brazil
+
+```{r}
+renderPlot({
+    xlab <- "Date"
+    legenda <- "fonte: https://brasil.io/dataset/covid19/caso"
+    ggplot2::ggplot(dataset4(), aes(x = date, y = confirmed)) +
+      geom_bar(stat = "identity", alpha = .7, color = "red", fill = "red") +
+      scale_x_date(date_breaks = "1 day",
+                   date_labels = "%d/%m") +
+      scale_y_continuous(limits = c(0, max(dataset4()$confirmed+300, na.rm = TRUE) + 3),
+                         expand = c(0, 0)) +
+      geom_text(aes(label=confirmed), position=position_dodge(width=0.5), vjust=-0.25) +
+      labs(x = xlab,
+           y = "Number of Confirmed",
+           title = " ",
+           caption = legenda) +
+      theme_minimal() +
+      theme(axis.text.x =  element_text(angle = 90))
+  })
+
+```
+
+### Treemap of deaths and number of confirmed by State (Day `r (dplyr::last(data$date)-1)`)
+
+```{r}
+renderPlot({
+    treemap(aggSetor, index = "state", vSize = "quantidade", vColor = "escala",
+            type = "value", palette = "-RdGy", lowerbound.cex.labels = 0.3,
+            title  =  "Color related to deaths - Size related to confirmed")
+  })
+```
+
+## Row
+
+### Day `r (as.Date(dplyr::last(data$date)-1))` {.value-box}
+
+```{r}
+
+Ndeaths <- reactive({ndeaths <- data %>% group_by(date) %>% summarise(deaths = sum(deaths)) %>% filter(date==(last(data$date)-20))
+return(ndeaths)
+  })
+  
+Nconfirmed <- reactive({nconfirmed <- data %>% group_by(date) %>% summarise(confirmed = sum(confirmed))%>% filter(date==(last(data$date)-20))
+    return(nconfirmed)
+  })
+
+
+Recovered <- reactive({
+     return(Nconfirmed()$confirmed-Ndeaths()$deaths)
+})
+
+Ndeaths2 <- reactive({ndeaths <- data %>% group_by(date) %>% summarise(deaths = sum(deaths)) %>% filter(date==(last(data$date)-1))
+return(ndeaths)
+  })
+
+Nconfirmed2 <- reactive({nconfirmed <- data %>% group_by(date) %>% summarise(confirmed = sum(confirmed))%>% filter(date==(last(data$date)-1))
+    return(nconfirmed)
+  })
+
+renderValueBox({valueBox(ifelse(length(Nconfirmed2()$confirmed)==0, "There are no confirmed", paste0(Nconfirmed2()$confirmed," Confirmed")),color = "gold")})
+```
+
+
+### Day `r (as.Date(dplyr::last(data$date)-1))` {.value-box}
+
+```{r}
+renderValueBox({valueBox(ifelse(length(Ndeaths2()$deaths)==0, "There are no dead", paste0(Ndeaths2()$deaths," Deaths")),color = "orangered")})
+```
+
+### Day `r (dplyr::last(data$date))` {.value-box}
+
+```{r}
+renderValueBox({valueBox(ifelse(length(Recovered())==0, "No recovered", paste0(Recovered()," Recovered")),icon = icon("arrow-up"),color = "lightgreen")})
+```

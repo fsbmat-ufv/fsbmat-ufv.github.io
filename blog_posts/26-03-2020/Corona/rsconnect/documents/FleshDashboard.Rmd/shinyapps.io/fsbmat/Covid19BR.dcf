@@ -1,0 +1,12 @@
+name: Covid19BR
+title: Covid19BR
+username:
+account: fsbmat
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2056710
+bundleId: 2969363
+url: https://fsbmat.shinyapps.io/Covid19BR/
+when: 1586027783.41089
+asMultiple: FALSE
+asStatic: FALSE

@@ -14,7 +14,20 @@ ______________________________________
 </textarea>
 ______________________________________
 
-Determinantes do Rendimento Dos Alunos no Enem a partir de um Modelo de Regressão Logística
+Modelo de Regressão Logística Aplicado a Dados do Sistema de Informação de Mortalidade
+
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [Brendo Lucas de Faria](http://lattes.cnpq.br/6816149396478507)
+
+<img src="img//icons//chap.png" width="30" height="30" /> - Trabalho de Conclusão de Curso 
+
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal 
+
+<img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2019 a dezembro de 2019
+
+<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
+______________________________________
+
+Ajuste do Modelo de Regressão Logística a Dados do Exame Nacional do Ensino Médio
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - [Eveline Júnia Brant Mariz](http://lattes.cnpq.br/5503852026159586)
 
@@ -22,7 +35,20 @@ Determinantes do Rendimento Dos Alunos no Enem a partir de um Modelo de Regress�
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Minas Gerais  
 
-<img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2019 a março de 2020
+<img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2019 a dezembro de 2020
+
+<img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
+______________________________________
+
+Ferramentas Práticas para o Ensino e Aprendizado de Estatística na Educação Básica
+
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [Dayana Cecília Reis Beirigo Dutra](http://lattes.cnpq.br/4560740763507174)
+
+<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Mestrado 
+
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Minas Gerais  
+
+<img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2019 a dezembro de 2020
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 
@@ -41,7 +67,7 @@ Resolução de Exercícios Estatísticos com o apoio do Software R
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
 
-<img src="img//icons//cal.jpg" width="30" height="30" /> - janeiro á dezembro de 2014
+<img src="img//icons//cal.jpg" width="30" height="30" /> - 2014
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
@@ -59,7 +85,7 @@ Inclusão Digital e Juventude Rural: Cidadania e Geração de Renda
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
 
-<img src="img//icons//cal.jpg" width="30" height="30" /> - Janeiro de 2013 a Dezembro de 2013
+<img src="img//icons//cal.jpg" width="30" height="30" /> - 2013
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
@@ -95,7 +121,7 @@ Viajando com a Matemática
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
 
-<img src="img//icons//cal.jpg" width="30" height="30" /> - janeiro á dezembro de 2011
+<img src="img//icons//cal.jpg" width="30" height="30" /> - 2011
 
 <img src="img//icons//github.png" width="30" height="30" /> - Github
 

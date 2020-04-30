@@ -22,7 +22,7 @@ date:   2019-01-01 12:12:12
 ***
 
 <center><font size="6" color="#76asaf">
-<a href="https://fsbmat.shinyapps.io/CoronaBR">
+<a href="https://fsbmat.shinyapps.io/CoronaBR">{:target="_blank"}
 <b>Dashboard sobre Casos de Coronavirus nos Estados e Cidades do Brasil</b>
 </a></font></center>
 

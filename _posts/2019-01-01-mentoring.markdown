@@ -35,7 +35,7 @@ Modelos de Séries Temporais com Fator Latente
 
 * Fui coorientador
 
-<img src="img//icons//aluno.svg" width="30" height="30" /> - [Gisele de Oliveira Maia](http://lattes.cnpq.br/6816149396478507)
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [Gisele de Oliveira Maia](http://lattes.cnpq.br/4162026236063432)
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Mestrado em Estatística
 
@@ -46,6 +46,7 @@ Modelos de Séries Temporais com Fator Latente
 <img src="img//icons//site.png" width="30" height="30" /> - [Link do trabalho](http://arxiv.org/abs/2004.11470)
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
+
 ______________________________________
 
 Modelo de Regressão Logística Aplicado a Dados do Sistema de Informação de Mortalidade
@@ -59,6 +60,7 @@ Modelo de Regressão Logística Aplicado a Dados do Sistema de Informação de M
 <img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2019 a dezembro de 2019
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
+
 ______________________________________
 
 Ajuste do Modelo de Regressão Logística a Dados do Exame Nacional do Ensino Médio
@@ -72,6 +74,7 @@ Ajuste do Modelo de Regressão Logística a Dados do Exame Nacional do Ensino M�
 <img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2019 a dezembro de 2020
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
+
 ______________________________________
 
 Ferramentas Práticas para o Ensino e Aprendizado de Estatística na Educação Básica

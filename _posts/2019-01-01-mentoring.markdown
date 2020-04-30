@@ -8,10 +8,44 @@ date:   2019-01-01 12:12:12
 
 Projetos de Pesquisa e Extensão, Orientações concluidas e em Andamento.
 
+<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
+2020
+</textarea>
+______________________________________
+
+Avaliação Cienciométrica do Leiden Ranking
+
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [Isabella Menezes Ramos](http://lattes.cnpq.br/4224251311346882)
+
+<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Ciêntífica Voluntário 
+
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal  
+
+<img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2020 a dezembro de 2020
+
+<img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
+
 ______________________________________
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2019
 </textarea>
+______________________________________
+
+Modelos de Séries Temporais com Fator Latente
+
+* Fui coorientador
+
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [Gisele de Oliveira Maia](http://lattes.cnpq.br/6816149396478507)
+
+<img src="img//icons//chap.png" width="30" height="30" /> - Mestrado em Estatística
+
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal 
+
+<img src="img//icons//cal.jpg" width="30" height="30" /> - 2019
+
+<img src="img//icons//site.png" width="30" height="30" /> - [Link do trabalho](http://arxiv.org/abs/2004.11470)
+
+<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 ______________________________________
 
 Modelo de Regressão Logística Aplicado a Dados do Sistema de Informação de Mortalidade
@@ -33,7 +67,7 @@ Ajuste do Modelo de Regressão Logística a Dados do Exame Nacional do Ensino M�
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Mestrado 
 
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Minas Gerais  
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal  
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2019 a dezembro de 2020
 
@@ -46,7 +80,7 @@ Ferramentas Práticas para o Ensino e Aprendizado de Estatística na Educação 
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Mestrado 
 
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Minas Gerais  
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal  
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2019 a dezembro de 2020
 
@@ -65,7 +99,7 @@ Resolução de Exercícios Estatísticos com o apoio do Software R
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Ciêntífica 
 
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - 2014
 
@@ -83,7 +117,7 @@ Inclusão Digital e Juventude Rural: Cidadania e Geração de Renda
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Extensão 
 
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - 2013
 
@@ -101,7 +135,7 @@ Matemática em Ação: Educação Continuada para Professores e Melhoria na Form
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Extensão 
 
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - 2012 e 2013
 
@@ -119,7 +153,7 @@ Viajando com a Matemática
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Extensão 
 
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - 2011
 

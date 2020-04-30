@@ -11,7 +11,7 @@ date:   2019-01-01 12:12:12
 
 <center><font size="6" color="#76asaf">
 <a href="/blog_posts/14-08-2019/post1">
-<b>Estudo sobre Função de Verossimilhança</b>
+<b>Estudos sobre Função de Verossimilhança</b>
 </a></font></center>
 
 ***
@@ -22,12 +22,12 @@ date:   2019-01-01 12:12:12
 ***
 
 <center><font size="6" color="#76asaf">
-<a href="/blog_posts/26-03-2020/Corona">
-<b>Fleshboard sobre Casos do Coronavirus nos Estados do Brasil</b>
+<a href="https://fsbmat.shinyapps.io/CoronaBR">
+<b>Dashboard sobre Casos de Coronavirus nos Estados e Cidades do Brasil</b>
 </a></font></center>
 
 ***
 
 Última atualização: 29/03/2020
 
-[[Clique aqui!]](https://fsbmat.shinyapps.io/CoronaBR/#section-page-1){:target="_blank"}
+[[Clique aqui!]](https://fsbmat.shinyapps.io/CoronaBR){:target="_blank"}

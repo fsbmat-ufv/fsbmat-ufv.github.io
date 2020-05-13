@@ -32,6 +32,11 @@ layout: compress
             root.setAttribute('class', 'ff');
         }
     </script>
+    
+{% if site.google_analytics and jekyll.environment == 'production' %}
+{% include analytics.html %}
+{% endif %}
+    
 </head>
 
 <body class="demo-2">

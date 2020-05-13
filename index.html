@@ -125,6 +125,10 @@ layout: compress
     <script src="js/vendors/cash.min.js"></script>
     <script src="js/Card-polygon.js"></script>
     <script src="js/modern-blog.js"></script>
+    
+{% if site.google_analytics and jekyll.environment == 'production' %}
+{% include analytics.html %}
+{% endif %}
 </body>
 
 </html>

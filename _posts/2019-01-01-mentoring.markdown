@@ -13,6 +13,24 @@ Projetos de Pesquisa e Extensão, Orientações concluidas e em Andamento.
 </textarea>
 ______________________________________
 
+Análise Descritiva e Comparativa da Covid-19
+
+<img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos
+
+<img src="img//icons//chap.png" width="30" height="30" /> - Guilherme Fernandes Castro de Oliveira
+
+<img src="img//icons//projeto.png" width="30" height="30" /> - [Edital PIBIC/2020](https://www2.dti.ufv.br/sisppg/scripts/bolsasIc/projetos.php?edital=PIBICCNPq-2020){:target="_blank"} 
+
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal
+
+<img src="img//icons//cal.jpg" width="30" height="30" /> - 2020
+
+<img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](Em Construção){:target="_blank"}
+
+<img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
+
+______________________________________
+
 Avaliação Cienciométrica do Leiden Ranking
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - [Isabella Menezes Ramos](http://lattes.cnpq.br/4224251311346882)

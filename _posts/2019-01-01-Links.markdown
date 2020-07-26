@@ -2,7 +2,7 @@
 title:  "Links"
 #subtitle: "teste."
 author: "Fernando Bastos"
-image: "img/Links/Links.jpg"
+image: "img/Links/Link.jpg"
 date:   2019-07-31 12:12:12
 ---
 

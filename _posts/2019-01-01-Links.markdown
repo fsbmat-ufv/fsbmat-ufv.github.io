@@ -275,13 +275,47 @@ background-color: #ffffff;
 
 <br>
 
+<style type="text/css">																									
+table.table-style-one {																									
+font-family: verdana, arial, sans-serif;																									
+font-size: 11px;																									
+color: #333333;																									
+border-width: 1px;																									
+border-color: #3A3A3A;																									
+border-collapse: collapse;																									
+}																									
+table.table-style-one th {																									
+border-width: 1px;																									
+padding: 8px;																									
+border-style: solid;																									
+border-color: #517994;																									
+background-color: #B2CFD8;																									
+}																									
+																									
+table.table-style-one tr:hover td {																									
+background-color: #DFEBF1;																									
+}																									
+																									
+table.table-style-one td {																									
+border-width: 1px;																									
+padding: 8px;																									
+border-style: solid;																									
+border-color: #517994;																									
+background-color: #ffffff;																									
+}
+
+.floatLeft { width: 50%; float: left; }
+.floatRight {width: 50%; float: right; }
+.container { overflow: hidden; }
+</style>
+
 <!--Tabelas de Cursos e Webinarios-->
 <div class="container">
 <div class="floatLeft">
 <!-- Table goes in the document BODY -->
 <!-- Tabela 1 (Cursos) -->
 <!--Substituir A partir daqui-->
-<table class="table-style-two">																									
+<table class="table-style-one">																									
 <thead>																									
 <tr>	<th colspan="4">	<center>	Cursos	</center>	</th>	</tr>																			
 <tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>
@@ -395,7 +429,7 @@ background-color: #ffffff;
 <div class="floatRight">
 <tr><!-- Table goes in the document BODY -->																									<!-- Tabela 2 (Webinários) -->
 <!--Substituir A partir daqui-->
-<table class="table-style-two">																									
+<table class="table-style-one">																									
 <thead>																									
 <tr>	<th colspan="4">	<center>	Webinários	</center>	</th>	</tr>																			
 <tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>

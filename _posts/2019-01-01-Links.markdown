@@ -51,6 +51,23 @@ table.table-style-two td {
 .container {
   overflow: hidden;
 }
+  
+ 
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* set column sizes here */
+    grid-template-rows: auto auto; /* we want two rows */
+
+    grid-gap: 10px; /* how far between cells? */
+    grid-auto-flow: column; /* fill in by column, not row */
+
+    /* temporary property for visualization */
+    height: 150px;
+}
+
+section div {
+    border: 1px solid #000;
+}  
 </style>
 
 <div id="dateDiv0" style="width: 50%;height: 30px;float: left;">

@@ -52,7 +52,7 @@ background-color: #ffffff;
 <tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>
 </thead>																									
 <tbody>																									
-<tr>	<th>	<center>	1	</center>	</th>	<th>	<center>	Cursos Diversos	</center>	</th>	<th>	<center>	<a href="	http://veduca.org/	" target="_blank">	Veduca	</a>	</center>	</th>	<th>	<center>		</center>	</th>	</tr>
+<tr>	<td>	<center>	1	</center>	</td>	<td>	<center>	Cursos Diversos	</center>	</td>	<td>	<center>	<a href="	http://veduca.org/	" target="_blank">	Veduca	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 </tbody>																									
 </table>
 <!--Substituir ate a linha anterior-->
@@ -67,7 +67,7 @@ background-color: #ffffff;
 <tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>
 </thead>																									
 <tbody>																									
-<tr>	<th>	<center>	1	</center>	</th>	<td>	<center>	Cursos Diversos	</center>	</th>	<th>	<center>	<a href="	http://veduca.org/	" target="_blank">	Veduca	</a>	</center>	</th>	<th>	<center>		</center>	</th>	</tr>
+<tr>	<td>	<center>	1	</center>	</td>	<td>	<center>	Cursos Diversos	</center>	</td>	<td>	<center>	<a href="	http://veduca.org/	" target="_blank">	Veduca	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 </tbody>																									
 </table>
 <!--Substituir ate a linha anterior-->

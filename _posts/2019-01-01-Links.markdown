@@ -413,17 +413,7 @@ section div {
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 
 <div id="dateDiv1" style="width: 50%;height: 30px;float: right;">
@@ -649,17 +639,7 @@ section div {
 </table>																									
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <br>
 <br>
 <br>

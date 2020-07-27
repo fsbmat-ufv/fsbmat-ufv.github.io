@@ -115,47 +115,13 @@ background-color: #ffffff;
 
 <br>
 
-<style type="text/css">																									
-table.table-style-one {																									
-font-family: verdana, arial, sans-serif;																									
-font-size: 11px;																									
-color: #333333;																									
-border-width: 1px;																									
-border-color: #3A3A3A;																									
-border-collapse: collapse;																									
-}																									
-table.table-style-one th {																									
-border-width: 1px;																									
-padding: 8px;																									
-border-style: solid;																									
-border-color: #517994;																									
-background-color: #B2CFD8;																									
-}																									
-																									
-table.table-style-one tr:hover td {																									
-background-color: #DFEBF1;																									
-}																									
-																									
-table.table-style-one td {																									
-border-width: 1px;																									
-padding: 8px;																									
-border-style: solid;																									
-border-color: #517994;																									
-background-color: #ffffff;																									
-}
-
-.floatLeft { width: 50%; float: left; }
-.floatRight {width: 50%; float: right; }
-.container { overflow: hidden; }
-</style>
-
 <!--Tabelas de Cursos e Webinarios-->
 <div class="container">
 <div class="floatLeft">
 <!-- Table goes in the document BODY -->
 <!-- Tabela 1 (Cursos) -->
 <!--Substituir A partir daqui-->
-<table class="table-style-one">																									
+<table class="table-style-two">																									
 <thead>																									
 <tr>	<th colspan="4">	<center>	Cursos	</center>	</th>	</tr>																			
 <tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>
@@ -179,15 +145,18 @@ background-color: #ffffff;
 <tr>	<td>	<center>	16	</center>	</td>	<td>	<center>	Cursos Diversos	</center>	</td>	<td>	<center>	<a href="	https://github.com/fsbmat-ufv/CursosOnline/raw/master/IF_Pernambuco.pdf	" target="_blank">	Trilha de Cursos EAD	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 <tr>	<td>	<center>	17	</center>	</td>	<td>	<center>	Estatística	</center>	</td>	<td>	<center>	<a href="	https://www.ufrgs.br/probabilidade-estatistica/	" target="_blank">	Estatística - UFRGS	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 <tr>	<td>	<center>	18	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	19	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	20	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 </tbody>																									
-</table>																									
+</table>
+
 <!--Substituir ate a linha anterior-->
 </div>
 
 <div class="floatRight">
-<tr><!-- Table goes in the document BODY -->																					<!-- Tabela 2 (Webinários) -->
+<tr><!-- Table goes in the document BODY -->																									<!-- Tabela 2 (Webinários) -->
 <!--Substituir A partir daqui-->
-<table class="table-style-one">																									
+<table class="table-style-two">																									
 <thead>																									
 <tr>	<th colspan="4">	<center>	Webinários	</center>	</th>	</tr>																			
 <tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>
@@ -198,10 +167,21 @@ background-color: #ffffff;
 <tr>	<td>	<center>	3	</center>	</td>	<td>	<center>	PPG Estatística - UFRGS	</center>	</td>	<td>	<center>	<a href="	https://youtu.be/lYqEw_VZqV4	" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 <tr>	<td>	<center>	4	</center>	</td>	<td>	<center>	PPG Estatística - UFRGS	</center>	</td>	<td>	<center>	<a href="	https://youtu.be/8PYG89fD8jQ	" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 <tr>	<td>	<center>	5	</center>	</td>	<td>	<center>	Estatidados	</center>	</td>	<td>	<center>	<a href="	https://www.youtube.com/watch?v=eD3-KW3WdS0&list=PLjdDBZW3EmXdiuNR8zJq8gA7_mw8xWc97	" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	6	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	7	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	8	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	9	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	10	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	11	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	12	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	13	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	14	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	15	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	16	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	17	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	18	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	19	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	20	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 </tbody>																									
-</table>																									
+</table>																																																		
 <!--Substituir ate a linha anterior-->
-																																								
-<br>
-
-<br>

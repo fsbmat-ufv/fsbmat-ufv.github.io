@@ -7,113 +7,389 @@ date:   2019-07-31 12:12:12
 ---
 
 
-<style type="text/css">																									
-table.table-style-two {																									
-font-family: verdana, arial, sans-serif;																									
-font-size: 11px;																									
-color: #333333;																									
-border-width: 1px;																									
-border-color: #3A3A3A;																									
-border-collapse: collapse;																									
-}																									
-table.table-style-two th {																									
-border-width: 1px;																									
-padding: 8px;																									
-border-style: solid;																									
-border-color: #517994;																									
-background-color: #B2CFD8;																									
-}																									
-																									
-table.table-style-two tr:hover td {																									
-background-color: #DFEBF1;																									
-}																									
-																									
-table.table-style-two td {																									
-border-width: 1px;																									
-padding: 8px;																									
-border-style: solid;																									
-border-color: #517994;																									
-background-color: #ffffff;																									
+table.table-style-two {
+  font-family: verdana, arial, sans-serif;
+  font-size: 11px;
+  color: #333333;
+  border-width: 1px;
+  border-color: #3A3A3A;
+  border-collapse: collapse;
+  margin: 0;
 }
 
-.floatLeft { width: 50%; float: left; }
-.floatRight {width: 50%; float: right; }
-.container { overflow: hidden; }
-</style>
-<!--Tabelas de Cursos e Webinarios-->
-<div class="container">
-<div class="floatLeft">
-<!-- Table goes in the document BODY -->
-<!-- Tabela 1 (Cursos) -->
-<!--Substituir A partir daqui-->
-<table class="table-style-two">																									
-<thead>																									
-<tr>	<th colspan="4">	<center>	Cursos	</center>	</th>	</tr>																			
-<tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>
-</thead>																									
-<tbody>																									
-<tr>	<td>	<center>	1	</center>	</td>	<td>	<center>	Cursos Diversos	</center>	</td>	<td>	<center>	<a href="	http://veduca.org/	" target="_blank">	Veduca	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	2	</center>	</td>	<td>	<center>	Ciência de Dados	</center>	</td>	<td>	<center>	<a href="	https://www.datascienceacademy.com.br/	" target="_blank">	Data Science Academy	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	3	</center>	</td>	<td>	<center>	Programação	</center>	</td>	<td>	<center>	<a href="	https://medium.com/lambda-school-blog	" target="_blank">	Lambda	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-</tbody>																									
-</table>
+table.table-style-two th {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #517994;
+  background-color: #B2CFD8;
+}
 
-</div>
+table.table-style-two tr:hover td {
+  background-color: #DFEBF1;
+}
 
-<div class="floatRight">
-<tr><!-- Table goes in the document BODY -->																									<!-- Tabela 2 (Webinários) -->
-<!--Substituir A partir daqui-->
-<table class="table-style-two">																									
-<thead>																									
-<tr>	<th colspan="4">	<center>	Webinários	</center>	</th>	</tr>																			
-<tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>
-</thead>																									
-<tbody>																									
-<tr>	<td>	<center>	1	</center>	</td>	<td>	<center>	PPG Estatística - UFRGS	</center>	</td>	<td>	<center>	<a href="	https://www.youtube.com/watch?v=_-DGDNepTno&feature=youtu.be	" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	2	</center>	</td>	<td>	<center>	PPG Estatística - UFRGS	</center>	</td>	<td>	<center>	<a href="	https://youtu.be/_-DGDNepTno	" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	3	</center>	</td>	<td>	<center>	PPG Estatística - UFRGS	</center>	</td>	<td>	<center>	<a href="	https://youtu.be/lYqEw_VZqV4	" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-</tbody>																									
-</table>																																																		
-<!--Substituir ate a linha anterior-->
-																																							
-<br>
+table.table-style-two td {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #517994;
+  background-color: #ffffff;
+}
 
-<br>
+.floatLeft {
+  width: 50%;
+  float: left;
+}
+
+.floatRight {
+  width: 50%;
+  float: right;
+}
+
+.container {
+  overflow: hidden;
+}
 
 <!--Tabelas de Cursos e Webinarios-->
 <div class="container">
-<div class="floatLeft">
-<!-- Table goes in the document BODY -->
-<!-- Tabela 1 (Cursos) -->
-<!--Substituir A partir daqui-->
-<table class="table-style-two">																									
-<thead>																									
-<tr>	<th colspan="4">	<center>	Cursos	</center>	</th>	</tr>																			
-<tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>
-</thead>																									
-<tbody>																									
-<tr>	<td>	<center>	1	</center>	</td>	<td>	<center>	Cursos Diversos	</center>	</td>	<td>	<center>	<a href="	http://veduca.org/	" target="_blank">	Veduca	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	2	</center>	</td>	<td>	<center>	Ciência de Dados	</center>	</td>	<td>	<center>	<a href="	https://www.datascienceacademy.com.br/	" target="_blank">	Data Science Academy	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	3	</center>	</td>	<td>	<center>	Programação	</center>	</td>	<td>	<center>	<a href="	https://medium.com/lambda-school-blog	" target="_blank">	Lambda	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	4	</center>	</td>	<td>	<center>	Programação	</center>	</td>	<td>	<center>	<a href="	https://www.codeavengers.com/	" target="_blank">	Code Avenger	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-</tbody>																									
-</table>
+  <div class="floatLeft">
+    <!-- Table goes in the document BODY -->
+    <!-- Tabela 1 (Cursos) -->
+    <table class="table-style-two">
+      <thead>
+        <tr>
+          <th colspan="4">
+            <center> Cursos </center>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <center> Quantidade </center>
+          </th>
+          <th>
+            <center> Descrição </center>
+          </th>
+          <th>
+            <center> Links </center>
+          </th>
+          <th>
+            <center> Observações </center>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <center> 1 </center>
+          </td>
+          <td>
+            <center> Cursos Diversos </center>
+          </td>
+          <td>
+            <center> <a href="   http://veduca.org/  " target="_blank">  Veduca  </a> </center>
+          </td>
+          <td>
+            <center> </center>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <center> 2 </center>
+          </td>
+          <td>
+            <center> Ciência de Dados </center>
+          </td>
+          <td>
+            <center> <a href="   https://www.datascienceacademy.com.br/  " target="_blank">  Data Science Academy    </a> </center>
+          </td>
+          <td>
+            <center> </center>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <center> 3 </center>
+          </td>
+          <td>
+            <center> Programação </center>
+          </td>
+          <td>
+            <center> <a href="   https://medium.com/lambda-school-blog   " target="_blank">  Lambda  </a> </center>
+          </td>
+          <td>
+            <center> </center>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<!--Substituir ate a linha anterior-->
+  <div class="floatRight">
+    <tr>
+      <!-- Table goes in the document BODY -->
+      <!-- Tabela 2 (Webinários) -->
+      <!--Substituir A partir daqui-->
+      <table class="table-style-two">
+        <thead>
+          <tr>
+            <th colspan="4">
+              <center> Webinários </center>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <center> Quantidade </center>
+            </th>
+            <th>
+              <center> Descrição </center>
+            </th>
+            <th>
+              <center> Links </center>
+            </th>
+            <th>
+              <center> Observações </center>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <center> 1 </center>
+            </td>
+            <td>
+              <center> PPG Estatística - UFRGS </center>
+            </td>
+            <td>
+              <center>
+                <a href="   https://www.youtube.com/watch?v=_-DGDNepTno&feature=youtu.be    " target="_blank"> </a>
+              </center>
+            </td>
+            <td>
+              <center> </center>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <center> 2 </center>
+            </td>
+            <td>
+              <center> PPG Estatística - UFRGS </center>
+            </td>
+            <td>
+              <center>
+                <a href="   https://youtu.be/_-DGDNepTno    " target="_blank"> </a>
+              </center>
+            </td>
+            <td>
+              <center> </center>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <center> 3 </center>
+            </td>
+            <td>
+              <center> PPG Estatística - UFRGS </center>
+            </td>
+            <td>
+              <center>
+                <a href="   https://youtu.be/lYqEw_VZqV4    " target="_blank"> </a>
+              </center>
+            </td>
+            <td>
+              <center> </center>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!--Substituir ate a linha anterior-->
+  </div>
 </div>
-
-<div class="floatRight">
-<tr><!-- Table goes in the document BODY -->																									<!-- Tabela 2 (Webinários) -->
-<!--Substituir A partir daqui-->
-<table class="table-style-two">																									
-<thead>																									
-<tr>	<th colspan="4">	<center>	Webinários	</center>	</th>	</tr>																			
-<tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>
-</thead>																									
-<tbody>																									
-<tr>	<td>	<center>	1	</center>	</td>	<td>	<center>	PPG Estatística - UFRGS	</center>	</td>	<td>	<center>	<a href="	https://www.youtube.com/watch?v=_-DGDNepTno&feature=youtu.be	" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	2	</center>	</td>	<td>	<center>	PPG Estatística - UFRGS	</center>	</td>	<td>	<center>	<a href="	https://youtu.be/_-DGDNepTno	" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	3	</center>	</td>	<td>	<center>	PPG Estatística - UFRGS	</center>	</td>	<td>	<center>	<a href="	https://youtu.be/lYqEw_VZqV4	" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	4	</center>	</td>	<td>	<center>	PPG Estatística - UFRGS	</center>	</td>	<td>	<center>	<a href="	https://youtu.be/8PYG89fD8jQ	" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-</tbody>																									
-</table>																																																	
+<br>
+<br>
+<div class="container">
+  <!--Tabelas de Cursos e Webinarios-->
+  <div class="floatLeft">
+    <!-- Table goes in the document BODY -->
+    <!-- Tabela 1 (Cursos) -->
+    <!--Substituir A partir daqui-->
+    <table class="table-style-two">
+      <thead>
+        <tr>
+          <th colspan="4">
+            <center> Cursos </center>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <center> Quantidade </center>
+          </th>
+          <th>
+            <center> Descrição </center>
+          </th>
+          <th>
+            <center> Links </center>
+          </th>
+          <th>
+            <center> Observações </center>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <center> 1 </center>
+          </td>
+          <td>
+            <center> Cursos Diversos </center>
+          </td>
+          <td>
+            <center> <a href="   http://veduca.org/  " target="_blank">  Veduca  </a> </center>
+          </td>
+          <td>
+            <center> </center>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <center> 2 </center>
+          </td>
+          <td>
+            <center> Ciência de Dados </center>
+          </td>
+          <td>
+            <center> <a href="   https://www.datascienceacademy.com.br/  " target="_blank">  Data Science Academy    </a> </center>
+          </td>
+          <td>
+            <center> </center>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <center> 3 </center>
+          </td>
+          <td>
+            <center> Programação </center>
+          </td>
+          <td>
+            <center> <a href="   https://medium.com/lambda-school-blog   " target="_blank">  Lambda  </a> </center>
+          </td>
+          <td>
+            <center> </center>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <center> 4 </center>
+          </td>
+          <td>
+            <center> Programação </center>
+          </td>
+          <td>
+            <center> <a href="   https://www.codeavengers.com/   " target="_blank">  Code Avenger    </a> </center>
+          </td>
+          <td>
+            <center> </center>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--Substituir ate a linha anterior-->
+  </div>
+  <div class="floatRight">
+    <tr>
+      <!-- Table goes in the document BODY -->
+      <!-- Tabela 2 (Webinários) -->
+      <!--Substituir A partir daqui-->
+      <table class="table-style-two">
+        <thead>
+          <tr>
+            <th colspan="4">
+              <center> Webinários </center>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <center> Quantidade </center>
+            </th>
+            <th>
+              <center> Descrição </center>
+            </th>
+            <th>
+              <center> Links </center>
+            </th>
+            <th>
+              <center> Observações </center>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <center> 1 </center>
+            </td>
+            <td>
+              <center> PPG Estatística - UFRGS </center>
+            </td>
+            <td>
+              <center>
+                <a href="   https://www.youtube.com/watch?v=_-DGDNepTno&feature=youtu.be    " target="_blank"> </a>
+              </center>
+            </td>
+            <td>
+              <center> </center>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <center> 2 </center>
+            </td>
+            <td>
+              <center> PPG Estatística - UFRGS </center>
+            </td>
+            <td>
+              <center>
+                <a href="   https://youtu.be/_-DGDNepTno    " target="_blank"> </a>
+              </center>
+            </td>
+            <td>
+              <center> </center>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <center> 3 </center>
+            </td>
+            <td>
+              <center> PPG Estatística - UFRGS </center>
+            </td>
+            <td>
+              <center>
+                <a href="   https://youtu.be/lYqEw_VZqV4    " target="_blank"> </a>
+              </center>
+            </td>
+            <td>
+              <center> </center>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <center> 4 </center>
+            </td>
+            <td>
+              <center> PPG Estatística - UFRGS </center>
+            </td>
+            <td>
+              <center>
+                <a href="   https://youtu.be/8PYG89fD8jQ    " target="_blank"> </a>
+              </center>
+            </td>
+            <td>
+              <center> </center>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>

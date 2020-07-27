@@ -7,7 +7,7 @@ date:   2019-07-31 12:12:12
 ---
 
 
-<style type="text/css">																									
+<style type="text/css" rel="stylesheet">																								
 table.table-style-two {
   font-family: verdana, arial, sans-serif;
   font-size: 11px;

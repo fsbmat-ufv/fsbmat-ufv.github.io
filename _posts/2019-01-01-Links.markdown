@@ -269,8 +269,7 @@ background-color: #ffffff;
 </tbody>																									
 </table>																									
 <!--Substituir ate a linha anterior-->
-</div>
-</div>																																								
+																																							
 <br>
 
 <br>
@@ -538,8 +537,7 @@ background-color: #ffffff;
 </tbody>																									
 </table>																									
 <!--Substituir ate a linha anterior-->
-</div>
-</div>																																								
+																																								
 <br>
 
 <br>

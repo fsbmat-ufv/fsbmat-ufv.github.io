@@ -419,12 +419,12 @@ section div {
 <div id="dateDiv1" style="width: 50%;height: 30px;float: right;">
 <table class="table-style-two">																									
 <thead>																									
-<tr>	<th colspan="4">	<center>	Aplicativos	</center>	</th>	</tr>																			
+<tr>	<th colspan="4">	<center>	Aplicativos e Páginas de Interesse	</center>	</th>	</tr>																			
 <tr>	<th>	<center>	Quantidade	</center>	</th>	<th>	<center>	Descrição	</center>	</th>	<th>	<center>		Links				</center>	</th>	<th>	<center>	Observações	</center>	</th>	</tr>
 </thead>																									
 <tbody>																									
 <tr>	<td>	<center>	1	</center>	</td>	<td>	<center>	Aplicativo de Matemática Dinâmica	</center>	</td>	<td>	<center>	<a href="	https://www.geogebra.org/?lang=pt	" target="_blank">	Geogebra	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
-<tr>	<td>	<center>	2	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
+<tr>	<td>	<center>	2	</center>	</td>	<td>	<center>	Guia de Sobrevivência	</center>	</td>	<td>	<center>	<a href="	https://pt.meta.stackoverflow.com/questions/8045/guia-de-sobreviv%c3%aancia-do-stack-overflow-em-portugu%c3%aas	" target="_blank">	StackOverflow	</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 <tr>	<td>	<center>	3	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 <tr>	<td>	<center>	4	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
 <tr>	<td>	<center>	5	</center>	</td>	<td>	<center>		</center>	</td>	<td>	<center>	<a href="		" target="_blank">		</a>	</center>	</td>	<td>	<center>		</center>	</td>	</tr>
@@ -640,13 +640,6 @@ section div {
 </div>
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>

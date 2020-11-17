@@ -46,6 +46,22 @@ Avaliação Cienciométrica do Leiden Ranking
 <img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](https://isabellaramos.shinyapps.io/LeidenRanking/){:target="_blank"}
 
 ______________________________________
+
+Estatística Descritiva Aplicada a Resultados do Campeonato Brasileiro de Futebol
+
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [Filipe Fulgêncio Dias](http://lattes.cnpq.br/6216409183668747)
+
+<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Conclusão de Curso 
+
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal  
+
+<img src="img//icons//cal.jpg" width="30" height="30" /> - Junho de 2020 a Julho de 2021
+
+<img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
+
+<img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](https://mauarty.shinyapps.io/dashBrasileirao/){:target="_blank"}
+
+______________________________________
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2019
 </textarea>

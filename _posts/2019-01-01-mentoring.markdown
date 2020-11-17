@@ -43,6 +43,8 @@ Avaliação Cienciométrica do Leiden Ranking
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 
+<img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](https://isabellaramos.shinyapps.io/LeidenRanking/){:target="_blank"}
+
 ______________________________________
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2019

@@ -62,6 +62,22 @@ Estatística Descritiva Aplicada a Resultados do Campeonato Brasileiro de Futebo
 <img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](https://mauarty.shinyapps.io/dashBrasileirao/){:target="_blank"}
 
 ______________________________________
+
+Uso do Pacote Tikz para Visualização de Conteúdos de Álgebra Linear
+
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [João Vítor de Oliveira Gollner](http://lattes.cnpq.br/9840320505697967)
+
+<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Conclusão de Curso 
+
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal  
+
+<img src="img//icons//cal.jpg" width="30" height="30" /> - Setembro de 2020 a Dezembro de 2021
+
+<img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
+
+<img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](Em Construção){:target="_blank"}
+
+______________________________________
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2019
 </textarea>

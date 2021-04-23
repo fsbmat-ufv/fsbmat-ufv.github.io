@@ -7,7 +7,7 @@ image: "img/teaching/Disciplinas.jpg"
 
 ______________________________________
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
-2019 - II
+Matemática
 </textarea>
 ______________________________________
 
@@ -17,9 +17,15 @@ ______________________________________
 
 <img src="img//icons//relogio.png" width="30" height="30" /> - 60 horas
 
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa 
 
-<img src="img//icons//cursos.jpg" width="30" height="30" /> - Turma 1: Terça 10h00min-11h40min e Quinta 10h00-11h40min
+<img src="img//icons//cursos.jpg" width="30" height="30" /> Além da formação de diversos estudantes, ensino e aprendizagem de Latex, Geogebra, Sagemath, R, Rstudio e outros softwares, produzimos:
+
+
+1 - [Um site para a disciplina](https://maf172.github.io/)
+
+2 - [Um pacote para o Latex](https://ctan.org/tex-archive/graphics/pgf/contrib/figchild)
+
 
 ______________________________________
 
@@ -31,8 +37,7 @@ ______________________________________
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
 
-<img src="img//icons//cursos.jpg" width="30" height="30" /> - Turma 1: Terça 13h00min-14h40min e Quinta 15h00-16h40min
-
+<img src="img//icons//cursos.jpg" width="30" height="30" /> 
 ______________________________________
 
 
@@ -43,8 +48,6 @@ ______________________________________
 <img src="img//icons//relogio.png" width="30" height="30" /> - 80 horas
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
-
-<img src="img//icons//cursos.jpg" width="30" height="30" /> - As sextas e sabádos em horários alternados com a disciplina de Geometria II.
 
 ______________________________________
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
@@ -60,13 +63,9 @@ ______________________________________
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
 
-<img src="img//icons//cursos.jpg" width="30" height="30" /> - 
+<img src="img//icons//cursos.jpg" width="30" height="30" /> 
+1 - [Site para a disciplina](https://maf105.github.io/)
 
-Turma 1 - Terça 13h00min-14h40min e Quinta 15h00min-16h40min
-
-Turma 2 - Terça 18h30min-20h10min e Quinta 20h30min-22h10min
-
-<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
 __________________________________
 
@@ -78,9 +77,8 @@ __________________________________
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa  
 
-<img src="img//icons//cursos.jpg" width="30" height="30" /> - Turma 1: Terça 15h00min-16h40min e Quinta 13h00-14h40min
-
-<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
+<img src="img//icons//cursos.jpg" width="30" height="30" /> 
+1 - [Site para a disciplina](https://maf105.github.io/)
 
 __________________________________________________________________
 

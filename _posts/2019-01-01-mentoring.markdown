@@ -25,7 +25,7 @@ Análise Descritiva e Comparativa da Covid-19
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - 2020
 
-<img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](Em Construção){:target="_blank"}
+<img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](https://guilhermefco.github.io/covid19brasil/index.html){:target="_blank"}
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 

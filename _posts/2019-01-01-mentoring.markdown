@@ -18,7 +18,7 @@ Criação de um Pacote do LaTeX para Criação de Figuras e Atividades de Educa�
 
 <img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos 
 
-<img src="img//icons//aluno.svg" width="30" height="30" /> Estudantes  
+<img src="img//icons//aluno.svg" width="30" height="30" /> Participantes do Projeto:  
 
 Guilherme Fernandes Castro de Oliveira;
 Paula Alves de Freitas;		

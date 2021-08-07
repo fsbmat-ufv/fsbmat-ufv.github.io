@@ -18,18 +18,18 @@ Criação de um Pacote do LaTeX para Criação de Figuras e Atividades de Educa�
 
 <img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos 
 
-<img src="img//icons//aluno.svg" width="30" height="30" />: 
+<img src="img//icons//aluno.svg" width="30" height="30" /> Estudantes  
 
 Guilherme Fernandes Castro de Oliveira;
-Paula Alves de Freitas		
-Warley Ribeiro de Freitas		
-Júlia Letícia Gonçalves Martins		
-Kethile Alves Fagundes		
-Vitória Augusta Dutra de Castro Soares		
-Jéssica de Mendonça		
-Dhavy Alexwander Lopes dos Santos		
-Luiz Henrique de Souza Matos		
-José Vitor Novaes Moreira
+Paula Alves de Freitas;		
+Warley Ribeiro de Freitas;		
+Júlia Letícia Gonçalves Martins;		
+Kethile Alves Fagundes;		
+Vitória Augusta Dutra de Castro Soares;		
+Jéssica de Mendonça;		
+Dhavy Alexwander Lopes dos Santos;		
+Luiz Henrique de Souza Matos;		
+José Vitor Novaes Moreira.
 
 <img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Científica Voluntário
 
@@ -40,7 +40,9 @@ José Vitor Novaes Moreira
 <img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](https://ctan.org/tex-archive/graphics/pgf/contrib/figchild){:target="_blank"}
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento (Este projeto foi iniciado durante o desenvolvimento da disciplina MAF 172 - Matemática Computacional ofertada no Período Especial Remoto 2)
+
 ______________________________________
+
 
 Elaboração de Dashboards Estatísticos Através da Análise de Dados da Bolsa de Valores de São Paulo
 

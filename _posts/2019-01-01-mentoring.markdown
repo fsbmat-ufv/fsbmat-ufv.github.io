@@ -11,15 +11,44 @@ Projetos de Pesquisa e Extensão, Orientações concluidas e em Andamento.
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2021
 </textarea>
+
+______________________________________
+
+Criação de um Pacote do LaTeX para Criação de Figuras e Atividades de Educação Básica
+
+<img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos 
+
+<img src="img//icons//aluno.svg" width="30" height="30" />: 
+
+Guilherme Fernandes Castro de Oliveira;
+Paula Alves de Freitas		
+Warley Ribeiro de Freitas		
+Júlia Letícia Gonçalves Martins		
+Kethile Alves Fagundes		
+Vitória Augusta Dutra de Castro Soares		
+Jéssica de Mendonça		
+Dhavy Alexwander Lopes dos Santos		
+Luiz Henrique de Souza Matos		
+José Vitor Novaes Moreira
+
+<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Científica Voluntário
+
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal
+
+<img src="img//icons//cal.jpg" width="30" height="30" /> - 2021
+
+<img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](https://ctan.org/tex-archive/graphics/pgf/contrib/figchild){:target="_blank"}
+
+<img src="img//icons//finish.png" width="30" height="30" /> - Em andamento (Este projeto foi iniciado durante o desenvolvimento da disciplina MAF 172 - Matemática Computacional ofertada no Período Especial Remoto 2)
 ______________________________________
 
 Elaboração de Dashboards Estatísticos Através da Análise de Dados da Bolsa de Valores de São Paulo
 
-<img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos (Orientador)
+<img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos 
 
-<img src="img//icons//aluno.svg" width="30" height="30" /> - [João Victor Magalhães Souza](http://lattes.cnpq.br/6029420702133818) (Bolsista)
+<img src="img//icons//aluno.svg" width="30" height="30" /> - [João Victor Magalhães Souza](http://lattes.cnpq.br/6029420702133818) 
 
-<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Ciêntífica Voluntário
+<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Científica Voluntário
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal
 
@@ -38,9 +67,9 @@ ______________________________________
 
 Análise Descritiva e Comparativa da Covid-19
 
-<img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos (Orientador)
+<img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos 
 
-<img src="img//icons//chap.png" width="30" height="30" /> - Guilherme Fernandes Castro de Oliveira (Bolsista)
+<img src="img//icons//chap.png" width="30" height="30" /> - Guilherme Fernandes Castro de Oliveira (Bolsista - CNPq)
 
 <img src="img//icons//projeto.png" width="30" height="30" /> - [Edital PIBIC/2020](https://www2.dti.ufv.br/sisppg/scripts/bolsasIc/projetos.php?edital=PIBICCNPq-2020){:target="_blank"} 
 
@@ -58,7 +87,7 @@ Avaliação Cienciométrica do Leiden Ranking
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - [Isabella Menezes Ramos](http://lattes.cnpq.br/4224251311346882)
 
-<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Ciêntífica Voluntário 
+<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Científica Voluntário 
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal  
 
@@ -80,7 +109,7 @@ Estatística Descritiva Aplicada a Resultados do Campeonato Brasileiro de Futebo
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - Junho de 2020 a Julho de 2021
 
-<img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
+<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
 <img src="img//icons//products.png" width="30" height="30" /> - [Produtos Gerados](https://mauarty.shinyapps.io/dashBrasileirao/){:target="_blank"}
 
@@ -148,7 +177,7 @@ Ajuste do Modelo de Regressão Logística a Dados do Exame Nacional do Ensino M�
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2019 a dezembro de 2020
 
-<img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
+<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
 ______________________________________
 
@@ -162,7 +191,7 @@ Ferramentas Práticas para o Ensino e Aprendizado de Estatística na Educação 
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - Março de 2019 a dezembro de 2020
 
-<img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
+<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
 
 ______________________________________
@@ -175,7 +204,7 @@ Resolução de Exercícios Estatísticos com o apoio do Software R
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - [Vanessa Caroline Resende Dias](http://lattes.cnpq.br/5173888385425652)
 
-<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Ciêntífica 
+<img src="img//icons//chap.png" width="30" height="30" /> - Projeto de Iniciação Científica 
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Campus UFV - Florestal
 

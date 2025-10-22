@@ -12,7 +12,7 @@
 <meta name="author" content="Fernando de Souza Bastos" />
 
 
-<title>Função de Verossimilhança</title>
+<title>Modelo de Heckman</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -303,143 +303,9 @@ ul.task-list{list-style: none;}
 
 
 
-<style type="text/css">
-code {
-white-space: pre;
-}
-.sourceCode {
-overflow: visible;
-}
-</style>
-<style type="text/css" data-origin="pandoc">
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-{ counter-reset: source-line 0; }
-pre.numberSource code > span
-{ position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-{ content: counter(source-line);
-position: relative; left: -1em; text-align: right; vertical-align: baseline;
-border: none; display: inline-block;
--webkit-touch-callout: none; -webkit-user-select: none;
--khtml-user-select: none; -moz-user-select: none;
--ms-user-select: none; user-select: none;
-padding: 0 4px; width: 4em;
-color: #aaaaaa;
-}
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
-div.sourceCode
-{ }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } 
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
-code span.at { color: #7d9029; } 
-code span.bn { color: #40a070; } 
-code span.bu { color: #008000; } 
-code span.cf { color: #007020; font-weight: bold; } 
-code span.ch { color: #4070a0; } 
-code span.cn { color: #880000; } 
-code span.co { color: #60a0b0; font-style: italic; } 
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
-code span.do { color: #ba2121; font-style: italic; } 
-code span.dt { color: #902000; } 
-code span.dv { color: #40a070; } 
-code span.er { color: #ff0000; font-weight: bold; } 
-code span.ex { } 
-code span.fl { color: #40a070; } 
-code span.fu { color: #06287e; } 
-code span.im { color: #008000; font-weight: bold; } 
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
-code span.kw { color: #007020; font-weight: bold; } 
-code span.op { color: #666666; } 
-code span.ot { color: #007020; } 
-code span.pp { color: #bc7a00; } 
-code span.sc { color: #4070a0; } 
-code span.ss { color: #bb6688; } 
-code span.st { color: #4070a0; } 
-code span.va { color: #19177c; } 
-code span.vs { color: #4070a0; } 
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
-.sourceCode .row {
-width: 100%;
-}
-.sourceCode {
-overflow-x: auto;
-}
-.code-folding-btn {
-margin-right: -30px;
-}
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    var j = 0;
-    while (j < rules.length) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
-        j++;
-        continue;
-      }
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') {
-        j++;
-        continue;
-      }
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
 
 
 
-<style type="text/css">
-
-div.csl-bib-body { }
-div.csl-entry {
-clear: both;
-margin-bottom: 0em;
-}
-.hanging div.csl-entry {
-margin-left:2em;
-text-indent:-2em;
-}
-div.csl-left-margin {
-min-width:2em;
-float:left;
-}
-div.csl-right-inline {
-margin-left:2em;
-padding-left:1em;
-}
-div.csl-indent {
-margin-left: 2em;
-}
-</style>
 
 
 
@@ -548,9 +414,9 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Função de Verossimilhança</h1>
+<h1 class="title toc-ignore">Modelo de Heckman</h1>
 <h4 class="author">Fernando de Souza Bastos</h4>
-<h4 class="date">16 de agosto de 2019</h4>
+<h4 class="date">22 de outubro de 2025</h4>
 
 </div>
 
@@ -558,42 +424,9 @@ display: none;
 <ul>
 <li><a href="#introdu%C3%A7%C3%A3o" id="toc-introdução"><span class="toc-section-number">1</span> Introdução</a>
 <ul>
-<li><a href="#exemplo" id="toc-exemplo"><span class="toc-section-number">1.1</span> Exemplo</a></li>
-<li><a href="#discuss%C3%A3o-sobre-exemplo-anterior" id="toc-discussão-sobre-exemplo-anterior"><span class="toc-section-number">1.2</span> Discussão sobre exemplo
-anterior</a></li>
-<li><a href="#m%C3%BAltiplas-observa%C3%A7%C3%B5es" id="toc-múltiplas-observações"><span class="toc-section-number">1.3</span> Múltiplas Observações</a></li>
-<li><a href="#exemplo-1" id="toc-exemplo-1"><span class="toc-section-number">1.4</span> Exemplo</a></li>
-<li><a href="#log-verossimilhan%C3%A7a" id="toc-log-verossimilhança"><span class="toc-section-number">1.5</span>
-Log-Verossimilhança</a></li>
+<li><a href="#m%C3%A9todo-de-dois-passos" id="toc-método-de-dois-passos"><span class="toc-section-number">1.1</span> Método de Dois Passos</a></li>
 </ul></li>
-<li><a href="#estimadores-de-m%C3%A1xima-verossimilhan%C3%A7a" id="toc-estimadores-de-máxima-verossimilhança"><span class="toc-section-number">2</span> Estimadores de Máxima
-Verossimilhança</a></li>
-<li><a href="#avalia%C3%A7%C3%B5es-assint%C3%B3ticas" id="toc-avaliações-assintóticas"><span class="toc-section-number">3</span> Avaliações Assintóticas</a>
-<ul>
-<li><a href="#exemplo-distribui%C3%A7%C3%A3o-normal" id="toc-exemplo-distribuição-normal"><span class="toc-section-number">3.1</span> Exemplo: Distribuição
-Normal</a></li>
-</ul></li>
-<li><a href="#estudos-te%C3%B3ricos-relacionados-a-estima%C3%A7%C3%A3o-de-par%C3%A2metros" id="toc-estudos-teóricos-relacionados-a-estimação-de-parâmetros"><span class="toc-section-number">4</span> Estudos Teóricos relacionados a
-Estimação de Parâmetros</a>
-<ul>
-<li><a href="#distribui%C3%A7%C3%A3o-normal" id="toc-distribuição-normal"><span class="toc-section-number">4.1</span>
-Distribuição Normal</a>
-<ul>
-<li><a href="#fun%C3%A7%C3%A3o-de-distribui%C3%A7%C3%A3o-acumulada" id="toc-função-de-distribuição-acumulada"><span class="toc-section-number">4.1.1</span> Função de Distribuição
-Acumulada</a></li>
-<li><a href="#fun%C3%A7%C3%A3o-densidade" id="toc-função-densidade"><span class="toc-section-number">4.1.2</span>
-Função Densidade</a></li>
-<li><a href="#log-verossimilhan%C3%A7a-1" id="toc-log-verossimilhança-1"><span class="toc-section-number">4.1.3</span> Log-Verossimilhança</a></li>
-<li><a href="#derivadas-parciais-com-respeito-aos-par%C3%A2metros-vetor-escore" id="toc-derivadas-parciais-com-respeito-aos-parâmetros-vetor-escore"><span class="toc-section-number">4.1.4</span> Derivadas parciais com respeito
-aos parâmetros (Vetor Escore)</a></li>
-<li><a href="#jacobiano" id="toc-jacobiano"><span class="toc-section-number">4.1.5</span> Jacobiano</a></li>
-<li><a href="#estimadores-de-m%C3%A1xima-verossimilhan%C3%A7a-1" id="toc-estimadores-de-máxima-verossimilhança-1"><span class="toc-section-number">4.1.6</span> Estimadores de Máxima
-Verossimilhança</a></li>
-</ul></li>
-<li><a href="#consist%C3%AAncia" id="toc-consistência"><span class="toc-section-number">4.2</span> Consistência</a></li>
-</ul></li>
-<li><a href="#mensagem-final" id="toc-mensagem-final"><span class="toc-section-number">5</span> Mensagem Final</a></li>
-<li><a href="#refer%C3%AAncias" id="toc-referências">Referências</a></li>
+<li><a href="#refer%C3%AAncias" id="toc-referências"><span class="toc-section-number">2</span> Referências</a></li>
 </ul>
 </div>
 
@@ -601,576 +434,175 @@ Verossimilhança</a></li>
 <div id="introdução" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Introdução</h1>
 <p style="text-align: justify;">
-Seja <span class="math inline">\(f(\mathbf{x}|\theta)\)</span> a função
-densidade de probabilidade (fdp) ou função de probabilidade (fp)
-conjunta da amostra <span class="math inline">\(X=(X_{1},\cdots,X_{n}).\)</span> Então, dado que
-<span class="math inline">\(X=x\)</span> é observado, a função de <span class="math inline">\(\theta\)</span> definida por
-</p>
-<span class="math display">\[
-L(\theta|\mathbf{x})=f(\mathbf{x}|\theta)
-\]</span>
-<p style="text-align: justify;">
-é chamada de função de verossimilhança. Se <span class="math inline">\(X\)</span> é um vetor aleatório discreto, então
-<span class="math inline">\(L(\theta|\mathbf{x})=P_{\theta}(X=x).\)</span> Se
-<span class="math inline">\(X\)</span> é uma variável aleatória contínua
-com valor real e se a fdp de <span class="math inline">\(X\)</span> é
-contínua em <span class="math inline">\(x,\)</span> então, para <span class="math inline">\(\epsilon\)</span> pequeno, <span class="math inline">\(P_{\theta}(x-\epsilon&lt;X&lt;x+\epsilon)\approx
-2\epsilon{}f(\mathbf{x}|\theta)=2\epsilon{}L(\theta|\mathbf{x})\)</span>
-(lembrem-se de integral de Riemann). Apesar de parecer que a função de
-verossmilhança é igual a uma fdp ou a uma fp, há uma distinção sútil,
-pois no caso da fdp ou fp consideramos <span class="math inline">\(\theta\)</span> fixo e <span class="math inline">\(x\)</span> variável. No caso da função de
-verossimilhança <span class="math inline">\(L(\theta|\mathbf{x}),\)</span> consideramos que
-<span class="math inline">\(x\)</span> é ponto amostral observado (fixo)
-e que <span class="math inline">\(\theta\)</span> é a variável assumindo
-valores em um espaço paramétrico <span class="math inline">\(\Theta\)</span> qualquer.
-</p>
-<p style="text-align: justify;">
-Considere uma variável aleatória <span class="math inline">\(X\)</span>,
-cujo comportamento pode ser explicado por duas hipóteses (hipóteses
-<span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span>) que desejamos comparar. Realizamos um
-estudo e observamos um valor <span class="math inline">\(x\)</span> de
-<span class="math inline">\(X.\)</span> O que as hipóteses dizem a
-respeito dessa observação?
-</p>
-<ul>
-<li>A hipótese <span class="math inline">\(A\)</span> implica que <span class="math inline">\(X=x\)</span> seria observado com probabilidade
-<span class="math inline">\(p_{A}(x);\)</span></li>
-<li>A hipótese <span class="math inline">\(B\)</span> implica que <span class="math inline">\(X=x\)</span> seria observado com probabilidade
-<span class="math inline">\(p_{B}(x);\)</span></li>
-</ul>
-<p>No processo de investigação científica, no entanto, o que interessa é
-a pergunta:</p>
-<p style="text-align: center;">
-“<em>O que a observação de <span class="math inline">\(X = x\)</span>
-diz a respeito das hipóteses <span class="math inline">\(A\)</span> e
-<span class="math inline">\(B?\)</span></em>”
+Considere o sistema de equações <span class="math display">\[\begin{align}
+Y_{1i}^{*}&amp;=\pmb{x}_{i}^\top\pmb{\beta}+\epsilon_{1i},
+\label{eq_reg_heckman} \\
+Y_{2i}^{*}&amp;=\pmb{z}_{i}^\top\pmb{\gamma}+\epsilon_{2i},\quad
+i=1,\ldots,n, \label{eq_sel_heckman}
+\end{align}\]</span> em que <span class="math inline">\(Y_{1i}^{*}\)</span> é a variável de interesse
+(latente) e <span class="math inline">\(Y_{2i}^{*}\)</span> rege o
+processo de seleção (também latente). Na prática, <span class="math inline">\(Y_{1i}^{*}\)</span> só é observado quando a
+condição de seleção é satisfeita. Especificamente, sabemos apenas se
+<span class="math inline">\(Y_{2i}^{*}\)</span> excede um limiar <span class="math inline">\(a\in\mathbb{R}\)</span> (fixo), o que gera
+observação seletiva de <span class="math inline">\(Y_{1i}^{*}\)</span>.
+Observamos, portanto, <span class="math display">\[\begin{align}\label{mod_heckman_ind}
+U_{i}&amp;=1\{Y_{2i}^{*}&gt;a\},\\
+\nonumber Y_{i}&amp;=Y_{1i}^{*}U_{i},\quad i=1,\ldots,n,
+\end{align}\]</span> em que <span class="math inline">\(1\{Y_{2i}^{*}&gt;a\}=1\)</span> se <span class="math inline">\(Y_{2i}^{*}&gt;a\)</span> e <span class="math inline">\(0\)</span> caso contrário. Os vetores de
+parâmetros <span class="math inline">\(\pmb{\beta}\in
+\mathbb{R}^{p}\)</span> e <span class="math inline">\(\pmb{\gamma}\in
+\mathbb{R}^{q}\)</span> são desconhecidos; os regressores <span class="math inline">\(\pmb{x}_{i}\in \mathbb{R}^{p}\)</span> e <span class="math inline">\(\pmb{z}_{i}\in \mathbb{R}^{q}\)</span> não
+precisam ser mutuamente exclusivos (embora, para identificação mais
+robusta, seja usual adotar ao menos uma variável em <span class="math inline">\(\pmb{z}_{i}\)</span> que não apareça em <span class="math inline">\(\pmb{x}_{i}\)</span> — a chamada <strong>exclusion
+restriction</strong>).
 </p>
 <p style="text-align: justify;">
-A Lei da Verossimilhança afirma que, no caso discreto, a observação
-<span class="math inline">\(X = x\)</span> é uma evidência que favorece
-a hipótese <span class="math inline">\(A\)</span> sobre a hipótese <span class="math inline">\(B\)</span> se, e somente se,
-</p>
-<p><span class="math display">\[\begin{align}
-P_{A}(X=x)=L(A|x)&gt;L(B|x)=P_{B}(X=x)
-\end{align}\]</span></p>
-<p>Mais ainda, a Lei da Verossimilhança implica que a <em>Razão de
-Verossimilhança</em> <span class="math display">\[\begin{align}
-\dfrac{P_{A}(X=x)}{P_{B}(X=x)}=\dfrac{L(A|x)}{L(B|x)}
-\end{align}\]</span> mede a <em>força de evidência</em> em favor da
-hipótese <span class="math inline">\(A\)</span> sobre a hipótese <span class="math inline">\(B.\)</span> No caso contínuo, escreveríamos, <span class="math display">\[
-\dfrac{P_{A}(x-\epsilon&lt;X&lt;x+\epsilon)}{P_{B}(x-\epsilon&lt;X&lt;x+\epsilon)}\approx
-\dfrac{L(A|\mathbf{x})}{L(B|\mathbf{x})}.
-\]</span></p>
-<div id="exemplo" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Exemplo</h2>
-<p style="text-align: justify;">
-O número de mensagens eletrônicas (em centenas) recebidas por um
-provedor em horário comercial pode ser modelado por uma distribuição de
-probabilidade. Há duas hipóteses que iremos considerar:
-</p>
-<ul>
-<li><p>Hipótese A: o número médio de mensagens eletrônicas (em centenas)
-recebidas por dia é 15;</p></li>
-<li><p>Hipótese B: o número médio de mensagens (em centenas) recebidas
-recebidas por dia é 25;</p>
-<p style="text-align: justify;">
-<p>Observou-se, durante um dia qualquer, 2000 mensagens. Neste caso, o
-número de mensagens <span class="math inline">\(X\)</span> é uma
-variável aleatória e a distribuição de <em>Poisson</em> é uma candidata
-para a modelagem, pois trata-se de dados de contagem. Assim, se <span class="math inline">\(X\)</span> tem distribuição <em>Poisson</em>, sua
-função densidade é dada por:</p>
-</p>
-<p><span class="math display">\[
-P(X=x)=\dfrac{e^{-\mu}\mu^{x}}{x!},
-\]</span> em que <span class="math inline">\(\mu\)</span> é o número
-médio de mensagens. Logo, as probabilidades de acordo com as hipóteses
-são:</p></li>
-<li><p>Hipótese A: <span class="math inline">\(\mu=15\)</span> <span class="math display">\[
-p_{A}(20)=\dfrac{e^{-15}15^{20}}{20!}=0.04181031.
-\]</span></p></li>
-<li><p>Hipótese B: <span class="math inline">\(\mu=25\)</span> <span class="math display">\[
-p_{B}(20)=\dfrac{e^{-25}25^{20}}{20!}=0.05191747.
-\]</span></p>
-<p style="text-align: justify;">
-<p>Logo, a observação <span class="math inline">\(X=20\)</span> favorece
-a hipótese <span class="math inline">\(B\)</span> sobre a hipótese <span class="math inline">\(A.\)</span> A <em>força de evidência</em> em favor
-de <span class="math inline">\(B\)</span> sobre <span class="math inline">\(A\)</span> é</p>
-</p>
-<p><span class="math display">\[
-\dfrac{p_{B}(20)}{p_{A}(20)}=\dfrac{0.05191747}{0.04181031}=1.241738.
-\]</span></p>
-<p style="text-align: justify;">
-<p>Ou seja, pode se dizer que a observação <span class="math inline">\(X
-= 20\)</span> é evidência que a hipótese <span class="math inline">\(B\)</span> é aproximadamente 1.24 vezes mais
-verossímil que a hipótese <span class="math inline">\(A.\)</span></p>
-</p></li>
-</ul>
-</div>
-<div id="discussão-sobre-exemplo-anterior" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Discussão sobre
-exemplo anterior</h2>
-<p style="text-align: justify;">
-Notemos que ao comparar as hipóteses utilizamos a <em>função de
-densidade</em> da distribuição <em>Poisson</em>:
-</p>
-<span class="math display">\[
-P(X=x)=\dfrac{e^{-\mu}\mu^{x}}{x!}
-\]</span>
-<p style="text-align: justify;">
-em que <span class="math inline">\(x\)</span> é o valor de uma
-observação da variável aleatória Poisson e <span class="math inline">\(\mu\)</span> é o seu parâmetro. A observação <span class="math inline">\(X = 20\)</span> foi dada e, portanto, o valor de
-<span class="math inline">\(x\)</span> é conhecido e fixo. Assim, a
-função utilizada foi
-</p>
-<span class="math display">\[
-P(X=20)=\dfrac{e^{-\mu}\mu^{20}}{20!}.
-\]</span>
-<p style="text-align: justify;">
-Essa expressão não é mais uma função do valor da observação <span class="math inline">\(x,\)</span> e sim uma função do parâmetro <span class="math inline">\(\mu,\)</span> que variou da hipótese <span class="math inline">\(A\)</span> para hipótese <span class="math inline">\(B.\)</span>
+Para definir o modelo de seleção amostral, assume-se que os termos de
+erro <span class="math inline">\((\epsilon_{1i},\epsilon_{2i})\)</span>
+seguem distribuição normal bivariada: <span class="math display">\[\begin{align}
+\label{erro}
+\begin{pmatrix}
+\epsilon_{1i}\\
+\epsilon_{2i}
+\end{pmatrix} \overset{iid}{\sim} \mathcal{N}
+\begin{bmatrix}
+\begin{pmatrix}
+0\\
+0
+\end{pmatrix},
+\begin{pmatrix}
+\sigma^{2} &amp; \rho\,\sigma \\
+\rho\,\sigma &amp; 1
+\end{pmatrix}
+\end{bmatrix},\quad i=1,\ldots,n,
+\end{align}\]</span> em que <span class="math inline">\(\sigma^{2}_{1}\equiv \sigma^{2}\)</span>. Como
+<span class="math inline">\(Y_{2i}^{*}\)</span> não é observado, a sua
+variância não é identificável em escala absoluta; por convenção, fixa-se
+<span class="math inline">\(\sigma_{2}^{2}=1\)</span> sem perda de
+generalidade (qualquer normalização positiva equivaleria a reescalar
+<span class="math inline">\(\pmb{\gamma}\)</span> e o limiar <span class="math inline">\(a\)</span>). De forma análoga, usualmente toma-se
+<span class="math inline">\(a=0\)</span>, pois valores distintos podem
+ser absorvidos pelo intercepto da equação de seleção <span class="math inline">\(\ref{eq_sel_heckman}\)</span>.
 </p>
 <p style="text-align: justify;">
-Sempre que numa função densidade, ou função de probabilidade, a
-observação for fixada e o parâmetro desconhecido (variável), não se tem
-mais uma função densidade, mas uma função de verossimilhança. Esta
-última indica a verossimilhança de uma dada hipótese, por exemplo a
-hipótese <span class="math inline">\(A\)</span> em que <span class="math inline">\(\mu = 15\)</span>, dado que observou-se <span class="math inline">\(X = 20\)</span>. Para tornar mais claro este
-conceito se utiliza uma notação diferente para a função de
-verossimilhança:
-</p>
-<p><span class="math display">\[
-L(hipótese|dados)\ \textrm{ou}\  L(A|X=x)\ \textrm{ou}\ L(\mu|X=x)
-\]</span></p>
-Assim, de acordo com o exemplo anterior, temos: <span class="math display">\[
-L(\mu|X=20)=\dfrac{e^{-\mu}\mu^{20}}{20!}
-\]</span>
-<p style="text-align: justify;">
-A <a href="#fig1">Figura 1</a> apresenta o gráfico dessa função para
-valores de <span class="math inline">\(\mu\)</span> entre 10 e 50.
-Notemos que o valor da observação influencia fortemente o comportamento
-da função de verossimilhança, o que pode ser observado na
-<a href="#fig2">Figura 2</a>.
-</p>
-<p><a name="fig1"></a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>lmu <span class="ot">&lt;-</span> (<span class="fu">exp</span>(<span class="sc">-</span>mu)<span class="sc">*</span>(mu<span class="sc">^</span>x))<span class="sc">/</span><span class="fu">factorial</span>(x)</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>expr <span class="ot">=</span> <span class="fu">expression</span>(L<span class="sc">*</span>(mu <span class="sc">~</span> <span class="st">&quot;|&quot;</span> <span class="sc">~</span> X<span class="sc">==</span><span class="dv">20</span>))</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">plot</span>(mu, lmu, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="fu">expression</span>(mu), <span class="at">ylab =</span> expr, <span class="at">main =</span> <span class="st">&quot;Figura 1: Verossimilhança de uma distribuição Poisson para x=20&quot;</span>)</span></code></pre></div>
-<p><img role="img" src="data:image/png;base64,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" width="672" style="display: block; margin: auto;" /></p>
-<p><a name="fig2"></a></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">50</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>lmu<span class="ot">&lt;-</span><span class="cf">function</span>(x,mu){</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  lmu1<span class="ot">&lt;-</span>(<span class="fu">exp</span>(<span class="sc">-</span>mu)<span class="sc">*</span>(mu<span class="sc">^</span>x))<span class="sc">/</span><span class="fu">factorial</span>(x)</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="fu">return</span>(lmu1)</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>}</span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>expr <span class="ot">=</span> <span class="fu">expression</span>(L<span class="sc">*</span>(mu <span class="sc">~</span> <span class="st">&quot;|&quot;</span> <span class="sc">~</span> X<span class="sc">==</span>x))</span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="fu">plot</span>(mu, <span class="fu">lmu</span>(<span class="dv">10</span>,mu), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="fu">expression</span>(mu), <span class="at">ylab =</span> expr, <span class="at">main =</span> <span class="st">&quot;Figura 2: Verossimilhança para diferentes valores observados de X&quot;</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">lines</span>(mu, <span class="fu">lmu</span>(<span class="dv">13</span>,mu),<span class="at">col=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">1</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="fu">lines</span>(mu, <span class="fu">lmu</span>(<span class="dv">17</span>,mu),<span class="at">col=</span><span class="dv">3</span>,<span class="at">lty=</span><span class="dv">3</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="fu">lines</span>(mu, <span class="fu">lmu</span>(<span class="dv">20</span>,mu),<span class="at">col=</span><span class="dv">4</span>,<span class="at">lty=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="fu">lines</span>(mu, <span class="fu">lmu</span>(<span class="dv">25</span>,mu),<span class="at">col=</span><span class="dv">5</span>,<span class="at">lty=</span><span class="dv">5</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="fu">lines</span>(mu, <span class="fu">lmu</span>(<span class="dv">40</span>,mu),<span class="at">col=</span><span class="dv">6</span>,<span class="at">lty=</span><span class="dv">6</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">40</span>, <span class="fl">0.12</span>, <span class="fu">c</span>(<span class="fu">expression</span>(x<span class="sc">==</span><span class="dv">10</span>), </span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>                    <span class="fu">expression</span>(x<span class="sc">==</span><span class="dv">13</span>),</span>
-<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>                    <span class="fu">expression</span>(x<span class="sc">==</span><span class="dv">17</span>),</span>
-<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>                    <span class="fu">expression</span>(x<span class="sc">==</span><span class="dv">20</span>),</span>
-<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a>                    <span class="fu">expression</span>(x<span class="sc">==</span><span class="dv">25</span>),</span>
-<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a>                    <span class="fu">expression</span>(x<span class="sc">==</span><span class="dv">40</span>)), </span>
-<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>       <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
-<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a>       <span class="at">lwd=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>), </span>
-<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a>       <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>))</span></code></pre></div>
-<p><img role="img" src="data:image/png;base64,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" width="672" style="display: block; margin: auto;" /></p>
-<hr />
-</div>
-<div id="múltiplas-observações" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Múltiplas
-Observações</h2>
-<p style="text-align: justify;">
-Em geral, quando fazemos qualquer estudo estatístico, trabalhamos com
-várias observações independentes para compor uma amostra. Assim, ao
-assumir uma hipótese <span class="math inline">\(A\)</span> como
-verdadeira, a probabilidade de se obter uma amostra <span class="math inline">\(X=(X_{1},\cdots,X_{n}),\)</span> composta de <span class="math inline">\(n\)</span> observações independentes de <span class="math inline">\(X\)</span> é dada por
-</p>
-<span class="math display">\[
-P(X|A)=P(X=x_{1}|A)P(X=x_{2}|A)\dots{}P(X=x_{n}|A).
-\]</span>
-<p style="text-align: justify;">
-Ou seja, a probabilidade de se obter a amostra observada, dado a
-hipótese <span class="math inline">\(A,\)</span> é igual ao produto das
-probabilidades das observações individuais, dado a hipótese <span class="math inline">\(A.\)</span> Da mesma forma, a função de
-verossimilhança de uma amostra composta de observações independentes
-será o produto das funções de verossimilhança das observações
-individuais, ou seja,
-</p>
-<p><span class="math display">\[\begin{align}
-L(A|X)&amp;=L(A|X=x_{1})L(A|X=x_{2})\dots L(A|X=x_{n})\\
-&amp;={\displaystyle \prod_{i=1}^{n}L(A|X=x_{i})}
-\end{align}\]</span></p>
-</div>
-<div id="exemplo-1" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Exemplo</h2>
-<p style="text-align: justify;">
-Suponha que tenhamos contabilizado durante 10 dias as mensagens
-recebidas. Os resultados são apresentados na Tabela 1 abaixo.
-</p>
-<p><span class="math display">\[
-\begin{array}{cccc}
-\hline
-Dia&amp;N. de Mensagens&amp;Verossimilhança&amp;Verossimilhança\\
-(i)&amp;(X=x_{i})&amp;\mu=15&amp;\mu=25\\
-\hline
-1 &amp;20&amp;0.04181031  &amp;0.05191747\\
-2 &amp;23&amp;0.01327967  &amp;0.07634203\\
-3 &amp;25&amp;0.004979876 &amp;0.07952295\\
-4 &amp;22&amp;0.02036216  &amp;0.07023467\\
-5 &amp;27&amp;0.001596114 &amp;0.07080035\\
-6 &amp;25&amp;0.004979876 &amp;0.07952295\\
-7 &amp;23&amp;0.01327967  &amp;0.07634203\\
-8 &amp;28&amp;0.0008550612&amp;0.0632146 \\
-9 &amp;29&amp;0.000442273 &amp;0.05449534\\
-10&amp;21&amp;0.0298645   &amp;0.06180651\\
-\hline
-&amp;{\displaystyle \prod_{i=1}^{10}}&amp;6.711593\times
-10^{-23}&amp;2.025927\times 10^{-12}\\
-\hline
-\end{array}
-\]</span></p>
-<!--|Dia             |N. de Mensagens |Verossimilhança       |Verossimilhança|
-|----------------|----------------|----------------------|---------------|
-|$(i)$           |$(X=x_{i})$     |$\mu=15$              |$\mu=25$       |
-|                |                |                      |               |
-|1 |20|0,04181031  |0,05191747|
-|2 |23|0,01327967  |0,07634203|
-|3 |25|0,004979876 |0,07952295|
-|4 |22|0,02036216  |0,07023467|
-|5 |27|0,001596114 |0,07080035|
-|6 |25|0,004979876 |0,07952295|
-|7 |23|0,01327967  |0,07634203|
-|8 |28|0,0008550612|0,0632146 |
-|9 |29|0,000442273 |0,05449534|
-|10|21|0,0298645   |0,06180651|
-|  |${\displaystyle \prod_{i=1}^{10}L(\theta|X=x_{i})}$|6,711593e-23|2,025927e-12|
-|                |                |                      |               |
--->
-<p style="text-align: justify;">
-Observamos na Tabela acima que a verossimilhança apresenta um valor
-próximo de zero, isso porque a verossimilhança da amostra é o produto da
-verossimilhança das observações. Além disso, observamos que a hipótese
-<span class="math inline">\(B\)</span> permanece como a hipótese mais
-verossímil.
-</p>
-</div>
-<div id="log-verossimilhança" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span>
-Log-Verossimilhança</h2>
-<p style="text-align: justify;">
-Na maioria dos casos, especialmente quando vamos diferenciar a função de
-verossimilhança, é mais fácil trabalhar com o logaritmo natural da
-função de verossimilhança do que trabalhar diretamente com <span class="math inline">\(L(\theta|X).\)</span> Assim, vamos utilizar
-</p>
-<span class="math display">\[
-\mathcal{L}(\theta|X=x)=log{(L(\theta|X))}
-\]</span>
-<p style="text-align: justify;">
-É fácil observar que o valor numérico da verossimilhança é geralmente
-(não necessariamente) menor do que um. Logo, o logaritmo desse valor é
-negativo. Por isso, as vezes, trabalhamos com a função
-log-verossimilhança negativa, ou seja, com
-</p>
-<span class="math display">\[
-\mathcal{L}(\theta|X=x)=-log{(L(\theta|X))},
-\]</span>
-<p style="text-align: justify;">
-nesse caso, se o valor da verossimilhança de uma amostra com muitas
-observações é um número positivo muito pequeno, próximo de zero, o valor
-da log-verossimilhança negativa será um número positivo numa escala mais
-fácil de trabalhar.
+O sistema <span class="math inline">\(\ref{eq_reg_heckman}\)</span>–<span class="math inline">\(\ref{erro}\)</span> é conhecido como <em>modelo de
+Heckman</em>, <em>Tobit tipo 2</em> ou <em>modelo de seleção
+amostral</em>. A equação <span class="math inline">\(\ref{eq_reg_heckman}\)</span> é a <em>equação de
+interesse primária</em> (ou de regressão), enquanto <span class="math inline">\(\ref{eq_sel_heckman}\)</span> é a <em>equação de
+seleção</em>. O parâmetro de correlação <span class="math inline">\(\rho\in(-1,1)\)</span> desempenha papel central:
+quando <span class="math inline">\(\rho\neq 0\)</span>, há dependência
+entre os choques que afetam o desfecho <span class="math inline">\(Y_{1i}^{*}\)</span> e o mecanismo que regula sua
+observação, produzindo se a amostra for analisada ignorando o processo
+de seleção. Em contraste, quando <span class="math inline">\(\rho=0\)</span>, a seleção é <em>ignorável</em>
+sob a suposição de normalidade, e a regressão na subamostra observada
+fornece estimativas não viesadas de <span class="math inline">\(\pmb{\beta}\)</span>.
 </p>
 <p style="text-align: justify;">
-Por outro lado, o fato da transformação incluir uma mudança de sinal
-implica que o comportamento da função de log-verossimilhança negativa é
-oposto ao comportamento da função de verossimilhança. Isso significa que
-a hipótese com maior verossimilhança negativa terá menor
-log-verossimilhança.
+Do ponto de vista inferencial, duas abordagens clássicas são frequentes:
+(i) a estimação por <em>máxima verossimilhança</em> conjunta, baseada na
+densidade normal bivariada, e (ii) o procedimento em <em>dois
+estágios</em> de Heckman, em que se estima primeiro a equação de seleção
+via <em>probit</em> e, em seguida, incorpora-se a <em>razão de Mills
+inversa</em> como regressor adicional na equação de interesse. A
+primeira é assintoticamente eficiente sob correta especificação; a
+segunda é simples e interpretável, servindo como diagnóstico prático do
+viés de seleção <span class="citation">(<strong>Heckman1976?</strong>;
+<strong>Heckman1979?</strong>)</span>.
 </p>
+<p style="text-align: justify;">
+Aplicações do modelo são vastas - de economia do trabalho (salários
+observados apenas para quem está empregado) a estudos em ciências
+agrárias (produtividade ou renda observadas somente para produtores que
+adotam determinada tecnologia, propriedades com mensuração completa
+apenas quando acessíveis etc.). Em tais contextos, a não observação
+depende de decisões ou condições correlacionadas com o desfecho de
+interesse, tornando imprescindível modelar conjuntamente seleção e
+resultado para evitar conclusões enviesadas.
+</p>
+<p style="text-align: justify;">
+Neste trabalho, apresentamos uma aplicação do modelo de Heckman em ,
+enfatizando: (a) especificação e identificação (normalização, papel de
+variáveis de exclusão); (b) estimação por máxima verossimilhança e por
+dois estágios; (c) diagnóstico do viés de seleção via teste sobre <span class="math inline">\(\rho\)</span>; e (d) interpretação substantiva dos
+coeficientes e efeitos marginais. Implementamos os exemplos com o pacote
+, discutindo detalhadamente a replicação dos resultados, a sensibilidade
+às suposições e boas práticas para relatórios reprodutíveis em .
+</p>
+<div id="método-de-dois-passos" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Método de Dois
+Passos</h2>
+<p style="text-align: justify;">
+Um procedimento de estimação também proposto por foi o método de dois
+passos. Esse método, foi sugerido como um bom estimador para pontos de
+partida confiáveis e eficientes na estimação por máxima verossimilhança
+. O método é baseado no fato da média condicional <span class="math inline">\(\tilde{\mu}_{i}=E(y_{i}|y_{1i}^{*}\ \textrm{é
+observado},\pmb{x}_{i},\pmb{z}_{i}),\ \textrm{para}\
+i=1,\cdots,n,\)</span> ser dada por <span class="math display">\[\begin{eqnarray}\label{espcond}
+\nonumber \tilde{\mu}_{i}&amp;=&amp;E(y_{i}|\ y_{1i}^{*}\ \textrm{é
+observado},\pmb{x}_{i},\pmb{z}_{i})\\
+\nonumber                &amp;=&amp;E(y_{i}|\
+y_{2i}^{*}&gt;0,\pmb{x}_{i},\pmb{z}_{i})\\
+\nonumber                &amp;=&amp;E(y_{1i}^{*}|\
+\pmb{z}_{i}^\top\pmb{\gamma}+\epsilon_{2i}&gt;0,\pmb{x}_{i},\pmb{z}_{i})\\
+\nonumber                &amp;=&amp;E(\pmb{x}_{i}^\top\pmb{\beta}+\epsilon_{1i}|\epsilon_{2i}&gt;-\pmb{z}_{i}^\top\pmb{\gamma},
+\pmb{x}_{i},\pmb{z}_{i})\\
+\nonumber                &amp;=&amp;\pmb{x}_{i}^\top\pmb{\beta}+E(\epsilon_{1i}|\epsilon_{2i}&gt;-\pmb{z}_{i}^\top\pmb{\gamma},
+\pmb{z}_{i})\\
+\nonumber               &amp;=&amp; \mathbf{x}_{i}^\top\pmb{\beta} +
+\rho\sigma\lambda(-\mathbf{z}_{i}^\top\pmb{\gamma})\\
+\nonumber                &amp;=&amp; \pmb{x}_{i}^\top\pmb{\beta} +
+\rho\sigma\dfrac{\phi(\pmb{z}_{i}^\top\pmb{\gamma})}
+{\Phi(\pmb{z}_{i}^\top\pmb{\gamma})}\\
+                         &amp;=&amp;
+\pmb{x}_{i}^\top\pmb{\beta}+\lambda_{i}\beta_{\lambda},
+\end{eqnarray}\]</span> em que <span class="math inline">\(\lambda_{i}=\dfrac{\phi(\pmb{z}_{i}^\top\pmb{\gamma})}{\Phi(\pmb{z}_{i}^\top\pmb{\gamma})}\)</span>
+denota a razão inversa de Mills, <span class="math inline">\(\beta_{\lambda}=\rho\sigma,\ \rho\)</span> é a
+correlação entre <span class="math inline">\(\epsilon_{1i}\)</span> e
+<span class="math inline">\(\epsilon_{2i}\)</span> e <span class="math inline">\(\sigma\)</span> é o desvio padrão de <span class="math inline">\(\epsilon_{1i}.\)</span> A partir de <span class="math inline">\(\ref{espcond}\)</span> podemos reescrever a
+equação de interesse como <span class="math display">\[\begin{align}\label{eqcommills}
+\tilde{y}_{i}=\tilde{\mu}_{i}+\varepsilon_{i},
+\end{align}\]</span> em que <span class="math inline">\(\tilde{\mu}_{i}\)</span> é dada em (<span class="math inline">\(\ref{espcond}\)</span>) e <span class="math inline">\(\varepsilon_{i}\)</span> é um novo termo de erro
+de média zero e independente de <span class="math inline">\(\pmb{z}_{i}\)</span> e de <span class="math inline">\(\pmb{x}_{i}\)</span>. O termo <span class="math inline">\(\lambda_{i}\beta_{\lambda}\)</span> em (<span class="math inline">\(\ref{espcond}\)</span>) explica a inconsistência
+do estimador de mínimos quadrados ordinários (MQO), quando <span class="math inline">\(\rho\neq 0,\)</span> e se MQO fosse utilizado para
+encontrar as estimativas dos parâmetros de (<span class="math inline">\(\ref{eq_reg_heckman}\)</span>). A partir daí, o
+primeiro passo do método é ajustar o modelo probit a equação de seleção
+(<span class="math inline">\(\ref{eq_sel_heckman}\)</span>) e estimar
+<span class="math inline">\(\widehat{\pmb{\gamma}}\)</span> e <span class="math inline">\(\widehat{\lambda}_{i}=\frac{\phi(\pmb{z}_{i}^\top\pmb{\widehat{\gamma}})}{\Phi(\pmb{z}_{i}^\top
+\pmb{\widehat{\gamma}})}.\)</span> Em um segundo passo, estimamos por
+MQO os parâmetros <span class="math inline">\(\pmb{\beta}\)</span> e
+<span class="math inline">\(\beta_{\lambda}=\rho\sigma\)</span> de <span class="math inline">\(\ref{eqcommills}\)</span> usando os valores de
+<span class="math inline">\(y_{1i}^{*}\)</span> observados. Um estimador
+para a variância de <span class="math inline">\(\epsilon_{1}\)</span> é
+dado por <span class="math display">\[\begin{align}
+\widehat{\sigma}^{2}=\dfrac{1}{n_{u}}\left(\pmb{\widehat{\varepsilon}}^\top\pmb{\widehat{\varepsilon}}+
+\widehat{\beta}_{\lambda}^{2}{\displaystyle
+\sum_{i=1}^{n_{u}}\widehat{\delta}_{i}}\right),
+\label{preliminares:sigma}
+\end{align}\]</span> em que <span class="math inline">\(\widehat{\varepsilon}\)</span> é o vetor residual
+da estimação de MQO de (<span class="math inline">\(\ref{eqcommills}\)</span>), <span class="math inline">\(n_{u}\)</span> é o número de observações nesta
+estimação e <span class="math inline">\(\widehat{\delta}_{i}=\widehat{\lambda}_{i}(\widehat{\lambda}_{i}+\pmb{z}_{i}^\top
+\pmb{\gamma}).\)</span> Finalmente, um estimador para a correlação entre
+<span class="math inline">\(\epsilon_{1}\)</span> e <span class="math inline">\(\epsilon_{2}\)</span> é dado por <span class="math display">\[\begin{align}
+\widehat{\rho}=\dfrac{\widehat{\beta}_{\lambda}}{\widehat{\sigma}},
+\label{preliminares:correlacao}
+\end{align}\]</span> nesse caso, <span class="math inline">\(\widehat{\rho}\)</span> pode estar fora do
+intervalo <span class="math inline">\([-1,1].\)</span>
+</p>
+<p style="text-align: justify;">
+<p>A maior vantagem do método de dois passos é sua simplicidade, pois é
+mais fácil de ajustar do que o método de máxima verossimilhança, não
+requer algoritmos complicados e é uma alternativa mais robusta. Porém, é
+menos eficiente e o uso da razão inversa de Mills <span class="math inline">\((\lambda)\)</span> pode ocasionar possíveis
+problemas de multicolinearidade devido a sua linearidade em grande parte
+do seu suporte, como é possível observar na Figura <span class="math inline">\(\ref{fig:Mills}\)</span>. Para diminuir este
+problema é sugerido a , de acordo com a qual, pelo menos uma variável,
+que é um bom preditor de <span class="math inline">\(Y_{2}^{*}\)</span>
+e está incluída na equação de seleção, não deve aparecer na regressão
+primária.</p>
 </div>
 </div>
-<div id="estimadores-de-máxima-verossimilhança" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Estimadores de Máxima
-Verossimilhança</h1>
-<p style="text-align: justify;">
-O método da Máxima Verossimilhança consiste em estimar os parâmetros de
-um modelo utilizando as estimativas que tornam máximo o valor da função
-de verossimilhança. Isso é equivalente a encontrar o valor para o
-parâmetro que torna máxima a função de log-verossimilhança ou miníma a
-função log-verossimilhança negativa. Assim, considere a definição
-seguinte:
-</p>
-<p style="text-align: justify;">
-<em>Definição:</em> Para cada ponto amostral <span class="math inline">\(x,\)</span> seja <span class="math inline">\(\hat{\theta}(x)\)</span> um valor de parâmetro no
-qual <span class="math inline">\(L(\theta|x)\)</span> atinge seu máximo
-como uma função de <span class="math inline">\(\theta,\)</span> com
-<span class="math inline">\(x\)</span> mantido fixo. Um <em>estimador de
-máxima verossimilhança</em> (EMV) do parâmetro <span class="math inline">\(\theta\)</span> com base em uma amostra <span class="math inline">\(x\)</span> é <span class="math inline">\(\hat{\theta}(x).\)</span>
-</p>
-<p style="text-align: justify;">
-Para utilizar cálculos bivariados a fim de verificar que uma função
-<span class="math inline">\(f(\theta_{1},\theta_{2})\)</span> possui um
-máximo local em <span class="math inline">\((\hat{\theta}_{1},\hat{\theta}_{2}),\)</span> deve
-ser mostrado que as seguintes três condições se mantêm.
-</p>
-<ol style="list-style-type: lower-roman">
-<li>As derivadas parciais de primeira ordem são 0, <span class="math display">\[
-\dfrac{\partial}{\partial\theta_{1}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=
-\hat{\theta}_{2}}=0\quad \textrm{e}\quad
-\dfrac{\partial}{\partial\theta_{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=
-\hat{\theta}_{2}}=0
-\]</span></li>
-<li>Pelo menos uma derivada de segunda ordem é negativa, <span class="math display">\[
-\dfrac{\partial^{2}}{\partial\theta_{1}^{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},
-\theta_{2}=\hat{\theta}_{2}}&lt;0\quad \textrm{ou}\quad
-\dfrac{\partial^{2}}{\partial\theta_{2}^{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},
-\theta_{2}=\hat{\theta}_{2}}&lt;0
-\]</span></li>
-<li>O jacobiano das derivadas parciais de segunda ordem é positivo,</li>
-</ol>
-<span class="math display">\[
-\left|\begin{array}{rrr}
-\dfrac{\partial^{2}}{\partial\theta_{1}^{2}}f(\theta_{1},\theta_{2})
-&amp;
-\dfrac{\partial^{2}}{\partial\theta_{1}\partial\theta_{2}}f(\theta_{1},\theta_{2})
-\\
-\dfrac{\partial^{2}}{\partial\theta_{2}\partial\theta_{1}}f(\theta_{1},\theta_{2})
-&amp;
-\dfrac{\partial^{2}}{\partial\theta_{2}^{2}}f(\theta_{1},\theta_{2})
-\end{array}\right|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=\dfrac{\partial^{2}}{\partial\theta_{1}^{2}}f(\theta_{1},\theta_{2})\dfrac{\partial^{2}}{\partial\theta_{2}^{2}}f(\theta_{1},\theta_{2})-\Big(\dfrac{\partial^{2}}{\partial\theta_{1}\partial\theta_{2}}f(\theta_{1},\theta_{2})\Big)^{2}|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}&gt;0
-\]</span>
-<p style="text-align: justify;">
-Ou seja, para encontrar os estimadores de máxima verossimilhança são
-necessários todos esses cálculos. Lógico que para três ou mais
-parâmetros tais condições devem ser generalizadas. Além disso, tais
-condições satisfeitas garantem somente que os EMV são máximos locais e
-interiores, ainda é necessário garantir que são únicos e que não existe
-máximo na infinidade ou nos limites do espaço paramétrico.
-</p>
-</div>
-<div id="avaliações-assintóticas" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Avaliações
-Assintóticas</h1>
-<p>A medida que o tamanho amostral aumenta desejamos que a sequência de
-estimadores <span class="math inline">\(w_{1},\cdots,w_{n}\)</span> seja
-uma sequência consistente, eficiente e que possua normalidade
-assintótica. Essas são qualidades necessárias para um bom estimador. Ser
-consistente significa que para <span class="math inline">\(n\rightarrow
-\infty\)</span> temos <span class="math inline">\(w_{n}\approx
-\theta,\)</span> na verdade, temos:</p>
-<p><em>Definição 1:</em> Uma sequência de estimadores <span class="math inline">\(W_{1}=W_{1}(X_{1}),\cdots,W_{n}=W_{n}(X_{1},\cdots,X_{n})\)</span>
-é uma sequência <em>consistente</em> de estimadores do parâmetro <span class="math inline">\(\theta\)</span> se, e somente se, para cada <span class="math inline">\(\epsilon&gt;0\)</span> e cada <span class="math inline">\(\theta\in \Theta\)</span>, <span class="math display">\[
-{\displaystyle \lim_{n\rightarrow
-\infty}P_{\theta}(|W_{n}-\theta|&lt;\epsilon)}=1
-\]</span></p>
-<p><em>Teorema:</em> Se <span class="math inline">\(W_{n}\)</span> é uma
-sequência de estimadores de um parâmetro <span class="math inline">\(\theta\)</span> que satisfaz,</p>
-<p>1 - <span class="math display">\[
-{\displaystyle \lim_{n\rightarrow \infty}V_{\theta}(W_{n})}=0,
-\]</span></p>
-<p>2 - <span class="math display">\[
-{\displaystyle \lim_{n\rightarrow
-\infty}\textrm{Viés}_{\theta}(W_{n})}=0,
-\]</span></p>
-<p>para cada <span class="math inline">\(\theta\in \Theta,\)</span>
-então <span class="math inline">\(W_{n}\)</span> é uma sequência
-consistente de estimadores de <span class="math inline">\(\theta.\)</span></p>
-<p><em>Definição 2:</em> Uma sequência de estimadores <span class="math inline">\(W_{n}\)</span> é assintoticamente eficiente para
-um parâmetro <span class="math inline">\(\tau(\theta)\)</span> se <span class="math inline">\(\sqrt{n}(W_{n}-\tau(\theta))\rightarrow
-N(0,v(\theta))\)</span> em distribuição e <span class="math display">\[
-v(\theta)=\dfrac{[\tau&#39;(\theta)]^{2}}{E_{\theta}\Big((\frac{\partial}{\partial\theta}\log{f(X|\theta)})^{2}\Big)},
-\]</span> isto é, a variância assintótica de <span class="math inline">\(W_{n}\)</span> atinge o Limite inferior de
-Cramér-Rao.</p>
-<div id="exemplo-distribuição-normal" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Exemplo: Distribuição
-Normal</h2>
-<p style="text-align: justify;">
-<p>Suponha que observamos o vetor <span class="math inline">\((13,12,15,17,16,11,18,16,13,15)\)</span> de
-valores de uma variável <span class="math inline">\(X\sim
-N(\mu,4).\)</span> e digamos que há duas hipóteses competindo:</p>
-<ul>
-<li>Hipótese <span class="math inline">\(A:\)</span> a média de <span class="math inline">\(X\)</span> é <span class="math inline">\(\mu=13;\)</span></li>
-<li>Hipótese <span class="math inline">\(B:\)</span> a média de <span class="math inline">\(X\)</span> é <span class="math inline">\(\mu=15;\)</span></li>
-</ul>
-<p style="text-align: justify;">
-Precisamos responder qual o modelo (distribuição estatística) mais
-provável para se observar o vetor de valores acima? Sabemos que:
-</p>
-<p>1- <span class="math inline">\(X_{1},\cdots,X_{n},\)</span> com <span class="math inline">\(n=10,\)</span> é uma amostra aleatória de <span class="math inline">\(X\sim N(\mu,4);\)</span></p>
-<p>2- A densidade para cada observação é dada por <span class="math inline">\(f(x_{i};\mu,\sigma^{2})=\dfrac{1}{2\sqrt{2\pi}}
-\exp\Big\{-\dfrac{(x_{i}-\mu)^{2}}{8} \Big\};\)</span></p>
-<p>3- A verossimilhança é dada por <span class="math inline">\(L(\mu|X)={\displaystyle
-\prod_{i=1}^{10}f(\mu;x_{i})};\)</span></p>
-4- E a função log-verossimilhança é dada por: <span class="math display">\[
-\begin{align}
-L(\mu|X)=&amp;-10\log{(2\sqrt{2\pi})}-\dfrac{1}{8}{\displaystyle
-\sum_{i=1}^{10}(x_{i}-\mu)^{2}}\\
-=&amp;
--5\log{(8\pi)}-\dfrac{1}{8}\Big(\sum_{i=1}^{10}x_{i}^{2}-2\mu\sum_{i=1}^{10}x_{i}+10\mu^{2}\Big)
-\end{align}
-\]</span>
-<p style="text-align: justify;">
-Notemos que ao substituir os valores observados do vetor <span class="math inline">\(X,\)</span> obtemos uma função de <span class="math inline">\(\mu.\)</span> Vamos fazer isso e encontrar o
-gráfico de <span class="math inline">\(L(\mu|X)\)</span> para <span class="math inline">\(\mu\)</span> variando de 0 a 20;
-</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">13</span>,<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">17</span>,<span class="dv">16</span>,<span class="dv">11</span>,<span class="dv">18</span>,<span class="dv">16</span>,<span class="dv">13</span>,<span class="dv">15</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>sx2 <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>) </span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>sx <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>mu.vals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>expr <span class="ot">=</span> <span class="fu">expression</span>(L<span class="sc">*</span>(mu <span class="sc">~</span> <span class="st">&quot;|&quot;</span> <span class="sc">~</span> X<span class="sc">==</span>x))</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>lmu <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span> <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">8</span> <span class="sc">*</span> pi) <span class="sc">-</span> (sx2 <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> mu.vals <span class="sc">*</span> sx <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> (mu.vals<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span><span class="dv">8</span></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>v<span class="ot">=</span><span class="fu">max</span>(lmu)</span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="fu">plot</span>(mu.vals, lmu, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="fu">expression</span>(mu), <span class="at">ylab =</span> expr)</span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">14.6</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img role="img" src="data:image/png;base64,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" width="672" style="display: block; margin: auto;" /></p>
-<p>Para obter o ponto de máximo calculamos a derivada de <span class="math inline">\(L(\mu|X)\)</span> em função de <span class="math inline">\(\mu\)</span> e encontramos: <span class="math display">\[
-\dfrac{\partial L(\mu|X)}{\partial\mu}={\displaystyle
-\dfrac{1}{4}\sum_{i=1}^{10}(x_{i}-\mu)}
-\]</span> Ao igualar a derivada acima a zero e resolver a equação,
-obtemos: <span class="math display">\[
-\hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{10}x_{i}}{n}}
-\]</span></p>
-<p>Para provar que este é ponto de máximo, derivamos novamente e
-observamos que a segunda derivada no ponto <span class="math inline">\(\hat{\mu}\)</span> é sempre negativa. <span class="math display">\[
-\dfrac{\partial^{2}l(\mu)}{\partial\mu^{2}}=-\dfrac{n}{\sigma^{2}}&lt;0,
-\forall x\in \mathbb{R}.
-\]</span></p>
-<p>Observamos então que <span class="math inline">\(x={\displaystyle
-\dfrac{\sum_{i=1}^{10}x_{i}}{10}}=14,6\)</span> é o ponto de máximo de
-<span class="math inline">\(L(\mu|X).\)</span></p>
-<p>Até este ponto, utilizei como referência os trabalhos de <span class="citation">Batista (2019)</span> e <span class="citation">Casella
-and Berger (2010)</span>.</p>
-</div>
-</div>
-<div id="estudos-teóricos-relacionados-a-estimação-de-parâmetros" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Estudos Teóricos
-relacionados a Estimação de Parâmetros</h1>
-<div id="distribuição-normal" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Distribuição
-Normal</h2>
-<div id="função-de-distribuição-acumulada" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Função de
-Distribuição Acumulada</h3>
-<p><span class="math display">\[
-  F(x;\mu,\sigma^{2})=\int_{-\infty}^{x}\dfrac{1}{\sqrt{2\pi}\sigma}
-  \exp\Big\{-\dfrac{(t-\mu)^{2}}{2\sigma^{2}} \Big\}dt
-\]</span></p>
-</div>
-<div id="função-densidade" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Função
-Densidade</h3>
-<p><span class="math display">\[
-    f(x;\mu,\sigma^{2})=\dfrac{1}{\sqrt{2\pi}\sigma}
-    \exp\Big\{-\dfrac{(x-\mu)^{2}}{2\sigma^{2}} \Big\}dx
-\]</span></p>
-</div>
-<div id="log-verossimilhança-1" class="section level3" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span>
-Log-Verossimilhança</h3>
-<p style="text-align: justify;">
-Sejam <span class="math inline">\(X_{1},\cdots,X_{n}\)</span> variáveis
-aleatórias independentes e identicamente distribuidas com distribuição
-normal de média <span class="math inline">\(\mu\)</span> e variância
-<span class="math inline">\(\sigma^{2}\)</span> desconhecidas. Segue
-que, para <span class="math inline">\(\theta=(\mu,\sigma^{2}),\)</span>
-temos
-</p>
-<p><span class="math display">\[
-L(\theta|X)=\dfrac{1}{(2\pi\sigma^{2})^{n/2}}\exp{\Big\{\Big(-\frac{1}{2}\Big){\displaystyle
-\sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}}\Big\}},
-\]</span></p>
-<p>e, portanto,</p>
-<p><span class="math display">\[
-\mathcal{L}(\theta|X)=-\frac{n}{2}\log{(2\pi)}-\frac{n}{2}\log{\sigma^{2}}-\frac{1}{2}{\displaystyle
-\sum_{i=1}^{n}\frac{(x_{i}-\mu)^{2}}{\sigma^{2}}},
-\]</span></p>
-</div>
-<div id="derivadas-parciais-com-respeito-aos-parâmetros-vetor-escore" class="section level3" number="4.1.4">
-<h3><span class="header-section-number">4.1.4</span> Derivadas parciais
-com respeito aos parâmetros (Vetor Escore)</h3>
-<p><span class="math display">\[\begin{align}
-\dfrac{\partial}{\partial\mu}\mathcal{L}(\theta|X)&amp;=\frac{1}{\sigma^{2}}{\displaystyle
-\sum_{i=1}^{n}(x_{i}-\mu)};&amp;&amp;\dfrac{\partial}{\partial\sigma^{2}}\mathcal{L}(\theta|X)=-\frac{n}{2\sigma^{2}}+\frac{1}{2\sigma^{4}}{\displaystyle\sum_{i=1}^{n}(x_{i}-\theta)^{2}};
-\end{align}\]</span></p>
-</div>
-<div id="jacobiano" class="section level3" number="4.1.5">
-<h3><span class="header-section-number">4.1.5</span> Jacobiano</h3>
-<p><span class="math display">\[
-\left|\begin{array}{rrr}
--\frac{n}{\sigma^{2}}&amp;-\frac{1}{\sigma^{4}}{\displaystyle
-\sum_{i=1}^{n}(x_{i}-\mu)}\\
--\frac{1}{\sigma^{4}}{\displaystyle
-\sum_{i=1}^{n}(x_{i}-\mu)}&amp;\frac{n}{2\sigma^{4}}-\frac{1}{\sigma^{6}}{\displaystyle
-\sum_{i=1}^{n}(x_{i}-\mu)^{2}}
-\end{array}\right|
-\]</span></p>
-</div>
-<div id="estimadores-de-máxima-verossimilhança-1" class="section level3" number="4.1.6">
-<h3><span class="header-section-number">4.1.6</span> Estimadores de
-Máxima Verossimilhança</h3>
-<p>Segue que,</p>
-<p><span class="math display">\[
-\dfrac{\partial}{\partial\theta_{1}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow
-\hat{\mu}={\displaystyle \dfrac{\sum_{i=1}^{n}x_{i}}{n}}
-\]</span> <span class="math display">\[
-\dfrac{\partial}{\partial\theta_{2}}f(\theta_{1},\theta_{2})|_{\theta_{1}=\hat{\theta}_{1},\theta_{2}=\hat{\theta}_{2}}=0\Rightarrow
-\hat{\sigma}^{2}=\dfrac{(n-1)}{n}S^{2},\quad \textrm{em que}\quad
-S^{2}={\displaystyle \dfrac{\sum_{i=1}^{n}(x_{i}-\hat{\mu})^{2}}{n-1}}
-\]</span></p>
-<p>Observando o jacobiano acima vemos que a condição ii) é mantida e,
-além disso, <span class="math display">\[
-\left|\begin{array}{rrr}
--\frac{n}{\sigma^{2}}&amp;-\frac{1}{\sigma^{4}}{\displaystyle
-\sum_{i=1}^{n}(x_{i}-\mu)}\\
--\frac{1}{\sigma^{4}}{\displaystyle
-\sum_{i=1}^{n}(x_{i}-\mu)}&amp;\frac{n}{2\sigma^{4}}-\frac{1}{\sigma^{6}}{\displaystyle
-\sum_{i=1}^{n}(x_{i}-\mu)^{2}}
-\end{array}\right|_{\mu=\hat{\mu},\sigma^{2}=\hat{\sigma}^{2}}=\dfrac{1}{\sigma^{6}}\Big[-\frac{n}{2}+\frac{n}{\sigma^{2}}{\displaystyle
-\sum_{i=1}^{n}(x_{i}-\mu)^{2}-\frac{1}{\sigma^{2}}\Big(\sum_{i=1}^{n}(x_{i}-\mu)\Big)^{2}}\Big]_{\mu=\hat{\mu},\sigma^{2}=\hat{\sigma}^{2}}
-\]</span></p>
-<p><span class="math display">\[
-=\dfrac{1}{\hat{\sigma}^{6}}\Big[\dfrac{-n^{2}}{2}+\dfrac{n^{2}}{\hat{\sigma}^{2}}\hat{\sigma}^{2}-\dfrac{1}{\hat{\sigma}^{2}}\Big(\sum_{i=1}^{n}(x_{i}-\hat{\mu})\Big)^{2}\Big]=\dfrac{1}{\hat{\sigma}^{6}}\dfrac{n^{2}}{2}&gt;0
-\]</span></p>
-<p>Logo, os pontos <span class="math inline">\(\hat{\mu}={\displaystyle
-\dfrac{\sum_{i=1}^{n}x_{i}}{n}}\)</span> e <span class="math inline">\(\hat{\sigma}^{2}=\dfrac{(n-1)}{n}S^{2}\)</span>
-são pontos de máximo e são os estimadores de máxima verossimilhança do
-modelo normal.</p>
-</div>
-</div>
-<div id="consistência" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Consistência</h2>
-</div>
-</div>
-<div id="mensagem-final" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Mensagem Final</h1>
-<p>De acordo com Mario Sergio Cortella há três caminhos para o
-sucesso:</p>
-<p>1- Ensinar o que se sabe - Generosidade Mental</p>
-<p>2- Praticar o que se ensina - Coerência Ética</p>
-<p>3- Perguntar o que se ignora - Humildade Intelectual</p>
-</div>
-<div id="referências" class="section level1 unnumbered">
-<h1 class="unnumbered">Referências</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-Batista" class="csl-entry">
-Batista, João Luis F. 2019. <span>“Verossimilhança e Máxima
-Verossimilhança.”</span> ESALQ/USP. <a href="http://cmq.esalq.usp.br/BIE5781/lib/exe/fetch.php?media=leituras:verossim.pdf">http://cmq.esalq.usp.br/BIE5781/lib/exe/fetch.php?media=leituras:verossim.pdf</a>.
-</div>
-<div id="ref-casella" class="csl-entry">
-Casella, G, and RL Berger. 2010. <span>“Infer<span>ê</span>ncia
-Estat<span>ı́</span>stica, Cengage Learning,
-Tradu<span>ç</span><span>ã</span>o Da 2a
-Edi<span>ç</span><span>ã</span>o.”</span> <em>S<span>ã</span>o
-Paulo-SP</em>.
-</div>
-</div>
+<div id="referências" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Referências</h1>
 </div>
 
 

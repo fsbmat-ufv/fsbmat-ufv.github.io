@@ -1,0 +1,169 @@
+---
+title: "Modelo de Heckman"
+author: "Fernando de Souza Bastos"
+  #date: "`r format(Sys.time(), '%B %e, %Y')`"
+date: "22 de outubro de 2025"
+output:
+  html_document:
+    fig_caption: yes
+    force_captions: yes
+    highlight: pygments
+    toc: yes
+    #Sumário flutuante
+    #toc_float: true
+    #numerar seções
+    number_sections: true
+    #Mostrar ou esconder os códigos (show ou hide)
+    code_folding: hide
+    #Diversos modelos de documentos ver outros em http://bootswatch.com/
+    theme: united
+    header-includes:
+       \usepackage{array}
+       \usepackage{multirow}
+       \usepackge{amsmath}
+       \usepackge{dsfont}
+bibliography: bibfile.bib  
+includes:
+     keep_tex: yes
+fontsize: 11pt
+geometry: margin=1in
+graphics: yes
+#  pdf_document:
+#    fig_caption: yes
+#    keep_tex: yes
+#    number_sections: yes
+comments: yes
+tags: [Viés de Seleção, Heckman, ssmodels, R]
+---
+
+***
+
+```{r,echo = FALSE}
+options(OutDec=",")
+```
+
+
+```{r setup, include=FALSE}
+require(knitr)
+require(kfigr)
+library(kableExtra)
+options(knitr.table.format = "latex")
+knitr::opts_chunk$set(echo = TRUE,fig.align = "center",message=FALSE, 
+                      warning=FALSE,fig.height=5, fig.width=7)
+```
+
+# Introdução
+<p style="text-align: justify;">
+Considere o sistema de equações
+\begin{align}
+Y_{1i}^{*}&=\pmb{x}_{i}^\top\pmb{\beta}+\epsilon_{1i}, \label{eq_reg_heckman} \\
+Y_{2i}^{*}&=\pmb{z}_{i}^\top\pmb{\gamma}+\epsilon_{2i},\quad i=1,\ldots,n, \label{eq_sel_heckman}
+\end{align}
+em que $Y_{1i}^{*}$ é a variável de interesse (latente) e $Y_{2i}^{*}$ rege o processo de seleção (também latente). Na prática, $Y_{1i}^{*}$ só é observado quando a condição de seleção é satisfeita. Especificamente, sabemos apenas se $Y_{2i}^{*}$ excede um limiar $a\in\mathbb{R}$ (fixo), o que gera observação seletiva de $Y_{1i}^{*}$. Observamos, portanto,
+\vspace{-0.2cm}
+\begin{align}\label{mod_heckman_ind}
+U_{i}&=1\{Y_{2i}^{*}>a\},\\
+\nonumber Y_{i}&=Y_{1i}^{*}U_{i},\quad i=1,\ldots,n,
+\end{align}
+em que $1\{Y_{2i}^{*}>a\}=1$ se $Y_{2i}^{*}>a$ e $0$ caso contrário. Os vetores de parâmetros $\pmb{\beta}\in \mathbb{R}^{p}$ e $\pmb{\gamma}\in \mathbb{R}^{q}$ são desconhecidos; os regressores $\pmb{x}_{i}\in \mathbb{R}^{p}$ e $\pmb{z}_{i}\in \mathbb{R}^{q}$ não precisam ser mutuamente exclusivos (embora, para identificação mais robusta, seja usual adotar ao menos uma variável em $\pmb{z}_{i}$ que não apareça em $\pmb{x}_{i}$ — a chamada **exclusion restriction**).
+</p>
+<p style="text-align: justify;">
+Para definir o modelo de seleção amostral, assume-se que os termos de erro $(\epsilon_{1i},\epsilon_{2i})$ seguem distribuição normal bivariada:
+\begin{align}
+\label{erro}
+\begin{pmatrix}
+\epsilon_{1i}\\
+\epsilon_{2i}
+\end{pmatrix} \overset{iid}{\sim} \mathcal{N}
+\begin{bmatrix}
+\begin{pmatrix}
+0\\
+0
+\end{pmatrix},
+\begin{pmatrix}
+\sigma^{2} & \rho\,\sigma \\
+\rho\,\sigma & 1
+\end{pmatrix}
+\end{bmatrix},\quad i=1,\ldots,n,
+\end{align}
+em que $\sigma^{2}_{1}\equiv \sigma^{2}$. Como $Y_{2i}^{*}$ não é observado, a sua variância não é identificável em escala absoluta; por convenção, fixa-se $\sigma_{2}^{2}=1$ sem perda de generalidade (qualquer normalização positiva equivaleria a reescalar $\pmb{\gamma}$ e o limiar $a$). De forma análoga, usualmente toma-se $a=0$, pois valores distintos podem ser absorvidos pelo intercepto da equação de seleção \ref{eq_sel_heckman}.
+</p>
+<p style="text-align: justify;">
+O sistema \ref{eq_reg_heckman}–\ref{erro} é conhecido como *modelo de Heckman*, *Tobit tipo 2* ou *modelo de seleção amostral*. A equação \ref{eq_reg_heckman} é a *equação de interesse primária* (ou de regressão), enquanto \ref{eq_sel_heckman} é a *equação de seleção*. O parâmetro de correlação $\rho\in(-1,1)$ desempenha papel central: quando $\rho\neq 0$, há dependência entre os choques que afetam o desfecho $Y_{1i}^{*}$ e o mecanismo que regula sua observação, produzindo \textbf{viés de seleção} se a amostra for analisada ignorando o processo de seleção. Em contraste, quando $\rho=0$, a seleção é *ignorável* sob a suposição de normalidade, e a regressão na subamostra observada fornece estimativas não viesadas de $\pmb{\beta}$.
+</p>
+<p style="text-align: justify;">
+Do ponto de vista inferencial, duas abordagens clássicas são frequentes: (i) a estimação por *máxima verossimilhança* conjunta, baseada na densidade normal bivariada, e (ii) o procedimento em *dois estágios* de Heckman, em que se estima primeiro a equação de seleção via *probit* e, em seguida, incorpora-se a *razão de Mills inversa* como regressor adicional na equação de interesse. A primeira é assintoticamente eficiente sob correta especificação; a segunda é simples e interpretável, servindo como diagnóstico prático do viés de seleção [@Heckman1976; @Heckman1979].
+</p>
+<p style="text-align: justify;">
+Aplicações do modelo são vastas - de economia do trabalho (salários observados apenas para quem está empregado) a estudos em ciências agrárias (produtividade ou renda observadas somente para produtores que adotam determinada tecnologia, propriedades com mensuração completa apenas quando acessíveis etc.). Em tais contextos, a não observação depende de decisões ou condições correlacionadas com o desfecho de interesse, tornando imprescindível modelar conjuntamente seleção e resultado para evitar conclusões enviesadas.
+</p>
+<p style="text-align: justify;">
+Neste trabalho, apresentamos uma aplicação do modelo de Heckman em \textsf{R}, enfatizando: (a) especificação e identificação (normalização, papel de variáveis de exclusão); (b) estimação por máxima verossimilhança e por dois estágios; (c) diagnóstico do viés de seleção via teste sobre $\rho$; e (d) interpretação substantiva dos coeficientes e efeitos marginais. Implementamos os exemplos com o pacote \texttt{ssmodels}, discutindo detalhadamente a replicação dos resultados, a sensibilidade às suposições e boas práticas para relatórios reprodutíveis em \textsf{R Markdown}.
+</p>
+
+## Método de Dois Passos
+
+<p style="text-align: justify;">
+Um procedimento de estimação também proposto por \cite{heckman1979} foi o método de dois passos. Esse método, foi sugerido como um bom estimador para pontos de partida confiáveis e eficientes na estimação por máxima verossimilhança \citep{Leung2000}. O método é baseado no fato da média 
+condicional $\tilde{\mu}_{i}=E(y_{i}|y_{1i}^{*}\ \textrm{é observado},\pmb{x}_{i},\pmb{z}_{i}),\ \textrm{para}\ i=1,\cdots,n,$ 
+ser dada por
+\begin{eqnarray}\label{espcond}
+\nonumber \tilde{\mu}_{i}&=&E(y_{i}|\ y_{1i}^{*}\ \textrm{é observado},\pmb{x}_{i},\pmb{z}_{i})\\
+\nonumber                &=&E(y_{i}|\ y_{2i}^{*}>0,\pmb{x}_{i},\pmb{z}_{i})\\
+\nonumber                &=&E(y_{1i}^{*}|\ \pmb{z}_{i}^\top\pmb{\gamma}+\epsilon_{2i}>0,\pmb{x}_{i},\pmb{z}_{i})\\
+\nonumber                &=&E(\pmb{x}_{i}^\top\pmb{\beta}+\epsilon_{1i}|\epsilon_{2i}>-\pmb{z}_{i}^\top\pmb{\gamma},
+\pmb{x}_{i},\pmb{z}_{i})\\
+\nonumber                &=&\pmb{x}_{i}^\top\pmb{\beta}+E(\epsilon_{1i}|\epsilon_{2i}>-\pmb{z}_{i}^\top\pmb{\gamma}, \pmb{z}_{i})\\
+\nonumber                &=& \mathbf{x}_{i}^\top\pmb{\beta} + \rho\sigma\lambda(-\mathbf{z}_{i}^\top\pmb{\gamma})\\
+\nonumber                &=& \pmb{x}_{i}^\top\pmb{\beta} + \rho\sigma\dfrac{\phi(\pmb{z}_{i}^\top\pmb{\gamma})}
+{\Phi(\pmb{z}_{i}^\top\pmb{\gamma})}\\
+                         &=& \pmb{x}_{i}^\top\pmb{\beta}+\lambda_{i}\beta_{\lambda},
+\end{eqnarray}
+em que $\lambda_{i}=\dfrac{\phi(\pmb{z}_{i}^\top\pmb{\gamma})}{\Phi(\pmb{z}_{i}^\top\pmb{\gamma})}$ denota a razão inversa de Mills, 
+$\beta_{\lambda}=\rho\sigma,\ \rho$ é a correlação entre $\epsilon_{1i}$ e $\epsilon_{2i}$ e $\sigma$ é o desvio padrão 
+de $\epsilon_{1i}.$ A partir de \ref{espcond} podemos reescrever a equação de interesse como
+\begin{align}\label{eqcommills}
+\tilde{y}_{i}=\tilde{\mu}_{i}+\varepsilon_{i},
+\end{align}
+em que $\tilde{\mu}_{i}$ é dada em (\ref{espcond}) e $\varepsilon_{i}$ é um novo termo de erro de média zero e 
+independente de $\pmb{z}_{i}$ e de $\pmb{x}_{i}$. O termo $\lambda_{i}\beta_{\lambda}$ em (\ref{espcond}) explica 
+a inconsistência do estimador de mínimos quadrados ordinários (MQO), quando $\rho\neq 0,$ e se MQO fosse utilizado para 
+encontrar as estimativas dos parâmetros de (\ref{eq_reg_heckman}). A partir daí, o primeiro passo do método é ajustar o 
+modelo probit a equação de seleção (\ref{eq_sel_heckman}) e estimar $\widehat{\pmb{\gamma}}$ e 
+$\widehat{\lambda}_{i}=\frac{\phi(\pmb{z}_{i}^\top\pmb{\widehat{\gamma}})}{\Phi(\pmb{z}_{i}^\top
+\pmb{\widehat{\gamma}})}.$ Em um segundo passo, estimamos por MQO os parâmetros 
+$\pmb{\beta}$ e $\beta_{\lambda}=\rho\sigma$ de \ref{eqcommills} usando os valores de $y_{1i}^{*}$ observados. 
+Um estimador para a variância de $\epsilon_{1}$ é dado por
+\begin{align}
+\widehat{\sigma}^{2}=\dfrac{1}{n_{u}}\left(\pmb{\widehat{\varepsilon}}^\top\pmb{\widehat{\varepsilon}}+
+\widehat{\beta}_{\lambda}^{2}{\displaystyle \sum_{i=1}^{n_{u}}\widehat{\delta}_{i}}\right),
+\label{preliminares:sigma}
+\end{align}
+em que $\widehat{\varepsilon}$ é o vetor residual da estimação de MQO de (\ref{eqcommills}), $n_{u}$ é o número de observações nesta estimação e $\widehat{\delta}_{i}=\widehat{\lambda}_{i}(\widehat{\lambda}_{i}+\pmb{z}_{i}^\top
+\pmb{\gamma}).$ Finalmente, um estimador para a correlação entre $\epsilon_{1}$ e $\epsilon_{2}$ é dado por 
+\begin{align}
+\widehat{\rho}=\dfrac{\widehat{\beta}_{\lambda}}{\widehat{\sigma}},
+\label{preliminares:correlacao}
+\end{align}
+nesse caso, $\widehat{\rho}$ pode estar fora do intervalo $[-1,1].$
+</p>
+<p style="text-align: justify;">
+A maior vantagem do método de dois passos é sua simplicidade, pois é mais fácil de ajustar do que o método de máxima 
+verossimilhança, não requer algoritmos complicados e é uma alternativa mais robusta. Porém, é menos eficiente e o uso da 
+razão inversa de Mills $(\lambda)$ pode ocasionar possíveis problemas de multicolinearidade devido a sua linearidade em 
+grande parte do seu suporte, como é possível observar na Figura \ref{fig:Mills}. Para diminuir este problema é sugerido 
+a \textbf{restrição de exclusão}, de acordo com a qual, pelo menos uma variável, que é um bom preditor de $Y_{2}^{*}$ e está 
+incluída na equação de seleção, não deve aparecer na regressão primária. 
+
+\begin{figure}[H]
+\centering{
+\resizebox{16cm}{7cm}{\input{plot_Inv_Mills.tex}}} %% assuming figurefile is a tikz code
+%\captionsetup{justification=centering,margin=1cm}
+\vspace*{-15mm}
+\caption{Razão inversa de Mills para $z^\top\gamma\in [-5,5].$ }
+\label{fig:Mills}
+\end{figure}
+
+    
+# Referências 
+

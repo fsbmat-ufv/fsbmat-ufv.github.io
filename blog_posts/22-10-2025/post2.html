@@ -278,6 +278,230 @@ window.initializeCodeFolding = function(show) {
 
 }
 </script>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+border-bottom: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic tfoot tr td {
+border: 0;
+}
+.lightable-classic tfoot tr:first-child td {
+border-top: 0.14em solid #111111;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+border-bottom: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 tfoot tr td {
+border: 0;
+}
+.lightable-classic-2 tfoot tr:first-child td {
+border-top: 3px double #111111;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material tfoot tr td {
+border: 0;
+}
+.lightable-material tfoot tr:first-child td {
+border-top: 1px solid #EEE;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark tfoot tr td {
+border: 0;
+}
+.lightable-material-dark tfoot tr:first-child td {
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper tfoot tr td {
+border: 0;
+}
+.lightable-paper tfoot tr:first-child td {
+border-top: 1px solid #00000020;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
 
 <style type="text/css">
 code{white-space: pre-wrap;}
@@ -290,6 +514,117 @@ ul.task-list{list-style: none;}
 
 
 
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+.sourceCode .row {
+width: 100%;
+}
+.sourceCode {
+overflow-x: auto;
+}
+.code-folding-btn {
+margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -412,7 +747,11 @@ display: none;
 <li><a href="#introdu%C3%A7%C3%A3o" id="toc-introdução"><span class="toc-section-number">1</span> Introdução</a>
 <ul>
 <li><a href="#motiva%C3%A7%C3%A3o" id="toc-motivação"><span class="toc-section-number">1.1</span> Motivação</a></li>
-<li><a href="#modelagem-te%C3%B3rica" id="toc-modelagem-teórica"><span class="toc-section-number">1.2</span> Modelagem Teórica</a></li>
+<li><a href="#modelagem-te%C3%B3rica" id="toc-modelagem-teórica"><span class="toc-section-number">1.2</span> Modelagem Teórica</a>
+<ul>
+<li><a href="#%C3%ADndice-latente-limiar-e-vari%C3%A1vel-bin%C3%A1ria." id="toc-índice-latente-limiar-e-variável-binária."><span class="toc-section-number">1.2.1</span> Índice latente, limiar e variável binária.</a></li>
+<li><a href="#por-que-usar-um-latente-cont%C3%ADnuo-argumentos." id="toc-por-que-usar-um-latente-contínuo-argumentos."><span class="toc-section-number">1.2.2</span> Por que usar um latente contínuo? Argumentos.</a></li>
+</ul></li>
 <li><a href="#m%C3%A9todo-de-dois-passos" id="toc-método-de-dois-passos"><span class="toc-section-number">1.3</span> Método de Dois Passos</a></li>
 <li><a href="#exemplo-pr%C3%A1tico" id="toc-exemplo-prático"><span class="toc-section-number">1.4</span> Exemplo Prático</a></li>
 </ul></li>
@@ -429,9 +768,15 @@ display: none;
 Suponha que você deseje aplicar um modelo de regressão para explicar uma variável de interesse - por exemplo, produtividade, renda, teor de carbono ou eficiência técnica - utilizando um conjunto de covariáveis agronômicas. Entretanto, ao analisar o banco de dados, você percebe que parte das observações da variável resposta está ausente, e que essa ausência não é aleatória: ela pode estar associada a algum fator não observado, como adoção de tecnologia, decisão de plantio ou disponibilidade de informação.
 </p>
 <p style="text-align: justify;">
-Nessas situações, a simples exclusão dos casos faltantes ou o uso de métodos tradicionais de regressão pode levar a resultados enviesados, pois as observações disponíveis não representam uma amostra aleatória da população. O <strong>modelo de Heckman</strong>, também conhecido como <em>modelo de seleção amostral</em> ou <em>Tobit tipo II</em>, foi desenvolvido justamente para lidar com esse tipo de viés, ao modelar simultaneamente dois processos:<br />
-(i) o mecanismo de seleção, que determina quando a variável resposta é observada, e<br />
-(ii) a equação de interesse, que explica a variável resposta condicionalmente à seleção.
+<p>Nessas situações, a simples exclusão dos casos faltantes ou o uso de métodos tradicionais de regressão pode levar a resultados enviesados, pois as observações disponíveis não representam uma amostra aleatória da população. O <strong>modelo de Heckman</strong>, também conhecido como <em>modelo de seleção amostral</em> ou <em>Tobit tipo II</em>, foi desenvolvido justamente para lidar com esse tipo de viés, ao modelar simultaneamente dois processos:</p>
+<ul>
+<li><ol style="list-style-type: lower-roman">
+<li>o mecanismo de seleção, que determina quando a variável resposta é observada, e</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: lower-roman">
+<li>a equação de interesse, que explica a variável resposta condicionalmente à seleção.</li>
+</ol></li>
+</ul>
 </p>
 <p style="text-align: justify;">
 A seguir, são apresentados <strong>dez exemplos</strong> inspirados em diferentes contextos das <em>ciências agrárias</em>, ilustrando cenários em que a aplicação do modelo de Heckman é apropriada. Em todos eles, a variável resposta <span class="math inline">\(Y_{1i}\)</span> é observada apenas quando uma condição latente <span class="math inline">\(Y_{2i}^{*}&gt;0\)</span> é satisfeita, isto é, quando o processo de seleção permite a observação dos dados.
@@ -512,16 +857,80 @@ Covariáveis: espécie cultivada, espaçamento, irrigação, adubação e ocorr�
 <p style="text-align: justify;">
 Considere o sistema de equações
 <span class="math display">\[\begin{align}
-Y_{1i}^{*}&amp;=\pmb{x}_{i}^\top\pmb{\beta}+\epsilon_{1i}, \tag{1.1}\label{1.1} \\
-Y_{2i}^{*}&amp;=\pmb{z}_{i}^\top\pmb{\gamma}+\epsilon_{2i},\quad i=1,\ldots,n, \tag{1.2}\label{1.2}
+Y_{1i}^{*}&amp;=\boldsymbol{x}_{i}^\top\boldsymbol{\beta}+\epsilon_{1i}, \tag{1.1}\label{1.1}\\
+Y_{2i}^{*}&amp;=\boldsymbol{z}_{i}^\top\boldsymbol{\gamma}+\epsilon_{2i},\quad i=1,\ldots,n, \tag{1.2}\label{1.2}
 \end{align}\]</span>
 em que <span class="math inline">\(Y_{1i}^{*}\)</span> é a variável de interesse (latente) e <span class="math inline">\(Y_{2i}^{*}\)</span> rege o processo de seleção (também latente). Na prática, <span class="math inline">\(Y_{1i}^{*}\)</span> só é observado quando a condição de seleção é satisfeita. Especificamente, sabemos apenas se <span class="math inline">\(Y_{2i}^{*}\)</span> excede um limiar <span class="math inline">\(a\in\mathbb{R}\)</span> (fixo), o que gera observação seletiva de <span class="math inline">\(Y_{1i}^{*}\)</span>. Observamos, portanto,
 <span class="math display">\[\begin{align}\tag{1.3}\label{1.3}
-U_{i}&amp;=1\{Y_{2i}^{*}&gt;a\},\\
+U_{i}&amp;=\mathbf{1}\{Y_{2i}^{*}&gt;a\},\\
 \nonumber Y_{i}&amp;=Y_{1i}^{*}U_{i},\quad i=1,\ldots,n,
 \end{align}\]</span>
-em que <span class="math inline">\(1\{Y_{2i}^{*}&gt;a\}=1\)</span> se <span class="math inline">\(Y_{2i}^{*}&gt;a\)</span> e <span class="math inline">\(0\)</span> caso contrário. Os vetores de parâmetros <span class="math inline">\(\pmb{\beta}\in \mathbb{R}^{p}\)</span> e <span class="math inline">\(\pmb{\gamma}\in \mathbb{R}^{q}\)</span> são desconhecidos; os regressores <span class="math inline">\(\pmb{x}_{i}\in \mathbb{R}^{p}\)</span> e <span class="math inline">\(\pmb{z}_{i}\in \mathbb{R}^{q}\)</span> não precisam ser mutuamente exclusivos (embora, para identificação mais robusta, seja usual adotar ao menos uma variável em <span class="math inline">\(\pmb{z}_{i}\)</span> que não apareça em <span class="math inline">\(\pmb{x}_{i}\)</span> — a chamada <strong>exclusion restriction</strong>).
+em que <span class="math inline">\(\mathbf{1}\{\cdot\}\)</span> é a função indicadora e <span class="math inline">\(Y_{i}\)</span> é não observado quando <span class="math inline">\(U_{i}=0\)</span>. Os vetores de parâmetros <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^{p}\)</span> e <span class="math inline">\(\boldsymbol{\gamma}\in \mathbb{R}^{q}\)</span> são desconhecidos; os regressores <span class="math inline">\(\boldsymbol{x}_{i}\in \mathbb{R}^{p}\)</span> e <span class="math inline">\(\boldsymbol{z}_{i}\in \mathbb{R}^{q}\)</span> não precisam ser mutuamente exclusivos (embora, para identificação mais robusta, seja usual adotar ao menos uma variável em <span class="math inline">\(\boldsymbol{z}_{i}\)</span> que não apareça em <span class="math inline">\(\boldsymbol{x}_{i}\)</span> — a chamada <strong>exclusion restriction</strong>.
 </p>
+<div id="índice-latente-limiar-e-variável-binária." class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Índice latente, limiar e variável binária.</h3>
+<p>No modelo de seleção/probit, supõe-se a existência de uma <strong>variável latente contínua</strong>
+<span class="math display">\[
+Y_{2i}^* \;=\; \boldsymbol z_i^\top \boldsymbol\gamma \;+\; \epsilon_{2i},
+\]</span>
+que não é observada diretamente. O que observamos é apenas um indicador binário
+<span class="math display">\[
+U_i \;=\; \mathbf{1}\{Y_{2i}^* &gt; a\} \in \{0,1\},
+\]</span>
+ou seja, <span class="math inline">\(U_i=1\)</span> se o <strong>nível</strong> do índice <span class="math inline">\(Y_{2i}^*\)</span> ultrapassa um limiar <span class="math inline">\(a\)</span> (fixo), e <span class="math inline">\(U_i=0\)</span> caso contrário. Portanto, o 0/1 observado provém do sinal (ou comparação com <span class="math inline">\(a\)</span>) de uma grandeza contínua.</p>
+</div>
+<div id="por-que-usar-um-latente-contínuo-argumentos." class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Por que usar um latente contínuo? Argumentos.</h3>
+<ul>
+<li>Ordenação e decisão com ruído.</li>
+</ul>
+<p>Em muitas aplicações (emprego, adoção de tecnologia, mensuração possível, etc.), a decisão ``entrar/sair’’ é o resultado de um <strong>balanço contínuo</strong> entre ganhos e custos não totalmente observáveis. Modelamos esse balanço por <span class="math inline">\(Y_{2i}^*\)</span>; a decisão observada é <span class="math inline">\(U_i=1\)</span> quando esse balanço supera o limiar <span class="math inline">\(a\)</span>. O termo <span class="math inline">\(\epsilon_{2i}\)</span> captura fatores não observados (ruído) que afetam o índice.</p>
+<ul>
+<li>Interpretação probabilística.</li>
+</ul>
+<p>Assumindo <span class="math inline">\(\epsilon_{2i}\sim \mathcal N(0,1)\)</span> (normalização discutida abaixo), temos:
+<span class="math display">\[
+\Pr(U_i=1 \mid \boldsymbol z_i)
+= \Pr(Y_{2i}^* &gt; a \mid \boldsymbol z_i)
+= \Pr\!\big(\epsilon_{2i} &gt; a - \boldsymbol z_i^\top\boldsymbol\gamma\big)
+= \Phi\!\big(\boldsymbol z_i^\top\boldsymbol\gamma - a\big),
+\]</span>
+onde <span class="math inline">\(\Phi(\cdot)\)</span> é a CDF da Normal padrão. Assim, a probabilidade de <span class="math inline">\(U_i=1\)</span> é uma <strong>função monótona</strong> do índice linear <span class="math inline">\(\boldsymbol z_i^\top\boldsymbol\gamma\)</span>. Isso conecta o modelo latente contínuo ao probit clássico.</p>
+<ul>
+<li>Normalização de limiar (<span class="math inline">\(a\)</span>) e intercepto.</li>
+</ul>
+<p>O limiar <span class="math inline">\(a\)</span> é <strong>não identificado separadamente</strong> do intercepto de <span class="math inline">\(\boldsymbol z_i^\top\boldsymbol\gamma\)</span>. Se escrevemos
+<span class="math display">\[
+U_i=\mathbf{1}\{\boldsymbol z_i^\top\boldsymbol\gamma + \epsilon_{2i} &gt; a\},
+\]</span>
+então definir <span class="math inline">\(\tilde\gamma_0=\gamma_0 - a\)</span> (absorvendo <span class="math inline">\(a\)</span> no intercepto) leva a
+<span class="math display">\[
+U_i=\mathbf{1}\{\tilde\gamma_0 + \boldsymbol z_{i,-0}^\top\boldsymbol\gamma_{-0} + \epsilon_{2i} &gt; 0\}.
+\]</span>
+Logo, sem perda de generalidade, <strong>podemos fixar <span class="math inline">\(a=0\)</span></strong> e estimar um intercepto.</p>
+<ul>
+<li>Normalização de escala (variância do erro).</li>
+</ul>
+<p>Somente o <strong>sinal</strong> de <span class="math inline">\(Y_{2i}^*\)</span> determina <span class="math inline">\(U_i\)</span>. Se multiplicarmos toda a equação por <span class="math inline">\(c&gt;0\)</span>,
+<span class="math display">\[
+c\,Y_{2i}^* = c\,\boldsymbol z_i^\top\boldsymbol\gamma + c\,\epsilon_{2i},
+\quad
+U_i = \mathbf{1}\{c\,Y_{2i}^* &gt; c\,a\},
+\]</span>
+as probabilidades não mudam (o sinal é preservado). Assim, a escala não é identificável; por convenção, fixa-se <span class="math inline">\(\mathrm{Var}(\epsilon_{2i})=1\)</span>. Com isso, o link resultante é o probit; se, em vez de Normal, usarmos logística padrão, obtemos o logit.</p>
+<ul>
+<li>Geometria e separação.</li>
+</ul>
+<p>Para cada <span class="math inline">\(\boldsymbol z_i\)</span>, o índice <span class="math inline">\(Y_{2i}^*\)</span> é uma variável contínua ao longo da reta real. A fronteira de decisão é o hiperplano
+<span class="math inline">\(\{\boldsymbol z: \boldsymbol z^\top\boldsymbol\gamma = a\}\)</span>. O ruído <span class="math inline">\(\epsilon_{2i}\)</span> ``espalha’’ a decisão em torno dessa fronteira, produzindo probabilidades estritamente entre 0 e 1, o que é desejável em presença de heterogeneidade não observada.</p>
+<ul>
+<li>Conexão com seleção amostral (Heckman).</li>
+</ul>
+<p>No Heckman, existe <strong>correlação</strong> entre o erro da equação de interesse (<span class="math inline">\(\epsilon_{1i}\)</span>) e o erro da seleção (<span class="math inline">\(\epsilon_{2i}\)</span>), digamos <span class="math inline">\(\rho\neq 0\)</span>. Essa correlação é a origem do viés de seleção: a decisão <span class="math inline">\(U_i\)</span> (0/1) depende do mesmo choque que afeta <span class="math inline">\(Y_{1i}^*\)</span> via o índice <span class="math inline">\(Y_{2i}^*\)</span>. O aparato latente contínuo torna explícita essa estrutura conjunta (Normal bivariada), permitindo estimar <span class="math inline">\(\rho\)</span> e corrigir o viés.</p>
+<p>O observado é <span class="math inline">\(U_i\in\{0,1\}\)</span>; o determinante subjacente é um índice contínuo <span class="math inline">\(Y_{2i}^*\)</span>. A probabilidade de <span class="math inline">\(U_i=1\)</span> é a probabilidade de o índice exceder o limiar:
+<span class="math inline">\(\Pr(U_i=1\mid \boldsymbol z_i)=\Phi(\boldsymbol z_i^\top\boldsymbol\gamma-a)\)</span>.
+Como <span class="math inline">\(a\)</span> e a escala do erro não são identificáveis separadamente, normaliza-se <span class="math inline">\(a=0\)</span> e <span class="math inline">\(\mathrm{Var}(\epsilon_{2i})=1\)</span>.
+Essa construção justifica formalmente o uso do probit/logit e explica por que, no Heckman, o parâmetro de correlação <span class="math inline">\(\rho\)</span> entre os erros das duas equações é central para o viés de seleção.</p>
 <p style="text-align: justify;">
 Para definir o modelo de seleção amostral, assume-se que os termos de erro <span class="math inline">\((\epsilon_{1i},\epsilon_{2i})\)</span> seguem distribuição normal bivariada:
 <span class="math display">\[\begin{align}
@@ -555,6 +964,7 @@ Aplicações do modelo são vastas - de economia do trabalho (salários observad
 <p style="text-align: justify;">
 Neste trabalho, apresentamos uma aplicação do modelo de Heckman em , enfatizando: (a) especificação e identificação (normalização, papel de variáveis de exclusão); (b) estimação por máxima verossimilhança e por dois estágios; (c) diagnóstico do viés de seleção via teste sobre <span class="math inline">\(\rho\)</span>; e (d) interpretação substantiva dos coeficientes e efeitos marginais. Implementamos os exemplos com o pacote , discutindo detalhadamente a replicação dos resultados, a sensibilidade às suposições e boas práticas para relatórios reprodutíveis em .
 </p>
+</div>
 </div>
 <div id="método-de-dois-passos" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> Método de Dois Passos</h2>
@@ -627,6 +1037,1066 @@ Modelos lineares tradicionais ignoram esse tipo de dependência e, por isso, pod
 <p style="text-align: justify;">
 Essa abordagem permite avaliar, de forma estatisticamente consistente, como diferentes atributos físicos e biogeoquímicos do solo influenciam o acúmulo de carbono, ao mesmo tempo em que corrige o <strong>viés de seleção</strong> decorrente da mensuração seletiva das amostras. Assim, o modelo de Heckman oferece um arcabouço robusto para estudos em que parte das variáveis de interesse é observada apenas em condições específicas do experimento.
 </p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<caption>
+<span id="tab:tabela-heckman">Table 1.1: </span>Amostra (10 primeiras linhas) das variáveis usadas no modelo de Heckman.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Seleção
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Desfecho
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+ID
+</th>
+<th style="text-align:right;">
+sel
+</th>
+<th style="text-align:left;">
+Soil_type.x
+</th>
+<th style="text-align:right;">
+Days.x
+</th>
+<th style="text-align:right;">
+Mean_weight_diameter
+</th>
+<th style="text-align:right;">
+log_TAAC
+</th>
+<th style="text-align:left;">
+Soil_moisture.x
+</th>
+<th style="text-align:right;">
+Total_aggregate_associated_C
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Steady-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,48
+</td>
+<td style="text-align:right;">
+2,459589
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+11,70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Steady-2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,53
+</td>
+<td style="text-align:right;">
+2,593761
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+13,38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Steady-3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,55
+</td>
+<td style="text-align:right;">
+2,503892
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+12,23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Transient-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,80
+</td>
+<td style="text-align:right;">
+2,502255
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:right;">
+12,21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Transient-2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4,14
+</td>
+<td style="text-align:right;">
+2,486572
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:right;">
+12,02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Transient-3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,66
+</td>
+<td style="text-align:right;">
+2,504709
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:right;">
+12,24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Loamy-Steady-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Loamy
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,20
+</td>
+<td style="text-align:right;">
+2,549445
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+12,80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Loamy-Steady-2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Loamy
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,21
+</td>
+<td style="text-align:right;">
+2,796061
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+16,38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Loamy-Steady-3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Loamy
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,12
+</td>
+<td style="text-align:right;">
+2,669309
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+14,43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Loamy-Transient-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Loamy
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,97
+</td>
+<td style="text-align:right;">
+2,770712
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:right;">
+15,97
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<span style="font-style: italic;">Note: </span>
+</td>
+</tr>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> sel = 1 se o desfecho está observado. log_TAAC = log(Total_aggregate_associated_C) quando &gt; 0.
+</td>
+</tr>
+</tfoot>
+</table>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:resumo-variaveis">Table 1.2: </span>Resumo numérico das variáveis contínuas usadas no modelo.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variavel
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+n_miss
+</th>
+<th style="text-align:right;">
+media
+</th>
+<th style="text-align:right;">
+desvio
+</th>
+<th style="text-align:right;">
+min
+</th>
+<th style="text-align:right;">
+max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Days.x
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+70,636
+</td>
+<td style="text-align:right;">
+52,427
+</td>
+<td style="text-align:right;">
+1,00
+</td>
+<td style="text-align:right;">
+140,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mean_weight_diameter
+</td>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1,863
+</td>
+<td style="text-align:right;">
+1,110
+</td>
+<td style="text-align:right;">
+0,62
+</td>
+<td style="text-align:right;">
+4,140
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total_aggregate_associated_C
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+9,555
+</td>
+<td style="text-align:right;">
+3,917
+</td>
+<td style="text-align:right;">
+3,49
+</td>
+<td style="text-align:right;">
+18,580
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+log_TAAC
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+2,163
+</td>
+<td style="text-align:right;">
+0,453
+</td>
+<td style="text-align:right;">
+1,25
+</td>
+<td style="text-align:right;">
+2,922
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:resumo-variaveis">Table 1.2: </span>Distribuição (top níveis) das variáveis fator/indicador.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variavel
+</th>
+<th style="text-align:left;">
+nivel
+</th>
+<th style="text-align:right;">
+freq
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Soil_moisture.x
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:right;">
+63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Soil_moisture.x
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Soil_type.x
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Soil_type.x
+</td>
+<td style="text-align:left;">
+Loamy
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Soil_type.x
+</td>
+<td style="text-align:left;">
+Sandy
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sel
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sel
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+</tbody>
+</table>
+<p>No procedimento de <strong>dois passos</strong> de Heckman, o <strong>primeiro passo</strong> consiste em estimar a <em>equação de seleção</em> via modelo probit, exatamente o que faz o bloco bloco abaixo.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co">#Modelo Probit</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>fit1<span class="ot">&lt;-</span><span class="fu">glm</span>(sel <span class="sc">~</span> Soil_type.x <span class="sc">+</span> Days.x <span class="sc">+</span> Mean_weight_diameter,<span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span>probit),<span class="at">data=</span>df)</span></code></pre></div>
+<p>Nesse ajuste, modelamos a variável indicadora <span class="math inline">\((U_i=\mathbf{1}\{Y_{2i}^*&gt;0\})\)</span> com <span class="math inline">\(\Pr(U_i=1\mid \mathbf{z}_i)=\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\)</span>, em que (<span class="math inline">\(\Phi(\cdot)\)</span>) é a CDF da Normal padrão e (<span class="math inline">\(\mathbf{z}_i=(\texttt{Soil_type.x},\ \texttt{Days.x},\ \texttt{Mean_weight_diameter})\)</span>). A estimação por <code>glm(..., family = binomial(link = probit))</code> fornece o preditor linear (<span class="math inline">\(\hat\eta_i=\mathbf{z}_i^\top\hat{\boldsymbol{\gamma}}\)</span>) e as probabilidades previstas (<span class="math inline">\(\hat p_i=\Phi(\hat\eta_i)\)</span>), permitindo calcular, para as observações selecionadas ((U_i=1)), a <strong>razão de Mills inversa</strong> (<span class="math inline">\(\hat\lambda_i=\phi(\hat\eta_i)/\Phi(\hat\eta_i)\)</span>), com (<span class="math inline">\(\phi(\cdot)\)</span>) a densidade da Normal padrão.</p>
+<pre><code>## 
+## Call:
+## glm(formula = sel ~ Soil_type.x + Days.x + Mean_weight_diameter, 
+##     family = binomial(link = probit), data = df)
+## 
+## Coefficients:
+##                      Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)          -0,83986    0,46801  -1,795 0,072727 .  
+## Soil_type.xLoamy     -1,19575    0,47196  -2,534 0,011290 *  
+## Soil_type.xClayey    -1,41672    0,51453  -2,753 0,005897 ** 
+## Days.x                0,01058    0,00400   2,644 0,008190 ** 
+## Mean_weight_diameter  0,92023    0,24588   3,743 0,000182 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0,001 &#39;**&#39; 0,01 &#39;*&#39; 0,05 &#39;.&#39; 0,1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 116,019  on 98  degrees of freedom
+## Residual deviance:  99,238  on 94  degrees of freedom
+## AIC: 109,24
+## 
+## Number of Fisher Scoring iterations: 6</code></pre>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<caption>
+<span id="tab:tabela-heckman-atualizada">Table 1.3: </span>Amostra (10 primeiras linhas) com covariáveis do modelo e colunas derivadas do probit: Xβ, Φ(η), φ(η), IMR e p̂.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Seleção
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Desfecho
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="5">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Derivadas do Probit (1º passo)
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+ID
+</th>
+<th style="text-align:right;">
+sel
+</th>
+<th style="text-align:left;">
+Soil_type.x
+</th>
+<th style="text-align:right;">
+Days.x
+</th>
+<th style="text-align:right;">
+Mean_weight_diameter
+</th>
+<th style="text-align:right;">
+log_TAAC
+</th>
+<th style="text-align:left;">
+Soil_moisture.x
+</th>
+<th style="text-align:right;">
+Total_aggregate_associated_C
+</th>
+<th style="text-align:right;">
+Xbeta
+</th>
+<th style="text-align:right;">
+Phi
+</th>
+<th style="text-align:right;">
+phi
+</th>
+<th style="text-align:right;">
+IMR
+</th>
+<th style="text-align:right;">
+p_hat
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Steady-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,48
+</td>
+<td style="text-align:right;">
+2,459589
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+11,70
+</td>
+<td style="text-align:right;">
+0,9564
+</td>
+<td style="text-align:right;">
+0,8306
+</td>
+<td style="text-align:right;">
+0,2525
+</td>
+<td style="text-align:right;">
+0,3040
+</td>
+<td style="text-align:right;">
+0,8306
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Steady-2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,53
+</td>
+<td style="text-align:right;">
+2,593761
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+13,38
+</td>
+<td style="text-align:right;">
+1,0024
+</td>
+<td style="text-align:right;">
+0,8419
+</td>
+<td style="text-align:right;">
+0,2414
+</td>
+<td style="text-align:right;">
+0,2867
+</td>
+<td style="text-align:right;">
+0,8419
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Steady-3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,55
+</td>
+<td style="text-align:right;">
+2,503892
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+12,23
+</td>
+<td style="text-align:right;">
+1,0208
+</td>
+<td style="text-align:right;">
+0,8463
+</td>
+<td style="text-align:right;">
+0,2369
+</td>
+<td style="text-align:right;">
+0,2800
+</td>
+<td style="text-align:right;">
+0,8463
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Transient-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,80
+</td>
+<td style="text-align:right;">
+2,502255
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:right;">
+12,21
+</td>
+<td style="text-align:right;">
+1,2509
+</td>
+<td style="text-align:right;">
+0,8945
+</td>
+<td style="text-align:right;">
+0,1825
+</td>
+<td style="text-align:right;">
+0,2040
+</td>
+<td style="text-align:right;">
+0,8945
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Transient-2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4,14
+</td>
+<td style="text-align:right;">
+2,486572
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:right;">
+12,02
+</td>
+<td style="text-align:right;">
+1,5637
+</td>
+<td style="text-align:right;">
+0,9411
+</td>
+<td style="text-align:right;">
+0,1175
+</td>
+<td style="text-align:right;">
+0,1248
+</td>
+<td style="text-align:right;">
+0,9411
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Clayey-Transient-3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Clayey
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,66
+</td>
+<td style="text-align:right;">
+2,504709
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:right;">
+12,24
+</td>
+<td style="text-align:right;">
+1,1220
+</td>
+<td style="text-align:right;">
+0,8691
+</td>
+<td style="text-align:right;">
+0,2126
+</td>
+<td style="text-align:right;">
+0,2446
+</td>
+<td style="text-align:right;">
+0,8691
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Loamy-Steady-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Loamy
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,20
+</td>
+<td style="text-align:right;">
+2,549445
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+12,80
+</td>
+<td style="text-align:right;">
+0,9197
+</td>
+<td style="text-align:right;">
+0,8211
+</td>
+<td style="text-align:right;">
+0,2614
+</td>
+<td style="text-align:right;">
+0,3183
+</td>
+<td style="text-align:right;">
+0,8211
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Loamy-Steady-2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Loamy
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,21
+</td>
+<td style="text-align:right;">
+2,796061
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+16,38
+</td>
+<td style="text-align:right;">
+0,9289
+</td>
+<td style="text-align:right;">
+0,8235
+</td>
+<td style="text-align:right;">
+0,2591
+</td>
+<td style="text-align:right;">
+0,3147
+</td>
+<td style="text-align:right;">
+0,8235
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Loamy-Steady-3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Loamy
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,12
+</td>
+<td style="text-align:right;">
+2,669309
+</td>
+<td style="text-align:left;">
+Steady
+</td>
+<td style="text-align:right;">
+14,43
+</td>
+<td style="text-align:right;">
+0,8461
+</td>
+<td style="text-align:right;">
+0,8012
+</td>
+<td style="text-align:right;">
+0,2789
+</td>
+<td style="text-align:right;">
+0,3481
+</td>
+<td style="text-align:right;">
+0,8012
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1-Loamy-Transient-1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Loamy
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3,97
+</td>
+<td style="text-align:right;">
+2,770712
+</td>
+<td style="text-align:left;">
+Transient
+</td>
+<td style="text-align:right;">
+15,97
+</td>
+<td style="text-align:right;">
+1,6283
+</td>
+<td style="text-align:right;">
+0,9483
+</td>
+<td style="text-align:right;">
+0,1060
+</td>
+<td style="text-align:right;">
+0,1118
+</td>
+<td style="text-align:right;">
+0,9483
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<span style="font-style: italic;">Note: </span>
+</td>
+</tr>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> Xβ = preditor linear (η); Φ(η) = probabilidade prevista; φ(η) = densidade; IMR = φ(η)/Φ(η) para sel=1; p̂ = Φ(η).
+</td>
+</tr>
+</tfoot>
+</table>
+<p>No <strong>segundo passo</strong>, incluímos (<span class="math inline">\(\hat\lambda_i\)</span>) como regressor adicional na equação de interesse para corrigir o viés de seleção e obter estimativas consistentes dos coeficientes; é recomendável, para identificação mais robusta, que ao menos uma variável apareça em (<span class="math inline">\(\mathbf{z}_i\)</span>) e não em (<span class="math inline">\(\mathbf{x}_i\)</span>) (restrição de exclusão).</p>
 </div>
 </div>
 <div id="referências" class="section level1" number="2">

@@ -51,7 +51,7 @@ sel_form <- sel ~ Soil_type.x + Days.x + Mean_weight_diameter
 out_form <- log_TAAC ~ Soil_type.x + Soil_moisture.x + Mean_weight_diameter
 
 #Modelo Probit
-fit1<-glm(sel_form,family=binomial(link=probit),data=df)
+fit1<-glm(sel ~ Soil_type.x + Days.x + Mean_weight_diameter,family=binomial(link=probit),data=df)
 summary(fit1)
 
 # 1) Preditor linear por linha (η = Xβ)

@@ -25,6 +25,8 @@ output:
       - \usepackage{dsfont}
       - \usepackage{multirow}
       - \usepackage{array}
+      - \usepackage{bm}    
+      - \usepackage{bbm}   
 bibliography: bibfile.bib  
 includes:
      keep_tex: yes
@@ -63,9 +65,12 @@ knitr::opts_chunk$set(echo = TRUE,fig.align = "center",message=FALSE,
 Suponha que você deseje aplicar um modelo de regressão para explicar uma variável de interesse - por exemplo, produtividade, renda, teor de carbono ou eficiência técnica - utilizando um conjunto de covariáveis agronômicas. Entretanto, ao analisar o banco de dados, você percebe que parte das observações da variável resposta está ausente, e que essa ausência não é aleatória: ela pode estar associada a algum fator não observado, como adoção de tecnologia, decisão de plantio ou disponibilidade de informação.
 </p>
 <p style="text-align: justify;">
-Nessas situações, a simples exclusão dos casos faltantes ou o uso de métodos tradicionais de regressão pode levar a resultados enviesados, pois as observações disponíveis não representam uma amostra aleatória da população. O **modelo de Heckman**, também conhecido como *modelo de seleção amostral* ou *Tobit tipo II*, foi desenvolvido justamente para lidar com esse tipo de viés, ao modelar simultaneamente dois processos:  
-(i) o mecanismo de seleção, que determina quando a variável resposta é observada, e  
-(ii) a equação de interesse, que explica a variável resposta condicionalmente à seleção.
+Nessas situações, a simples exclusão dos casos faltantes ou o uso de métodos tradicionais de regressão pode levar a resultados enviesados, pois as observações disponíveis não representam uma amostra aleatória da população. O **modelo de Heckman**, também conhecido como *modelo de seleção amostral* ou *Tobit tipo II*, foi desenvolvido justamente para lidar com esse tipo de viés, ao modelar simultaneamente dois processos:
+
+ - (i) o mecanismo de seleção, que determina quando a variável resposta é observada, e  
+
+ - (ii) a equação de interesse, que explica a variável resposta condicionalmente à seleção.
+
 </p>
 <p style="text-align: justify;">
 A seguir, são apresentados **dez exemplos** inspirados em diferentes contextos das *ciências agrárias*, ilustrando cenários em que a aplicação do modelo de Heckman é apropriada. Em todos eles, a variável resposta $Y_{1i}$ é observada apenas quando uma condição latente $Y_{2i}^{*}>0$ é satisfeita, isto é, quando o processo de seleção permite a observação dos dados.
@@ -126,17 +131,84 @@ Covariáveis: espécie cultivada, espaçamento, irrigação, adubação e ocorr�
 <p style="text-align: justify;">
 Considere o sistema de equações
 \begin{align}
-Y_{1i}^{*}&=\pmb{x}_{i}^\top\pmb{\beta}+\epsilon_{1i}, \tag{1.1}\label{1.1} \\
-Y_{2i}^{*}&=\pmb{z}_{i}^\top\pmb{\gamma}+\epsilon_{2i},\quad i=1,\ldots,n, \tag{1.2}\label{1.2}
+Y_{1i}^{*}&=\boldsymbol{x}_{i}^\top\boldsymbol{\beta}+\epsilon_{1i}, \tag{1.1}\label{1.1}\\
+Y_{2i}^{*}&=\boldsymbol{z}_{i}^\top\boldsymbol{\gamma}+\epsilon_{2i},\quad i=1,\ldots,n, \tag{1.2}\label{1.2}
 \end{align}
 em que $Y_{1i}^{*}$ é a variável de interesse (latente) e $Y_{2i}^{*}$ rege o processo de seleção (também latente). Na prática, $Y_{1i}^{*}$ só é observado quando a condição de seleção é satisfeita. Especificamente, sabemos apenas se $Y_{2i}^{*}$ excede um limiar $a\in\mathbb{R}$ (fixo), o que gera observação seletiva de $Y_{1i}^{*}$. Observamos, portanto,
 \vspace{-0.2cm}
 \begin{align}\tag{1.3}\label{1.3}
-U_{i}&=1\{Y_{2i}^{*}>a\},\\
+U_{i}&=\mathbf{1}\{Y_{2i}^{*}>a\},\\
 \nonumber Y_{i}&=Y_{1i}^{*}U_{i},\quad i=1,\ldots,n,
 \end{align}
-em que $1\{Y_{2i}^{*}>a\}=1$ se $Y_{2i}^{*}>a$ e $0$ caso contrário. Os vetores de parâmetros $\pmb{\beta}\in \mathbb{R}^{p}$ e $\pmb{\gamma}\in \mathbb{R}^{q}$ são desconhecidos; os regressores $\pmb{x}_{i}\in \mathbb{R}^{p}$ e $\pmb{z}_{i}\in \mathbb{R}^{q}$ não precisam ser mutuamente exclusivos (embora, para identificação mais robusta, seja usual adotar ao menos uma variável em $\pmb{z}_{i}$ que não apareça em $\pmb{x}_{i}$ — a chamada **exclusion restriction**).
+em que $\mathbf{1}\{\cdot\}$ é a função indicadora e $Y_{i}$ é não observado quando $U_{i}=0$. Os vetores de parâmetros $\boldsymbol{\beta}\in \mathbb{R}^{p}$ e $\boldsymbol{\gamma}\in \mathbb{R}^{q}$ são desconhecidos; os regressores $\boldsymbol{x}_{i}\in \mathbb{R}^{p}$ e $\boldsymbol{z}_{i}\in \mathbb{R}^{q}$ não precisam ser mutuamente exclusivos (embora, para identificação mais robusta, seja usual adotar ao menos uma variável em $\boldsymbol{z}_{i}$ que não apareça em $\boldsymbol{x}_{i}$ — a chamada **exclusion restriction**.
 </p>
+
+### Índice latente, limiar e variável binária.
+
+No modelo de seleção/probit, supõe-se a existência de uma **variável latente contínua**
+\[
+Y_{2i}^* \;=\; \boldsymbol z_i^\top \boldsymbol\gamma \;+\; \epsilon_{2i},
+\]
+que não é observada diretamente. O que observamos é apenas um indicador binário
+\[
+U_i \;=\; \mathbf{1}\{Y_{2i}^* > a\} \in \{0,1\},
+\]
+ou seja, $U_i=1$ se o **nível** do índice $Y_{2i}^*$ ultrapassa um limiar $a$ (fixo), e $U_i=0$ caso contrário. Portanto, o 0/1 observado provém do sinal (ou comparação com $a$) de uma grandeza contínua.
+
+### Por que usar um latente contínuo? Argumentos.
+
+ - Ordenação e decisão com ruído.
+  
+Em muitas aplicações (emprego, adoção de tecnologia, mensuração possível, etc.), a decisão ``entrar/sair'' é o resultado de um **balanço contínuo** entre ganhos e custos não totalmente observáveis. Modelamos esse balanço por $Y_{2i}^*$; a decisão observada é $U_i=1$ quando esse balanço supera o limiar $a$. O termo $\epsilon_{2i}$ captura fatores não observados (ruído) que afetam o índice.
+
+ - Interpretação probabilística.
+ 
+Assumindo $\epsilon_{2i}\sim \mathcal N(0,1)$ (normalização discutida abaixo), temos:
+\[
+\Pr(U_i=1 \mid \boldsymbol z_i) 
+= \Pr(Y_{2i}^* > a \mid \boldsymbol z_i)
+= \Pr\!\big(\epsilon_{2i} > a - \boldsymbol z_i^\top\boldsymbol\gamma\big)
+= \Phi\!\big(\boldsymbol z_i^\top\boldsymbol\gamma - a\big),
+\]
+onde $\Phi(\cdot)$ é a CDF da Normal padrão. Assim, a probabilidade de $U_i=1$ é uma **função monótona** do índice linear $\boldsymbol z_i^\top\boldsymbol\gamma$. Isso conecta o modelo latente contínuo ao probit clássico.
+
+ - Normalização de limiar ($a$) e intercepto.
+ 
+O limiar $a$ é **não identificado separadamente** do intercepto de $\boldsymbol z_i^\top\boldsymbol\gamma$. Se escrevemos
+\[
+U_i=\mathbf{1}\{\boldsymbol z_i^\top\boldsymbol\gamma + \epsilon_{2i} > a\},
+\]
+então definir $\tilde\gamma_0=\gamma_0 - a$ (absorvendo $a$ no intercepto) leva a
+\[
+U_i=\mathbf{1}\{\tilde\gamma_0 + \boldsymbol z_{i,-0}^\top\boldsymbol\gamma_{-0} + \epsilon_{2i} > 0\}.
+\]
+Logo, sem perda de generalidade, **podemos fixar $a=0$** e estimar um intercepto.
+
+ - Normalização de escala (variância do erro).
+ 
+Somente o **sinal** de $Y_{2i}^*$ determina $U_i$. Se multiplicarmos toda a equação por $c>0$,
+\[
+c\,Y_{2i}^* = c\,\boldsymbol z_i^\top\boldsymbol\gamma + c\,\epsilon_{2i},
+\quad
+U_i = \mathbf{1}\{c\,Y_{2i}^* > c\,a\},
+\]
+as probabilidades não mudam (o sinal é preservado). Assim, a escala não é identificável; por convenção, fixa-se $\mathrm{Var}(\epsilon_{2i})=1$. Com isso, o link resultante é o probit; se, em vez de Normal, usarmos logística padrão, obtemos o logit.
+
+ - Geometria e separação.
+ 
+Para cada $\boldsymbol z_i$, o índice $Y_{2i}^*$ é uma variável contínua ao longo da reta real. A fronteira de decisão é o hiperplano 
+$\{\boldsymbol z: \boldsymbol z^\top\boldsymbol\gamma = a\}$. O ruído $\epsilon_{2i}$ ``espalha'' a decisão em torno dessa fronteira, produzindo probabilidades estritamente entre 0 e 1, o que é desejável em presença de heterogeneidade não observada.
+
+- Conexão com seleção amostral (Heckman).
+
+No Heckman, existe **correlação** entre o erro da equação de interesse ($\epsilon_{1i}$) e o erro da seleção ($\epsilon_{2i}$), digamos $\rho\neq 0$. Essa correlação é a origem do viés de seleção: a decisão $U_i$ (0/1) depende do mesmo choque que afeta $Y_{1i}^*$ via o índice $Y_{2i}^*$. O aparato latente contínuo torna explícita essa estrutura conjunta (Normal bivariada), permitindo estimar $\rho$ e corrigir o viés.
+
+O observado é $U_i\in\{0,1\}$; o determinante subjacente é um índice contínuo $Y_{2i}^*$. A probabilidade de $U_i=1$ é a probabilidade de o índice exceder o limiar: 
+$\Pr(U_i=1\mid \boldsymbol z_i)=\Phi(\boldsymbol z_i^\top\boldsymbol\gamma-a)$.
+Como $a$ e a escala do erro não são identificáveis separadamente, normaliza-se $a=0$ e $\mathrm{Var}(\epsilon_{2i})=1$.
+Essa construção justifica formalmente o uso do probit/logit e explica por que, no Heckman, o parâmetro de correlação $\rho$ entre os erros das duas equações é central para o viés de seleção.
+
+
 <p style="text-align: justify;">
 Para definir o modelo de seleção amostral, assume-se que os termos de erro $(\epsilon_{1i},\epsilon_{2i})$ seguem distribuição normal bivariada:
 \begin{align}
@@ -252,6 +324,181 @@ Modelos lineares tradicionais ignoram esse tipo de dependência e, por isso, pod
 Essa abordagem permite avaliar, de forma estatisticamente consistente, como diferentes atributos físicos e biogeoquímicos do solo influenciam o acúmulo de carbono, ao mesmo tempo em que corrige o **viés de seleção** decorrente da mensuração seletiva das amostras. Assim, o modelo de Heckman oferece um arcabouço robusto para estudos em que parte das variáveis de interesse é observada apenas em condições específicas do experimento.
 </p>
 
-    
+```{r tabela-heckman, echo=FALSE, message=FALSE, warning=FALSE}
+library(kableExtra)
+library(tidyverse)
+library(sampleSelection)
+library(ssmodels)
+# Lê o CSV com atenção para strings vazias ou lixo
+df <- read.csv("data/Incubation_data.csv",
+               na.strings = c("", "NA", "?", "NULL", "null", "–", " ", "-", "N/A"))
+# --- 1) Limpeza dos -9999 (como antes) ---
+clean_neg9999 <- function(data, cols) {
+  data <- as.data.frame(data)
+  for (cc in cols) {
+    if (cc %in% names(data)) {
+      v <- data[[cc]]
+      data[[cc]][!is.na(v) & (v == -9999 | v == -9999.0)] <- NA
+    } else {
+      warning(sprintf("Coluna '%s' não encontrada.", cc))
+    }
+  }
+  data
+}
+
+df <- clean_neg9999(df, cols = "Total_aggregate_associated_C")
+
+# Fatores
+df$Soil_type.x     <- factor(df$Soil_type.x,     levels = c("Sandy","Loamy","Clayey"))
+df$Soil_moisture.x <- factor(df$Soil_moisture.x, levels = c("Steady","Transient"))
+
+# Seleção: 1 se há valor observado no outcome
+df$sel <- as.integer(!is.na(df$Total_aggregate_associated_C))
+
+# (opcional) log do desfecho se todos > 0
+df$log_TAAC <- ifelse(!is.na(df$Total_aggregate_associated_C) &
+                            df$Total_aggregate_associated_C > 0,
+                          log(df$Total_aggregate_associated_C), NA_real_)
+
+# --- 2) FÓRMULAS CORRIGIDAS 
+sel_form <- sel ~ Soil_type.x + Days.x + Mean_weight_diameter
+out_form <- log_TAAC ~ Soil_type.x + Soil_moisture.x + Mean_weight_diameter
+
+# --- 1) selecione as variáveis-chave do modelo ---
+vars_sel  <- c("sel", "Soil_type.x", "Days.x", "Mean_weight_diameter")
+vars_out  <- c("log_TAAC", "Soil_moisture.x", "Total_aggregate_associated_C") # mostra o original também
+
+vis_df <- df |>
+  select(ID, all_of(vars_sel), all_of(vars_out)) |>
+  slice_head(n = 10)  # mostre as 10 primeiras linhas na Introdução
+
+# formato bonito e portável (PDF/HTML)
+kbl(
+  vis_df,
+  booktabs = TRUE,
+  caption = "Amostra (10 primeiras linhas) das variáveis usadas no modelo de Heckman."
+) |>
+  kable_styling(full_width = FALSE, position = "center") |>
+  add_header_above(c(" " = 1, "Seleção" = length(vars_sel), "Desfecho" = length(vars_out))) |>
+  footnote(
+    general = "sel = 1 se o desfecho está observado. log_TAAC = log(Total_aggregate_associated_C) quando > 0.",
+    threeparttable = TRUE
+  )
+```
+
+
+```{r resumo-variaveis, echo=FALSE}
+numeric_vars <- c("Days.x", "Mean_weight_diameter", "Total_aggregate_associated_C", "log_TAAC")
+factor_vars  <- c("Soil_type.x", "Soil_moisture.x", "sel")
+
+# Resumo numérico
+res_num <- df |>
+  select(any_of(numeric_vars)) |>
+  pivot_longer(everything(), names_to = "Variavel", values_to = "valor") |>
+  group_by(Variavel) |>
+  summarise(
+    n        = sum(!is.na(valor)),
+    n_miss   = sum(is.na(valor)),
+    media    = mean(valor, na.rm = TRUE),
+    desvio   = sd(valor, na.rm = TRUE),
+    min      = min(valor, na.rm = TRUE),
+    max      = max(valor, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+kbl(res_num, digits = 3, booktabs = TRUE,
+    caption = "Resumo numérico das variáveis contínuas usadas no modelo.") |>
+  kable_styling(full_width = FALSE, position = "center")
+
+# Resumo categórico (top contagens)
+res_cat <- df |>
+  select(any_of(factor_vars)) |>
+  mutate(across(all_of(factor_vars), ~as.character(.))) |>
+  pivot_longer(everything(), names_to = "Variavel", values_to = "nivel") |>
+  filter(!is.na(nivel)) |>
+  count(Variavel, nivel, name = "freq") |>
+  group_by(Variavel) |>
+  arrange(desc(freq), .by_group = TRUE) |>
+  slice_head(n = 6) |>
+  ungroup()
+
+kbl(res_cat, booktabs = TRUE,
+    caption = "Distribuição (top níveis) das variáveis fator/indicador.") |>
+  kable_styling(full_width = FALSE, position = "center")
+```
+
+No procedimento de **dois passos** de Heckman, o **primeiro passo** consiste em estimar a *equação de seleção* via modelo probit, exatamente o que faz o bloco bloco abaixo. 
+
+```{r probit1, echo=TRUE}
+#Modelo Probit
+fit1<-glm(sel ~ Soil_type.x + Days.x + Mean_weight_diameter,family=binomial(link=probit),data=df)
+```
+
+Nesse ajuste, modelamos a variável indicadora $(U_i=\mathbf{1}\{Y_{2i}^*>0\})$ com $\Pr(U_i=1\mid \mathbf{z}_i)=\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})$, em que ($\Phi(\cdot)$) é a CDF da Normal padrão e ($\mathbf{z}_i=(\texttt{Soil_type.x},\ \texttt{Days.x},\ \texttt{Mean_weight_diameter})$). A estimação por `glm(..., family = binomial(link = probit))` fornece o preditor linear ($\hat\eta_i=\mathbf{z}_i^\top\hat{\boldsymbol{\gamma}}$) e as probabilidades previstas ($\hat p_i=\Phi(\hat\eta_i)$), permitindo calcular, para as observações selecionadas ((U_i=1)), a **razão de Mills inversa** ($\hat\lambda_i=\phi(\hat\eta_i)/\Phi(\hat\eta_i)$), com ($\phi(\cdot)$) a densidade da Normal padrão. 
+
+
+```{r probit2, echo=FALSE}
+#Modelo Probit
+fit1<-glm(sel ~ Soil_type.x + Days.x + Mean_weight_diameter,family=binomial(link=probit),data=df)
+summary(fit1)
+# 1) Preditor linear por linha (η = Xβ)
+eta  <- predict(fit1, type = "link")      # vetor n×1
+df$Xbeta <- eta
+# 2) CDF e PDF da Normal padrão
+Phi  <- pnorm(eta) 
+phi  <- dnorm(eta)
+df$Phi  <- pnorm(eta)                        # Φ(η)
+df$phi  <- dnorm(eta)                        # φ(η)
+
+# 3) Razão de Mills inversa para selecionados (U=1)
+#    λ_i = φ(η_i) / Φ(η_i). Use um eps para evitar divisão por ~0.
+eps  <- .Machine$double.eps
+df$IMR  <- ifelse(df$sel == 1, phi / pmax(Phi, eps), NA_real_)
+
+# (opcional) probabilidade prevista de seleção
+p_hat <- predict(fit1, type = "response") # = Φ(η)
+
+```
+
+```{r tabela-heckman-atualizada, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(kableExtra)
+
+# garantir que p_hat está no data.frame
+df$p_hat <- predict(fit1, type = "response")
+
+# seleções (mesmas da sua tabela anterior)
+vars_sel  <- c("sel", "Soil_type.x", "Days.x", "Mean_weight_diameter")
+vars_out  <- c("log_TAAC", "Soil_moisture.x", "Total_aggregate_associated_C")
+
+# novas colunas calculadas no probit2
+vars_new  <- c("Xbeta", "Phi", "phi", "IMR", "p_hat")
+
+# montar visualização (primeiras 10 linhas)
+vis_df2 <- df |>
+  select(ID, all_of(vars_sel), all_of(vars_out), all_of(vars_new)) |>
+  mutate(
+    across(any_of(c("Xbeta","Phi","phi","IMR","p_hat")), ~round(., 4))
+  ) |>
+  filter(sel == 1) |> slice_head(n = 10)
+
+kbl(
+  vis_df2,
+  booktabs = TRUE,
+  caption = "Amostra (10 primeiras linhas) com covariáveis do modelo e colunas derivadas do probit: Xβ, Φ(η), φ(η), IMR e p̂."
+) |>
+  kable_styling(full_width = FALSE, position = "center") |>
+  add_header_above(c(" " = 1,
+                     "Seleção" = length(vars_sel),
+                     "Desfecho" = length(vars_out),
+                     "Derivadas do Probit (1º passo)" = length(vars_new))) |>
+  footnote(
+    general = "Xβ = preditor linear (η); Φ(η) = probabilidade prevista; φ(η) = densidade; IMR = φ(η)/Φ(η) para sel=1; p̂ = Φ(η).",
+    threeparttable = TRUE
+  )
+```
+
+No **segundo passo**, incluímos ($\hat\lambda_i$) como regressor adicional na equação de interesse para corrigir o viés de seleção e obter estimativas consistentes dos coeficientes; é recomendável, para identificação mais robusta, que ao menos uma variável apareça em ($\mathbf{z}_i$) e não em ($\mathbf{x}_i$) (restrição de exclusão).
+
 # Referências 
 

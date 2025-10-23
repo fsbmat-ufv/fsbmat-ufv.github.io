@@ -4,7 +4,10 @@ author: "Fernando de Souza Bastos"
   #date: "`r format(Sys.time(), '%B %e, %Y')`"
 date: "22 de outubro de 2025"
 output:
-  html_document:
+  bookdown::html_document2:
+    mathjax: 
+      options:
+        autoNumber: "AMS"
     fig_caption: yes
     force_captions: yes
     highlight: pygments
@@ -18,10 +21,10 @@ output:
     #Diversos modelos de documentos ver outros em http://bootswatch.com/
     theme: united
     header-includes:
-       \usepackage{array}
-       \usepackage{multirow}
-       \usepackge{amsmath}
-       \usepackge{dsfont}
+      - \usepackage{amsmath}
+      - \usepackage{dsfont}
+      - \usepackage{multirow}
+      - \usepackage{array}
 bibliography: bibfile.bib  
 includes:
      keep_tex: yes
@@ -53,15 +56,82 @@ knitr::opts_chunk$set(echo = TRUE,fig.align = "center",message=FALSE,
 ```
 
 # Introdução
+
+## Motivação
+
+<p style="text-align: justify;">
+Suponha que você deseje aplicar um modelo de regressão para explicar uma variável de interesse - por exemplo, produtividade, renda, teor de carbono ou eficiência técnica - utilizando um conjunto de covariáveis agronômicas. Entretanto, ao analisar o banco de dados, você percebe que parte das observações da variável resposta está ausente, e que essa ausência não é aleatória: ela pode estar associada a algum fator não observado, como adoção de tecnologia, decisão de plantio ou disponibilidade de informação.
+</p>
+<p style="text-align: justify;">
+Nessas situações, a simples exclusão dos casos faltantes ou o uso de métodos tradicionais de regressão pode levar a resultados enviesados, pois as observações disponíveis não representam uma amostra aleatória da população. O **modelo de Heckman**, também conhecido como *modelo de seleção amostral* ou *Tobit tipo II*, foi desenvolvido justamente para lidar com esse tipo de viés, ao modelar simultaneamente dois processos:  
+(i) o mecanismo de seleção, que determina quando a variável resposta é observada, e  
+(ii) a equação de interesse, que explica a variável resposta condicionalmente à seleção.
+</p>
+<p style="text-align: justify;">
+A seguir, são apresentados **dez exemplos** inspirados em diferentes contextos das *ciências agrárias*, ilustrando cenários em que a aplicação do modelo de Heckman é apropriada. Em todos eles, a variável resposta $Y_{1i}$ é observada apenas quando uma condição latente $Y_{2i}^{*}>0$ é satisfeita, isto é, quando o processo de seleção permite a observação dos dados.
+</p>
+<p style="text-align: justify;">
+1. **Produtividade de café.**  
+A variável resposta $Y_{1i}$ representa a produtividade (kg/ha) das lavouras de café, observada apenas para produtores que colhem no ano (isto é, $Y_{2i}^{*}>0$ indica colheita realizada).  
+Covariáveis: idade do cafezal, tipo de adubo, precipitação anual, experiência do produtor e altitude.
+</p>
+<p style="text-align: justify;">
+2. **Renda agrícola.**  
+$Y_{1i}$ é a renda líquida anual da propriedade, observada apenas para agricultores que comercializam sua produção ($Y_{2i}^{*}>0$).  
+Covariáveis: tamanho da área cultivada, tipo de cultivo principal, acesso a crédito e escolaridade do produtor.
+</p>
+<p style="text-align: justify;">
+3. **Peso médio de gado.**  
+$Y_{1i}$ é o peso médio (kg) do rebanho, mensurado apenas em fazendas que participam de programas de pesagem ($Y_{2i}^{*}>0$).  
+Covariáveis: raça predominante, tipo de pastagem, suplementação alimentar e manejo sanitário.
+</p>
+<p style="text-align: justify;">
+4. **Eficiência técnica na irrigação.**  
+$Y_{1i}$ mede a eficiência técnica estimada (0–1) de propriedades irrigadas, observada somente para aquelas que possuem sistema de irrigação ($Y_{2i}^{*}>0$).  
+Covariáveis: área irrigada, tipo de solo, fonte de água e custo energético.
+</p>
+<p style="text-align: justify;">
+5. **Produtividade de soja.**  
+$Y_{1i}$ é a produtividade (t/ha) da soja, observada apenas em propriedades que efetivamente plantaram soja na safra ($Y_{2i}^{*}>0$).  
+Covariáveis: tipo de semente, uso de inoculante, teor de matéria orgânica e regime de chuvas.
+</p>
+<p style="text-align: justify;">
+6. **Taxa de sobrevivência de mudas florestais.**  
+$Y_{1i}$ representa a taxa de sobrevivência (\%) de mudas após 12 meses, observada apenas nos projetos de reflorestamento que realizaram monitoramento ($Y_{2i}^{*}>0$).  
+Covariáveis: espécie plantada, espaçamento, tipo de preparo do solo e presença de formigas cortadeiras.
+</p>
+<p style="text-align: justify;">
+7. **Produção de leite.**  
+$Y_{1i}$ é a produção média diária de leite (litros/vaca), observada somente para fazendas que registram controle leiteiro ($Y_{2i}^{*}>0$).  
+Covariáveis: raça do gado, alimentação, temperatura média e número de ordenhas diárias.
+</p>
+<p style="text-align: justify;">
+8. **Uso de defensivos agrícolas.**  
+$Y_{1i}$ é o gasto anual com defensivos (R\$/ha), observável apenas para produtores que relatam uso desses insumos ($Y_{2i}^{*}>0$).  
+Covariáveis: tipo de cultura, área plantada, presença de pragas e preço relativo dos produtos biológicos.
+</p>
+<p style="text-align: justify;">
+9. **Teor de carbono no solo.**  
+$Y_{1i}$ é o teor de carbono orgânico (g/kg) medido em propriedades que permitiram coleta de amostras ($Y_{2i}^{*}>0$).  
+Covariáveis: tipo de solo, cobertura vegetal, sistema de manejo e altitude.
+</p>
+<p style="text-align: justify;">
+10. **Rendimento de frutíferas.**  
+$Y_{1i}$ é o rendimento médio de frutas (kg/planta), observado apenas para pomares em idade produtiva ($Y_{2i}^{*}>0$).  
+Covariáveis: espécie cultivada, espaçamento, irrigação, adubação e ocorrência de pragas.
+</p>
+
+## Modelagem Teórica
+
 <p style="text-align: justify;">
 Considere o sistema de equações
 \begin{align}
-Y_{1i}^{*}&=\pmb{x}_{i}^\top\pmb{\beta}+\epsilon_{1i}, \label{eq_reg_heckman} \\
-Y_{2i}^{*}&=\pmb{z}_{i}^\top\pmb{\gamma}+\epsilon_{2i},\quad i=1,\ldots,n, \label{eq_sel_heckman}
+Y_{1i}^{*}&=\pmb{x}_{i}^\top\pmb{\beta}+\epsilon_{1i}, \tag{1.1}\label{1.1} \\
+Y_{2i}^{*}&=\pmb{z}_{i}^\top\pmb{\gamma}+\epsilon_{2i},\quad i=1,\ldots,n, \tag{1.2}\label{1.2}
 \end{align}
 em que $Y_{1i}^{*}$ é a variável de interesse (latente) e $Y_{2i}^{*}$ rege o processo de seleção (também latente). Na prática, $Y_{1i}^{*}$ só é observado quando a condição de seleção é satisfeita. Especificamente, sabemos apenas se $Y_{2i}^{*}$ excede um limiar $a\in\mathbb{R}$ (fixo), o que gera observação seletiva de $Y_{1i}^{*}$. Observamos, portanto,
 \vspace{-0.2cm}
-\begin{align}\label{mod_heckman_ind}
+\begin{align}\tag{1.3}\label{1.3}
 U_{i}&=1\{Y_{2i}^{*}>a\},\\
 \nonumber Y_{i}&=Y_{1i}^{*}U_{i},\quad i=1,\ldots,n,
 \end{align}
@@ -70,7 +140,7 @@ em que $1\{Y_{2i}^{*}>a\}=1$ se $Y_{2i}^{*}>a$ e $0$ caso contrário. Os vetores
 <p style="text-align: justify;">
 Para definir o modelo de seleção amostral, assume-se que os termos de erro $(\epsilon_{1i},\epsilon_{2i})$ seguem distribuição normal bivariada:
 \begin{align}
-\label{erro}
+\tag{1.4} \label{1.4}
 \begin{pmatrix}
 \epsilon_{1i}\\
 \epsilon_{2i}
@@ -86,10 +156,10 @@ Para definir o modelo de seleção amostral, assume-se que os termos de erro $(\
 \end{pmatrix}
 \end{bmatrix},\quad i=1,\ldots,n,
 \end{align}
-em que $\sigma^{2}_{1}\equiv \sigma^{2}$. Como $Y_{2i}^{*}$ não é observado, a sua variância não é identificável em escala absoluta; por convenção, fixa-se $\sigma_{2}^{2}=1$ sem perda de generalidade (qualquer normalização positiva equivaleria a reescalar $\pmb{\gamma}$ e o limiar $a$). De forma análoga, usualmente toma-se $a=0$, pois valores distintos podem ser absorvidos pelo intercepto da equação de seleção \ref{eq_sel_heckman}.
+em que $\sigma^{2}_{1}\equiv \sigma^{2}$. Como $Y_{2i}^{*}$ não é observado, a sua variância não é identificável em escala absoluta; por convenção, fixa-se $\sigma_{2}^{2}=1$ sem perda de generalidade (qualquer normalização positiva equivaleria a reescalar $\pmb{\gamma}$ e o limiar $a$). De forma análoga, usualmente toma-se $a=0$, pois valores distintos podem ser absorvidos pelo intercepto da equação de seleção \ref{1.1}.
 </p>
 <p style="text-align: justify;">
-O sistema \ref{eq_reg_heckman}–\ref{erro} é conhecido como *modelo de Heckman*, *Tobit tipo 2* ou *modelo de seleção amostral*. A equação \ref{eq_reg_heckman} é a *equação de interesse primária* (ou de regressão), enquanto \ref{eq_sel_heckman} é a *equação de seleção*. O parâmetro de correlação $\rho\in(-1,1)$ desempenha papel central: quando $\rho\neq 0$, há dependência entre os choques que afetam o desfecho $Y_{1i}^{*}$ e o mecanismo que regula sua observação, produzindo \textbf{viés de seleção} se a amostra for analisada ignorando o processo de seleção. Em contraste, quando $\rho=0$, a seleção é *ignorável* sob a suposição de normalidade, e a regressão na subamostra observada fornece estimativas não viesadas de $\pmb{\beta}$.
+O sistema \ref{1.1}–\ref{1.2} é conhecido como *modelo de Heckman*, *Tobit tipo 2* ou *modelo de seleção amostral*. A equação \ref{1.1} é a *equação de interesse primária* (ou de regressão), enquanto \ref{1.2} é a *equação de seleção*. O parâmetro de correlação $\rho\in(-1,1)$ desempenha papel central: quando $\rho\neq 0$, há dependência entre os choques que afetam o desfecho $Y_{1i}^{*}$ e o mecanismo que regula sua observação, produzindo \textbf{viés de seleção} se a amostra for analisada ignorando o processo de seleção. Em contraste, quando $\rho=0$, a seleção é *ignorável* sob a suposição de normalidade, e a regressão na subamostra observada fornece estimativas não viesadas de $\pmb{\beta}$.
 </p>
 <p style="text-align: justify;">
 Do ponto de vista inferencial, duas abordagens clássicas são frequentes: (i) a estimação por *máxima verossimilhança* conjunta, baseada na densidade normal bivariada, e (ii) o procedimento em *dois estágios* de Heckman, em que se estima primeiro a equação de seleção via *probit* e, em seguida, incorpora-se a *razão de Mills inversa* como regressor adicional na equação de interesse. A primeira é assintoticamente eficiente sob correta especificação; a segunda é simples e interpretável, servindo como diagnóstico prático do viés de seleção [@Heckman1976; @Heckman1979].
@@ -107,7 +177,7 @@ Neste trabalho, apresentamos uma aplicação do modelo de Heckman em \textsf{R},
 Um procedimento de estimação também proposto por \cite{heckman1979} foi o método de dois passos. Esse método, foi sugerido como um bom estimador para pontos de partida confiáveis e eficientes na estimação por máxima verossimilhança \citep{Leung2000}. O método é baseado no fato da média 
 condicional $\tilde{\mu}_{i}=E(y_{i}|y_{1i}^{*}\ \textrm{é observado},\pmb{x}_{i},\pmb{z}_{i}),\ \textrm{para}\ i=1,\cdots,n,$ 
 ser dada por
-\begin{eqnarray}\label{espcond}
+\begin{eqnarray}
 \nonumber \tilde{\mu}_{i}&=&E(y_{i}|\ y_{1i}^{*}\ \textrm{é observado},\pmb{x}_{i},\pmb{z}_{i})\\
 \nonumber                &=&E(y_{i}|\ y_{2i}^{*}>0,\pmb{x}_{i},\pmb{z}_{i})\\
 \nonumber                &=&E(y_{1i}^{*}|\ \pmb{z}_{i}^\top\pmb{\gamma}+\epsilon_{2i}>0,\pmb{x}_{i},\pmb{z}_{i})\\
@@ -117,33 +187,33 @@ ser dada por
 \nonumber                &=& \mathbf{x}_{i}^\top\pmb{\beta} + \rho\sigma\lambda(-\mathbf{z}_{i}^\top\pmb{\gamma})\\
 \nonumber                &=& \pmb{x}_{i}^\top\pmb{\beta} + \rho\sigma\dfrac{\phi(\pmb{z}_{i}^\top\pmb{\gamma})}
 {\Phi(\pmb{z}_{i}^\top\pmb{\gamma})}\\
-                         &=& \pmb{x}_{i}^\top\pmb{\beta}+\lambda_{i}\beta_{\lambda},
+                         &=& \pmb{x}_{i}^\top\pmb{\beta}+\lambda_{i}\beta_{\lambda},\tag{1.5}\label{1.5}
 \end{eqnarray}
 em que $\lambda_{i}=\dfrac{\phi(\pmb{z}_{i}^\top\pmb{\gamma})}{\Phi(\pmb{z}_{i}^\top\pmb{\gamma})}$ denota a razão inversa de Mills, 
 $\beta_{\lambda}=\rho\sigma,\ \rho$ é a correlação entre $\epsilon_{1i}$ e $\epsilon_{2i}$ e $\sigma$ é o desvio padrão 
-de $\epsilon_{1i}.$ A partir de \ref{espcond} podemos reescrever a equação de interesse como
-\begin{align}\label{eqcommills}
+de $\epsilon_{1i}.$ A partir de \ref{1.5} podemos reescrever a equação de interesse como
+\begin{align}\tag{1.6}\label{1.6}
 \tilde{y}_{i}=\tilde{\mu}_{i}+\varepsilon_{i},
 \end{align}
-em que $\tilde{\mu}_{i}$ é dada em (\ref{espcond}) e $\varepsilon_{i}$ é um novo termo de erro de média zero e 
-independente de $\pmb{z}_{i}$ e de $\pmb{x}_{i}$. O termo $\lambda_{i}\beta_{\lambda}$ em (\ref{espcond}) explica 
+em que $\tilde{\mu}_{i}$ é dada em (\ref{1.5}) e $\varepsilon_{i}$ é um novo termo de erro de média zero e 
+independente de $\pmb{z}_{i}$ e de $\pmb{x}_{i}$. O termo $\lambda_{i}\beta_{\lambda}$ em (\ref{1.5}) explica 
 a inconsistência do estimador de mínimos quadrados ordinários (MQO), quando $\rho\neq 0,$ e se MQO fosse utilizado para 
-encontrar as estimativas dos parâmetros de (\ref{eq_reg_heckman}). A partir daí, o primeiro passo do método é ajustar o 
-modelo probit a equação de seleção (\ref{eq_sel_heckman}) e estimar $\widehat{\pmb{\gamma}}$ e 
+encontrar as estimativas dos parâmetros de (\ref{1.2}). A partir daí, o primeiro passo do método é ajustar o 
+modelo probit a equação de seleção (\ref{1.1}) e estimar $\widehat{\pmb{\gamma}}$ e 
 $\widehat{\lambda}_{i}=\frac{\phi(\pmb{z}_{i}^\top\pmb{\widehat{\gamma}})}{\Phi(\pmb{z}_{i}^\top
 \pmb{\widehat{\gamma}})}.$ Em um segundo passo, estimamos por MQO os parâmetros 
-$\pmb{\beta}$ e $\beta_{\lambda}=\rho\sigma$ de \ref{eqcommills} usando os valores de $y_{1i}^{*}$ observados. 
+$\pmb{\beta}$ e $\beta_{\lambda}=\rho\sigma$ de \ref{1.6} usando os valores de $y_{1i}^{*}$ observados. 
 Um estimador para a variância de $\epsilon_{1}$ é dado por
 \begin{align}
 \widehat{\sigma}^{2}=\dfrac{1}{n_{u}}\left(\pmb{\widehat{\varepsilon}}^\top\pmb{\widehat{\varepsilon}}+
 \widehat{\beta}_{\lambda}^{2}{\displaystyle \sum_{i=1}^{n_{u}}\widehat{\delta}_{i}}\right),
-\label{preliminares:sigma}
+\tag{1.7}\label{1.7}
 \end{align}
-em que $\widehat{\varepsilon}$ é o vetor residual da estimação de MQO de (\ref{eqcommills}), $n_{u}$ é o número de observações nesta estimação e $\widehat{\delta}_{i}=\widehat{\lambda}_{i}(\widehat{\lambda}_{i}+\pmb{z}_{i}^\top
+em que $\widehat{\varepsilon}$ é o vetor residual da estimação de MQO de (\ref{1.6}), $n_{u}$ é o número de observações nesta estimação e $\widehat{\delta}_{i}=\widehat{\lambda}_{i}(\widehat{\lambda}_{i}+\pmb{z}_{i}^\top
 \pmb{\gamma}).$ Finalmente, um estimador para a correlação entre $\epsilon_{1}$ e $\epsilon_{2}$ é dado por 
 \begin{align}
 \widehat{\rho}=\dfrac{\widehat{\beta}_{\lambda}}{\widehat{\sigma}},
-\label{preliminares:correlacao}
+\tag{1.8}\label{1.8}
 \end{align}
 nesse caso, $\widehat{\rho}$ pode estar fora do intervalo $[-1,1].$
 </p>
@@ -154,15 +224,33 @@ razão inversa de Mills $(\lambda)$ pode ocasionar possíveis problemas de multi
 grande parte do seu suporte, como é possível observar na Figura \ref{fig:Mills}. Para diminuir este problema é sugerido 
 a \textbf{restrição de exclusão}, de acordo com a qual, pelo menos uma variável, que é um bom preditor de $Y_{2}^{*}$ e está 
 incluída na equação de seleção, não deve aparecer na regressão primária. 
-
+</p>
 \begin{figure}[H]
 \centering{
 \resizebox{16cm}{7cm}{\input{plot_Inv_Mills.tex}}} %% assuming figurefile is a tikz code
 %\captionsetup{justification=centering,margin=1cm}
 \vspace*{-15mm}
 \caption{Razão inversa de Mills para $z^\top\gamma\in [-5,5].$ }
-\label{fig:Mills}
+\tag{1.9}\label{1.9}
 \end{figure}
+
+## Exemplo Prático
+
+
+<p style="text-align: justify;">
+O conjunto de dados analisado é composto por **99 observações** e **13 variáveis**, provenientes de um experimento que avaliou características físicas e químicas de agregados do solo sob diferentes condições de textura e umidade. Cada linha do banco representa uma unidade experimental identificada pela variável `ID`, que combina o tipo de solo (`Soil_type.x`), a condição de umidade (`Soil_moisture.x`) e o número de repetição (`Rep`). A variável `Days.x` indica o tempo de incubação em dias. As colunas `Prop_less_than_53_um`, `Prop_250_53_um`, `Prop_2000_250_um` e `Prop_greater_than_2mm` expressam, respectivamente, as proporções de agregados em diferentes classes de tamanho (menores que 53 μm, entre 53 μm e 250 μm, entre 250 μm e 2 mm, e maiores que 2 mm). A variável `Mean_weight_diameter` corresponde ao diâmetro médio ponderado dos agregados, um indicador da estabilidade estrutural do solo. Já as variáveis `Extractable_organic_C`, `Microbial_biomass_C` e `Total_aggregate_associated_C` representam, respectivamente, o carbono orgânico extraível, o carbono da biomassa microbiana e o carbono total associado aos agregados. Em conjunto, essas variáveis permitem investigar como a textura e a umidade do solo influenciam a distribuição de agregados e o acúmulo de carbono em diferentes frações do solo.
+</p>
+<p style="text-align: justify;">
+Suponha agora que, ao tentar ajustar um modelo de regressão para explicar o carbono total associado aos agregados (`Total_aggregate_associated_C`), o pesquisador perceba que essa variável não foi medida em todas as amostras. Em particular, o carbono total pode ter sido determinado apenas nos solos com teor de umidade mais estável (`Soil_moisture.x = "Steady"`) ou naqueles que apresentaram frações mais estruturadas, com maior proporção de agregados grossos (`Prop_greater_than_2mm`). Nesse caso, as observações de $Y_{1i} =$ `Total_aggregate_associated_C` não seriam aleatórias: a ausência de valores dependeria de um *mecanismo de seleção* relacionado às próprias características do solo.
+</p>
+<p style="text-align: justify;">
+Modelos lineares tradicionais ignoram esse tipo de dependência e, por isso, podem produzir estimativas enviesadas dos efeitos das covariáveis sobre o carbono total. Para contornar esse problema, pode-se aplicar o **modelo de Heckman**, que considera simultaneamente duas equações:  
+(i) uma *equação de seleção*, que modela a probabilidade de o carbono total ser observado (por exemplo, em função de `Soil_type.x`, `Soil_moisture.x` e `Mean_weight_diameter`), e  
+(ii) uma *equação de resultado*, que explica o valor de `Total_aggregate_associated_C` condicionalmente à observação, usando covariáveis como `Prop_greater_than_2mm`, `Extractable_organic_C` e `Microbial_biomass_C`.
+</p>
+<p style="text-align: justify;">
+Essa abordagem permite avaliar, de forma estatisticamente consistente, como diferentes atributos físicos e biogeoquímicos do solo influenciam o acúmulo de carbono, ao mesmo tempo em que corrige o **viés de seleção** decorrente da mensuração seletiva das amostras. Assim, o modelo de Heckman oferece um arcabouço robusto para estudos em que parte das variáveis de interesse é observada apenas em condições específicas do experimento.
+</p>
 
     
 # Referências 

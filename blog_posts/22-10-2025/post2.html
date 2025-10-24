@@ -754,6 +754,8 @@ display: none;
 </ul></li>
 <li><a href="#m%C3%A9todo-de-dois-passos" id="toc-método-de-dois-passos"><span class="toc-section-number">1.3</span> Método de Dois Passos</a></li>
 <li><a href="#exemplo-pr%C3%A1tico" id="toc-exemplo-prático"><span class="toc-section-number">1.4</span> Exemplo Prático</a></li>
+<li><a href="#estima%C3%A7%C3%A3o-por-m%C3%A1xima-verossimilhan%C3%A7a" id="toc-estimação-por-máxima-verossimilhança"><span class="toc-section-number">1.5</span> Estimação por Máxima Verossimilhança</a></li>
+<li><a href="#aplica%C3%A7%C3%A3o-pr%C3%A1tica" id="toc-aplicação-prática"><span class="toc-section-number">1.6</span> Aplicação Prática</a></li>
 </ul></li>
 <li><a href="#refer%C3%AAncias" id="toc-referências"><span class="toc-section-number">2</span> Referências</a></li>
 </ul>
@@ -869,7 +871,8 @@ em que <span class="math inline">\(\mathbf{1}\{\cdot\}\)</span> é a função in
 </p>
 <div id="índice-latente-limiar-e-variável-binária." class="section level3" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Índice latente, limiar e variável binária.</h3>
-<p>No modelo de seleção/probit, supõe-se a existência de uma <strong>variável latente contínua</strong>
+<p style="text-align: justify;">
+No modelo de seleção/probit, supõe-se a existência de uma <strong>variável latente contínua</strong>
 <span class="math display">\[
 Y_{2i}^* \;=\; \boldsymbol z_i^\top \boldsymbol\gamma \;+\; \epsilon_{2i},
 \]</span>
@@ -877,29 +880,35 @@ que não é observada diretamente. O que observamos é apenas um indicador biná
 <span class="math display">\[
 U_i \;=\; \mathbf{1}\{Y_{2i}^* &gt; a\} \in \{0,1\},
 \]</span>
-ou seja, <span class="math inline">\(U_i=1\)</span> se o <strong>nível</strong> do índice <span class="math inline">\(Y_{2i}^*\)</span> ultrapassa um limiar <span class="math inline">\(a\)</span> (fixo), e <span class="math inline">\(U_i=0\)</span> caso contrário. Portanto, o 0/1 observado provém do sinal (ou comparação com <span class="math inline">\(a\)</span>) de uma grandeza contínua.</p>
+ou seja, <span class="math inline">\(U_i=1\)</span> se o <strong>nível</strong> do índice <span class="math inline">\(Y_{2i}^*\)</span> ultrapassa um limiar <span class="math inline">\(a\)</span> (fixo), e <span class="math inline">\(U_i=0\)</span> caso contrário. Portanto, o 0/1 observado provém do sinal (ou comparação com <span class="math inline">\(a\)</span>) de uma grandeza contínua.
+</p>
 </div>
 <div id="por-que-usar-um-latente-contínuo-argumentos." class="section level3" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> Por que usar um latente contínuo? Argumentos.</h3>
 <ul>
 <li>Ordenação e decisão com ruído.</li>
 </ul>
-<p>Em muitas aplicações (emprego, adoção de tecnologia, mensuração possível, etc.), a decisão ``entrar/sair’’ é o resultado de um <strong>balanço contínuo</strong> entre ganhos e custos não totalmente observáveis. Modelamos esse balanço por <span class="math inline">\(Y_{2i}^*\)</span>; a decisão observada é <span class="math inline">\(U_i=1\)</span> quando esse balanço supera o limiar <span class="math inline">\(a\)</span>. O termo <span class="math inline">\(\epsilon_{2i}\)</span> captura fatores não observados (ruído) que afetam o índice.</p>
+<p style="text-align: justify;">
+Em muitas aplicações (emprego, adoção de tecnologia, mensuração possível, etc.), a decisão ``entrar/sair’’ é o resultado de um <strong>balanço contínuo</strong> entre ganhos e custos não totalmente observáveis. Modelamos esse balanço por <span class="math inline">\(Y_{2i}^*\)</span>; a decisão observada é <span class="math inline">\(U_i=1\)</span> quando esse balanço supera o limiar <span class="math inline">\(a\)</span>. O termo <span class="math inline">\(\epsilon_{2i}\)</span> captura fatores não observados (ruído) que afetam o índice.
+</p>
 <ul>
 <li>Interpretação probabilística.</li>
 </ul>
-<p>Assumindo <span class="math inline">\(\epsilon_{2i}\sim \mathcal N(0,1)\)</span> (normalização discutida abaixo), temos:
+<p style="text-align: justify;">
+Assumindo <span class="math inline">\(\epsilon_{2i}\sim \mathcal N(0,1)\)</span> (normalização discutida abaixo), temos:
 <span class="math display">\[
 \Pr(U_i=1 \mid \boldsymbol z_i)
 = \Pr(Y_{2i}^* &gt; a \mid \boldsymbol z_i)
 = \Pr\!\big(\epsilon_{2i} &gt; a - \boldsymbol z_i^\top\boldsymbol\gamma\big)
 = \Phi\!\big(\boldsymbol z_i^\top\boldsymbol\gamma - a\big),
 \]</span>
-onde <span class="math inline">\(\Phi(\cdot)\)</span> é a CDF da Normal padrão. Assim, a probabilidade de <span class="math inline">\(U_i=1\)</span> é uma <strong>função monótona</strong> do índice linear <span class="math inline">\(\boldsymbol z_i^\top\boldsymbol\gamma\)</span>. Isso conecta o modelo latente contínuo ao probit clássico.</p>
+onde <span class="math inline">\(\Phi(\cdot)\)</span> é a CDF da Normal padrão. Assim, a probabilidade de <span class="math inline">\(U_i=1\)</span> é uma <strong>função monótona</strong> do índice linear <span class="math inline">\(\boldsymbol z_i^\top\boldsymbol\gamma\)</span>. Isso conecta o modelo latente contínuo ao probit clássico.
+</p>
 <ul>
 <li>Normalização de limiar (<span class="math inline">\(a\)</span>) e intercepto.</li>
 </ul>
-<p>O limiar <span class="math inline">\(a\)</span> é <strong>não identificado separadamente</strong> do intercepto de <span class="math inline">\(\boldsymbol z_i^\top\boldsymbol\gamma\)</span>. Se escrevemos
+<p style="text-align: justify;">
+O limiar <span class="math inline">\(a\)</span> é <strong>não identificado separadamente</strong> do intercepto de <span class="math inline">\(\boldsymbol z_i^\top\boldsymbol\gamma\)</span>. Se escrevemos
 <span class="math display">\[
 U_i=\mathbf{1}\{\boldsymbol z_i^\top\boldsymbol\gamma + \epsilon_{2i} &gt; a\},
 \]</span>
@@ -907,30 +916,39 @@ então definir <span class="math inline">\(\tilde\gamma_0=\gamma_0 - a\)</span> 
 <span class="math display">\[
 U_i=\mathbf{1}\{\tilde\gamma_0 + \boldsymbol z_{i,-0}^\top\boldsymbol\gamma_{-0} + \epsilon_{2i} &gt; 0\}.
 \]</span>
-Logo, sem perda de generalidade, <strong>podemos fixar <span class="math inline">\(a=0\)</span></strong> e estimar um intercepto.</p>
+Logo, sem perda de generalidade, <strong>podemos fixar <span class="math inline">\(a=0\)</span></strong> e estimar um intercepto.
+</p>
 <ul>
 <li>Normalização de escala (variância do erro).</li>
 </ul>
-<p>Somente o <strong>sinal</strong> de <span class="math inline">\(Y_{2i}^*\)</span> determina <span class="math inline">\(U_i\)</span>. Se multiplicarmos toda a equação por <span class="math inline">\(c&gt;0\)</span>,
+<p style="text-align: justify;">
+Somente o <strong>sinal</strong> de <span class="math inline">\(Y_{2i}^*\)</span> determina <span class="math inline">\(U_i\)</span>. Se multiplicarmos toda a equação por <span class="math inline">\(c&gt;0\)</span>,
 <span class="math display">\[
 c\,Y_{2i}^* = c\,\boldsymbol z_i^\top\boldsymbol\gamma + c\,\epsilon_{2i},
 \quad
 U_i = \mathbf{1}\{c\,Y_{2i}^* &gt; c\,a\},
 \]</span>
-as probabilidades não mudam (o sinal é preservado). Assim, a escala não é identificável; por convenção, fixa-se <span class="math inline">\(\mathrm{Var}(\epsilon_{2i})=1\)</span>. Com isso, o link resultante é o probit; se, em vez de Normal, usarmos logística padrão, obtemos o logit.</p>
+as probabilidades não mudam (o sinal é preservado). Assim, a escala não é identificável; por convenção, fixa-se <span class="math inline">\(\mathrm{Var}(\epsilon_{2i})=1\)</span>. Com isso, o link resultante é o probit; se, em vez de Normal, usarmos logística padrão, obtemos o logit.
+</p>
 <ul>
 <li>Geometria e separação.</li>
 </ul>
-<p>Para cada <span class="math inline">\(\boldsymbol z_i\)</span>, o índice <span class="math inline">\(Y_{2i}^*\)</span> é uma variável contínua ao longo da reta real. A fronteira de decisão é o hiperplano
-<span class="math inline">\(\{\boldsymbol z: \boldsymbol z^\top\boldsymbol\gamma = a\}\)</span>. O ruído <span class="math inline">\(\epsilon_{2i}\)</span> ``espalha’’ a decisão em torno dessa fronteira, produzindo probabilidades estritamente entre 0 e 1, o que é desejável em presença de heterogeneidade não observada.</p>
+<p style="text-align: justify;">
+Para cada <span class="math inline">\(\boldsymbol z_i\)</span>, o índice <span class="math inline">\(Y_{2i}^*\)</span> é uma variável contínua ao longo da reta real. A fronteira de decisão é o hiperplano
+<span class="math inline">\(\{\boldsymbol z: \boldsymbol z^\top\boldsymbol\gamma = a\}\)</span>. O ruído <span class="math inline">\(\epsilon_{2i}\)</span> ``espalha’’ a decisão em torno dessa fronteira, produzindo probabilidades estritamente entre 0 e 1, o que é desejável em presença de heterogeneidade não observada.
+</p>
 <ul>
 <li>Conexão com seleção amostral (Heckman).</li>
 </ul>
-<p>No Heckman, existe <strong>correlação</strong> entre o erro da equação de interesse (<span class="math inline">\(\epsilon_{1i}\)</span>) e o erro da seleção (<span class="math inline">\(\epsilon_{2i}\)</span>), digamos <span class="math inline">\(\rho\neq 0\)</span>. Essa correlação é a origem do viés de seleção: a decisão <span class="math inline">\(U_i\)</span> (0/1) depende do mesmo choque que afeta <span class="math inline">\(Y_{1i}^*\)</span> via o índice <span class="math inline">\(Y_{2i}^*\)</span>. O aparato latente contínuo torna explícita essa estrutura conjunta (Normal bivariada), permitindo estimar <span class="math inline">\(\rho\)</span> e corrigir o viés.</p>
-<p>O observado é <span class="math inline">\(U_i\in\{0,1\}\)</span>; o determinante subjacente é um índice contínuo <span class="math inline">\(Y_{2i}^*\)</span>. A probabilidade de <span class="math inline">\(U_i=1\)</span> é a probabilidade de o índice exceder o limiar:
+<p style="text-align: justify;">
+No Heckman, existe <strong>correlação</strong> entre o erro da equação de interesse (<span class="math inline">\(\epsilon_{1i}\)</span>) e o erro da seleção (<span class="math inline">\(\epsilon_{2i}\)</span>), digamos <span class="math inline">\(\rho\neq 0\)</span>. Essa correlação é a origem do viés de seleção: a decisão <span class="math inline">\(U_i\)</span> (0/1) depende do mesmo choque que afeta <span class="math inline">\(Y_{1i}^*\)</span> via o índice <span class="math inline">\(Y_{2i}^*\)</span>. O aparato latente contínuo torna explícita essa estrutura conjunta (Normal bivariada), permitindo estimar <span class="math inline">\(\rho\)</span> e corrigir o viés.
+</p>
+<p style="text-align: justify;">
+O observado é <span class="math inline">\(U_i\in\{0,1\}\)</span>; o determinante subjacente é um índice contínuo <span class="math inline">\(Y_{2i}^*\)</span>. A probabilidade de <span class="math inline">\(U_i=1\)</span> é a probabilidade de o índice exceder o limiar:
 <span class="math inline">\(\Pr(U_i=1\mid \boldsymbol z_i)=\Phi(\boldsymbol z_i^\top\boldsymbol\gamma-a)\)</span>.
 Como <span class="math inline">\(a\)</span> e a escala do erro não são identificáveis separadamente, normaliza-se <span class="math inline">\(a=0\)</span> e <span class="math inline">\(\mathrm{Var}(\epsilon_{2i})=1\)</span>.
-Essa construção justifica formalmente o uso do probit/logit e explica por que, no Heckman, o parâmetro de correlação <span class="math inline">\(\rho\)</span> entre os erros das duas equações é central para o viés de seleção.</p>
+Essa construção justifica formalmente o uso do probit/logit e explica por que, no Heckman, o parâmetro de correlação <span class="math inline">\(\rho\)</span> entre os erros das duas equações é central para o viés de seleção.
+</p>
 <p style="text-align: justify;">
 Para definir o modelo de seleção amostral, assume-se que os termos de erro <span class="math inline">\((\epsilon_{1i},\epsilon_{2i})\)</span> seguem distribuição normal bivariada:
 <span class="math display">\[\begin{align}
@@ -950,6 +968,8 @@ Para definir o modelo de seleção amostral, assume-se que os termos de erro <sp
 \end{pmatrix}
 \end{bmatrix},\quad i=1,\ldots,n,
 \end{align}\]</span>
+</p>
+<p style="text-align: justify;">
 em que <span class="math inline">\(\sigma^{2}_{1}\equiv \sigma^{2}\)</span>. Como <span class="math inline">\(Y_{2i}^{*}\)</span> não é observado, a sua variância não é identificável em escala absoluta; por convenção, fixa-se <span class="math inline">\(\sigma_{2}^{2}=1\)</span> sem perda de generalidade (qualquer normalização positiva equivaleria a reescalar <span class="math inline">\(\pmb{\gamma}\)</span> e o limiar <span class="math inline">\(a\)</span>). De forma análoga, usualmente toma-se <span class="math inline">\(a=0\)</span>, pois valores distintos podem ser absorvidos pelo intercepto da equação de seleção <span class="math inline">\(\ref{1.1}\)</span>.
 </p>
 <p style="text-align: justify;">
@@ -990,10 +1010,11 @@ de <span class="math inline">\(\epsilon_{1i}.\)</span> A partir de <span class="
 <span class="math display">\[\begin{align}\tag{1.6}\label{1.6}
 \tilde{y}_{i}=\tilde{\mu}_{i}+\varepsilon_{i},
 \end{align}\]</span>
+</p>
+<p style="text-align: justify;">
 em que <span class="math inline">\(\tilde{\mu}_{i}\)</span> é dada em (<span class="math inline">\(\ref{1.5}\)</span>) e <span class="math inline">\(\varepsilon_{i}\)</span> é um novo termo de erro de média zero e
 independente de <span class="math inline">\(\pmb{z}_{i}\)</span> e de <span class="math inline">\(\pmb{x}_{i}\)</span>. O termo <span class="math inline">\(\lambda_{i}\beta_{\lambda}\)</span> em (<span class="math inline">\(\ref{1.5}\)</span>) explica
-a inconsistência do estimador de mínimos quadrados ordinários (MQO), quando <span class="math inline">\(\rho\neq 0,\)</span> e se MQO fosse utilizado para
-encontrar as estimativas dos parâmetros de (<span class="math inline">\(\ref{1.2}\)</span>). A partir daí, o primeiro passo do método é ajustar o
+a inconsistência do estimador de mínimos quadrados ordinários (MQO), quando <span class="math inline">\(\rho\neq 0,\)</span> e se MQO fosse utilizado para encontrar as estimativas dos parâmetros de (<span class="math inline">\(\ref{1.2}\)</span>). A partir daí, o primeiro passo do método é ajustar o
 modelo probit a equação de seleção (<span class="math inline">\(\ref{1.1}\)</span>) e estimar <span class="math inline">\(\widehat{\pmb{\gamma}}\)</span> e
 <span class="math inline">\(\widehat{\lambda}_{i}=\frac{\phi(\pmb{z}_{i}^\top\pmb{\widehat{\gamma}})}{\Phi(\pmb{z}_{i}^\top
 \pmb{\widehat{\gamma}})}.\)</span> Em um segundo passo, estimamos por MQO os parâmetros
@@ -1024,19 +1045,33 @@ incluída na equação de seleção, não deve aparecer na regressão primária.
 <div id="exemplo-prático" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Exemplo Prático</h2>
 <p style="text-align: justify;">
-O conjunto de dados analisado é composto por <strong>99 observações</strong> e <strong>13 variáveis</strong>, provenientes de um experimento que avaliou características físicas e químicas de agregados do solo sob diferentes condições de textura e umidade. Cada linha do banco representa uma unidade experimental identificada pela variável <code>ID</code>, que combina o tipo de solo (<code>Soil_type.x</code>), a condição de umidade (<code>Soil_moisture.x</code>) e o número de repetição (<code>Rep</code>). A variável <code>Days.x</code> indica o tempo de incubação em dias. As colunas <code>Prop_less_than_53_um</code>, <code>Prop_250_53_um</code>, <code>Prop_2000_250_um</code> e <code>Prop_greater_than_2mm</code> expressam, respectivamente, as proporções de agregados em diferentes classes de tamanho (menores que 53 μm, entre 53 μm e 250 μm, entre 250 μm e 2 mm, e maiores que 2 mm). A variável <code>Mean_weight_diameter</code> corresponde ao diâmetro médio ponderado dos agregados, um indicador da estabilidade estrutural do solo. Já as variáveis <code>Extractable_organic_C</code>, <code>Microbial_biomass_C</code> e <code>Total_aggregate_associated_C</code> representam, respectivamente, o carbono orgânico extraível, o carbono da biomassa microbiana e o carbono total associado aos agregados. Em conjunto, essas variáveis permitem investigar como a textura e a umidade do solo influenciam a distribuição de agregados e o acúmulo de carbono em diferentes frações do solo.
+O conjunto de dados analisado é composto por <strong>99 observações</strong> e <strong>13 variáveis</strong>, provenientes de um experimento que avaliou características físicas e químicas de agregados do solo sob diferentes condições de textura e umidade. Cada linha do banco representa uma unidade experimental identificada pela variável <code>ID</code>, que combina o tipo de solo (<code>Stype.x</code>), a condição de umidade (<code>Smoisture.x</code>) e o número de repetição (<code>Rep</code>). A variável <code>Days.x</code> indica o tempo de incubação em dias. As colunas <code>Prop_less_than_53_um</code>, <code>Prop_250_53_um</code>, <code>Prop_2000_250_um</code> e <code>Prop_greater_than_2mm</code> expressam, respectivamente, as proporções de agregados em diferentes classes de tamanho (menores que 53 μm, entre 53 μm e 250 μm, entre 250 μm e 2 mm, e maiores que 2 mm). A variável <code>MWD</code> corresponde ao diâmetro médio ponderado dos agregados, um indicador da estabilidade estrutural do solo. Já as variáveis <code>Extractable_organic_C</code>, <code>Microbial_biomass_C</code> e <code>TAAC</code> representam, respectivamente, o carbono orgânico extraível, o carbono da biomassa microbiana e o carbono total associado aos agregados. Em conjunto, essas variáveis permitem investigar como a textura e a umidade do solo influenciam a distribuição de agregados e o acúmulo de carbono em diferentes frações do solo.
 </p>
 <p style="text-align: justify;">
-Suponha agora que, ao tentar ajustar um modelo de regressão para explicar o carbono total associado aos agregados (<code>Total_aggregate_associated_C</code>), o pesquisador perceba que essa variável não foi medida em todas as amostras. Em particular, o carbono total pode ter sido determinado apenas nos solos com teor de umidade mais estável (<code>Soil_moisture.x = &quot;Steady&quot;</code>) ou naqueles que apresentaram frações mais estruturadas, com maior proporção de agregados grossos (<code>Prop_greater_than_2mm</code>). Nesse caso, as observações de <span class="math inline">\(Y_{1i} =\)</span> <code>Total_aggregate_associated_C</code> não seriam aleatórias: a ausência de valores dependeria de um <em>mecanismo de seleção</em> relacionado às próprias características do solo.
+Suponha agora que, ao tentar ajustar um modelo de regressão para explicar o carbono total associado aos agregados (<code>TAAC</code>), o pesquisador perceba que essa variável não foi medida em todas as amostras. Em particular, o carbono total pode ter sido determinado apenas nos solos com teor de umidade mais estável (<code>Smoisture.x = &quot;Steady&quot;</code>) ou naqueles que apresentaram frações mais estruturadas, com maior proporção de agregados grossos (<code>Prop_greater_than_2mm</code>). Nesse caso, as observações de <span class="math inline">\(Y_{1i} =\)</span> <code>TAAC</code> não seriam aleatórias: a ausência de valores dependeria de um <em>mecanismo de seleção</em> relacionado às próprias características do solo.
 </p>
 <p style="text-align: justify;">
 Modelos lineares tradicionais ignoram esse tipo de dependência e, por isso, podem produzir estimativas enviesadas dos efeitos das covariáveis sobre o carbono total. Para contornar esse problema, pode-se aplicar o <strong>modelo de Heckman</strong>, que considera simultaneamente duas equações:<br />
-(i) uma <em>equação de seleção</em>, que modela a probabilidade de o carbono total ser observado (por exemplo, em função de <code>Soil_type.x</code>, <code>Soil_moisture.x</code> e <code>Mean_weight_diameter</code>), e<br />
-(ii) uma <em>equação de resultado</em>, que explica o valor de <code>Total_aggregate_associated_C</code> condicionalmente à observação, usando covariáveis como <code>Prop_greater_than_2mm</code>, <code>Extractable_organic_C</code> e <code>Microbial_biomass_C</code>.
+(i) uma <em>equação de seleção</em>, que modela a probabilidade de o carbono total ser observado (por exemplo, em função de <code>Stype.x</code>, <code>Smoisture.x</code> e <code>MWD</code>), e<br />
+(ii) uma <em>equação de resultado</em>, que explica o valor de <code>TAAC</code> condicionalmente à observação, usando covariáveis como <code>Prop_greater_than_2mm</code>, <code>Extractable_organic_C</code> e <code>Microbial_biomass_C</code>.
 </p>
 <p style="text-align: justify;">
 Essa abordagem permite avaliar, de forma estatisticamente consistente, como diferentes atributos físicos e biogeoquímicos do solo influenciam o acúmulo de carbono, ao mesmo tempo em que corrige o <strong>viés de seleção</strong> decorrente da mensuração seletiva das amostras. Assim, o modelo de Heckman oferece um arcabouço robusto para estudos em que parte das variáveis de interesse é observada apenas em condições específicas do experimento.
 </p>
+<pre><code>## &#39;data.frame&#39;:    99 obs. of  13 variables:
+##  $ ID                          : chr  &quot;1-Clayey-Steady-1&quot; &quot;1-Clayey-Steady-2&quot; &quot;1-Clayey-Steady-3&quot; &quot;1-Clayey-Transient-1&quot; ...
+##  $ Days.x                      : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ Soil_type.x                 : chr  &quot;Clayey&quot; &quot;Clayey&quot; &quot;Clayey&quot; &quot;Clayey&quot; ...
+##  $ Soil_moisture.x             : chr  &quot;Steady&quot; &quot;Steady&quot; &quot;Steady&quot; &quot;Transient&quot; ...
+##  $ Rep                         : int  1 2 3 1 2 3 1 2 3 1 ...
+##  $ Prop_less_than_53_um        : num  0,01 0,01 0,01 0,07 0,04 0,07 0,07 0,07 0,07 0,06 ...
+##  $ Prop_250_53_um              : num  0,01 0,01 0,02 0,03 0,03 0,05 0,03 0,01 0,02 0,06 ...
+##  $ Prop_2000_250_um            : num  0,37 0,35 0,33 0,19 0,14 0,2 0,35 0,36 0,37 0,12 ...
+##  $ Prop_greater_than_2mm       : num  0,61 0,63 0,63 0,72 0,8 0,69 0,56 0,56 0,54 0,77 ...
+##  $ Mean_weight_diameter        : num  3,48 3,53 3,55 3,8 4,14 3,66 3,2 3,21 3,12 3,97 ...
+##  $ Extractable_organic_C       : num  93,8 91,7 70,3 66,9 78,6 ...
+##  $ Microbial_biomass_C         : num  114 144,1 131,6 135,7 83,9 ...
+##  $ Total_aggregate_associated_C: num  11,7 13,4 12,2 12,2 12 ...</code></pre>
 <table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption>
 <span id="tab:tabela-heckman">Table 1.1: </span>Amostra (10 primeiras linhas) das variáveis usadas no modelo de Heckman.
@@ -1064,22 +1099,22 @@ ID
 sel
 </th>
 <th style="text-align:left;">
-Soil_type.x
+Stype.x
 </th>
 <th style="text-align:right;">
 Days.x
 </th>
 <th style="text-align:right;">
-Mean_weight_diameter
+MWD
 </th>
 <th style="text-align:right;">
-log_TAAC
+logTAAC
 </th>
 <th style="text-align:left;">
-Soil_moisture.x
+Smoisture.x
 </th>
 <th style="text-align:right;">
-Total_aggregate_associated_C
+TAAC
 </th>
 </tr>
 </thead>
@@ -1353,7 +1388,7 @@ Transient
 </tr>
 <tr>
 <td style="padding: 0; " colspan="100%">
-<sup></sup> sel = 1 se o desfecho está observado. log_TAAC = log(Total_aggregate_associated_C) quando &gt; 0.
+<sup></sup> sel = 1 se o desfecho está observado. logTAAC = log(TAAC) quando &gt; 0.
 </td>
 </tr>
 </tfoot>
@@ -1413,7 +1448,7 @@ Days.x
 </tr>
 <tr>
 <td style="text-align:left;">
-Mean_weight_diameter
+MWD
 </td>
 <td style="text-align:right;">
 99
@@ -1436,7 +1471,7 @@ Mean_weight_diameter
 </tr>
 <tr>
 <td style="text-align:left;">
-Total_aggregate_associated_C
+TAAC
 </td>
 <td style="text-align:right;">
 72
@@ -1459,7 +1494,7 @@ Total_aggregate_associated_C
 </tr>
 <tr>
 <td style="text-align:left;">
-log_TAAC
+logTAAC
 </td>
 <td style="text-align:right;">
 72
@@ -1502,7 +1537,7 @@ freq
 <tbody>
 <tr>
 <td style="text-align:left;">
-Soil_moisture.x
+Smoisture.x
 </td>
 <td style="text-align:left;">
 Transient
@@ -1513,7 +1548,7 @@ Transient
 </tr>
 <tr>
 <td style="text-align:left;">
-Soil_moisture.x
+Smoisture.x
 </td>
 <td style="text-align:left;">
 Steady
@@ -1524,7 +1559,7 @@ Steady
 </tr>
 <tr>
 <td style="text-align:left;">
-Soil_type.x
+Stype.x
 </td>
 <td style="text-align:left;">
 Clayey
@@ -1535,7 +1570,7 @@ Clayey
 </tr>
 <tr>
 <td style="text-align:left;">
-Soil_type.x
+Stype.x
 </td>
 <td style="text-align:left;">
 Loamy
@@ -1546,7 +1581,7 @@ Loamy
 </tr>
 <tr>
 <td style="text-align:left;">
-Soil_type.x
+Stype.x
 </td>
 <td style="text-align:left;">
 Sandy
@@ -1579,22 +1614,26 @@ sel
 </tr>
 </tbody>
 </table>
-<p>No procedimento de <strong>dois passos</strong> de Heckman, o <strong>primeiro passo</strong> consiste em estimar a <em>equação de seleção</em> via modelo probit, exatamente o que faz o bloco bloco abaixo.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co">#Modelo Probit</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>fit1<span class="ot">&lt;-</span><span class="fu">glm</span>(sel <span class="sc">~</span> Soil_type.x <span class="sc">+</span> Days.x <span class="sc">+</span> Mean_weight_diameter,<span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span>probit),<span class="at">data=</span>df)</span></code></pre></div>
-<p>Nesse ajuste, modelamos a variável indicadora <span class="math inline">\((U_i=\mathbf{1}\{Y_{2i}^*&gt;0\})\)</span> com <span class="math inline">\(\Pr(U_i=1\mid \mathbf{z}_i)=\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\)</span>, em que (<span class="math inline">\(\Phi(\cdot)\)</span>) é a CDF da Normal padrão e (<span class="math inline">\(\mathbf{z}_i=(\texttt{Soil_type.x},\ \texttt{Days.x},\ \texttt{Mean_weight_diameter})\)</span>). A estimação por <code>glm(..., family = binomial(link = probit))</code> fornece o preditor linear (<span class="math inline">\(\hat\eta_i=\mathbf{z}_i^\top\hat{\boldsymbol{\gamma}}\)</span>) e as probabilidades previstas (<span class="math inline">\(\hat p_i=\Phi(\hat\eta_i)\)</span>), permitindo calcular, para as observações selecionadas ((U_i=1)), a <strong>razão de Mills inversa</strong> (<span class="math inline">\(\hat\lambda_i=\phi(\hat\eta_i)/\Phi(\hat\eta_i)\)</span>), com (<span class="math inline">\(\phi(\cdot)\)</span>) a densidade da Normal padrão.</p>
+<p style="text-align: justify;">
+No procedimento de <strong>dois passos</strong> de Heckman, o <strong>primeiro passo</strong> consiste em estimar a <em>equação de seleção</em> via modelo probit, exatamente o que faz o bloco bloco abaixo.
+</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co">#Modelo Probit</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>fit1<span class="ot">&lt;-</span><span class="fu">glm</span>(sel <span class="sc">~</span> Stype.x <span class="sc">+</span> Days.x <span class="sc">+</span> MWD,<span class="at">family=</span><span class="fu">binomial</span>(<span class="at">link=</span>probit),<span class="at">data=</span>df)</span></code></pre></div>
+<p style="text-align: justify;">
+Nesse ajuste, modelamos a variável indicadora <span class="math inline">\((U_i=\mathbf{1}\{Y_{2i}^*&gt;0\})\)</span> com <span class="math inline">\(\Pr(U_i=1\mid \mathbf{z}_i)=\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\)</span>, em que (<span class="math inline">\(\Phi(\cdot)\)</span>) é a CDF da Normal padrão e (<span class="math inline">\(\mathbf{z}_i=(\texttt{Stype.x},\ \texttt{Days.x},\ \texttt{MWD})\)</span>). A estimação por <code>glm(..., family = binomial(link = probit))</code> fornece o preditor linear (<span class="math inline">\(\hat\eta_i=\mathbf{z}_i^\top\hat{\boldsymbol{\gamma}}\)</span>) e as probabilidades previstas (<span class="math inline">\(\hat p_i=\Phi(\hat\eta_i)\)</span>), permitindo calcular, para as observações selecionadas ((U_i=1)), a <strong>razão de Mills inversa</strong> (<span class="math inline">\(\hat\lambda_i=\phi(\hat\eta_i)/\Phi(\hat\eta_i)\)</span>), com (<span class="math inline">\(\phi(\cdot)\)</span>) a densidade da Normal padrão.
+</p>
 <pre><code>## 
 ## Call:
-## glm(formula = sel ~ Soil_type.x + Days.x + Mean_weight_diameter, 
-##     family = binomial(link = probit), data = df)
+## glm(formula = sel ~ Stype.x + Days.x + MWD, family = binomial(link = probit), 
+##     data = df)
 ## 
 ## Coefficients:
-##                      Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)          -0,83986    0,46801  -1,795 0,072727 .  
-## Soil_type.xLoamy     -1,19575    0,47196  -2,534 0,011290 *  
-## Soil_type.xClayey    -1,41672    0,51453  -2,753 0,005897 ** 
-## Days.x                0,01058    0,00400   2,644 0,008190 ** 
-## Mean_weight_diameter  0,92023    0,24588   3,743 0,000182 ***
+##               Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)   -0,83986    0,46801  -1,795 0,072727 .  
+## Stype.xLoamy  -1,19575    0,47196  -2,534 0,011290 *  
+## Stype.xClayey -1,41672    0,51453  -2,753 0,005897 ** 
+## Days.x         0,01058    0,00400   2,644 0,008190 ** 
+## MWD            0,92023    0,24588   3,743 0,000182 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0,001 &#39;**&#39; 0,01 &#39;*&#39; 0,05 &#39;.&#39; 0,1 &#39; &#39; 1
 ## 
@@ -1637,22 +1676,22 @@ ID
 sel
 </th>
 <th style="text-align:left;">
-Soil_type.x
+Stype.x
 </th>
 <th style="text-align:right;">
 Days.x
 </th>
 <th style="text-align:right;">
-Mean_weight_diameter
+MWD
 </th>
 <th style="text-align:right;">
-log_TAAC
+logTAAC
 </th>
 <th style="text-align:left;">
-Soil_moisture.x
+Smoisture.x
 </th>
 <th style="text-align:right;">
-Total_aggregate_associated_C
+TAAC
 </th>
 <th style="text-align:right;">
 Xbeta
@@ -2096,7 +2135,115 @@ Transient
 </tr>
 </tfoot>
 </table>
-<p>No <strong>segundo passo</strong>, incluímos (<span class="math inline">\(\hat\lambda_i\)</span>) como regressor adicional na equação de interesse para corrigir o viés de seleção e obter estimativas consistentes dos coeficientes; é recomendável, para identificação mais robusta, que ao menos uma variável apareça em (<span class="math inline">\(\mathbf{z}_i\)</span>) e não em (<span class="math inline">\(\mathbf{x}_i\)</span>) (restrição de exclusão).</p>
+<p style="text-align: justify;">
+No <strong>segundo passo</strong>, incluímos (<span class="math inline">\(\hat\lambda_i\)</span>) como regressor adicional na equação de interesse para corrigir o viés de seleção e obter estimativas consistentes dos coeficientes; é recomendável, para identificação mais robusta, que ao menos uma variável apareça em (<span class="math inline">\(\mathbf{z}_i\)</span>) e não em (<span class="math inline">\(\mathbf{x}_i\)</span>) (restrição de exclusão).
+</p>
+<p style="text-align: justify;">
+No <strong>segundo passo</strong> do método de Heckman, estimamos a <strong>equação de interesse</strong> apenas na subamostra em que o desfecho é observado ((U_i=1), isto é, <code>sel == 1</code>). Para corrigir o viés de seleção, incluímos a <strong>razão de Mills inversa</strong> <span class="math inline">\((\widehat\lambda_i)\)</span> como regressor adicional. Em termos gerais, ajustamos
+[
+(_i)=_i^;+;,_i;+;u_i,i: U_i=1,]
+onde <span class="math inline">\((\delta=\rho,\sigma)\)</span> captura a correção de seleção (teste <span class="math inline">\((H_0:\delta=0)\)</span> <span class="math inline">\((\Leftrightarrow)\)</span> ausência de viés, <span class="math inline">\((\rho=0)\)</span>). No nosso caso, usamos como <span class="math inline">\((\boldsymbol{x}_i)\)</span> as covariáveis <code>Soil_type.x</code>, <code>Soil_moisture.x</code> e <code>Mean_weight_diameter</code>, com resposta <code>log_TAAC</code>, e adicionamos <code>IMR</code> estimada no primeiro passo, restringindo a amostra a <code>df$sel == 1</code>.
+</p>
+<p style="text-align: justify;">
+<strong>Observação</strong>: o <code>lm()</code> fornece estimativas consistentes para os coeficientes, mas os erros-padrão do procedimento em dois passos requerem correção específica; se desejar erros-padrão ajustados, use <code>sampleSelection::selection(..., method = &quot;two.step&quot;)</code> (ou calcule a correção de variância apropriada).
+</p>
+<pre><code>## 
+## Call:
+## lm(formula = logTAAC ~ Stype.x + Smoisture.x + MWD + IMR, data = df[df$sel == 
+##     1, ])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0,43215 -0,09191 -0,00743  0,07606  0,33313 
+## 
+## Coefficients:
+##                      Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)           1,44018    0,06824  21,105  &lt; 2e-16 ***
+## Stype.xLoamy          0,69865    0,05920  11,801  &lt; 2e-16 ***
+## Stype.xClayey         0,51859    0,06255   8,290 8,01e-12 ***
+## Smoisture.xTransient -0,03034    0,03861  -0,786    0,435    
+## MWD                   0,14943    0,02856   5,231 1,87e-06 ***
+## IMR                   0,08231    0,09380   0,878    0,383    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0,001 &#39;**&#39; 0,01 &#39;*&#39; 0,05 &#39;.&#39; 0,1 &#39; &#39; 1
+## 
+## Residual standard error: 0,1435 on 66 degrees of freedom
+## Multiple R-squared:  0,9068, Adjusted R-squared:  0,8997 
+## F-statistic: 128,4 on 5 and 66 DF,  p-value: &lt; 2,2e-16</code></pre>
+<p style="text-align: justify;">
+Nos resultados do <strong>segundo passo</strong> (amostra com <span class="math inline">\(U_i=1\)</span>), a resposta está em log: <span class="math inline">\(\log(TAAC_i) = \beta_0 + \beta_1\times Stype.xLoamy_i + \beta_2\times Stype.xClayey_i + \beta_3\times Smoisture.xTransient_i + \beta_4\times MWD_i + \delta\times \widehat\lambda_i + u_i\)</span>. O ajuste apresenta alto poder explicativo (<span class="math inline">\(R^2=0{,}9068\)</span>, <span class="math inline">\(F\)</span>-teste global <span class="math inline">\(p&lt;2{,}2\times10^{-16}\)</span>) e desvio-padrão residual de <span class="math inline">\(0{,}1435\)</span>. Tomando <strong>Sandy</strong> e <strong>Steady</strong> como categorias de referência, os solos <strong>Loamy</strong> e <strong>Clayey</strong> exibem efeitos positivos e altamente significativos: <span class="math inline">\(\hat\beta_1=0{,}6987\)</span> e <span class="math inline">\(\hat\beta_2=0{,}5186\)</span> (ambos <span class="math inline">\(p&lt;10^{-11}\)</span>), o que implica, aproximadamente, aumentos de <span class="math inline">\(100!\times(e^{0{,}6987}-1)\approx 101%\)</span> e <span class="math inline">\(100!\times(e^{0{,}5186}-1)\approx 68%\)</span> em <span class="math inline">\(\text{TAAC}\)</span>, respectivamente, em relação ao solo <strong>Sandy</strong>, mantendo as demais covariáveis fixas. O regime <strong>Transient</strong> não difere estatisticamente de <strong>Steady</strong> (<span class="math inline">\(\hat\beta_3=-0{,}0303\)</span>, <span class="math inline">\(p=0{,}435\)</span>). O diâmetro médio ponderado dos agregados apresenta efeito positivo relevante (<span class="math inline">\(\hat\beta_4=0{,}1494\)</span>, <span class="math inline">\(p=1{,}87\times10^{-6}\)</span>), equivalente a <span class="math inline">\(\approx 100!\times (e^{0{,}1494}-1)\approx 16%\)</span> de aumento em <span class="math inline">\(\text{TAAC}\)</span> por unidade de <span class="math inline">\(\texttt{MWD}\)</span>. Por fim, a <strong>razão de Mills inversa</strong> não é estatisticamente significativa (<span class="math inline">\(\hat\delta=0{,}0823\)</span>, <span class="math inline">\(p=0{,}383\)</span>), de modo que não rejeitamos <span class="math inline">\(H_0:\delta=0\)</span> (isto é, ausência de viés de seleção detectável neste especificação).
+</p>
+</div>
+<div id="estimação-por-máxima-verossimilhança" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Estimação por Máxima Verossimilhança</h2>
+<p style="text-align: justify;">
+Na <strong>MLE conjunta</strong> modelamos simultaneamente a equação de interesse e a de seleção assumindo normalidade bivariada dos erros. Com <span class="math inline">\(a=0\)</span>, escrevemos
+<span class="math display">\[
+Y_{1i}= \mathbf{x}_i^\top\boldsymbol{\beta}+\epsilon_{1i},\qquad
+U_i=\mathbf{1}\{\mathbf{z}_i^\top\boldsymbol{\gamma}+\epsilon_{2i}&gt;0\},
+\]</span>
+com <span class="math inline">\(\begin{pmatrix}\epsilon_{1i}\\ \epsilon_{2i}\end{pmatrix}\sim \mathcal N\!\left(\mathbf{0},
+\begin{pmatrix}\sigma^2 &amp; \rho\sigma\\ \rho\sigma &amp; 1\end{pmatrix}\right)\)</span>, <span class="math inline">\(\ \sigma&gt;0,\ |\rho|&lt;1\)</span>. A verossimilhança individual condicionada em <span class="math inline">\((\mathbf{x}_i,\mathbf{z}_i)\)</span> é dada por duas parcelas: para observações <strong>selecionadas</strong> (<span class="math inline">\(U_i=1\)</span>) a contribuição conjunta é
+<span class="math display">\[
+L_i^{(1)}(\boldsymbol{\theta})=\frac{1}{\sigma}\,
+\phi\!\left(\frac{y_i-\mathbf{x}_i^\top\boldsymbol{\beta}}{\sigma}\right)\,
+\Phi\!\left(\frac{\mathbf{z}_i^\top\boldsymbol{\gamma}+\rho\,\frac{y_i-\mathbf{x}_i^\top\boldsymbol{\beta}}{\sigma}}{\sqrt{1-\rho^2}}\right),
+\]</span>
+e para as <strong>não selecionadas</strong> (<span class="math inline">\(U_i=0\)</span>) a contribuição é
+<span class="math display">\[
+L_i^{(0)}(\boldsymbol{\theta})=1-\Phi\!\big(\mathbf{z}_i^\top\boldsymbol{\gamma}\big),
+\]</span>
+onde <span class="math inline">\(\phi(\cdot)\)</span> e <span class="math inline">\(\Phi(\cdot)\)</span> são, respectivamente, densidade e CDF da Normal padrão, e <span class="math inline">\(\boldsymbol{\theta}=(\boldsymbol{\beta},\boldsymbol{\gamma},\sigma,\rho)\)</span>. A <strong>log-verossimilhança</strong> total é
+<span class="math display">\[
+\ell(\boldsymbol{\theta})=\sum_{i:U_i=1}\Big\{-\log\sigma+\log\phi\!\left(\tfrac{y_i-\mathbf{x}_i^\top\boldsymbol{\beta}}{\sigma}\right)
++\log\Phi\!\left(\tfrac{\mathbf{z}_i^\top\boldsymbol{\gamma}+\rho\,\frac{y_i-\mathbf{x}_i^\top\boldsymbol{\beta}}{\sigma}}{\sqrt{1-\rho^2}}\right)\Big\}
++\sum_{i:U_i=0}\log\!\Big(1-\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\Big).
+\]</span>
+Maximizamos <span class="math inline">\(\ell(\boldsymbol{\theta})\)</span> numericamente (por exemplo, BFGS) sob as restrições <span class="math inline">\(\sigma&gt;0\)</span> e <span class="math inline">\(|\rho|&lt;1\)</span>. A MLE é <strong>assintoticamente eficiente</strong> sob especificação correta e fornece diretamente <span class="math inline">\(\widehat{\rho}\)</span> e <span class="math inline">\(\widehat{\sigma}\)</span>; erros-padrão vêm da matriz de informação observada. Na prática, é comum usar os estimadores do <strong>método de dois passos</strong> como <em>pontos de partida</em> para a otimização. Testes sobre viés de seleção podem ser feitos via <span class="math inline">\(H_0:\rho=0\)</span> (teste de Wald, razão de verossimilhanças ou escore); se <span class="math inline">\(H_0\)</span> não for rejeitada, a seleção é ignorável sob normalidade. Para replicação no Software R, pode-se usar <code>ssmodels::HeckmanCL(...)</code> ou <code>sampleSelection::selection(..., method=&quot;ml&quot;)</code>, reportando <span class="math inline">\(\widehat{\boldsymbol{\beta}},\widehat{\boldsymbol{\gamma}},\widehat{\sigma},\widehat{\rho}\)</span> e medidas de ajuste (logLik, AIC, BIC).
+</p>
+</div>
+<div id="aplicação-prática" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Aplicação Prática</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>theta_HC <span class="ot">&lt;-</span> <span class="fu">HeckmanCL</span>(<span class="at">selection =</span> sel_form, <span class="at">outcome =</span> out_form, <span class="at">data =</span> df)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">summary</span>(theta_HC)</span></code></pre></div>
+<pre><code>## 
+## --------------------------------------------------------------
+##           Classic Heckman Model (Package: ssmodels)           
+## --------------------------------------------------------------
+## --------------------------------------------------------------
+## Maximum Likelihood estimation 
+## optim function with method BFGS - iterations number: 47 
+## Log-Likelihood: -8,614727 
+## AIC: 41,22945 BIC: 72,37089 
+## Number of observations: ( 27 censored and 72 observed ) 
+## 12 free parameters ( df = 87 ) 
+## --------------------------------------------------------------
+## Probit selection equation:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   -0,686298   0,499656  -1,374 0,173114    
+## Stype.xLoamy  -1,079041   0,466789  -2,312 0,023161 *  
+## Stype.xClayey -1,622718   0,555339  -2,922 0,004430 ** 
+## Days.x         0,009182   0,004297   2,137 0,035398 *  
+## MWD            0,915257   0,243183   3,764 0,000303 ***
+## --------------------------------------------------------------
+## Outcome equation:
+##                      Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)           1,40282    0,07123  19,694  &lt; 2e-16 ***
+## Stype.xLoamy          0,67963    0,06371  10,668  &lt; 2e-16 ***
+## Stype.xClayey         0,50714    0,06140   8,260 1,46e-12 ***
+## Smoisture.xTransient -0,02227    0,03677  -0,606    0,546    
+## MWD                   0,16174    0,02923   5,533 3,26e-07 ***
+## --------------------------------------------------------------
+## Error terms:
+##       Estimate Std. Error t value Pr(&gt;|t|)    
+## sigma  0,15937    0,02847   5,597 2,49e-07 ***
+## rho    0,80399    0,31975   2,514   0,0138 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0,001 &#39;**&#39; 0,01 &#39;*&#39; 0,05 &#39;.&#39; 0,1 &#39; &#39; 1
+## --------------------------------------------------------------</code></pre>
+<p style="text-align: justify;">
+No ajuste por <strong>máxima verossimilhança conjunta</strong> (72 observações selecionadas e 27 censuradas; <span class="math inline">\(\log L=-8{,}61\)</span>, AIC <span class="math inline">\(=41{,}23\)</span>, BIC <span class="math inline">\(=72{,}37\)</span>), a <strong>equação de seleção (probit)</strong> indica que, relativamente ao solo <strong>Sandy</strong> (categoria de referência), os tipos <strong>Loamy</strong> (<span class="math inline">\(\hat\gamma=-1{,}079\)</span>, <span class="math inline">\(p=0{,}023\)</span>) e <strong>Clayey</strong> (<span class="math inline">\(\hat\gamma=-1{,}623\)</span>, <span class="math inline">\(p=0{,}004\)</span>) <strong>reduzem</strong> a probabilidade de seleção, enquanto <span class="math inline">\(Days.x\)</span> (<span class="math inline">\(\hat\gamma=0{,}0092\)</span>, <span class="math inline">\(p=0{,}035\)</span>) e <span class="math inline">\(MWD\)</span> (<span class="math inline">\(\hat\gamma=0{,}915\)</span>, <span class="math inline">\(p&lt;0{,}001\)</span>) <strong>aumentam</strong> essa probabilidade. Na <strong>equação de desfecho</strong> para $ () <span class="math inline">\(, os solos **Loamy** (\)</span>680$, <span class="math inline">\(p&lt;10^{-16}\)</span>) e <strong>Clayey</strong> (<span class="math inline">\(\hat\beta=0{,}507\)</span>, <span class="math inline">\(p=1{,}46\times10^{-12}\)</span>) têm efeitos positivos substanciais (aprox. <span class="math inline">\(e^{0{,}680}-1\approx 97%\)</span> e <span class="math inline">\(e^{0{,}507}-1\approx 66%\)</span> acima de <strong>Sandy</strong>), <span class="math inline">\(MWD\)</span> é positivo e significativo (<span class="math inline">\(\hat\beta=0{,}162\)</span>, <span class="math inline">\(p\approx3{,}3\times10^{-7}\)</span>; ~<span class="math inline">\(e^{0{,}162}-1\approx 18%\)</span> por unidade), e <span class="math inline">\(Smoisture.xTransient\)</span> não difere de <strong>Steady</strong> (<span class="math inline">\(p=0{,}546\)</span>). Os <strong>termos de erro</strong> mostram <span class="math inline">\(\hat\sigma=0{,}159\)</span> (<span class="math inline">\(p&lt;10^{-6}\)</span>) e, crucialmente, <strong>correlação</strong> significativa entre os choques de seleção e de desfecho, <span class="math inline">\(\hat\rho=0{,}804\)</span> (<span class="math inline">\(p=0{,}0138\)</span>), evidenciando <strong>viés de seleção</strong>: isto é, ignorar o mecanismo de seleção levaria a inferências viesadas, ao passo que a MLE conjunta corrige esse viés ao estimar <span class="math inline">\((\boldsymbol{\beta},\boldsymbol{\gamma},\sigma,\rho)\)</span> simultaneamente.
+</p>
 </div>
 </div>
 <div id="referências" class="section level1" number="2">

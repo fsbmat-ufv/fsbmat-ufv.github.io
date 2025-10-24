@@ -35,23 +35,37 @@ clean_neg9999 <- function(data, cols) {
 df <- clean_neg9999(df, cols = "Total_aggregate_associated_C")
 
 # Fatores
-df$Soil_type.x     <- factor(df$Soil_type.x,     levels = c("Sandy","Loamy","Clayey"))
-df$Soil_moisture.x <- factor(df$Soil_moisture.x, levels = c("Steady","Transient"))
+df$Stype.x     <- factor(df$Stype.x,     levels = c("Sandy","Loamy","Clayey"))
+df$Smoisture.x <- factor(df$Smoisture.x, levels = c("Steady","Transient"))
 
 # Seleção: 1 se há valor observado no outcome
 df$sel <- as.integer(!is.na(df$Total_aggregate_associated_C))
 
 # (opcional) log do desfecho se todos > 0
-df$log_TAAC <- ifelse(!is.na(df$Total_aggregate_associated_C) &
+df$logTAAC <- ifelse(!is.na(df$Total_aggregate_associated_C) &
                             df$Total_aggregate_associated_C > 0,
                           log(df$Total_aggregate_associated_C), NA_real_)
-
+names(df) <- c("ID", 
+              "Days.x", 
+              "Stype.x", 
+              "Smoisture.x",             
+              "Rep", 
+              "Prop_less_than_53_um", 
+              "Prop_250_53_um", 
+              "Prop_2000_250_um", 
+              "Prop_greater_than_2mm", 
+              "MWD", 
+              "EOC", 
+              "MBC", 
+              "TAAC", 
+              "sel", 
+              "logTAAC")
 # --- 2) FÓRMULAS CORRIGIDAS 
-sel_form <- sel ~ Soil_type.x + Days.x + Mean_weight_diameter
-out_form <- log_TAAC ~ Soil_type.x + Soil_moisture.x + Mean_weight_diameter
+sel_form <- sel ~ Stype.x + Days.x + MWD
+out_form <- logTAAC ~ Stype.x + Smoisture.x + MWD
 
 #Modelo Probit
-fit1<-glm(sel ~ Soil_type.x + Days.x + Mean_weight_diameter,family=binomial(link=probit),data=df)
+fit1<-glm(sel ~ Stype.x + Days.x + MWD, family=binomial(link=probit),data=df)
 summary(fit1)
 
 # 1) Preditor linear por linha (η = Xβ)
@@ -73,7 +87,7 @@ p_hat <- predict(fit1, type = "response") # = Φ(η)
 
 
 #Modelo de Regressão Linear Simples com wage>0
-fit2<- lm(log_TAAC ~ Soil_type.x + Soil_moisture.x + Mean_weight_diameter+IMR, data = df[df$sel==1,])
+fit2<- lm(logTAAC ~ Stype.x + Smoisture.x + MWD+IMR, data = df[df$sel==1,])
 summary(fit2)
 
 
@@ -85,28 +99,28 @@ summary(theta_HC)
 #############Predicao e Anova
 
 X_outcome <- model.matrix(
-  ~ Soil_type.x + Soil_moisture.x + Mean_weight_diameter,
+  ~ Stype.x + Smoisture.x + MWD,
   data = df
 )
 
 beta_outcome <- theta_HC$coefficients[c("(Intercept)",
-                                        "Soil_type.xLoamy",
-                                        "Soil_type.xClayey",
-                                        "Soil_moisture.xTransient",
-                                        "Mean_weight_diameter")]
-df$log_TAAC_pred <- as.vector(X_outcome %*% beta_outcome)
+                                        "Stype.xLoamy",
+                                        "Stype.xClayey",
+                                        "Smoisture.xTransient",
+                                        "MWD")]
+df$logTAAC_pred <- as.vector(X_outcome %*% beta_outcome)
 
 # 5.1 Matriz da seleção
 X_sel <- model.matrix(
-  ~ Soil_type.x + Days.x + Mean_weight_diameter,
+  ~ Stype.x + Days.x + MWD,
   data = df
 )
 
 beta_sel <- theta_HC$coefficients[c("(Intercept)",
-                                    "Soil_type.xLoamy",
-                                    "Soil_type.xClayey",
+                                    "Stype.xLoamy",
+                                    "Stype.xClayey",
                                     "Days.x",
-                                    "Mean_weight_diameter")]
+                                    "MWD")]
 
 # 5.2 Índice linear do Probit
 xb_sel <- as.vector(X_sel %*% beta_sel)
@@ -119,24 +133,24 @@ lambda <- dnorm(xb_sel) / pnorm(xb_sel)
 rho <- theta_HC$coefficients["rho"]
 sigma <- theta_HC$coefficients["sigma"]
 
-df$log_TAAC_pred_corr <- df$log_TAAC_pred + rho * sigma * lambda
+df$logTAAC_pred_corr <- df$logTAAC_pred + rho * sigma * lambda
 
-# 1. Substituir valores ausentes de log_TAAC pelas predições corrigidas
-df$log_TAAC_complete <- ifelse(
-  is.na(df$log_TAAC),
-  df$log_TAAC_pred_corr,
-  df$log_TAAC
+# 1. Substituir valores ausentes de logTAAC pelas predições corrigidas
+df$logTAAC_complete <- ifelse(
+  is.na(df$logTAAC),
+  df$logTAAC_pred_corr,
+  df$logTAAC
 )
 
 # 2. Criar a versão no nível original (TAAC)
-df$TAAC_complete <- exp(df$log_TAAC_complete)
+df$TAAC_complete <- exp(df$logTAAC_complete)
 
 # 3. Conferir rapidamente
-summary(df$log_TAAC_complete)
+summary(df$logTAAC_complete)
 summary(df$TAAC_complete)
 
 # 4. Verificar se não sobrou nenhum NA
-colSums(is.na(df[, c("log_TAAC_complete", "TAAC_complete")]))
+colSums(is.na(df[, c("logTAAC_complete", "TAAC_complete")]))
 
 ###########Anova de Singh
 
@@ -146,7 +160,7 @@ colSums(is.na(df[, c("log_TAAC_complete", "TAAC_complete")]))
 
 # Modelo completo com fatores de interesse
 anova_model <- aov(
-  TAAC_complete ~ Soil_type.x * Soil_moisture.x,
+  TAAC_complete ~ Stype.x * Smoisture.x,
   data = df
 )
 
@@ -155,7 +169,7 @@ summary(anova_model)
 
 # Médias ajustadas (efeitos marginais)
 library(emmeans)
-emmeans(anova_model, ~ Soil_type.x * Soil_moisture.x)
+emmeans(anova_model, ~ Stype.x * Smoisture.x)
 
 # Comparações múltiplas (Tukey HSD)
 TukeyHSD(anova_model)
@@ -163,7 +177,7 @@ TukeyHSD(anova_model)
 # ------------------------------------------------------------
 # Caso queira analisar também no log (mais próximo da suposição de normalidade)
 anova_model_log <- aov(
-  log_TAAC_complete ~ Soil_type.x * Soil_moisture.x,
+  logTAAC_complete ~ Stype.x * Smoisture.x,
   data = df
 )
 summary(anova_model_log)

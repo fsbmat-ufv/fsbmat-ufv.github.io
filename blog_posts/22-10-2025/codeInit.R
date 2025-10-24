@@ -7,7 +7,19 @@ library(ssmodels)
 df <- read.csv("data/Incubation_data.csv",
                na.strings = c("", "NA", "?", "NULL", "null", "–", " ", "-", "N/A"))
 str(df) 
-
+names(df) <- c("ID", 
+               "Days.x", 
+               "Stype.x", 
+               "Smoisture.x",             
+               "Rep", 
+               "Prop_less_than_53_um", 
+               "Prop_250_53_um", 
+               "Prop_2000_250_um", 
+               "Prop_greater_than_2mm", 
+               "MWD", 
+               "EOC", 
+               "MBC", 
+               "TAAC")
 # ============================================================
 # Heckman (CL, tS, SK, BS, Ge) – Incubation_data.csv
 # Pacote: ssmodels
@@ -32,34 +44,20 @@ clean_neg9999 <- function(data, cols) {
   data
 }
 
-df <- clean_neg9999(df, cols = "Total_aggregate_associated_C")
+df <- clean_neg9999(df, cols = "TAAC")
 
 # Fatores
 df$Stype.x     <- factor(df$Stype.x,     levels = c("Sandy","Loamy","Clayey"))
 df$Smoisture.x <- factor(df$Smoisture.x, levels = c("Steady","Transient"))
 
 # Seleção: 1 se há valor observado no outcome
-df$sel <- as.integer(!is.na(df$Total_aggregate_associated_C))
+df$sel <- as.integer(!is.na(df$TAAC))
 
 # (opcional) log do desfecho se todos > 0
-df$logTAAC <- ifelse(!is.na(df$Total_aggregate_associated_C) &
-                            df$Total_aggregate_associated_C > 0,
-                          log(df$Total_aggregate_associated_C), NA_real_)
-names(df) <- c("ID", 
-              "Days.x", 
-              "Stype.x", 
-              "Smoisture.x",             
-              "Rep", 
-              "Prop_less_than_53_um", 
-              "Prop_250_53_um", 
-              "Prop_2000_250_um", 
-              "Prop_greater_than_2mm", 
-              "MWD", 
-              "EOC", 
-              "MBC", 
-              "TAAC", 
-              "sel", 
-              "logTAAC")
+df$logTAAC <- ifelse(!is.na(df$TAAC) &
+                            df$TAAC > 0,
+                          log(df$TAAC), NA_real_)
+
 # --- 2) FÓRMULAS CORRIGIDAS 
 sel_form <- sel ~ Stype.x + Days.x + MWD
 out_form <- logTAAC ~ Stype.x + Smoisture.x + MWD
@@ -90,8 +88,14 @@ p_hat <- predict(fit1, type = "response") # = Φ(η)
 fit2<- lm(logTAAC ~ Stype.x + Smoisture.x + MWD+IMR, data = df[df$sel==1,])
 summary(fit2)
 
+library(sampleSelection)
 
+two <- heckit( sel_form, out_form, data = df,
+        method = "2step")
+summary(two)
 
+m <- selection(selection = sel_form, outcome = out_form, data = df)
+summary(m)
 
 theta_HC <- HeckmanCL(selection = sel_form, outcome = out_form, data = df)
 summary(theta_HC)

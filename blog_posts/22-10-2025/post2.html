@@ -755,7 +755,8 @@ display: none;
 <li><a href="#m%C3%A9todo-de-dois-passos" id="toc-método-de-dois-passos"><span class="toc-section-number">1.3</span> Método de Dois Passos</a></li>
 <li><a href="#exemplo-pr%C3%A1tico" id="toc-exemplo-prático"><span class="toc-section-number">1.4</span> Exemplo Prático</a></li>
 </ul></li>
-<li><a href="#refer%C3%AAncias" id="toc-referências"><span class="toc-section-number">2</span> Referências</a></li>
+<li><a href="#m%C3%A9todo-da-m%C3%A1xima-verossimilhan%C3%A7a" id="toc-método-da-máxima-verossimilhança"><span class="toc-section-number">2</span> Método da Máxima Verossimilhança</a></li>
+<li><a href="#refer%C3%AAncias" id="toc-referências"><span class="toc-section-number">3</span> Referências</a></li>
 </ul>
 </div>
 
@@ -866,6 +867,9 @@ U_{i}&amp;=\mathbf{1}\{Y_{2i}^{*}&gt;a\},\\
 \nonumber Y_{i}&amp;=Y_{1i}^{*}U_{i},\quad i=1,\ldots,n,
 \end{align}\]</span>
 em que <span class="math inline">\(\mathbf{1}\{\cdot\}\)</span> é a função indicadora e <span class="math inline">\(Y_{i}\)</span> é não observado quando <span class="math inline">\(U_{i}=0\)</span>. Os vetores de parâmetros <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^{p}\)</span> e <span class="math inline">\(\boldsymbol{\gamma}\in \mathbb{R}^{q}\)</span> são desconhecidos; os regressores <span class="math inline">\(\boldsymbol{x}_{i}\in \mathbb{R}^{p}\)</span> e <span class="math inline">\(\boldsymbol{z}_{i}\in \mathbb{R}^{q}\)</span> não precisam ser mutuamente exclusivos (embora, para identificação mais robusta, seja usual adotar ao menos uma variável em <span class="math inline">\(\boldsymbol{z}_{i}\)</span> que não apareça em <span class="math inline">\(\boldsymbol{x}_{i}\)</span> — a chamada <strong>exclusion restriction</strong>.
+</p>
+<p style="text-align: justify;">
+Um ponto importante: ao escrevermos <span class="math inline">\(Y=Y_{1}^{*}\,U\)</span> no modelo de Heckman, <strong>não</strong> estamos imputando o valor zero para as observações não selecionadas. Essa igualdade é apenas um <strong>artifício teórico</strong> para descrever que a variável observada <span class="math inline">\(Y\)</span> tem distribuição <strong>mista</strong>: uma massa no ponto <span class="math inline">\(0\)</span> quando <span class="math inline">\(U=0\)</span> (isto é, quando o desfecho não é observado) e uma parte contínua quando <span class="math inline">\(U=1\)</span>. Na prática de estimação, mantemos <span class="math inline">\(Y\)</span> como <strong>NA</strong> quando <span class="math inline">\(U=0\)</span>. No método de dois passos, o probit de seleção usa todas as linhas (<span class="math inline">\(U\in\{0,1\}\)</span>), enquanto a regressão da equação de interesse é ajustada <strong>apenas</strong> na subamostra com <span class="math inline">\(U=1\)</span>, incluindo a razão inversa de Mills como regressor. Já na MLE conjunta, as linhas com <span class="math inline">\(U=0\)</span> entram <strong>somente</strong> via o termo de probabilidade <span class="math inline">\(\log[1-\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})]\)</span>, e não como valores contínuos “zero” do desfecho. Portanto, <span class="math inline">\(Y=Y_{1}^{*}U\)</span> resume a <strong>regra de observação</strong>, não uma imputação numérica no banco de dados.
 </p>
 <div id="índice-latente-limiar-e-variável-binária." class="section level3" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Índice latente, limiar e variável binária.</h3>
@@ -1655,7 +1659,7 @@ Soil_moisture.x
 Total_aggregate_associated_C
 </th>
 <th style="text-align:right;">
-Xbeta
+Zgamma
 </th>
 <th style="text-align:right;">
 Phi
@@ -2097,10 +2101,140 @@ Transient
 </tfoot>
 </table>
 <p>No <strong>segundo passo</strong>, incluímos (<span class="math inline">\(\hat\lambda_i\)</span>) como regressor adicional na equação de interesse para corrigir o viés de seleção e obter estimativas consistentes dos coeficientes; é recomendável, para identificação mais robusta, que ao menos uma variável apareça em (<span class="math inline">\(\mathbf{z}_i\)</span>) e não em (<span class="math inline">\(\mathbf{x}_i\)</span>) (restrição de exclusão).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co">#Modelo de Regressão Linear Simples com wage&gt;0</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>fit2<span class="ot">&lt;-</span> <span class="fu">lm</span>(log_TAAC <span class="sc">~</span> Soil_type.x <span class="sc">+</span> Soil_moisture.x <span class="sc">+</span> Mean_weight_diameter<span class="sc">+</span>IMR, <span class="at">data =</span> df[df<span class="sc">$</span>sel<span class="sc">==</span><span class="dv">1</span>,])</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">summary</span>(fit2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log_TAAC ~ Soil_type.x + Soil_moisture.x + Mean_weight_diameter + 
+##     IMR, data = df[df$sel == 1, ])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0,43215 -0,09191 -0,00743  0,07606  0,33313 
+## 
+## Coefficients:
+##                          Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)               1,44018    0,06824  21,105  &lt; 2e-16 ***
+## Soil_type.xLoamy          0,69865    0,05920  11,801  &lt; 2e-16 ***
+## Soil_type.xClayey         0,51859    0,06255   8,290 8,01e-12 ***
+## Soil_moisture.xTransient -0,03034    0,03861  -0,786    0,435    
+## Mean_weight_diameter      0,14943    0,02856   5,231 1,87e-06 ***
+## IMR                       0,08231    0,09380   0,878    0,383    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0,001 &#39;**&#39; 0,01 &#39;*&#39; 0,05 &#39;.&#39; 0,1 &#39; &#39; 1
+## 
+## Residual standard error: 0,1435 on 66 degrees of freedom
+## Multiple R-squared:  0,9068, Adjusted R-squared:  0,8997 
+## F-statistic: 128,4 on 5 and 66 DF,  p-value: &lt; 2,2e-16</code></pre>
 </div>
 </div>
-<div id="referências" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Referências</h1>
+<div id="método-da-máxima-verossimilhança" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Método da Máxima Verossimilhança</h1>
+<p>Para estimar os parâmetros por máxima verossimilhança, precisamos da distribuição da v.a. mista <span class="math inline">\(Y_i=Y_{1i}^* U_i\)</span>, em que <span class="math inline">\(U_i=\mathbf{1}\{\mathbf{z}_i^\top\boldsymbol{\gamma}+\epsilon_{2i}&gt;0\}\)</span> e
+<span class="math display">\[
+\begin{pmatrix}\epsilon_{1i}\\ \epsilon_{2i}\end{pmatrix}\sim\mathcal{N}\!\left(\mathbf{0},
+\begin{pmatrix}\sigma^2 &amp; \rho\sigma\\ \rho\sigma &amp; 1\end{pmatrix}\right).
+\]</span></p>
+<p>Pela lei das probabilidades totais,
+<span class="math display">\[
+P(Y_i\le y)=P(U_i=1,\,Y_{1i}^*\le y)+P(U_i=0,\,0\le y).
+\]</span></p>
+<p>Assim, <span class="math inline">\(Y_i\)</span> tem um <strong>componente discreto</strong> (massa no ponto <span class="math inline">\(0\)</span>, quando <span class="math inline">\(U_i=0\)</span>) e um <strong>componente contínuo</strong> (quando <span class="math inline">\(U_i=1\)</span>). O componente discreto é dado pelo probit:
+<span class="math display">\[
+P(U_i=u)=\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})^{u}\,\big[1-\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\big]^{1-u},\quad u\in\{0,1\}.
+\]</span></p>
+<p>Para o componente contínuo, vale a identidade de seleção condicional (Arellano-Valle &amp; Genton):
+<span class="math display">\[
+f_{Y_{1i}^{*}\,|\,U_i=1}(y;\boldsymbol{\theta})
+= f_{Y_{1i}^{*}}(y;\boldsymbol{\theta})\,
+\dfrac{P(U_i=1\,|\,Y_{1i}^{*}=y;\boldsymbol{\theta})}{P(U_i=1)}.
+\tag{2.1}\label{eq:dens_cont_heckman}
+\]</span></p>
+<p>Da normalidade bivariada,
+<span class="math display">\[
+Y_{2i}^{*}\mid Y_{1i}^{*}=y \sim \mathcal{N}\!\left(
+\mathbf{z}_i^\top\boldsymbol{\gamma}+\frac{\rho}{\sigma}\,(y-\mathbf{x}_i^\top\boldsymbol{\beta})\ ,\
+1-\rho^{2}\right),
+\]</span>
+logo
+<span class="math display">\[
+P(U_i=1\,|\,Y_{1i}^{*}=y)=
+\Phi\!\left(\frac{\mathbf{z}_{i}^\top\boldsymbol{\gamma}}{\sqrt{1-\rho^{2}}}
++\frac{\rho\,(y-\mathbf{x}_{i}^\top\boldsymbol{\beta})}{\sigma\sqrt{1-\rho^{2}}}\right).
+\tag{2.2}\label{eq:cond_prob}
+\]</span></p>
+<p>Também,
+<span class="math display">\[
+f_{Y_{1i}^{*}}(y)=\frac{1}{\sigma}\,
+\phi\!\left(\frac{y-\mathbf{x}_i^\top\boldsymbol{\beta}}{\sigma}\right).
+\]</span></p>
+<p>Substituindo <span class="math inline">\(\ref{eq:cond_prob}\)</span> em <span class="math inline">\(\ref{eq:dens_cont_heckman}\)</span> e usando <span class="math inline">\(P(U_i=1)=\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\)</span>, obtemos o componente contínuo:
+<span class="math display">\[
+f_{Y_{1i}^{*}\,|\,U_i=1}(y;\boldsymbol{\theta})
+=\frac{1}{\sigma\,\Phi(\mathbf{z}_{i}^\top\boldsymbol{\gamma})}\,
+\phi\!\left(\frac{y-\mathbf{x}_{i}^\top\boldsymbol{\beta}}{\sigma}\right)\,
+\Phi\!\left(\frac{\mathbf{z}_{i}^\top\boldsymbol{\gamma}}{\sqrt{1-\rho^{2}}}
++\frac{\rho\,(y-\mathbf{x}_{i}^\top\boldsymbol{\beta})}{\sigma\sqrt{1-\rho^{2}}}\right).
+\]</span></p>
+<div id="log-verossimilhança" class="section level4" number="2.0.0.1">
+<h4><span class="header-section-number">2.0.0.1</span> Log-verossimilhança</h4>
+<p>Para o par <span class="math inline">\((Y_i,U_i)\)</span>, a contribuição da log-verossimilhança é
+<span class="math display">\[
+\mathcal{L}_i(\boldsymbol{\theta})
+= u_i\Big\{\log f_{Y_{1i}^{*}\,|\,U_i=1}(y_i;\boldsymbol{\theta})\Big\}
++ u_i\log \Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})
++ (1-u_i)\log\!\big[1-\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\big],
+\]</span>
+equivalentemente,
+<span class="math display">\[
+\mathcal{L}_i(\boldsymbol{\theta})
+= u_i\left\{-\log\sigma+\log\phi\!\left(\frac{y_i-\mathbf{x}_i^\top\boldsymbol{\beta}}{\sigma}\right)
++\log\Phi\!\left(\frac{\mathbf{z}_{i}^\top\boldsymbol{\gamma}+\rho\,\frac{y_i-\mathbf{x}_i^\top\boldsymbol{\beta}}{\sigma}}{\sqrt{1-\rho^{2}}}\right)\right\}
++(1-u_i)\log\!\big[1-\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\big].
+\]</span></p>
+<p>Sob a suposição de normalidade bivariada, os EMV obtidos ao maximizar <span class="math inline">\(\mathcal{L}(\boldsymbol{\theta})=\sum_{i=1}^{n}\mathcal{L}_i(\boldsymbol{\theta})\)</span> são consistentes, assintoticamente normais e eficientes. Como <span class="math inline">\(\mathcal{L}(\boldsymbol{\theta})\)</span> é não linear e pode ter ótimos locais, emprega-se otimização numérica (e.g., BFGS), tipicamente iniciada com bons valores do método de dois passos.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>theta_HC <span class="ot">&lt;-</span> <span class="fu">HeckmanCL</span>(<span class="at">selection =</span> sel_form, <span class="at">outcome =</span> out_form, <span class="at">data =</span> df)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">summary</span>(theta_HC)</span></code></pre></div>
+<pre><code>## 
+## --------------------------------------------------------------
+##           Classic Heckman Model (Package: ssmodels)           
+## --------------------------------------------------------------
+## --------------------------------------------------------------
+## Maximum Likelihood estimation 
+## optim function with method BFGS - iterations number: 47 
+## Log-Likelihood: -8,614727 
+## AIC: 41,22945 BIC: 72,37089 
+## Number of observations: ( 27 censored and 72 observed ) 
+## 12 free parameters ( df = 87 ) 
+## --------------------------------------------------------------
+## Probit selection equation:
+##                       Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)          -0,686298   0,499656  -1,374 0,173114    
+## Soil_type.xLoamy     -1,079041   0,466789  -2,312 0,023161 *  
+## Soil_type.xClayey    -1,622718   0,555339  -2,922 0,004430 ** 
+## Days.x                0,009182   0,004297   2,137 0,035398 *  
+## Mean_weight_diameter  0,915257   0,243183   3,764 0,000303 ***
+## --------------------------------------------------------------
+## Outcome equation:
+##                          Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)               1,40282    0,07123  19,694  &lt; 2e-16 ***
+## Soil_type.xLoamy          0,67963    0,06371  10,668  &lt; 2e-16 ***
+## Soil_type.xClayey         0,50714    0,06140   8,260 1,46e-12 ***
+## Soil_moisture.xTransient -0,02227    0,03677  -0,606    0,546    
+## Mean_weight_diameter      0,16174    0,02923   5,533 3,26e-07 ***
+## --------------------------------------------------------------
+## Error terms:
+##       Estimate Std. Error t value Pr(&gt;|t|)    
+## sigma  0,15937    0,02847   5,597 2,49e-07 ***
+## rho    0,80399    0,31975   2,514   0,0138 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0,001 &#39;**&#39; 0,01 &#39;*&#39; 0,05 &#39;.&#39; 0,1 &#39; &#39; 1
+## --------------------------------------------------------------</code></pre>
+</div>
+</div>
+<div id="referências" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Referências</h1>
 </div>
 
 

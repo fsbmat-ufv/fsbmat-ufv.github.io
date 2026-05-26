@@ -34,10 +34,6 @@ Aplicação de Modelos de Heckman na Análise de Dados Agrários: Abordagens Cl�
 
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos relacionados:
 
-#1 - [Pacote ssmodels no CRAN R](https://cran.r-project.org/package=ssmodels){:target="_blank"}
-
-#2 - [Página do pacote ssmodels](https://fsbmat-ufv.github.io/ssmodels/){:target="_blank"}
-
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 
 ______________________________________
@@ -57,8 +53,6 @@ Do Algoritmo à Estética: Ensino de Matemática com String Art
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos Gerados:
 
 1 - [Aplicativo interativo StringArt](https://estmat.shinyapps.io/stringArt/){:target="_blank"}
-
-2 - [Página EstMat - materiais e divulgação](https://estmat-ufv.github.io/){:target="_blank"}
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 
@@ -84,10 +78,6 @@ Orientação de Mestrado em Estatística Aplicada e Biometria
 
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos relacionados:
 
-1 - [InteractiveModels: material didático interativo para distribuições de probabilidade](https://pibicest.shinyapps.io/InteractiveModels/){:target="_blank"}
-
-2 - [Apostila Interativa para Estatística Básica](https://pibicest.shinyapps.io/ApostilaInterativa/){:target="_blank"}
-
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 
 ______________________________________
@@ -109,8 +99,6 @@ Material Didático Interativo para o Ensino e Aprendizado de Distribuições de 
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos Gerados:
 
 1 - [InteractiveModels: material didático interativo para distribuições de probabilidade](https://pibicest.shinyapps.io/InteractiveModels/){:target="_blank"}
-
-2 - [Aplicativo Shiny: Distribuições de Variáveis Aleatórias](https://fsbmat.shinyapps.io/meus_apps/){:target="_blank"}
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
@@ -139,12 +127,6 @@ Pesquisa e Criação de Ferramentas Práticas para o Ensino de Estatística
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos Gerados:
 
 1 - [Apostila Interativa para Estatística Básica](https://pibicest.shinyapps.io/ApostilaInterativa/){:target="_blank"}
-
-2 - [Apostila Interativa de EST 106](https://conectadado.shinyapps.io/ApostilaInterativa/){:target="_blank"}
-
-3 - [stats4eb: Gráficos e Tabelas para o Ensino de Estatística Descritiva](https://estmat.shinyapps.io/stats4eb/){:target="_blank"}
-
-4 - [stats4ebII: Dashboard para o Ensino de Estatística](https://estmat.shinyapps.io/stats4ebII/){:target="_blank"}
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 

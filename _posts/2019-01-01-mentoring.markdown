@@ -34,9 +34,9 @@ Aplicação de Modelos de Heckman na Análise de Dados Agrários: Abordagens Cl�
 
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos relacionados:
 
-1 - [Pacote ssmodels no CRAN R](https://cran.r-project.org/package=ssmodels){:target="_blank"}
+#1 - [Pacote ssmodels no CRAN R](https://cran.r-project.org/package=ssmodels){:target="_blank"}
 
-2 - [Página do pacote ssmodels](https://fsbmat-ufv.github.io/ssmodels/){:target="_blank"}
+#2 - [Página do pacote ssmodels](https://fsbmat-ufv.github.io/ssmodels/){:target="_blank"}
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 

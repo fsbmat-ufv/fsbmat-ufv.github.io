@@ -26,17 +26,14 @@ Aplicação de Modelos de Heckman na Análise de Dados Agrários: Abordagens Cl�
 
 <img src="img//icons//cal.jpg" width="30" height="30" /> - 01/09/2025 a 31/08/2026
 
-<img src="img//icons//site.png" width="30" height="30" /> - [Pacote ssmodels](https://fsbmat-ufv.github.io/ssmodels/){:target="_blank"}
-
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos Gerados:
 
-1 - [Pacote ssmodels no CRAN R](https://cran.r-project.org/package=ssmodels){:target="_blank"}
-
-2 - [Página do pacote ssmodels](https://fsbmat-ufv.github.io/ssmodels/){:target="_blank"}
+Este projeto ainda não possui produtos publicados.
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 
 ______________________________________
+
 Do Algoritmo à Estética: Ensino de Matemática com String Art
 
 <img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos
@@ -51,19 +48,19 @@ Do Algoritmo à Estética: Ensino de Matemática com String Art
 
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos Gerados:
 
-1 - [Aplicativo interativo StringArt](https://estmat.shinyapps.io/stringArt/){:target="_blank"}
+1 - [Aplicativo interativo String Art](https://estmat.shinyapps.io/stringArt/){:target="_blank"}
 
-2 - [Repositório e materiais do projeto EstMat](https://estmat-ufv.github.io/){:target="_blank"}
+2 - [Pacote stringArt](https://fsbmat-ufv.github.io/stringArt/){:target="_blank"}
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 
-______________________________________
 ______________________________________
 
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2024 a 2027
 </textarea>
 ______________________________________
+
 Observatório de Recursos Públicos
 
 <img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos
@@ -78,23 +75,15 @@ Observatório de Recursos Públicos
 
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos Gerados:
 
-1 - [Aplicação para verificar o Orçamento e as Despesas das Universidades Federais](https://fsbmat-ufv.shinyapps.io/orcDesp/){:target="_blank"}
-
-2 - [Aplicação para verificar as Diárias e Passagens Pagas a Servidores da UFV](https://fsbmat-ufv.shinyapps.io/flexdashboard/){:target="_blank"}
-
-3 - [Recursos Recebidos para Organização do Pronatec](https://fsbmat-ufv.shinyapps.io/Pronatec/){:target="_blank"}
-
-4 - [Licitações e Compras da UFV](https://maf172.shinyapps.io/LicitacoesUFV/){:target="_blank"}
-
 <img src="img//icons//finish.png" width="30" height="30" /> - Em andamento
 
-______________________________________
 ______________________________________
 
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2024
 </textarea>
 ______________________________________
+
 Material Didático Interativo para o Ensino e Aprendizado de Distribuições de Probabilidade
 
 <img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos
@@ -113,13 +102,10 @@ Material Didático Interativo para o Ensino e Aprendizado de Distribuições de 
 
 1 - [InteractiveModels: material didático interativo para distribuições de probabilidade](https://pibicest.shinyapps.io/InteractiveModels/){:target="_blank"}
 
-2 - [Apostila Interativa de EST 106](https://conectadado.shinyapps.io/ApostilaInterativa/){:target="_blank"}
-
-3 - [Aplicativo Shiny: Distribuições de Variáveis Aleatórias](https://fsbmat.shinyapps.io/meus_apps/){:target="_blank"}
-
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
 ______________________________________
+
 Pesquisa e Criação de Ferramentas Práticas para o Ensino de Estatística
 
 <img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos
@@ -136,18 +122,46 @@ Pesquisa e Criação de Ferramentas Práticas para o Ensino de Estatística
 
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos Gerados:
 
-1 - [Apostila Interativa para Estatística Básica](https://pibicest.shinyapps.io/ApostilaInterativa/){:target="_blank"}
-
-2 - [stats4eb: Gráficos e Tabelas para o Ensino de Estatística Descritiva](https://estmat.shinyapps.io/stats4eb/){:target="_blank"}
-
-3 - [stats4ebII: Dashboard para o Ensino de Estatística](https://estmat.shinyapps.io/stats4ebII/){:target="_blank"}
-
-4 - [Versão complementar da Apostila Interativa de EST 106](https://conectadado.shinyapps.io/ApostilaInterativa/){:target="_blank"}
+1 - [Apostila Interativa para Estatística Básica](https://conectadado.shinyapps.io/ApostilaInterativa/){:target="_blank"}
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
 ______________________________________
-Ações do PIBID de Exatas Durante a Pandemia da COVID
+
+______________________________________
+
+<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
+2022 a 2023
+</textarea>
+______________________________________
+
+Análise Fundamentalista de Criptomoedas
+
+<img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos
+
+<img src="img//icons//aluno.svg" width="30" height="30" /> - Marcos Botelho do Vale
+
+<img src="img//icons//projeto.png" width="30" height="30" /> - Projeto de Iniciação Científica
+
+<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Departamento de Estatística
+
+<img src="img//icons//cal.jpg" width="30" height="30" /> - 01/09/2022 a 31/08/2023
+
+<img src="img//icons//products.png" width="30" height="30" /> - Produto / resultado associado:
+
+
+<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
+
+______________________________________
+
+______________________________________
+
+<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
+2020 a 2022
+</textarea>
+______________________________________
+
+PIBID-UFV: Formação Docente durante a Pandemia
 
 <img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos
 
@@ -157,67 +171,18 @@ Ações do PIBID de Exatas Durante a Pandemia da COVID
 
 <img src="img//icons//aluno.svg" width="30" height="30" /> - Manoella Barbosa Morais
 
-<img src="img//icons//projeto.png" width="30" height="30" /> - Capítulo de Livro / Formação Docente
+<img src="img//icons//projeto.png" width="30" height="30" /> - Programa Institucional de Bolsas de Iniciação à Docência / Formação Docente
 
 <img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - PIBID-UFV
 
-<img src="img//icons//cal.jpg" width="30" height="30" /> - 2024
-
-<img src="img//icons//products.png" width="30" height="30" /> - [Capítulo no livro Sobrevivência da Formação Docente do PIBID-UFV durante a pandemia](https://www.amazon.com.br/dp/B0CW1KJX5W){:target="_blank"}
-
-<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
-
-______________________________________
-______________________________________
-
-<textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
-2022 a 2023
-</textarea>
-______________________________________
-Análise Fundamentalista de Criptomoedas
-
-<img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos
-
-<img src="img//icons//aluno.svg" width="30" height="30" /> - Marcos Botelho do Vale
-
-<img src="img//icons//aluno.svg" width="30" height="30" /> - Robson Santos de Carvalho
-
-<img src="img//icons//projeto.png" width="30" height="30" /> - Projeto de Iniciação Científica
-
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa - Departamento de Estatística
-
-<img src="img//icons//cal.jpg" width="30" height="30" /> - 01/09/2022 a 31/08/2023
-
-<img src="img//icons//products.png" width="30" height="30" /> - [Estudos e dashboards em R para análise de dados de criptoativos](){:target="_blank"}
-
-<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
-
-______________________________________
-Desenvolvimento e Divulgação do Pacote ssmodels para o R
-
-<img src="img//icons//teacher.jpg" width="30" height="30" /> - Fernando de Souza Bastos
-
-<img src="img//icons//aluno.svg" width="30" height="30" /> - Wagner Barreto de Souza
-
-<img src="img//icons//projeto.png" width="30" height="30" /> - Desenvolvimento de Software Estatístico / Pesquisa
-
-<img src="img//icons//UFV.jpg" width="30" height="30" /> - Universidade Federal de Viçosa e University College Dublin
-
-<img src="img//icons//cal.jpg" width="30" height="30" /> - 2022
+<img src="img//icons//cal.jpg" width="30" height="30" /> - 2020 a 2022
 
 <img src="img//icons//products.png" width="30" height="30" /> - Produtos Gerados:
 
-1 - [Pacote ssmodels no CRAN R](https://cran.r-project.org/package=ssmodels){:target="_blank"}
-
-2 - [Página de divulgação do pacote ssmodels](https://fsbmat-ufv.github.io/ssmodels/){:target="_blank"}
-
-3 - [Artigo: Birnbaum-Saunders sample selection model](https://www.tandfonline.com/doi/full/10.1080/02664763.2020.1780570){:target="_blank"}
-
-4 - [Artigo: A Generalized Heckman Model With Varying Sample Selection Bias and Dispersion Parameters](https://doi.org/10.5705/ss.202021.0068){:target="_blank"}
+1 - [Capítulo Ações do PIBID de Exatas durante a Pandemia da COVID, publicado no livro Sobrevivência da Formação Docente do PIBID-UFV durante a pandemia: um livro sobre vivência](https://pibid.ufv.br/wp-content/uploads/2024/04/Livro-PIBID-2024_web.pdf){:target="_blank"}
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
-______________________________________
 ______________________________________
 
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
@@ -272,7 +237,6 @@ Criação de um Pacote do LaTeX para Criação de Figuras e Atividades de Educa�
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
-______________________________________
 ______________________________________
 
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
@@ -382,7 +346,6 @@ UFV Transparente
 <img src="img//icons//finish.png" width="30" height="30" /> - Atualizado e incorporado ao Observatório de Recursos Públicos
 
 ______________________________________
-______________________________________
 
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2019
@@ -400,17 +363,15 @@ Comparação de Modelos para Ajuste de Dados com Viés de Seleção
 
 <img src="img//icons//site.png" width="30" height="30" /> - [Busque o Projeto Aqui!](https://www2.dti.ufv.br/sisppg/scripts/projetos/consultarProjeto.php){:target="_blank"}
 
-<img src="img//icons//products.png" width="30" height="30" /> - [Pacote ssmodels](https://fsbmat-ufv.github.io/ssmodels/){:target="_blank"}
-
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
-______________________________________
 ______________________________________
 
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2015 a 2018
 </textarea>
 ______________________________________
+
 Modelos de Seleção Amostral Heckman Generalizado e Birnbaum-Saunders
 
 <img src="img//icons//teacher.jpg" width="30" height="30" /> - [Wagner Barreto de Souza](http://lattes.cnpq.br/8823986506327201){:target="_blank"}
@@ -433,9 +394,13 @@ Modelos de Seleção Amostral Heckman Generalizado e Birnbaum-Saunders
 
 3 - [Artigo - A Generalized Heckman Model With Varying Sample Selection Bias and Dispersion Parameters](https://doi.org/10.5705/ss.202021.0068){:target="_blank"}
 
-<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
+4 - [Pacote ssmodels no CRAN R](https://cran.r-project.org/package=ssmodels){:target="_blank"}
 
-______________________________________
+5 - [Página do pacote ssmodels](https://fsbmat-ufv.github.io/ssmodels/){:target="_blank"}
+
+6 - [Pacote heckmanGE no CRAN R](https://cran.r-project.org/web/packages/heckmanGE/index.html){:target="_blank"}
+
+<img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 ______________________________________
 
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
@@ -461,7 +426,6 @@ Análise Conjunta de Fatores Baseada em Escolhas: Estimação e Inferências
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
 ______________________________________
-______________________________________
 
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2007
@@ -484,7 +448,6 @@ Dinâmica da Transmissão de Dengue em uma Rede Discreta
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
 ______________________________________
-______________________________________
 
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">
 2006 - 2007
@@ -506,7 +469,6 @@ Propagação de Doenças
 
 <img src="img//icons//finish.png" width="30" height="30" /> - Concluído
 
-______________________________________
 ______________________________________
 
 <textarea style="text-align: center;width:100%;height:90px;background-color:grey;color:black;border:none;padding:2%;font:22px/30px sans-serif;">

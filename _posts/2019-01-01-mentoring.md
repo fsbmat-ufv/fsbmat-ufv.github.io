@@ -2,7 +2,7 @@
 title:  "Academic Mentoring"
 #subtitle: "Only lights from space"
 author: "Fernando Bastos"
-image: "img/mentoring/mentoring2.png"
+image: "img/mentoring/collaboration2.png"
 date:   2019-01-01 12:12:12
 ---
 

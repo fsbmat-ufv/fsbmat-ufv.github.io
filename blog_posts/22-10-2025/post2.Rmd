@@ -143,6 +143,11 @@ U_{i}&=\mathbf{1}\{Y_{2i}^{*}>a\},\\
 em que $\mathbf{1}\{\cdot\}$ é a função indicadora e $Y_{i}$ é não observado quando $U_{i}=0$. Os vetores de parâmetros $\boldsymbol{\beta}\in \mathbb{R}^{p}$ e $\boldsymbol{\gamma}\in \mathbb{R}^{q}$ são desconhecidos; os regressores $\boldsymbol{x}_{i}\in \mathbb{R}^{p}$ e $\boldsymbol{z}_{i}\in \mathbb{R}^{q}$ não precisam ser mutuamente exclusivos (embora, para identificação mais robusta, seja usual adotar ao menos uma variável em $\boldsymbol{z}_{i}$ que não apareça em $\boldsymbol{x}_{i}$ — a chamada **exclusion restriction**.
 </p>
 
+<p style="text-align: justify;">
+Um ponto importante: ao escrevermos \(Y=Y_{1}^{*}\,U\) no modelo de Heckman, **não** estamos imputando o valor zero para as observações não selecionadas. Essa igualdade é apenas um **artifício teórico** para descrever que a variável observada \(Y\) tem distribuição **mista**: uma massa no ponto \(0\) quando \(U=0\) (isto é, quando o desfecho não é observado) e uma parte contínua quando \(U=1\). Na prática de estimação, mantemos \(Y\) como **NA** quando \(U=0\). No método de dois passos, o probit de seleção usa todas as linhas (\(U\in\{0,1\}\)), enquanto a regressão da equação de interesse é ajustada **apenas** na subamostra com \(U=1\), incluindo a razão inversa de Mills como regressor. Já na MLE conjunta, as linhas com \(U=0\) entram **somente** via o termo de probabilidade \( \log[1-\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})] \), e não como valores contínuos “zero” do desfecho. Portanto, \(Y=Y_{1}^{*}U\) resume a **regra de observação**, não uma imputação numérica no banco de dados.
+</p>
+
+
 ### Índice latente, limiar e variável binária.
 
 <p style="text-align: justify;">
@@ -491,7 +496,7 @@ fit1<-glm(sel ~ Stype.x + Days.x + MWD,family=binomial(link=probit),data=df)
 summary(fit1)
 # 1) Preditor linear por linha (η = Xβ)
 eta  <- predict(fit1, type = "link")      # vetor n×1
-df$Xbeta <- eta
+df$Zgamma <- eta
 # 2) CDF e PDF da Normal padrão
 Phi  <- pnorm(eta) 
 phi  <- dnorm(eta)
@@ -520,13 +525,13 @@ vars_sel  <- c("sel", "Stype.x", "Days.x", "MWD")
 vars_out  <- c("logTAAC", "Smoisture.x", "TAAC")
 
 # novas colunas calculadas no probit2
-vars_new  <- c("Xbeta", "Phi", "phi", "IMR", "p_hat")
+vars_new  <- c("Zgamma", "Phi", "phi", "IMR", "p_hat")
 
 # montar visualização (primeiras 10 linhas)
 vis_df2 <- df |>
   select(ID, all_of(vars_sel), all_of(vars_out), all_of(vars_new)) |>
   mutate(
-    across(any_of(c("Xbeta","Phi","phi","IMR","p_hat")), ~round(., 4))
+    across(any_of(c("Zgamma","Phi","phi","IMR","p_hat")), ~round(., 4))
   ) |>
   filter(sel == 1) |> slice_head(n = 10)
 
@@ -609,6 +614,93 @@ summary(theta_HC)
 <p style="text-align: justify;">
 No ajuste por **máxima verossimilhança conjunta** (72 observações selecionadas e 27 censuradas; $\log L=-8{,}61$, AIC $=41{,}23$, BIC $=72{,}37$), a **equação de seleção (probit)** indica que, relativamente ao solo **Sandy** (categoria de referência), os tipos **Loamy** ($\hat\gamma=-1{,}079$, $p=0{,}023$) e **Clayey** ($\hat\gamma=-1{,}623$, $p=0{,}004$) **reduzem** a probabilidade de seleção, enquanto $Days.x$ ($\hat\gamma=0{,}0092$, $p=0{,}035$) e $MWD$ ($\hat\gamma=0{,}915$, $p<0{,}001$) **aumentam** essa probabilidade. Na **equação de desfecho** para $ \log(\text{TAAC}) $, os solos **Loamy** ($\hat\beta=0{,}680$, $p<10^{-16}$) e **Clayey** ($\hat\beta=0{,}507$, $p=1{,}46\times10^{-12}$) têm efeitos positivos substanciais (aprox. $e^{0{,}680}-1\approx 97%$ e $e^{0{,}507}-1\approx 66%$ acima de **Sandy**), $MWD$ é positivo e significativo ($\hat\beta=0{,}162$, $p\approx3{,}3\times10^{-7}$; ~$e^{0{,}162}-1\approx 18%$ por unidade), e $Smoisture.xTransient$ não difere de **Steady** ($p=0{,}546$). Os **termos de erro** mostram $\hat\sigma=0{,}159$ ($p<10^{-6}$) e, crucialmente, **correlação** significativa entre os choques de seleção e de desfecho, $\hat\rho=0{,}804$ ($p=0{,}0138$), evidenciando **viés de seleção**: isto é, ignorar o mecanismo de seleção levaria a inferências viesadas, ao passo que a MLE conjunta corrige esse viés ao estimar $(\boldsymbol{\beta},\boldsymbol{\gamma},\sigma,\rho)$ simultaneamente.
 </p>
+
+```{r outcome, echo=TRUE, warning=FALSE,message=FALSE}
+#Modelo de Regressão Linear Simples com wage>0
+fit2<- lm(log_TAAC ~ Soil_type.x + Soil_moisture.x + Mean_weight_diameter+IMR, data = df[df$sel==1,])
+summary(fit2)
+```
+
+# Método da Máxima Verossimilhança
+
+Para estimar os parâmetros por máxima verossimilhança, precisamos da distribuição da v.a. mista \(Y_i=Y_{1i}^* U_i\), em que \(U_i=\mathbf{1}\{\mathbf{z}_i^\top\boldsymbol{\gamma}+\epsilon_{2i}>0\}\) e
+\[
+\begin{pmatrix}\epsilon_{1i}\\ \epsilon_{2i}\end{pmatrix}\sim\mathcal{N}\!\left(\mathbf{0},
+\begin{pmatrix}\sigma^2 & \rho\sigma\\ \rho\sigma & 1\end{pmatrix}\right).
+\]
+
+Pela lei das probabilidades totais,
+\[
+P(Y_i\le y)=P(U_i=1,\,Y_{1i}^*\le y)+P(U_i=0,\,0\le y).
+\]
+
+Assim, \(Y_i\) tem um **componente discreto** (massa no ponto \(0\), quando \(U_i=0\)) e um **componente contínuo** (quando \(U_i=1\)). O componente discreto é dado pelo probit:
+$$
+P(U_i=u)=\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})^{u}\,\big[1-\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\big]^{1-u},\quad u\in\{0,1\}.
+$$
+
+Para o componente contínuo, vale a identidade de seleção condicional (Arellano-Valle & Genton):
+$$
+f_{Y_{1i}^{*}\,|\,U_i=1}(y;\boldsymbol{\theta})
+= f_{Y_{1i}^{*}}(y;\boldsymbol{\theta})\,
+\dfrac{P(U_i=1\,|\,Y_{1i}^{*}=y;\boldsymbol{\theta})}{P(U_i=1)}.
+\tag{2.1}\label{eq:dens_cont_heckman}
+$$
+
+Da normalidade bivariada,
+$$
+Y_{2i}^{*}\mid Y_{1i}^{*}=y \sim \mathcal{N}\!\left(
+\mathbf{z}_i^\top\boldsymbol{\gamma}+\frac{\rho}{\sigma}\,(y-\mathbf{x}_i^\top\boldsymbol{\beta})\ ,\
+1-\rho^{2}\right),
+$$
+logo
+$$
+P(U_i=1\,|\,Y_{1i}^{*}=y)=
+\Phi\!\left(\frac{\mathbf{z}_{i}^\top\boldsymbol{\gamma}}{\sqrt{1-\rho^{2}}}
++\frac{\rho\,(y-\mathbf{x}_{i}^\top\boldsymbol{\beta})}{\sigma\sqrt{1-\rho^{2}}}\right).
+\tag{2.2}\label{eq:cond_prob}
+$$
+
+Também,
+$$
+f_{Y_{1i}^{*}}(y)=\frac{1}{\sigma}\,
+\phi\!\left(\frac{y-\mathbf{x}_i^\top\boldsymbol{\beta}}{\sigma}\right).
+$$
+
+Substituindo \ref{eq:cond_prob} em \ref{eq:dens_cont_heckman} e usando \(P(U_i=1)=\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\), obtemos o componente contínuo:
+$$
+f_{Y_{1i}^{*}\,|\,U_i=1}(y;\boldsymbol{\theta})
+=\frac{1}{\sigma\,\Phi(\mathbf{z}_{i}^\top\boldsymbol{\gamma})}\,
+\phi\!\left(\frac{y-\mathbf{x}_{i}^\top\boldsymbol{\beta}}{\sigma}\right)\,
+\Phi\!\left(\frac{\mathbf{z}_{i}^\top\boldsymbol{\gamma}}{\sqrt{1-\rho^{2}}}
++\frac{\rho\,(y-\mathbf{x}_{i}^\top\boldsymbol{\beta})}{\sigma\sqrt{1-\rho^{2}}}\right).
+$$
+
+#### Log-verossimilhança
+
+Para o par \((Y_i,U_i)\), a contribuição da log-verossimilhança é
+$$
+\mathcal{L}_i(\boldsymbol{\theta})
+= u_i\Big\{\log f_{Y_{1i}^{*}\,|\,U_i=1}(y_i;\boldsymbol{\theta})\Big\}
++ u_i\log \Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})
++ (1-u_i)\log\!\big[1-\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\big],
+$$
+equivalentemente,
+$$
+\mathcal{L}_i(\boldsymbol{\theta})
+= u_i\left\{-\log\sigma+\log\phi\!\left(\frac{y_i-\mathbf{x}_i^\top\boldsymbol{\beta}}{\sigma}\right)
++\log\Phi\!\left(\frac{\mathbf{z}_{i}^\top\boldsymbol{\gamma}+\rho\,\frac{y_i-\mathbf{x}_i^\top\boldsymbol{\beta}}{\sigma}}{\sqrt{1-\rho^{2}}}\right)\right\}
++(1-u_i)\log\!\big[1-\Phi(\mathbf{z}_i^\top\boldsymbol{\gamma})\big].
+$$
+
+Sob a suposição de normalidade bivariada, os EMV obtidos ao maximizar \(\mathcal{L}(\boldsymbol{\theta})=\sum_{i=1}^{n}\mathcal{L}_i(\boldsymbol{\theta})\) são consistentes, assintoticamente normais e eficientes. Como \(\mathcal{L}(\boldsymbol{\theta})\) é não linear e pode ter ótimos locais, emprega-se otimização numérica (e.g., BFGS), tipicamente iniciada com bons valores do método de dois passos.
+
+
+```{r tobit, echo=TRUE}
+theta_HC <- HeckmanCL(selection = sel_form, outcome = out_form, data = df)
+summary(theta_HC)
+```
+
 
 # Referências 
 

@@ -2,7 +2,7 @@
 title:  "Study"
 #subtitle: "teste."
 author: "Fernando Bastos"
-image: "img/Blog/card_img.png"
+image: "img/Blog/card_img2.png"
 date:   2019-01-01 12:12:12
 ---
 

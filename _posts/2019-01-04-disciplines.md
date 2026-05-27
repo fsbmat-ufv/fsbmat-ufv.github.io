@@ -2,7 +2,7 @@
 title:  "Courses"
 #subtitle: "Teaching activities"
 author: "Fernando Bastos"
-image: "img/disciplines/Disciplinas.png"
+image: "img/teaching/Disciplinas.png"
 date:   2019-01-01 12:12:12
 ---
 
